@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cursus Statistiek 2018-2019</title>
+  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Cursus Statistiek 2018-2019" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  <meta name="github-repo" content="statOmics/statistiek2deBach" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cursus Statistiek 2018-2019" />
+  
+  <meta name="twitter:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  
+
+<meta name="author" content="Lieven Clement">
+
+
+<meta name="date" content="2018-09-20">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="chap-linReg.html">
+<link rel="next" href="niet-parametrische-statistiek.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Cursus Statistiek 2017-2018</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Woord vooraf</a></li>
+<li class="chapter" data-level="" data-path="links.html"><a href="links.html"><i class="fa fa-check"></i>Links</a></li>
+<li class="chapter" data-level="1" data-path="inleiding.html"><a href="inleiding.html"><i class="fa fa-check"></i><b>1</b> Inleiding</a><ul>
+<li class="chapter" data-level="1.1" data-path="inleiding.html"><a href="inleiding.html#sec:wetMeth"><i class="fa fa-check"></i><b>1.1</b> De Wetenschappelijke Methode</a></li>
+<li class="chapter" data-level="1.2" data-path="inleiding.html"><a href="inleiding.html#voorbeeld-horizon---homeopathy-the-test"><i class="fa fa-check"></i><b>1.2</b> Voorbeeld: Horizon - Homeopathy the test</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="inleiding.html"><a href="inleiding.html#wetenschappelijke-hypothese-fragmenten-1-2-000-600-740-1130"><i class="fa fa-check"></i><b>1.2.1</b> Wetenschappelijke hypothese (fragmenten 1-2: 0’00’‘-6’00’‘&amp; 7’40’‘-11’30’’)</a></li>
+<li class="chapter" data-level="1.2.2" data-path="inleiding.html"><a href="inleiding.html#onderzoek-dient-reproduceerbaar-te-zijn.-wat-ging-er-fout-fragment-1450-1856"><i class="fa fa-check"></i><b>1.2.2</b> Onderzoek dient reproduceerbaar te zijn. Wat ging er fout? (Fragment: 14’50”-18’56”)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="inleiding.html"><a href="inleiding.html#the-ultimate-test---proefopzet-fragment-3100-3930"><i class="fa fa-check"></i><b>1.2.3</b> The ultimate test - proefopzet (Fragment 31’00-39’30’’)</a></li>
+<li class="chapter" data-level="1.2.4" data-path="inleiding.html"><a href="inleiding.html#the-ultimate-test---data-analyse-fragment-3930-4300"><i class="fa fa-check"></i><b>1.2.4</b> The ultimate test - data analyse (Fragment 39’30-43’00’’)</a></li>
+<li class="chapter" data-level="1.2.5" data-path="inleiding.html"><a href="inleiding.html#mogelijke-fouten"><i class="fa fa-check"></i><b>1.2.5</b> Mogelijke fouten</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html"><i class="fa fa-check"></i><b>2</b> Belangrijke concepten &amp; conventies</a><ul>
+<li class="chapter" data-level="2.1" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#variabelen"><i class="fa fa-check"></i><b>2.1</b> Variabelen</a></li>
+<li class="chapter" data-level="2.2" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#subsec:pop"><i class="fa fa-check"></i><b>2.2</b> Populatie</a></li>
+<li class="chapter" data-level="2.3" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#toevalsveranderlijken-of-toevallige-veranderlijken"><i class="fa fa-check"></i><b>2.3</b> Toevalsveranderlijken (of toevallige veranderlijken)</a></li>
+<li class="chapter" data-level="2.4" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#beschrijven-van-de-populatie"><i class="fa fa-check"></i><b>2.4</b> Beschrijven van de populatie</a></li>
+<li class="chapter" data-level="2.5" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#steekproef"><i class="fa fa-check"></i><b>2.5</b> Steekproef</a></li>
+<li class="chapter" data-level="2.6" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#schatten-van-de-verdeling-in-de-populatie"><i class="fa fa-check"></i><b>2.6</b> Schatten van de verdeling in de populatie</a></li>
+<li class="chapter" data-level="2.7" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#statistieken"><i class="fa fa-check"></i><b>2.7</b> Statistieken</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-design.html"><a href="chap-design.html"><i class="fa fa-check"></i><b>3</b> Studiedesign</a><ul>
+<li class="chapter" data-level="3.1" data-path="chap-design.html"><a href="chap-design.html#inleiding-1"><i class="fa fa-check"></i><b>3.1</b> Inleiding</a></li>
+<li class="chapter" data-level="3.2" data-path="chap-design.html"><a href="chap-design.html#sec:steekproefdesigns"><i class="fa fa-check"></i><b>3.2</b> Steekproefdesigns</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="chap-design.html"><a href="chap-design.html#replicatie"><i class="fa fa-check"></i><b>3.2.1</b> Replicatie</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap-design.html"><a href="chap-design.html#experimentele-studies"><i class="fa fa-check"></i><b>3.3</b> Experimentele studies</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chap-design.html"><a href="chap-design.html#de-salk-vaccin-veldstudie"><i class="fa fa-check"></i><b>3.3.1</b> De Salk Vaccin Veldstudie</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chap-design.html"><a href="chap-design.html#gerandomiseerd-gecontroleerde-studies"><i class="fa fa-check"></i><b>3.3.2</b> Gerandomiseerd gecontroleerde studies</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chap-design.html"><a href="chap-design.html#parallelle-designs"><i class="fa fa-check"></i><b>3.3.3</b> Parallelle designs</a></li>
+<li class="chapter" data-level="3.3.4" data-path="chap-design.html"><a href="chap-design.html#cross-over-designs"><i class="fa fa-check"></i><b>3.3.4</b> Cross-over designs</a></li>
+<li class="chapter" data-level="3.3.5" data-path="chap-design.html"><a href="chap-design.html#factoriele-designs"><i class="fa fa-check"></i><b>3.3.5</b> Factoriële designs</a></li>
+<li class="chapter" data-level="3.3.6" data-path="chap-design.html"><a href="chap-design.html#quasi-experimentele-designs"><i class="fa fa-check"></i><b>3.3.6</b> Quasi-experimentele designs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chap-design.html"><a href="chap-design.html#sec:observational"><i class="fa fa-check"></i><b>3.4</b> Observationele studies</a></li>
+<li class="chapter" data-level="3.5" data-path="chap-design.html"><a href="chap-design.html#subsec:design:prosp"><i class="fa fa-check"></i><b>3.5</b> Prospectieve studies</a></li>
+<li class="chapter" data-level="3.6" data-path="chap-design.html"><a href="chap-design.html#subsec:design:retro"><i class="fa fa-check"></i><b>3.6</b> Retrospectieve studies</a></li>
+<li class="chapter" data-level="3.7" data-path="chap-design.html"><a href="chap-design.html#niet-gecontroleerde-studies"><i class="fa fa-check"></i><b>3.7</b> Niet-gecontroleerde studies</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="chap-design.html"><a href="chap-design.html#subsec:prepost"><i class="fa fa-check"></i><b>3.7.1</b> Pre-test/Post-test studies</a></li>
+<li class="chapter" data-level="3.7.2" data-path="chap-design.html"><a href="chap-design.html#cross-sectionele-surveys"><i class="fa fa-check"></i><b>3.7.2</b> Cross-sectionele surveys</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-describe.html"><a href="chap-describe.html"><i class="fa fa-check"></i><b>4</b> Data exploratie en beschrijvende statistiek</a><ul>
+<li class="chapter" data-level="4.1" data-path="chap-describe.html"><a href="chap-describe.html#inleiding-2"><i class="fa fa-check"></i><b>4.1</b> Inleiding</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-describe.html"><a href="chap-describe.html#sec:univar"><i class="fa fa-check"></i><b>4.2</b> Univariate beschrijving van de variabelen</a></li>
+<li class="chapter" data-level="4.3" data-path="chap-describe.html"><a href="chap-describe.html#sec:summarize"><i class="fa fa-check"></i><b>4.3</b> Samenvattingsmaten voor continue variabelen</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chap-describe.html"><a href="chap-describe.html#maten-voor-de-centrale-ligging"><i class="fa fa-check"></i><b>4.3.1</b> Maten voor de centrale ligging</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:spreiding"><i class="fa fa-check"></i><b>4.3.2</b> Spreidingsmaten</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chap-describe.html"><a href="chap-describe.html#sec:normal"><i class="fa fa-check"></i><b>4.4</b> De Normale benadering van gegevens</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="chap-describe.html"><a href="chap-describe.html#subsec:normalcalc"><i class="fa fa-check"></i><b>4.4.1</b> Bepalen van oppervlaktes onder de Normale curve</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chap-describe.html"><a href="chap-describe.html#sec:qq"><i class="fa fa-check"></i><b>4.4.2</b> QQ-plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chap-describe.html"><a href="chap-describe.html#sec:explCatVar"><i class="fa fa-check"></i><b>4.5</b> Samenvattingsmaten voor categorische variabelen</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="chap-describe.html"><a href="chap-describe.html#prospectieve-studies-en-lukrake-steekproeven"><i class="fa fa-check"></i><b>4.5.1</b> Prospectieve studies en lukrake steekproeven</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:retrospect"><i class="fa fa-check"></i><b>4.5.2</b> Retrospectieve studies</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-describe.html"><a href="chap-describe.html#rates-versus-risicos"><i class="fa fa-check"></i><b>4.5.3</b> Rates versus risico’s</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="chap-describe.html"><a href="chap-describe.html#associaties-tussen-twee-variabelen"><i class="fa fa-check"></i><b>4.6</b> Associaties tussen twee variabelen</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="chap-describe.html"><a href="chap-describe.html#subsec:kruistabel"><i class="fa fa-check"></i><b>4.6.1</b> Associatie tussen twee kwalitatieve variabelen</a></li>
+<li class="chapter" data-level="4.6.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:asskwalcont"><i class="fa fa-check"></i><b>4.6.2</b> Associatie tussen één kwalitatieve en één continue variabele</a></li>
+<li class="chapter" data-level="4.6.3" data-path="chap-describe.html"><a href="chap-describe.html#sec:correlatie"><i class="fa fa-check"></i><b>4.6.3</b> Associatie tussen twee continue variabelen</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="chap-describe.html"><a href="chap-describe.html#sec:missing"><i class="fa fa-check"></i><b>4.7</b> Onvolledige gegevens</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-besluit.html"><a href="chap-besluit.html"><i class="fa fa-check"></i><b>5</b> Statistische besluitvorming</a><ul>
+<li class="chapter" data-level="5.1" data-path="chap-besluit.html"><a href="chap-besluit.html#inleiding-3"><i class="fa fa-check"></i><b>5.1</b> Inleiding</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-besluit.html"><a href="chap-besluit.html#captopril-voorbeeld"><i class="fa fa-check"></i><b>5.2</b> Captopril voorbeeld</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="chap-besluit.html"><a href="chap-besluit.html#proefopzet"><i class="fa fa-check"></i><b>5.2.1</b> Proefopzet</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-besluit.html"><a href="chap-besluit.html#data-exploratie-beschrijvende-statistiek"><i class="fa fa-check"></i><b>5.2.2</b> Data Exploratie &amp; Beschrijvende Statistiek</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chap-besluit.html"><a href="chap-besluit.html#schatten"><i class="fa fa-check"></i><b>5.2.3</b> Schatten</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chap-besluit.html"><a href="chap-besluit.html#puntschatters-het-steekproefgemiddelde"><i class="fa fa-check"></i><b>5.3</b> Puntschatters: het steekproefgemiddelde</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="chap-besluit.html"><a href="chap-besluit.html#het-steekproefgemiddelde-is-onvertekend"><i class="fa fa-check"></i><b>5.3.1</b> Het steekproefgemiddelde is onvertekend</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap-besluit.html"><a href="chap-besluit.html#imprecisiestandard-error"><i class="fa fa-check"></i><b>5.3.2</b> Imprecisie/standard error</a></li>
+<li class="chapter" data-level="5.3.3" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:verdelingXbar"><i class="fa fa-check"></i><b>5.3.3</b> Verdeling van het steekproefgemiddelde</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="chap-besluit.html"><a href="chap-besluit.html#intervalschatters"><i class="fa fa-check"></i><b>5.4</b> Intervalschatters</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:bigek"><i class="fa fa-check"></i><b>5.4.1</b> Gekende variantie op de metingen</a></li>
+<li class="chapter" data-level="5.4.2" data-path="chap-besluit.html"><a href="chap-besluit.html#sec:tBI"><i class="fa fa-check"></i><b>5.4.2</b> Ongekende variantie op de metingen</a></li>
+<li class="chapter" data-level="5.4.3" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:interpretBI"><i class="fa fa-check"></i><b>5.4.3</b> Interpretatie van betrouwbaarheidsintervallen</a></li>
+<li class="chapter" data-level="5.4.4" data-path="chap-besluit.html"><a href="chap-besluit.html#wat-rapporteren"><i class="fa fa-check"></i><b>5.4.4</b> Wat rapporteren?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="chap-besluit.html"><a href="chap-besluit.html#principe-van-hypothesetoetsen-via-one-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Principe van Hypothesetoetsen (via one sample t-test)</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-besluit.html"><a href="chap-besluit.html#hypotheses"><i class="fa fa-check"></i><b>5.5.1</b> Hypotheses</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-besluit.html"><a href="chap-besluit.html#test-statistiek"><i class="fa fa-check"></i><b>5.5.2</b> Test-statistiek</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-besluit.html"><a href="chap-besluit.html#de-p-waarde"><i class="fa fa-check"></i><b>5.5.3</b> De p-waarde</a></li>
+<li class="chapter" data-level="5.5.4" data-path="chap-besluit.html"><a href="chap-besluit.html#kritieke-waarde"><i class="fa fa-check"></i><b>5.5.4</b> Kritieke waarde</a></li>
+<li class="chapter" data-level="5.5.5" data-path="chap-besluit.html"><a href="chap-besluit.html#beslissingsfouten"><i class="fa fa-check"></i><b>5.5.5</b> Beslissingsfouten</a></li>
+<li class="chapter" data-level="5.5.6" data-path="chap-besluit.html"><a href="chap-besluit.html#conclusies-captopril-voorbeeld."><i class="fa fa-check"></i><b>5.5.6</b> Conclusies Captopril voorbeeld.</a></li>
+<li class="chapter" data-level="5.5.7" data-path="chap-besluit.html"><a href="chap-besluit.html#eenzijdig-of-tweezijdig-toetsen"><i class="fa fa-check"></i><b>5.5.7</b> Eenzijdig of tweezijdig toetsen?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-besluit.html"><a href="chap-besluit.html#two-sample-t-test"><i class="fa fa-check"></i><b>5.6</b> Two-sample t-test</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="chap-besluit.html"><a href="chap-besluit.html#oksel-voorbeeld"><i class="fa fa-check"></i><b>5.6.1</b> Oksel-voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="chap-besluit.html"><a href="chap-besluit.html#aannames"><i class="fa fa-check"></i><b>5.7</b> Aannames</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="chap-besluit.html"><a href="chap-besluit.html#nagaan-van-de-veronderstelling-van-normaliteit"><i class="fa fa-check"></i><b>5.7.1</b> Nagaan van de veronderstelling van Normaliteit</a></li>
+<li class="chapter" data-level="5.7.2" data-path="chap-besluit.html"><a href="chap-besluit.html#nagaan-van-homoscedasticiteit"><i class="fa fa-check"></i><b>5.7.2</b> Nagaan van homoscedasticiteit</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="chap-besluit.html"><a href="chap-besluit.html#wat-rapporteren-1"><i class="fa fa-check"></i><b>5.8</b> Wat rapporteren?</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="chap-besluit.html"><a href="chap-besluit.html#reden-1-relatie-toetsen-en-betrouwbaarheidsintervallen"><i class="fa fa-check"></i><b>5.8.1</b> Reden 1: Relatie toetsen en betrouwbaarheidsintervallen</a></li>
+<li class="chapter" data-level="5.8.2" data-path="chap-besluit.html"><a href="chap-besluit.html#reden-2-statistische-significantie-versus-wetenschappelijke-relevantie"><i class="fa fa-check"></i><b>5.8.2</b> Reden 2: Statistische significantie versus wetenschappelijke relevantie</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="chap-besluit.html"><a href="chap-besluit.html#equivalentie-intervallen"><i class="fa fa-check"></i><b>5.9</b> Equivalentie-intervallen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-linReg.html"><a href="chap-linReg.html"><i class="fa fa-check"></i><b>6</b> Enkelvoudige lineaire regressie</a><ul>
+<li class="chapter" data-level="6.1" data-path="chap-linReg.html"><a href="chap-linReg.html#inleiding-4"><i class="fa fa-check"></i><b>6.1</b> Inleiding</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="chap-linReg.html"><a href="chap-linReg.html#borstkanker-dataset"><i class="fa fa-check"></i><b>6.1.1</b> Borstkanker dataset</a></li>
+<li class="chapter" data-level="6.1.2" data-path="chap-linReg.html"><a href="chap-linReg.html#data-exploratie"><i class="fa fa-check"></i><b>6.1.2</b> Data exploratie</a></li>
+<li class="chapter" data-level="6.1.3" data-path="chap-linReg.html"><a href="chap-linReg.html#model"><i class="fa fa-check"></i><b>6.1.3</b> Model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chap-linReg.html"><a href="chap-linReg.html#lineaire-regressie"><i class="fa fa-check"></i><b>6.2</b> Lineaire regressie</a></li>
+<li class="chapter" data-level="6.3" data-path="chap-linReg.html"><a href="chap-linReg.html#parameterschatting"><i class="fa fa-check"></i><b>6.3</b> Parameterschatting</a></li>
+<li class="chapter" data-level="6.4" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linBesluit"><i class="fa fa-check"></i><b>6.4</b> Statistische besluitvorming</a></li>
+<li class="chapter" data-level="6.5" data-path="chap-linReg.html"><a href="chap-linReg.html#nagaan-van-modelveronderstellingen"><i class="fa fa-check"></i><b>6.5</b> Nagaan van modelveronderstellingen</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="chap-linReg.html"><a href="chap-linReg.html#lineariteit"><i class="fa fa-check"></i><b>6.5.1</b> Lineariteit</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap-linReg.html"><a href="chap-linReg.html#veronderstelling-van-homoscedasticiteit-gelijkheid-van-variantie"><i class="fa fa-check"></i><b>6.5.2</b> Veronderstelling van homoscedasticiteit (gelijkheid van variantie)</a></li>
+<li class="chapter" data-level="6.5.3" data-path="chap-linReg.html"><a href="chap-linReg.html#veronderstelling-van-normaliteit"><i class="fa fa-check"></i><b>6.5.3</b> Veronderstelling van normaliteit</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap-linReg.html"><a href="chap-linReg.html#afwijkingen-van-modelveronderstellingen"><i class="fa fa-check"></i><b>6.6</b> Afwijkingen van Modelveronderstellingen</a></li>
+<li class="chapter" data-level="6.7" data-path="chap-linReg.html"><a href="chap-linReg.html#besluitvorming-over-gemiddelde-uitkomst"><i class="fa fa-check"></i><b>6.7</b> Besluitvorming over gemiddelde uitkomst</a></li>
+<li class="chapter" data-level="6.8" data-path="chap-linReg.html"><a href="chap-linReg.html#predictie-intervallen"><i class="fa fa-check"></i><b>6.8</b> Predictie-intervallen</a></li>
+<li class="chapter" data-level="6.9" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linAnova"><i class="fa fa-check"></i><b>6.9</b> Kwadratensommen en Anova-tabel</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="chap-linReg.html"><a href="chap-linReg.html#determinatie-coefficient"><i class="fa fa-check"></i><b>6.9.1</b> Determinatie-coëfficiënt</a></li>
+<li class="chapter" data-level="6.9.2" data-path="chap-linReg.html"><a href="chap-linReg.html#f-testen-in-het-enkelvoudig-lineair-regressiemodel"><i class="fa fa-check"></i><b>6.9.2</b> F-Testen in het enkelvoudig lineair regressiemodel</a></li>
+<li class="chapter" data-level="6.9.3" data-path="chap-linReg.html"><a href="chap-linReg.html#anova-tabel"><i class="fa fa-check"></i><b>6.9.3</b> Anova Tabel</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linDummy"><i class="fa fa-check"></i><b>6.10</b> Dummy variabelen</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-anova.html"><a href="chap-anova.html"><i class="fa fa-check"></i><b>7</b> Variantie analyse</a><ul>
+<li class="chapter" data-level="7.1" data-path="chap-anova.html"><a href="chap-anova.html#inleiding-5"><i class="fa fa-check"></i><b>7.1</b> Inleiding</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="chap-anova.html"><a href="chap-anova.html#prostacycline-voorbeeld"><i class="fa fa-check"></i><b>7.1.1</b> Prostacycline voorbeeld</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap-anova.html"><a href="chap-anova.html#model-1"><i class="fa fa-check"></i><b>7.1.2</b> Model</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap-anova.html"><a href="chap-anova.html#variantie-analyse"><i class="fa fa-check"></i><b>7.2</b> Variantie-analyse</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="chap-anova.html"><a href="chap-anova.html#model-2"><i class="fa fa-check"></i><b>7.2.1</b> Model</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chap-anova.html"><a href="chap-anova.html#kwadratensommen-en-anova"><i class="fa fa-check"></i><b>7.2.2</b> Kwadratensommen en Anova</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chap-anova.html"><a href="chap-anova.html#anova-test"><i class="fa fa-check"></i><b>7.2.3</b> Anova-test</a></li>
+<li class="chapter" data-level="7.2.4" data-path="chap-anova.html"><a href="chap-anova.html#anova-tabel-1"><i class="fa fa-check"></i><b>7.2.4</b> Anova Tabel</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="chap-anova.html"><a href="chap-anova.html#post-hoc-analyse-meervoudig-vergelijken-van-gemiddelden"><i class="fa fa-check"></i><b>7.3</b> Post hoc analyse: Meervoudig Vergelijken van Gemiddelden</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="chap-anova.html"><a href="chap-anova.html#naieve-methode"><i class="fa fa-check"></i><b>7.3.1</b> Naïeve methode</a></li>
+<li class="chapter" data-level="7.3.2" data-path="chap-anova.html"><a href="chap-anova.html#family-wise-error-rate"><i class="fa fa-check"></i><b>7.3.2</b> Family-wise error rate</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="chap-anova.html"><a href="chap-anova.html#conclusies-prostacycline-voorbeeld"><i class="fa fa-check"></i><b>7.4</b> Conclusies: Prostacycline Voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html"><i class="fa fa-check"></i><b>8</b> Niet-parametrische statistiek</a><ul>
+<li class="chapter" data-level="8.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#inleiding-6"><i class="fa fa-check"></i><b>8.1</b> Inleiding</a></li>
+<li class="chapter" data-level="8.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#vergelijken-van-twee-groepen"><i class="fa fa-check"></i><b>8.2</b> Vergelijken van twee groepen</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#cholestorol-voorbeeld"><i class="fa fa-check"></i><b>8.2.1</b> Cholestorol voorbeeld</a></li>
+<li class="chapter" data-level="8.2.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#permutatietesten"><i class="fa fa-check"></i><b>8.2.2</b> Permutatietesten</a></li>
+<li class="chapter" data-level="8.2.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#rank-testen"><i class="fa fa-check"></i><b>8.2.3</b> Rank Testen</a></li>
+<li class="chapter" data-level="8.2.4" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#wilcoxon-mann-whitney-test"><i class="fa fa-check"></i><b>8.2.4</b> Wilcoxon-Mann-Whitney Test</a></li>
+<li class="chapter" data-level="8.2.5" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#conclusie-cholestorol-voorbeeld"><i class="fa fa-check"></i><b>8.2.5</b> Conclusie Cholestorol Voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#vergelijken-van-g-behandelingen"><i class="fa fa-check"></i><b>8.3</b> Vergelijken van <span class="math inline">\(g\)</span> Behandelingen</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#dmh-voorbeeld"><i class="fa fa-check"></i><b>8.3.1</b> DMH Voorbeeld</a></li>
+<li class="chapter" data-level="8.3.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#permutatietest"><i class="fa fa-check"></i><b>8.3.2</b> Permutatietest</a></li>
+<li class="chapter" data-level="8.3.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#kruskal-wallis-rank-test"><i class="fa fa-check"></i><b>8.3.3</b> Kruskal-Wallis Rank Test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap-categorisch.html"><a href="chap-categorisch.html"><i class="fa fa-check"></i><b>9</b> Categorische data analyse</a><ul>
+<li class="chapter" data-level="9.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#inleiding-7"><i class="fa fa-check"></i><b>9.1</b> Inleiding</a></li>
+<li class="chapter" data-level="9.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#toetsen-voor-een-proportie"><i class="fa fa-check"></i><b>9.2</b> Toetsen voor een proportie</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#subsec:binom"><i class="fa fa-check"></i><b>9.2.1</b> Binomiale test</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#betrouwbaarheidsinterval-op-een-proportie"><i class="fa fa-check"></i><b>9.2.2</b> Betrouwbaarheidsinterval op een proportie</a></li>
+<li class="chapter" data-level="9.2.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#conclusie"><i class="fa fa-check"></i><b>9.2.3</b> Conclusie</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#toets-voor-associatie-tussen-2-kwalitatieve-variabelen"><i class="fa fa-check"></i><b>9.3</b> Toets voor associatie tussen 2 kwalitatieve variabelen</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#gepaarde-gegevens"><i class="fa fa-check"></i><b>9.3.1</b> Gepaarde gegevens</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#subsec:catOnPaired"><i class="fa fa-check"></i><b>9.3.2</b> Ongepaarde gegevens</a></li>
+<li class="chapter" data-level="9.3.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#de-pearson-chi-kwadraat-test-voor-ongepaarde-gegevens"><i class="fa fa-check"></i><b>9.3.3</b> De Pearson Chi-kwadraat test voor ongepaarde gegevens</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap-categorisch.html"><a href="chap-categorisch.html#logistische-regressie"><i class="fa fa-check"></i><b>9.4</b> Logistische regressie</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#categorische-predictor"><i class="fa fa-check"></i><b>9.4.1</b> Categorische predictor</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#continue-predictor"><i class="fa fa-check"></i><b>9.4.2</b> Continue predictor</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap-glm.html"><a href="chap-glm.html"><i class="fa fa-check"></i><b>10</b> Algemeen lineair model</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2018-2019</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap:anova" class="section level1">
+<h1><span class="header-section-number">Hoofdstuk 7</span> Variantie analyse</h1>
+<div id="inleiding-5" class="section level2">
+<h2><span class="header-section-number">7.1</span> Inleiding</h2>
+<div id="prostacycline-voorbeeld" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Prostacycline voorbeeld</h3>
+<p>Prostacycline is een lipide die een belangrijke rol speelt in vasodilatatie (bloedvatverwijding) en bloedstolling. Het inhibeert de activatie van bloedplaatjes en vermijdt de vorming van bloedklonters. Arachidonzuur speelt een belangrijke rol in de productieweg van prostacycline. Onderzoekers willen daarom bestuderen of het toedienen van arachidonzuur een effect heeft op het prostacycline niveau in het bloedplasma. Ze zetten hiervoor een proef op waarbij ze het effect van arachidonzuur zullen nagaan op het prostacycline niveau van ratten. Arachidonzuur wordt hierbij toegediend in drie verschillende concentraties (verklarende variabele met drie behandelingen): laag (L, 10 eenheden), gemiddeld (M, 25 eenheden) en een hoge dosis (H, 50 eenheden). Het prostacycline niveau in het bloedplasma wordt gemeten a.d.h.v. een gecalibreerde elisa fluorescentie meting (responsvariabele).<br />
+Het experiment is een <em>volledige gerandomiseerd proefopzet</em>, <em>“completely randomized design” CRD</em>. In totaal worden 12 ratten (experimentele eenheden) at random toegekend aan elke behandelingsgroep. De data is opgeslagen in een tekst bestand met naam <code>prostacyclin.txt</code> in de folder dataset. Een boxplot en QQ-plots voor de data in elke groep worden weergegeven in Figuur <a href="chap-anova.html#fig:prostBox">7.1</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prostacyclin &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;dataset/prostacyclin.txt&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>) 
+<span class="co">#dosis wordt als continue covariaat ingelezen</span>
+<span class="co">#zet om naar een factor. </span>
+prostacyclin<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">as.factor</span>(prostacyclin<span class="op">$</span>dose)
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
+<span class="co">#boxplot</span>
+<span class="kw">plot</span>(prostac<span class="op">~</span>dose,<span class="dt">data=</span>prostacyclin,<span class="dt">xlab=</span><span class="st">&quot;Arachidonzuurdosis &quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Prostacycline (ng/ml)&quot;</span>)
+<span class="co">#toevoegen van originele datapunten op de plot</span>
+<span class="co">#jitter zal de punten random verspreiden</span>
+<span class="co">#set seed om gekleurde volle bol pch=19 te zetten</span>
+<span class="kw">set.seed</span>(<span class="dv">10</span>)
+<span class="kw">stripchart</span>(prostac<span class="op">~</span>dose,<span class="dt">data=</span>prostacyclin, 
+            <span class="dt">vertical =</span> <span class="ot">TRUE</span>, <span class="dt">method =</span> <span class="st">&quot;jitter&quot;</span>, 
+            <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span><span class="kw">c</span>(<span class="st">&quot;bisque&quot;</span>,<span class="st">&quot;coral&quot;</span>,<span class="st">&quot;darkcyan&quot;</span>), 
+            <span class="dt">add =</span> <span class="ot">TRUE</span>)
+<span class="co">#zelfde seed gebruiken zodat we op zelfde plek een </span>
+<span class="co">#ronde open cirkel kunnen zetten zodat punt duidelijker is </span>
+<span class="co">#pch =1, col=1 (kleur is zwart)</span>
+<span class="kw">set.seed</span>(<span class="dv">10</span>)
+<span class="kw">stripchart</span>(prostac<span class="op">~</span>dose,<span class="dt">data=</span>prostacyclin, 
+            <span class="dt">vertical =</span> <span class="ot">TRUE</span>, <span class="dt">method =</span> <span class="st">&quot;jitter&quot;</span>, 
+            <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">col =</span><span class="dv">1</span>, 
+            <span class="dt">add =</span> <span class="ot">TRUE</span>)
+<span class="co">#3 QQ plot via for loop, we lopen over de niveaus voor de prostacycline dosis</span>
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">levels</span>(prostacyclin<span class="op">$</span>dose)) <span class="kw">with</span>(<span class="kw">subset</span>(prostacyclin,dose<span class="op">==</span>i),{<span class="kw">qqnorm</span>(prostac,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(prostacyclin<span class="op">$</span>prostac)),<span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;Dosis&quot;</span>,i));<span class="kw">qqline</span>(prostac)})</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:prostBox"></span>
+<img src="Statistiek_2018_2019_files/figure-html/prostBox-1.png" alt="Data-exploratie van het prostacycline niveau bij 36 ratten die behandeld werden met drie verschillende arachidonzuurconcentraties (12 ratten per behandeling). Links boven: boxplots van prostacycline niveau in functie van de dosis, QQ-plot van prostacycline voor lage, matige en hoge dosisgroep worden respectievelijk rechtsboven, linksonder en rechtsonder weergegeven" width="100%" />
+<p class="caption">
+Figuur 7.1: Data-exploratie van het prostacycline niveau bij 36 ratten die behandeld werden met drie verschillende arachidonzuurconcentraties (12 ratten per behandeling). Links boven: boxplots van prostacycline niveau in functie van de dosis, QQ-plot van prostacycline voor lage, matige en hoge dosisgroep worden respectievelijk rechtsboven, linksonder en rechtsonder weergegeven
+</p>
+</div>
+<p>Figuur <a href="chap-anova.html#fig:prostBox">7.1</a> geeft weer dat er een effect lijkt te zijn van de arachidonzuurdosis op de hoogte van het prostacycline niveau. In het bijzonder de hoge dosis lijkt het prostacycline niveau in het bloedplasma te laten toenemen.</p>
+</div>
+<div id="model-1" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Model</h3>
+<p>Op basis van de boxplots in Figuur <a href="chap-anova.html#fig:prostBox">7.1</a> zien we dat de variantie gelijk lijkt te zijn tussen de verschillende behandelingsgroepen. Er is een indicatie dat het gemiddeld prostacycline niveau verschilt tussen de behandelingsgroepen. In het bijzonder voor de hoge dosisgroep H (50 eenheden). Er zijn geen grote verschillen in de interkwartiel range (box-groottes). De QQ-plots in Figuur <a href="chap-anova.html#fig:prostBox">7.1</a> tonen geen grote afwijkingen aan van Normaliteit. De QQ-plot geeft een indicatie dat mogelijks een outlier voorkomt in groep L. Deze wordt echter niet door de boxplots gesignaleerd.</p>
+<p>We kunnen dus volgend statistisch model voorop stellen:</p>
+<p><span class="math display">\[Y_i \vert \text{groep j} \sim N(\mu_j,\sigma^2),\]</span> met <span class="math inline">\(j= \text{1, 2, 3}\)</span>, respectievelijk de lage, matige en hoge dosisgroep. Hierbij veronderstellen we dus dat de data Normaal verdeeld zijn met een gelijke variantie binnen elk van de <span class="math inline">\(g=3\)</span> groepen, <span class="math inline">\(\sigma^2\)</span>, maar met een verschillend groepsgemiddelde <span class="math inline">\(\mu_j\)</span>.</p>
+<p>De onderzoeksvraag kan nu vertaald worden in termen van het model. De onderzoekers wensen aan te tonen dat het arachidonzuur niveau een effect heeft op de gemiddelde prostacycline concentratie in het bloed.</p>
+<p>Dat vertaalt zich in volgende nulhypothese, de arachidonzuurconcentratie heeft geen effect op het gemiddelde prostacycline niveau bij ratten, <span class="math display">\[H_0:\mu_1=\mu_2 = \mu_3\]</span> en de alternatieve hypothese dat er een effect is van de arachidonzuurconcentratie op het gemiddelde prostacycline niveau bij ratten. Dat betekent dat minstens twee gemiddelden verschillend zijn <span class="math display">\[H_1: \exists\ j,k \in \{1,\ldots,g\} : \mu_j\neq\mu_k.\]</span> Of letterlijk: er bestaat minstens één koppel behandelingsgroepen (j en k) waarvoor het gemiddelde prostacycline niveau <span class="math inline">\(\mu_j\)</span> verschillend is van dat in groep <span class="math inline">\(k\)</span>, <span class="math inline">\(\mu_k\)</span>.</p>
+<p>Een naïeve benadering zou zijn om de nulhypothese op splitsen in partiële hypothesen <span class="math display">\[  H_{0jk}: \mu_j=\mu_k \text{ versus } H_{1jk}: \mu_j \neq \mu_k\]</span> Waarbij de gemiddelden tussen de groepen twee aan twee worden vergeleken. Met deze procedure zouden we elk van deze partiële hypothesen kunnen testen met een two-sample <span class="math inline">\(t\)</span>-test. Dat zou echter leiden tot een probleem van meervoudig toetsen en een verlies aan power (zie verder). Voor dit voorbeeld zouden we met deze aanpak immers 3 t-testen moeten uitvoeren om de onderzoeksvraag te evalueren.</p>
+<p>In dit hoofdstuk zullen we methoden introduceren om <span class="math inline">\(H_0:\mu_1=\mu_2=\mu_3\)</span> vs <span class="math inline">\(H_1: \exists j,k \in \{1,\ldots,g\} : \mu_j\neq\mu_k\)</span> te testen met <strong>één enkele test</strong>. De correcte oplossing voor het testprobleem waarbij we een continue response meten en wensen te detecteren of er een verschil is in gemiddelde response tussen meerdere groepen wordt een <strong>variantie-analyse of ANOVA</strong> (ANalysis Of VAriance) genoemd.</p>
+</div>
+</div>
+<div id="variantie-analyse" class="section level2">
+<h2><span class="header-section-number">7.2</span> Variantie-analyse</h2>
+<p>We leiden de methode af voor de meest eenvoudige uitbreiding met 3 groepen (prostacycline voorbeeld), maar de veralgemening naar g groepen met <span class="math inline">\(g&gt;3\)</span> is triviaal.</p>
+<div id="model-2" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Model</h3>
+<p>Zoals bij de t-test kunnen we het probleem ook modelleren a.d.h.v een lineair model door gebruik te maken van dummy variabelen (Sectie <a href="chap-linReg.html#sec:linDummy">6.10</a>). We zullen hierbij steeds 1 dummy variable minder nodig hebben dan er groepen zijn.</p>
+Voor het prostacycline voorbeeld zijn dus twee dummy variabelen nodig en kunnen we de data dus modelleren met onderstaand lineair regressiemodel: Stel dat <span class="math inline">\(Y_i\)</span> de uitkomst voorstelt van observatie <span class="math inline">\(i\)</span> (<span class="math inline">\(i=1,\ldots, n\)</span>), dan beschouwen we
+<span class="math display" id="eq:regmu3">\[\begin{eqnarray}
+  Y_i &amp;=&amp; g(x_{i1},x_{i2}) + \epsilon_i\\
+  Y_i &amp;=&amp; \beta_0+\beta_1 x_{i1} +\beta_2 x_{i2} +\epsilon_i \tag{7.1}
+\end{eqnarray}\]</span>
+<p>waarbij de error term opnieuw i.i.d.<a href="#fn46" class="footnoteRef" id="fnref46"><sup>46</sup></a> normaal verdeeld wordt verondersteld met een constante variantie, <span class="math inline">\(\epsilon_i\sim N(0,\sigma^2)\)</span>, en waarbij de predictoren dummy-variabelen zijn: <span class="math display">\[x_{i1} = \left\{ \begin{array}{ll} 
+1 &amp; \text{ als observatie $i$ behoort tot middelste dosisgroep (M)} \\
+0 &amp; \text{ als observatie $i$ behoort tot  een andere dosisgroep} \end{array}\right. .\]</span> en <span class="math display">\[x_{i2} = \left\{ \begin{array}{ll} 
+1 &amp; \text{ als observatie $i$ behoort tot de hoogste dosisgroep (H)} \\
+0 &amp; \text{ als observatie $i$ behoort tot een andere dosisgroep} \end{array}\right. .\]</span></p>
+<p>De lage dosisgroep (L) met <span class="math inline">\(x_{i1}=x_{i2}=0\)</span> wordt in deze context de <strong>referentiegroep</strong> genoemd.</p>
+<p>Zoals in Sectie <a href="chap-linReg.html#sec:linDummy">6.10</a> kunnen we het regressie-model opnieuw herschrijven als een model voor elke groep:</p>
+<ol style="list-style-type: decimal">
+<li><p>Voor observaties in <strong>dosisgroep L</strong> wordt het Model <a href="chap-anova.html#eq:regmu3">(7.1)</a> <span class="math display">\[Y_i = \beta_0+\epsilon_i,\]</span> met <span class="math inline">\(\epsilon_i \sim N(0,\sigma^2)\)</span>.</p></li>
+<li><p>Voor observaties in <strong>dosisgroep M</strong> wordt het Model <a href="chap-anova.html#eq:regmu3">(7.1)</a> <span class="math display">\[Y_i = \beta_0+\beta_1 + \epsilon_i,\]</span> met <span class="math inline">\(\epsilon_i \sim N(0,\sigma^2)\)</span>.</p></li>
+<li><p>Voor observaties in <strong>dosisgroep H</strong> wordt het Model <a href="chap-anova.html#eq:regmu3">(7.1)</a> <span class="math display">\[Y_i = \beta_0+\beta_2 + \epsilon_i\]</span> met <span class="math inline">\(\epsilon_i \sim N(0,\sigma^2)\)</span>.</p></li>
+</ol>
+Hieruit volgt direct de interpretatie van de modelparameters:
+<span class="math display">\[\begin{eqnarray*}
+   \beta_0 &amp;=&amp;  \text{E}\left[Y_i \mid \text{behandeling met lage dosisgroep L}\right] \\
+   \beta_1 &amp;=&amp;  (\beta_0+\beta_1)-\beta_0 = \text{E}\left[Y_i \mid \text{behandeling M}\right] - \text{E}\left[Y_i \mid \text{behandeling L}\right] \\
+   \beta_2 &amp;=&amp;  (\beta_0+\beta_2)-\beta_0 = \text{E}\left[Y_i \mid \text{behandeling H}\right]-\text{E}\left[Y_i \mid \text{behandeling L}\right].
+ \end{eqnarray*}\]</span>
+<p>of anders geformuleerd:</p>
+<ol style="list-style-type: decimal">
+<li>parameter <span class="math inline">\(\beta_0\)</span> is de gemiddelde uitkomst in de lage dosis groep L.</li>
+<li>Parameter <span class="math inline">\(\beta_1\)</span> is het effect (verschil in gemiddelde concentratie) van groep M t.o.v. groep L.</li>
+<li>Parameter <span class="math inline">\(\beta_2\)</span> is het effect van hoge dosis groep H t.o.v. groep L.</li>
+</ol>
+We herformuleren de modellen gebruik makend van de <span class="math inline">\(\mu\)</span>-notaties:
+<span class="math display">\[\begin{eqnarray*}
+ Y_{i\vert \text{dose=L}} &amp;=&amp; \beta_0+\epsilon_i = \mu_1+\epsilon_i \\
+ Y_{i\vert \text{dose=M}} &amp;=&amp; \beta_0+\beta_1+ \epsilon_i = \mu_2+\epsilon_i \\ 
+ Y_{i\vert \text{dose=H}} &amp;=&amp; \beta_0+\beta_2 + \epsilon_i = \mu_3+\epsilon_i .
+\end{eqnarray*}\]</span>
+<p>met <span class="math inline">\(\epsilon_i \sim N(0,\sigma^2)\)</span> en met <span class="math display">\[  \mu_j = \text{E}\left[Y_i \mid \text{behandelingsgroep } j\right].\]</span></p>
+<p>De oorspronkelijk nulhypothese <span class="math inline">\(H_0:\mu_1=\mu_2=\mu_3\)</span> kan equivalent geformuleerd worden als <span class="math display">\[H_0: \beta_1=\beta_2=0.\]</span></p>
+<p>Gezien Model <a href="chap-anova.html#eq:regmu3">(7.1)</a> een lineair regressiemodel is, kunnen de methoden van lineaire regressie gebruikt worden voor het schatten van de parameters en hun varianties, het opstellen van hypothesetesten en betrouwbaarheidsintervallen. Het testen van <span class="math inline">\(H_0: \beta_1=\beta_2=0\)</span> gebeurt d.m.v. een <span class="math inline">\(F\)</span>-test. Hiermee is bijna de volledige oplossing bekomen.</p>
+<p>Voor het prostacycline voorbeeld bekomen we het volgende model in het software pakket R:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model1=<span class="kw">lm</span>(prostac<span class="op">~</span>dose,<span class="dt">data=</span>prostacyclin)
+<span class="kw">summary</span>(model1)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = prostac ~ dose, data = prostacyclin)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -35.167 -17.117  -4.958  17.927  41.133 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   40.108      6.150   6.521 2.10e-07 ***
+## dose25         8.258      8.698   0.949    0.349    
+## dose50        43.258      8.698   4.974 1.99e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 21.3 on 33 degrees of freedom
+## Multiple R-squared:  0.458,  Adjusted R-squared:  0.4252 
+## F-statistic: 13.94 on 2 and 33 DF,  p-value: 4.081e-05</code></pre>
+<p>We zien dat R eveneens de lage klasse (dose10) kiest als referentie-klasse aangezien er enkel een intercept voorkomt en parameters voor dose25 (M) en dose50 (H). De output laat dus onmiddellijk toe om het effect te vergelijken tussen de middelste en laagste dosisgroep en de hoogste en laagste dosisgroep a.d.h.v. twee t-testen.<br />
+De volledige nulhypothese <span class="math inline">\(H_0: \beta_1=\beta_2=0\)</span> kan worden geëvalueerd op basis van de F-test onderaan in de output. De p-waarde van de test geeft aan dat er een extreem significant effect is van de arachidonzuurconcentratie op het gemiddelde prostacycline niveau (<span class="math inline">\(p&lt;&lt;0.001\)</span>). In de volgende Sectie tonen we dat de F-test opnieuw opgebouwd wordt d.m.v. kwadratensommen.</p>
+</div>
+<div id="kwadratensommen-en-anova" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Kwadratensommen en Anova</h3>
+Net zoals bij enkelvoudige regressie (Sectie <a href="chap-linReg.html#sec:linAnova">6.9</a>) kunnen we opnieuw de kwadratensom van de regressie gebruiken bij het opstellen van de F-test. De kwadratensom van de regressie
+<span class="math display">\[\begin{eqnarray*}
+\text{SSR}&amp;=&amp;\sum\limits_{i=1}^n (\hat Y_{i} -\bar Y)^2
+\end{eqnarray*}\]</span>
+kan nu worden herschreven als
+<span class="math display">\[\begin{eqnarray*}
+\text{SSR}&amp;=&amp;\sum\limits_{i=1}^n (\hat Y_i -\bar Y)^2\\
+&amp;=&amp; \sum\limits_{i=1}^n (\hat{g} (x_{i1},x_{i2}) - \bar Y)^2\\
+&amp;=&amp; \sum\limits_{i=1}^n (\hat\beta_0+\hat\beta_1x_{i1}+\hat\beta_2x_{i2}) - \bar Y)^2\\
+&amp;=&amp; \sum\limits_{i=1}^{n_1} (\hat\beta_0 - \bar Y)^2 +\sum\limits_{i=1}^{n_2} (\hat\beta_0 + \hat\beta_1 - \bar Y)^2+\sum\limits_{i=1}^{n_3} (\hat\beta_0 + \hat\beta_2 - \bar Y)^2\\
+&amp;=&amp; \sum\limits_{i=1}^{n_1} (\bar Y_1- \bar Y)^2 +\sum\limits_{i=1}^{n_2} (\bar Y_2- \bar Y)^2+\sum\limits_{i=1}^{n_3} (\bar Y_3 - \bar Y)^2\\
+\end{eqnarray*}\]</span>
+<p>met <span class="math inline">\(n_1\)</span>, <span class="math inline">\(n_2\)</span> en <span class="math inline">\(n_3\)</span> het aantal observaties in elke groep (<span class="math inline">\(n-1=n_2=n_3=12\)</span>).</p>
+<p>Net als in Sectie <a href="chap-linReg.html#sec:linAnova">6.9</a> is SSR een maat voor de afwijking tussen de predicties van het anova model (groepsgemiddelden) en het steekproefgemiddelde van de uitkomsten. Het kan opnieuw geïnterpreteerd worden als een maat voor de afwijking tussen het geschatte Model <a href="chap-anova.html#eq:regmu3">(7.1)</a> en een gereduceerd model met enkel een intercept. Deze laatste is dus eigenlijk een schatting van het model <span class="math inline">\(g(x_1,x_2)=\beta_0\)</span>, waarin <span class="math inline">\(\beta_0\)</span> geschat wordt door <span class="math inline">\(\bar{Y}\)</span>. Anders geformuleerd: SSR meet de grootte van het behandelingseffect zodat <span class="math inline">\(\text{SSR} \approx 0\)</span> duidt op de afwezigheid van het effect van de dummy variabelen en <span class="math inline">\(\text{SSR}&gt;0\)</span> duidt op een effect van de dummy variabelen. We voelen opnieuw aan dat <span class="math inline">\(\text{SSR}\)</span> zal kunnen worden gebruikt voor het ontwikkelen van een statistische test voor de evaluatie van het behandelingseffect. In de anova context heeft SSR <span class="math inline">\(g-1=3-1=2\)</span> vrijheidsgraden: de kwadratensom is opgebouwd op basis van <span class="math inline">\(g=3\)</span> groepsgemiddelden <span class="math inline">\(\bar Y_j\)</span> en we verliezen 1 vrijheidsgraad door de schatting van het algemeen steekproefgemiddelde <span class="math inline">\(\bar Y\)</span>. Wanneer we SSR interpreteren als een verschil tussen twee modellen, bekomen we eveneens een verschil van <span class="math inline">\(g-1=2\)</span> vrijheidsgraden: <span class="math inline">\(g=3\)</span> model parameters in het volledige model (intercept voor referentie klasse en g-1 parameters voor elk van de dummies) en 1 parameter voor het gereduceerde model (enkel intercept).</p>
+<p>In een ANOVA setting is het gebruikelijk om de kwadratensom van de regressie te noteren als <span class="math inline">\(\text{SST}\)</span>, de <strong>kwadratensom van de behandeling (treatment)</strong> of als SSBetween. De kwadratensom van de behandeling geeft inderdaad de variabiliteit weer tussen de groepen. Het meet immers de afwijkingen tussen de groepsgemiddelden <span class="math inline">\(\bar Y_j\)</span> en het steekproefgemiddelde <span class="math inline">\(\bar Y\)</span> (Zie Figuur <a href="chap-anova.html#fig:prostacSST">7.2</a>). We kunnen eveneens opnieuw een overeenkomstige gemiddelde kwadratensom bekomen als <span class="math display">\[\text{MST}=\text{SST}/(g-1).\]</span> met het aantal groepen <span class="math inline">\(g=3\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#attach dataframe dan kunnen we variabele namen rechtstreeks gebruiken</span>
+<span class="co">#zonder dataframe naam en $-teken</span>
+<span class="kw">attach</span>(prostacyclin)
+<span class="co">#maak jitter zelf (variatie rond 1,2 en 3</span>
+jitIk=<span class="kw">runif</span>(<span class="dv">36</span>,<span class="op">-</span>.<span class="dv">2</span>,.<span class="dv">2</span>)<span class="op">+</span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">each=</span><span class="dv">12</span>)
+<span class="kw">plot</span>(prostac<span class="op">~</span>dose,<span class="dt">data=</span>prostacyclin,<span class="dt">xlab=</span><span class="st">&quot;Arachidonzuurdosis &quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Prostacycline (ng/ml)&quot;</span>)
+cols=dose
+<span class="kw">levels</span>(cols)=<span class="kw">c</span>(<span class="st">&quot;bisque&quot;</span>,<span class="st">&quot;coral&quot;</span>,<span class="st">&quot;darkcyan&quot;</span>)
+<span class="kw">points</span>(jitIk,prostac,<span class="dt">col=</span>cols,<span class="dt">pch=</span><span class="dv">19</span>)
+<span class="kw">points</span>(jitIk,prostac,<span class="dt">col=</span><span class="dv">4</span>)
+<span class="kw">points</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="kw">predict</span>(model1,<span class="kw">data.frame</span>(<span class="dt">dose=</span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>)))),<span class="dt">pch=</span><span class="dv">17</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;bisque&quot;</span>,<span class="st">&quot;coral&quot;</span>,<span class="st">&quot;darkcyan&quot;</span>),<span class="dt">cex=</span><span class="fl">1.5</span>)
+<span class="kw">points</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="kw">predict</span>(model1,<span class="kw">data.frame</span>(<span class="dt">dose=</span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>)))),<span class="dt">pch=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">cex=</span><span class="fl">1.5</span>)
+<span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(prostac),<span class="dt">lty=</span><span class="dv">1</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) <span class="kw">lines</span>(<span class="kw">c</span>(i<span class="op">-</span>.<span class="dv">2</span>,i<span class="op">+</span>.<span class="dv">2</span>),<span class="kw">rep</span>(<span class="kw">predict</span>(model1,<span class="kw">data.frame</span>(<span class="dt">dose=</span><span class="kw">levels</span>(dose)[i])),<span class="dv">2</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;bisque&quot;</span>,<span class="st">&quot;coral&quot;</span>,<span class="st">&quot;darkcyan&quot;</span>)[i],<span class="dt">lwd=</span><span class="dv">3</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">36</span>) <span class="kw">lines</span>(<span class="kw">rep</span>(jitIk[i],<span class="dv">2</span>),<span class="kw">c</span>(<span class="kw">mean</span>(prostac),model1<span class="op">$</span>fitted[i]),<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
+<div class="figure"><span id="fig:prostacSST"></span>
+<img src="Statistiek_2018_2019_files/figure-html/prostacSST-1.png" alt="Interpretatie van de kwadratensom van de behandeling (SST): de som van de kwadratische afwijkingen tussen de groepsgemiddelden ($\bar Y_j$) en het steekproefgemiddelde van de uitkomsten ($\bar Y$)" width="672" />
+<p class="caption">
+Figuur 7.2: Interpretatie van de kwadratensom van de behandeling (SST): de som van de kwadratische afwijkingen tussen de groepsgemiddelden (<span class="math inline">\(\bar Y_j\)</span>) en het steekproefgemiddelde van de uitkomsten (<span class="math inline">\(\bar Y\)</span>)
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">detach</span>(prostacyclin)</code></pre></div>
+<p>Opnieuw kunnen we de totale kwadratensom SSTot ontbinden in <span class="math display">\[\text{SSTot} = \text{SST} + \text{SSE}.\]</span> Waarbij SSTot opnieuw de totale variabiliteit voorstelt, met name de som van de kwadratische afwijking van de uitkomsten <span class="math inline">\(Y_{i}\)</span> t.o.v. het algemeen gemiddelde prostacycline niveau <span class="math inline">\(\bar{Y}\)</span> en SSE de residuele variabiliteit of de som van de kwadratische afwijkingen tussen de observaties <span class="math inline">\(Y_{i}\)</span> en de modelvoorspellingen (hier groepsgemiddelden) <span class="math inline">\(\hat{g}(x_{i1},x_{i2})=\hat \mu_j=\bar Y_j\)</span>.</p>
+<p>De interpretatie van de deze kwadratensommen worden weergegeven in Figuur <a href="chap-anova.html#fig:prostacSSTotSSE">7.3</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#attach dataframe dan kunnen we variabele namen rechtstreeks gebruiken</span>
+<span class="co">#zonder dataframe naam en $-teken</span>
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="kw">attach</span>(prostacyclin)
+<span class="co">#maak jitter zelf (variatie rond 1,2 en 3</span>
+<span class="kw">plot</span>(prostac<span class="op">~</span>dose,<span class="dt">data=</span>prostacyclin,<span class="dt">xlab=</span><span class="st">&quot;Arachidonzuurdosis &quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Prostacycline (ng/ml)&quot;</span>,<span class="dt">main=</span><span class="st">&quot;SStot&quot;</span>)
+<span class="kw">points</span>(jitIk,prostac,<span class="dt">col=</span>cols,<span class="dt">pch=</span><span class="dv">19</span>)
+<span class="kw">points</span>(jitIk,prostac,<span class="dt">col=</span><span class="dv">4</span>)
+<span class="kw">points</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="kw">predict</span>(model1,<span class="kw">data.frame</span>(<span class="dt">dose=</span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>)))),<span class="dt">pch=</span><span class="dv">17</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;bisque&quot;</span>,<span class="st">&quot;coral&quot;</span>,<span class="st">&quot;darkcyan&quot;</span>),<span class="dt">cex=</span><span class="fl">1.5</span>)
+<span class="kw">points</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="kw">predict</span>(model1,<span class="kw">data.frame</span>(<span class="dt">dose=</span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>)))),<span class="dt">pch=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">1</span>,<span class="dt">cex=</span><span class="fl">1.5</span>)
+<span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(prostac),<span class="dt">lty=</span><span class="dv">1</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">36</span>) <span class="kw">lines</span>(<span class="kw">rep</span>(jitIk[i],<span class="dv">2</span>),<span class="kw">c</span>(<span class="kw">mean</span>(prostac),prostac[i]),<span class="dt">col=</span><span class="dv">4</span>,<span class="dt">lty=</span><span class="dv">2</span>)
+
+<span class="kw">plot</span>(prostac<span class="op">~</span>dose,<span class="dt">data=</span>prostacyclin,<span class="dt">xlab=</span><span class="st">&quot;Arachidonzuurdosis &quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Prostacycline (ng/ml)&quot;</span>,<span class="dt">main=</span><span class="st">&quot;SSE&quot;</span>)
+<span class="kw">points</span>(jitIk,prostac,<span class="dt">col=</span>cols,<span class="dt">pch=</span><span class="dv">19</span>)
+<span class="kw">points</span>(jitIk,prostac,<span class="dt">col=</span><span class="dv">1</span>)
+<span class="kw">points</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="kw">predict</span>(model1,<span class="kw">data.frame</span>(<span class="dt">dose=</span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>)))),<span class="dt">pch=</span><span class="dv">17</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;bisque&quot;</span>,<span class="st">&quot;coral&quot;</span>,<span class="st">&quot;darkcyan&quot;</span>),<span class="dt">cex=</span><span class="fl">1.5</span>)
+<span class="kw">points</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="kw">predict</span>(model1,<span class="kw">data.frame</span>(<span class="dt">dose=</span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>)))),<span class="dt">pch=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">cex=</span><span class="fl">1.5</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) <span class="kw">lines</span>(<span class="kw">c</span>(i<span class="op">-</span>.<span class="dv">2</span>,i<span class="op">+</span>.<span class="dv">2</span>),<span class="kw">rep</span>(<span class="kw">predict</span>(model1,<span class="kw">data.frame</span>(<span class="dt">dose=</span><span class="kw">levels</span>(dose)[i])),<span class="dv">2</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;bisque&quot;</span>,<span class="st">&quot;coral&quot;</span>,<span class="st">&quot;darkcyan&quot;</span>)[i],<span class="dt">lwd=</span><span class="dv">3</span>)
+<span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(prostac),<span class="dt">lty=</span><span class="dv">1</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">36</span>) <span class="kw">lines</span>(<span class="kw">rep</span>(jitIk[i],<span class="dv">2</span>),<span class="kw">c</span>(prostac[i],model1<span class="op">$</span>fitted[i]),<span class="dt">col=</span><span class="dv">1</span>,<span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
+<div class="figure"><span id="fig:prostacSSTotSSE"></span>
+<img src="Statistiek_2018_2019_files/figure-html/prostacSSTotSSE-1.png" alt="Interpretatie van de totale kwadratensom (SSTot, som van de kwadratische afwijkingen tussen de uitkomsten $Y_{i}$ en het steekproefgemiddelde van de uitkomsten $\bar Y$, links) en van residuele kwadratensom (SSE, som van de kwadratische afwijkingen tussen de uitkomsten $Y_{i}$ en de groepsgemiddelden $\bar Y_j$, rechts)" width="672" />
+<p class="caption">
+Figuur 7.3: Interpretatie van de totale kwadratensom (SSTot, som van de kwadratische afwijkingen tussen de uitkomsten <span class="math inline">\(Y_{i}\)</span> en het steekproefgemiddelde van de uitkomsten <span class="math inline">\(\bar Y\)</span>, links) en van residuele kwadratensom (SSE, som van de kwadratische afwijkingen tussen de uitkomsten <span class="math inline">\(Y_{i}\)</span> en de groepsgemiddelden <span class="math inline">\(\bar Y_j\)</span>, rechts)
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">detach</span>(prostacyclin)</code></pre></div>
+</div>
+<div id="anova-test" class="section level3">
+<h3><span class="header-section-number">7.2.3</span> Anova-test</h3>
+<p>Het testen van <span class="math inline">\(H_0: \beta_1=\ldots=\beta_{g-1}=0\)</span> vs <span class="math inline">\(H_1: \exists k \in\{1,\ldots,g-1\} : \beta_k \neq0\)</span><a href="#fn47" class="footnoteRef" id="fnref47"><sup>47</sup></a> kan d.m.v. onderstaande <span class="math inline">\(F\)</span>-test.</p>
+<p><span class="math display">\[F = \frac{\text{MST}}{\text{MSE}}\]</span> met <span class="math inline">\(\text{MST}\)</span> de gemiddelde kwadratensom van de behandeling met <span class="math inline">\(g-1\)</span> vrijheidsgraden en <span class="math inline">\(\text{MSE}\)</span> de gemiddelde residuele kwadratensom uit het niet-gereduceerde model <a href="chap-anova.html#eq:regmu3">(7.1)</a>, deze heeft <span class="math inline">\(n-g\)</span> vrijheidsgraden (met het aantal groepen <span class="math inline">\(g=3\)</span>). De teststatistiek vergelijkt dus variabiliteit verklaard door het model (MST) met de residuele variabiliteit (MSE) of met andere woorden vergelijkt het de variabiliteit tussen groepen (MST) met de variabiliteit binnen groepen (MSE). Grotere waarden voor de test-statistiek zijn minder waarschijnlijk onder de nulhypothese. Wanneer aan alle modelvoorwaarden is voldaan, dan volgt de statistiek onder de nulhypothese opnieuw een F-verdeling, <span class="math inline">\(F \sim F_{g-1,n-g}\)</span>, met <span class="math inline">\(g-1\)</span> vrijheidsgraden in de teller en <span class="math inline">\(n-g\)</span> vrijheidsgraden in de noemer.</p>
+</div>
+<div id="anova-tabel-1" class="section level3">
+<h3><span class="header-section-number">7.2.4</span> Anova Tabel</h3>
+<p>De kwadratensommen en de F-test worden meestal in een zogenaamde variantie-analyse tabel of een anova tabel gerapporteerd.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Df</th>
+<th>Sum Sq</th>
+<th>Mean Sq</th>
+<th>F value</th>
+<th>Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Treatment</td>
+<td>vrijheidsgraden SST</td>
+<td>SST</td>
+<td>MST</td>
+<td>F-statistiek</td>
+<td>p-waarde</td>
+</tr>
+<tr class="even">
+<td>Error</td>
+<td>vrijheidsgraden SSE</td>
+<td>SSE</td>
+<td>MSE</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>De anovatabel voor het prostacycline voorbeeld kan als volgt in de R-software worden bekomen</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(model1)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: prostac
+##           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## dose       2  12658  6329.0  13.944 4.081e-05 ***
+## Residuals 33  14979   453.9                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>We kunnen dus opnieuw besluiten dat er een extreem significant effect is van de dosering van arachidonzuur op de gemiddelde prostacycline concentratie in het bloed bij ratten (<span class="math inline">\(p&lt;&lt;0.001\)</span>).</p>
+<p>In Figuur <a href="chap-anova.html#fig:prostacF">7.4</a> wordt de F-verdeling weergegeven samen met de kritische waarde op het 5% significantie niveau en de geobserveerde F-statistiek voor het prostacycline voorbeeld.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grid &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">17</span>,.<span class="dv">01</span>)
+df1=<span class="kw">anova</span>(model1)[<span class="dv">1</span>,<span class="dv">1</span>]
+df2=<span class="kw">anova</span>(model1)[<span class="dv">2</span>,<span class="dv">1</span>]
+fval=<span class="kw">anova</span>(model1)[<span class="dv">1</span>,<span class="dv">4</span>]
+crit=<span class="kw">qf</span>(<span class="fl">0.95</span>,df1,df2)
+reject=<span class="kw">c</span>(crit,grid[<span class="kw">which</span>(grid<span class="op">&gt;</span>crit)])
+accept=<span class="kw">c</span>(grid[<span class="kw">which</span>(grid<span class="op">&lt;</span>crit)],crit)
+<span class="kw">plot</span>(grid,<span class="kw">df</span>(grid,df1,df2),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Density&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;F-statistic&quot;</span>)
+<span class="kw">polygon</span>(<span class="kw">c</span>(<span class="dv">0</span>,accept,crit,<span class="dv">0</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">df</span>(accept,df1,df2),<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>,<span class="dt">border=</span><span class="st">&quot;blue&quot;</span>)
+<span class="kw">text</span>(crit<span class="op">/</span><span class="dv">2</span>,.<span class="dv">97</span>,<span class="dt">labels=</span><span class="st">&quot;aanvaard</span><span class="ch">\n</span><span class="st">95%&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)
+<span class="kw">polygon</span>(<span class="kw">c</span>(crit,reject,<span class="dv">15</span>,crit),<span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">df</span>(reject,df1,df2),<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">border=</span><span class="st">&quot;red&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>crit,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">text</span>(crit<span class="op">+</span>(fval<span class="op">-</span>crit)<span class="op">/</span><span class="dv">2</span>,.<span class="dv">97</span>,<span class="dt">labels=</span><span class="st">&quot;verwerp</span><span class="ch">\n</span><span class="st">5%&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+<span class="kw">text</span>(<span class="dt">pos=</span><span class="dv">4</span>,crit,<span class="kw">df</span>(crit,<span class="dv">2</span>,<span class="dv">33</span>),<span class="dt">labels=</span><span class="kw">paste0</span>(<span class="st">&quot;F(0.05,&quot;</span>,df1,<span class="st">&quot;,&quot;</span>,df2,<span class="st">&quot;)&quot;</span>),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+<span class="kw">text</span>(<span class="dt">pos=</span><span class="dv">4</span>,fval,<span class="kw">df</span>(crit,df1,df2),<span class="dt">labels=</span><span class="kw">paste0</span>(<span class="st">&quot;f=&quot;</span>,<span class="kw">round</span>(fval,<span class="dv">1</span>)),<span class="dt">col=</span><span class="st">&quot;darkorange&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>fval,<span class="dt">col=</span><span class="st">&quot;darkorange&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">lty=</span><span class="dv">2</span>)
+<span class="kw">text</span>(<span class="fl">15.5</span>,.<span class="dv">97</span>,<span class="dt">labels=</span><span class="kw">paste0</span>(<span class="st">&quot;p-value</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="kw">format</span>(<span class="kw">anova</span>(model1)[<span class="dv">1</span>,<span class="dv">5</span>],<span class="dt">digits=</span><span class="dv">2</span>)),<span class="dt">col=</span><span class="st">&quot;darkorange&quot;</span>)
+<span class="kw">arrows</span>(<span class="dt">x0=</span><span class="fl">17.5</span>,<span class="dt">x1=</span>fval,<span class="dt">y0=</span>.<span class="dv">9</span>,<span class="dt">y1=</span>.<span class="dv">9</span>,<span class="dt">col=</span><span class="st">&quot;darkorange&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:prostacF"></span>
+<img src="Statistiek_2018_2019_files/figure-html/prostacF-1.png" alt="Een F-verdeling met 2 vrijheidsgraden in de teller en 33 in de noemer. Het aanvaardingsgebied wordt weergegeven in blauw, de kritische waarde en de verwerpingsregio bij het $\alpha=5\%$ niveau in rood, en, de geobserveerde f-waarde  en de p-waarde worden in oranje." width="100%" />
+<p class="caption">
+Figuur 7.4: Een F-verdeling met 2 vrijheidsgraden in de teller en 33 in de noemer. Het aanvaardingsgebied wordt weergegeven in blauw, de kritische waarde en de verwerpingsregio bij het <span class="math inline">\(\alpha=5\%\)</span> niveau in rood, en, de geobserveerde f-waarde en de p-waarde worden in oranje.
+</p>
+</div>
+<p>Voorbeelden van meerdere F-verdelingen met een verschillend aantal vrijheidsgraden in teller en noemer worden weergegeven in Figuur <a href="chap-anova.html#fig:ftheo">7.5</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(grid,<span class="kw">df</span>(grid,<span class="dv">1</span>,<span class="dv">5</span>),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Density&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;F-statistic&quot;</span>,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">1.5</span>),<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">lines</span>(grid,<span class="kw">df</span>(grid,<span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">lines</span>(grid,<span class="kw">df</span>(grid,<span class="dv">10</span>,<span class="dv">30</span>),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="dv">3</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">lines</span>(grid,<span class="kw">df</span>(grid,<span class="dv">20</span>,<span class="dv">30</span>),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="dv">4</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">lines</span>(grid,<span class="kw">df</span>(grid,<span class="dv">50</span>,<span class="dv">50</span>),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="dv">5</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="dt">lty=</span><span class="dv">1</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>),<span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;F(1,5)&quot;</span>,<span class="st">&quot;F(5,5)&quot;</span>,<span class="st">&quot;F(10,30)&quot;</span>,<span class="st">&quot;F(20,30)&quot;</span>,<span class="st">&quot;F(50,50)&quot;</span>),<span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:ftheo"></span>
+<img src="Statistiek_2018_2019_files/figure-html/ftheo-1.png" alt="Meerdere F-verdelingen met een verschillend aantal vrijheidsgraden in de teller en de noemer." width="100%" />
+<p class="caption">
+Figuur 7.5: Meerdere F-verdelingen met een verschillend aantal vrijheidsgraden in de teller en de noemer.
+</p>
+</div>
+</div>
+</div>
+<div id="post-hoc-analyse-meervoudig-vergelijken-van-gemiddelden" class="section level2">
+<h2><span class="header-section-number">7.3</span> Post hoc analyse: Meervoudig Vergelijken van Gemiddelden</h2>
+<div id="naieve-methode" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Naïeve methode</h3>
+<p>In het eerste deel van dit hoofdstuk hebben we een <span class="math inline">\(F\)</span>-test besproken die gebruikt kan worden voor het testen van</p>
+<p><span class="math display">\[  H_0: \mu_1=\cdots = \mu_g \text{ versus } H_1: \text{niet } H_0.\]</span> Dus als de nulhypothese verworpen wordt, dan wordt besloten dat er minstens twee gemiddelden verschillen van elkaar. De methode stelt ons echter niet in staat om te identificeren welke gemiddelden van elkaar verschillen.</p>
+<p>Een eerste, maar naïeve benadering van het probleem bestaat erin om de nulhypothese op te splitsen in partiële hypotheses <span class="math display">\[H_{0jk}: \mu_j=\mu_k \text{ versus } H_{1jk}: \mu_j \neq \mu_k\]</span> en deze partiële hypotheses te testen met two-sample <span class="math inline">\(t\)</span>-testen. Voor het vergelijken van groep <span class="math inline">\(j\)</span> met groep <span class="math inline">\(k\)</span> wordt de klassieke two-sample <span class="math inline">\(t\)</span>-test onder de veronderstelling van homoscedasticiteit gegeven door <span class="math display">\[T_{jk} = \frac{\bar{Y}_j-\bar{Y}_k}{S_p\sqrt{\frac{1}{n_j}+\frac{1}{n_k}}} \sim t_{n-2}\]</span> waarin <span class="math inline">\(S_p^2\)</span> de gepoolde variantieschatter is, <span class="math display">\[S_p^2 = \frac{(n_j-1)S_j^2 + (n_k-1)S_k^2}{n_j+n_k-2}\]</span> met <span class="math inline">\(S_j^2\)</span> en <span class="math inline">\(S_k^2\)</span> de steekproefvarianties van respectievelijk de uitkomsten uit groep <span class="math inline">\(j\)</span> en <span class="math inline">\(k\)</span>.</p>
+<p>In een ANOVA context wordt echter verondersteld dat in <strong>alle</strong> <span class="math inline">\(g\)</span> groepen de variantie van de uitkomsten dezelfde is (de residuele variantie <span class="math inline">\(\sigma^2\)</span>). Indien we dus <span class="math inline">\(S_p^2\)</span> gebruiken, dan is dit niet de meest efficiënte schatter omdat deze niet van alle data gebruik maakt<a href="#fn48" class="footnoteRef" id="fnref48"><sup>48</sup></a>. We kunnen dus efficiëntie winnen door MSE te gebruiken. Ter herinnering, MSE kan geschreven worden als <span class="math display">\[\text{MSE}= \sum_{j=1}^g \frac{(n_j-1)S_j^2}{n-g}.\]</span> De <span class="math inline">\(t\)</span>-testen voor het twee-aan-twee vergelijken van alle gemiddelden worden dus best gebaseerd op <span class="math display">\[T_{jk} = \frac{\bar{Y}_j-\bar{Y}_k}{\text{MSE}\sqrt{\frac{1}{n_j}+\frac{1}{n_k}}} \sim t_{n-g}.\]</span></p>
+<p>We zullen hier eerst demonstreren dat het werken met <span class="math inline">\(m\)</span>-testen op het <span class="math inline">\(\alpha\)</span> significantieniveau een foute aanpak is die de kans op een type I fout niet onder controle kan houden. Dit zal aanleiding geven tot een meer algemene definitie van de type I fout.</p>
+<p>Alvorens de denkfout in de naïeve aanpak te demonsteren via simulaties, tonen we hoe de naïeve benadering in zijn werk zou gaan voor het prostacycline voorbeeld.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(prostacyclin,<span class="kw">pairwise.t.test</span>(prostac,dose,<span class="st">&quot;none&quot;</span>))</code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  prostac and dose 
+## 
+##    10      25     
+## 25 0.34927 -      
+## 50 2e-05   0.00031
+## 
+## P value adjustment method: none</code></pre>
+<p>Deze output toont de tweezijdige <span class="math inline">\(p\)</span>-waarden voor het testen van alle partiële hypotheses. We zouden hier kunnen besluiten dat het gemiddelde prostacycline niveau extreem significant verschillend is tussen de hoge en de lage dosis groep en tussen de hoge en de matige dosis groep (beide <span class="math inline">\(p&lt;&lt;0.001\)</span>). Verder is het gemiddelde prostacycline niveau niet significant verschillend is tussen de matige en de lage dosis groep.</p>
+<p>In onderstaande R code wordt een simulatiestudie opgezet (herhaalde steekproefname).</p>
+<ol style="list-style-type: decimal">
+<li>We simuleren uit een ANOVA model met <span class="math inline">\(g=3\)</span> groepen.</li>
+<li>De gemiddelden in het ANOVA model zijn gelijk aan elkaar, zodat de nulhypothese <span class="math display">\[H_0: \mu_1=\mu_2=\mu_3\]</span> opgaat.</li>
+<li>Voor iedere gesimuleerde dataset zijn er <span class="math inline">\(m=3\)</span> paarsgewijze two-sample <span class="math inline">\(t\)</span>-testen</li>
+<li>Zodra minstens één van de <span class="math inline">\(p\)</span>-waarden kleiner is dan het significantieniveau <span class="math inline">\(\alpha=5\%\)</span>, wordt de nulhypothese <span class="math inline">\(H_0: \mu_1=\mu_2=\mu_3\)</span> verworpen omdat er minstens twee gemiddelden verschillend zijn volgens de <span class="math inline">\(t\)</span>-testen.</li>
+<li>We rapporteren de relatieve frequentie van het verwerpen van de globale nulhypothese, meer bepaald de kans op een type I fout van de test voor <span class="math inline">\(H_0: \mu_1=\mu_2=\mu_3\)</span>.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g&lt;-<span class="dv">3</span> <span class="co"># aantal behandelingen (g=3)</span>
+ni&lt;-<span class="dv">12</span> <span class="co"># aantal herhalingen in iedere groep</span>
+n&lt;-g<span class="op">*</span>ni <span class="co"># totaal aantal observaties</span>
+alpha&lt;-<span class="fl">0.05</span> <span class="co"># significantieniveau van een individuele test</span>
+N=<span class="dv">10000</span> <span class="co">#aantal simulaties</span>
+<span class="kw">set.seed</span>(<span class="dv">302</span>) <span class="co">#seed zodat resultaten exact geproduceerd kunnen worden</span>
+trt=<span class="kw">factor</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span>g,ni)) <span class="co">#factor</span>
+cnt&lt;-<span class="dv">0</span> <span class="co">#teller voor aantal foutieve verwerpingen</span>
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N) {
+<span class="cf">if</span> (i<span class="op">%%</span><span class="dv">1000</span><span class="op">==</span><span class="dv">0</span>) <span class="kw">cat</span>(i,<span class="st">&quot;/&quot;</span>,N,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
+y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
+tests&lt;-<span class="kw">pairwise.t.test</span>(y,trt,<span class="st">&quot;none&quot;</span>)
+verwerp&lt;-<span class="kw">min</span>(tests<span class="op">$</span>p.value,<span class="dt">na.rm=</span>T)<span class="op">&lt;</span>alpha
+<span class="cf">if</span>(verwerp) cnt&lt;-cnt<span class="op">+</span><span class="dv">1</span>
+}</code></pre></div>
+<pre><code>## 1000 / 10000 
+## 2000 / 10000 
+## 3000 / 10000 
+## 4000 / 10000 
+## 5000 / 10000 
+## 6000 / 10000 
+## 7000 / 10000 
+## 8000 / 10000 
+## 9000 / 10000 
+## 10000 / 10000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cnt<span class="op">/</span>N</code></pre></div>
+<pre><code>## [1] 0.1209</code></pre>
+<p>De simulatiestudie toont aan dat de kans op een type I fout gelijk is aan 12.1%, wat meer dan dubbel zo groot is dan de vooropgestelde <span class="math inline">\(\alpha=5\%\)</span>. Als we de simulatiestudie herhalen met <span class="math inline">\(g=5\)</span> groepen (i.e. m=g(g-1)/2=10 paarsgewijze <span class="math inline">\(t\)</span>-testen) dan vinden we <span class="math inline">\(28.0\%\)</span> in plaats van de gewenste <span class="math inline">\(5\%\)</span>. Deze simulaties illustreren het probleem van <strong>multipliciteit</strong> (Engels: <em>multiplicity</em>): de klassieke <span class="math inline">\(p\)</span>-waarden mogen enkel met het significantieniveau <span class="math inline">\(\alpha\)</span> vergeleken worden, indien het besluit op exact één <span class="math inline">\(p\)</span>-waarde gebaseerd is. Hier wordt het finale besluit (aldanniet verwerpen van <span class="math inline">\(H_0: \mu_1=\cdots =\mu_g\)</span>) gebaseerd op <span class="math inline">\(m=g\times(g-1)/2\)</span> <span class="math inline">\(p\)</span>-waarden, met <span class="math inline">\(g\)</span> het aantal groepen.</p>
+<p>In de volgende sectie breiden we het begrip van type I fout uit en introduceren we enkele oplossingen om met multipliciteit om te gaan.</p>
+</div>
+<div id="family-wise-error-rate" class="section level3">
+<h3><span class="header-section-number">7.3.2</span> Family-wise error rate</h3>
+<p>Wanneer <span class="math inline">\(m&gt;1\)</span> toetsen worden aangewend om 1 beslissing te vormen, is het noodzakelijk te corrigeren voor het risico op vals positieve resultaten<a href="#fn49" class="footnoteRef" id="fnref49"><sup>49</sup></a>. Meeste procedures voor meervoudig toetsen gaan ervan uit dat <em>alle <span class="math inline">\(m\)</span> nulhypotheses waar</em> zijn. Er wordt dan geprobeerd om het <em>risico op minstens 1 vals positief resultaat</em> te controleren op <strong>experimentgewijs significantieniveau <span class="math inline">\(\alpha_E\)</span></strong>, typisch <span class="math inline">\(\alpha_E=0.05\)</span>. In de engelstalige literatuur wordt het experimentgewijs significantieniveau <em>family-wise error rate (FWER)</em> genoemd.</p>
+<div id="bonferroni-correctie" class="section level4">
+<h4><span class="header-section-number">7.3.2.1</span> Bonferroni correctie</h4>
+Bij het uitvoeren van <span class="math inline">\(m\)</span> onafhankelijke toetsen met elk significantieniveau <span class="math inline">\(\alpha\)</span>, is
+<span class="math display">\[\begin{eqnarray*}
+\alpha_E&amp;=&amp;\text{P}[\text{minstens 1 Type I fout}]\\
+&amp;=&amp;1-(1-\alpha)^m \leq m\alpha
+\end{eqnarray*}\]</span>
+<ul>
+<li>Als we 5 toetsen uitvoeren op het 5% significantieniveau is FWER <span class="math inline">\(\approx 25\%\)</span>.</li>
+<li>Door ze op het 1% significantieniveau uit te voeren, bekomen we FWER <span class="math inline">\(\approx 5\%\)</span>.</li>
+</ul>
+<p>De Bonferroni correctie houdt de FWER begrensd op <span class="math inline">\(\alpha_E\)</span> door <span class="math display">\[\alpha=\alpha_E/m\]</span> te kiezen voor het uitvoeren van de <span class="math inline">\(m\)</span> paarsgewijze vergelijkingen. Als alternatieve methode kunnen we ook</p>
+<ol style="list-style-type: decimal">
+<li><em>aangepaste p-waarden</em> rapporteren zodat we deze met het experimentgewijze <span class="math inline">\(\alpha_E\)</span> niveau kunnen vergelijken: <span class="math display">\[\tilde{p}=min(m\times p,1)\]</span></li>
+<li><span class="math inline">\((1-\alpha_E/m)100\%\)</span> betrouwbaarheidsintervallen rapporteren.</li>
+</ol>
+<p>Het gebruik van aangepaste p-waarden heeft als voordeel dat de lezer deze zelf kan interpreteren en hij/zij een maat kan geven voor de significantie op het experimentsgewijs significantie niveau. Merk op dat we de aangepaste p-waarden begrenzen op <span class="math inline">\(\tilde{p}=1\)</span> omdat p-waarden kansen zijn en steeds tussen 0 en 1 dienen te liggen.</p>
+<p>Onderstaande R code geeft de resultaten (gecorrigeerde <span class="math inline">\(p\)</span>-waarden) na correctie met de methode van Bonferroni.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(prostacyclin,<span class="kw">pairwise.t.test</span>(prostac,dose, <span class="dt">data =</span> prostacyclin, <span class="dt">p.adjust.method=</span><span class="st">&quot;bonferroni&quot;</span>))</code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  prostac and dose 
+## 
+##    10      25     
+## 25 1.00000 -      
+## 50 6e-05   0.00094
+## 
+## P value adjustment method: bonferroni</code></pre>
+<p>De conclusies blijven hetzelfde behalve dat de FWER nu gecontroleerd is <span class="math inline">\(\alpha=5\%\)</span> en de <span class="math inline">\(\tilde{p}\)</span>-waarden een factor 3 groter zijn.</p>
+<p>Dezelfde analyse kan uitgevoerd worden met het <code>multcomp</code> R package dat speciaal werd ontwikkeld voor multipliciteit in lineaire modellen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(multcomp)
+model1.mcp&lt;-<span class="kw">glht</span>(model1,<span class="dt">linfct=</span><span class="kw">mcp</span>(<span class="dt">dose=</span><span class="st">&quot;Tukey&quot;</span>))
+<span class="kw">summary</span>(model1.mcp,<span class="dt">test=</span><span class="kw">adjusted</span>(<span class="st">&quot;bonferroni&quot;</span>))</code></pre></div>
+<pre><code>## 
+##   Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lm(formula = prostac ~ dose, data = prostacyclin)
+## 
+## Linear Hypotheses:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## 25 - 10 == 0    8.258      8.698   0.949 1.000000    
+## 50 - 10 == 0   43.258      8.698   4.974 5.98e-05 ***
+## 50 - 25 == 0   35.000      8.698   4.024 0.000943 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## (Adjusted p values reported -- bonferroni method)</code></pre>
+<p>Om Bonferroni aangepaste betrouwbaarheidsintervallen te verkrijgen moeten we eerst zelf functie definiëren in R om bonferroni kritische waarde te bepalen. We noemen deze functie <code>calpha_bon_t</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">calpha_bon_t&lt;-<span class="cf">function</span>(object,level) <span class="kw">abs</span>(<span class="kw">qt</span>((<span class="dv">1</span><span class="op">-</span>level)<span class="op">/</span><span class="dv">2</span><span class="op">/</span><span class="kw">nrow</span>(object<span class="op">$</span>linfct), object<span class="op">$</span>df))
+<span class="kw">confint</span>(model1.mcp,<span class="dt">calpha=</span>calpha_bon_t)</code></pre></div>
+<pre><code>## 
+##   Simultaneous Confidence Intervals
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lm(formula = prostac ~ dose, data = prostacyclin)
+## 
+## Quantile = 2.5222
+## 95% confidence level
+##  
+## 
+## Linear Hypotheses:
+##              Estimate lwr      upr     
+## 25 - 10 == 0   8.2583 -13.6790  30.1957
+## 50 - 10 == 0  43.2583  21.3210  65.1957
+## 50 - 25 == 0  35.0000  13.0626  56.9374</code></pre>
+<p>We zullen nu het effect van de Bonferroni correctie opnieuw nagaan via simulaties.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g&lt;-<span class="dv">3</span> <span class="co"># aantal behandelingen (g=3)</span>
+ni&lt;-<span class="dv">12</span> <span class="co"># aantal herhalingen in iedere groep</span>
+n&lt;-g<span class="op">*</span>ni <span class="co"># totaal aantal observaties</span>
+alpha&lt;-<span class="fl">0.05</span> <span class="co"># significantieniveau van een individuele test</span>
+N=<span class="dv">10000</span> <span class="co">#aantal simulaties</span>
+<span class="kw">set.seed</span>(<span class="dv">302</span>) <span class="co">#seed zodat resultaten exact geproduceerd kunnen worden</span>
+trt=<span class="kw">factor</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span>g,ni)) <span class="co">#factor</span>
+cnt&lt;-<span class="dv">0</span> <span class="co">#teller voor aantal foutieve verwerpingen</span>
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N) {
+<span class="cf">if</span> (i<span class="op">%%</span><span class="dv">1000</span><span class="op">==</span><span class="dv">0</span>) <span class="kw">cat</span>(i,<span class="st">&quot;/&quot;</span>,N,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
+y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
+tests&lt;-<span class="kw">pairwise.t.test</span>(y,trt,<span class="st">&quot;bonferroni&quot;</span>)
+verwerp&lt;-<span class="kw">min</span>(tests<span class="op">$</span>p.value,<span class="dt">na.rm=</span>T)<span class="op">&lt;</span>alpha
+<span class="cf">if</span>(verwerp) cnt&lt;-cnt<span class="op">+</span><span class="dv">1</span>
+}</code></pre></div>
+<pre><code>## 1000 / 10000 
+## 2000 / 10000 
+## 3000 / 10000 
+## 4000 / 10000 
+## 5000 / 10000 
+## 6000 / 10000 
+## 7000 / 10000 
+## 8000 / 10000 
+## 9000 / 10000 
+## 10000 / 10000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cnt<span class="op">/</span>N</code></pre></div>
+<pre><code>## [1] 0.0457</code></pre>
+<p>We vinden dus een FWER van 4.6% (een beetje conservatief). Wanneer we de simulaties doen voor <span class="math inline">\(g=5\)</span> groepen, vinden we een FWER van <span class="math inline">\(4.1\%\)</span> (conservatiever). Door de Bonferroni correctie is de kans op minstens één vals positief resultaat <span class="math inline">\(&lt; \alpha_E\)</span>. Hoewel de FWER wordt gecontroleerd door de Bonferroni methode, kan een verlies aan power worden verwacht aangezien het werkelijke niveau lager is dan het vooropgestelde 5% experimentsgewijs significantieniveau.</p>
+</div>
+<div id="methode-van-tukey" class="section level4">
+<h4><span class="header-section-number">7.3.2.2</span> Methode van Tukey</h4>
+<p>De methode van Tukey is een minder conservatieve methode voor het uitvoeren van post hoc testen. De implementatie benadert de nuldistributie van de posthoc test d.m.v. simulaties. De resultaten kunnen daarom lichtjes verschillen wanneer je de posthoc analyse opnieuw uitvoert.<br />
+De details van de methode vallen buiten het bestek van deze cursus. Via de implementatie in het multcomp package kunnen we opnieuw aangepaste p-waarden verkrijgen en aangepaste betrouwbaarheidsintervallen voor alle <span class="math inline">\(m\)</span> paarsgewijze testen. We hoeven zelf geen functies te definiëren voor het verkrijgen van Tukey gecorrigeerde BIs.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model1.mcp&lt;-<span class="kw">glht</span>(model1,<span class="dt">linfct=</span><span class="kw">mcp</span>(<span class="dt">dose=</span><span class="st">&quot;Tukey&quot;</span>))
+<span class="kw">summary</span>(model1.mcp)</code></pre></div>
+<pre><code>## 
+##   Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lm(formula = prostac ~ dose, data = prostacyclin)
+## 
+## Linear Hypotheses:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## 25 - 10 == 0    8.258      8.698   0.949 0.613390    
+## 50 - 10 == 0   43.258      8.698   4.974  &lt; 1e-04 ***
+## 50 - 25 == 0   35.000      8.698   4.024 0.000835 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## (Adjusted p values reported -- single-step method)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">confint</span>(model1.mcp)</code></pre></div>
+<pre><code>## 
+##   Simultaneous Confidence Intervals
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lm(formula = prostac ~ dose, data = prostacyclin)
+## 
+## Quantile = 2.4539
+## 95% family-wise confidence level
+##  
+## 
+## Linear Hypotheses:
+##              Estimate lwr      upr     
+## 25 - 10 == 0   8.2583 -13.0849  29.6016
+## 50 - 10 == 0  43.2583  21.9151  64.6016
+## 50 - 25 == 0  35.0000  13.6567  56.3433</code></pre>
+<p>Merk op dat de Tukey methode smallere BIs en kleinere aangepaste p-waarden teruggeeft dan Bonferroni en dus minder conservatief is. De betrouwbaarheidsintervallen kunnen ook grafisch worden weergegeven wat handig is als er veel vergelijkingen worden uitgevoerd (zie Figuur <a href="chap-anova.html#fig:prostacTukey">7.6</a>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">confint</span>(model1.mcp))</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:prostacTukey"></span>
+<img src="Statistiek_2018_2019_files/figure-html/prostacTukey-1.png" alt="$95\%$ experimentsgewijze betrouwbaarheidsintervallen voor de paarsgewijze verschillen in gemiddeld prostacycline niveau tussen alle arachidonzuur dosisgroepen. De BIs zijn gecorrigeerd voor multipliciteit via de Tukey methode." width="100%" />
+<p class="caption">
+Figuur 7.6: <span class="math inline">\(95\%\)</span> experimentsgewijze betrouwbaarheidsintervallen voor de paarsgewijze verschillen in gemiddeld prostacycline niveau tussen alle arachidonzuur dosisgroepen. De BIs zijn gecorrigeerd voor multipliciteit via de Tukey methode.
+</p>
+</div>
+<p>Hierop zien we onmiddellijk dat het effect van de hoogste dosisgroep verschillend is van de laagste en middelste dosisgroep en dat er geen significant verschil is tussen de laagste en de middelste dosisgroep op het 5% experimentsgewijze significantieniveau.</p>
+<p>Tenslotte gaan we ook via simulatie na of de Tukey methode de FWER correct kan controleren.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g&lt;-<span class="dv">3</span> <span class="co"># aantal behandelingen (g=3)</span>
+ni&lt;-<span class="dv">12</span> <span class="co"># aantal herhalingen in iedere groep</span>
+n&lt;-g<span class="op">*</span>ni <span class="co"># totaal aantal observaties</span>
+alpha&lt;-<span class="fl">0.05</span> <span class="co"># significantieniveau van een individuele test</span>
+N=<span class="dv">10000</span> <span class="co">#aantal simulaties</span>
+<span class="kw">set.seed</span>(<span class="dv">302</span>) <span class="co">#seed zodat resultaten exact geproduceerd kunnen worden</span>
+trt=<span class="kw">factor</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span>g,ni)) <span class="co">#factor</span>
+cnt&lt;-<span class="dv">0</span> <span class="co">#teller voor aantal foutieve verwerpingen</span>
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>N) {
+<span class="cf">if</span> (i<span class="op">%%</span><span class="dv">1000</span><span class="op">==</span><span class="dv">0</span>) <span class="kw">cat</span>(i,<span class="st">&quot;/&quot;</span>,N,<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)
+y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
+m&lt;-<span class="kw">lm</span>(y<span class="op">~</span>trt)
+m.mcp&lt;-<span class="kw">glht</span>(m,<span class="dt">linfct=</span><span class="kw">mcp</span>(<span class="dt">trt=</span><span class="st">&quot;Tukey&quot;</span>))
+tests&lt;-<span class="kw">summary</span>(m.mcp)<span class="op">$</span>test
+verwerp&lt;-<span class="kw">min</span>(<span class="kw">as.numeric</span>(tests<span class="op">$</span>pvalues),<span class="dt">na.rm=</span>T)<span class="op">&lt;</span>alpha
+<span class="cf">if</span>(verwerp) cnt&lt;-cnt<span class="op">+</span><span class="dv">1</span>
+}</code></pre></div>
+<pre><code>## 1000 / 10000 
+## 2000 / 10000 
+## 3000 / 10000 
+## 4000 / 10000 
+## 5000 / 10000 
+## 6000 / 10000 
+## 7000 / 10000 
+## 8000 / 10000 
+## 9000 / 10000 
+## 10000 / 10000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cnt<span class="op">/</span>N</code></pre></div>
+<pre><code>## [1] 0.0503</code></pre>
+<p>We vinden dus een FWER van <span class="math inline">\(5.03\%\)</span> wat heel dicht hij het nominale FWER<span class="math inline">\(=5\%\)</span> ligt. Voor <span class="math inline">\(g=5\)</span> groepen, vinden we een FWER van <span class="math inline">\(5.2\%\)</span>, wat ook vrij goed is.<a href="#fn50" class="footnoteRef" id="fnref50"><sup>50</sup></a></p>
+</div>
+</div>
+</div>
+<div id="conclusies-prostacycline-voorbeeld" class="section level2">
+<h2><span class="header-section-number">7.4</span> Conclusies: Prostacycline Voorbeeld</h2>
+<p>We overlopen nog eens de volledige analyse voor het prostacycline voorbeeld. Merk op dat we steeds eerst een anova analyse doen voor posthoc testen worden uitgevoerd. De F-test heeft immers een hogere power voor het vinden van een effect van de behandelingen dan paarsgewijze t-testen omdat de F-test alle data gebruikt en voor deze test geen correctie voor multipliciteit nodig is om de algemene nulhypothese te evalueren.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(model1)</code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: prostac
+##           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## dose       2  12658  6329.0  13.944 4.081e-05 ***
+## Residuals 33  14979   453.9                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(model1.mcp)</code></pre></div>
+<pre><code>## 
+##   Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lm(formula = prostac ~ dose, data = prostacyclin)
+## 
+## Linear Hypotheses:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## 25 - 10 == 0    8.258      8.698   0.949 0.613433    
+## 50 - 10 == 0   43.258      8.698   4.974  &lt; 1e-04 ***
+## 50 - 25 == 0   35.000      8.698   4.024 0.000922 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## (Adjusted p values reported -- single-step method)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">confint</span>(model1.mcp)</code></pre></div>
+<pre><code>## 
+##   Simultaneous Confidence Intervals
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lm(formula = prostac ~ dose, data = prostacyclin)
+## 
+## Quantile = 2.4526
+## 95% family-wise confidence level
+##  
+## 
+## Linear Hypotheses:
+##              Estimate lwr      upr     
+## 25 - 10 == 0   8.2583 -13.0736  29.5902
+## 50 - 10 == 0  43.2583  21.9264  64.5902
+## 50 - 25 == 0  35.0000  13.6681  56.3319</code></pre>
+<p>We kunnen dus concluderen dan er een extreem significant effect is van de arachidonzuurdosering op de gemiddelde prostacycline concentratie in het bloed bij ratten (<span class="math inline">\(p&lt;0.001\)</span>). De gemiddelde prostacycline concentratie is hoger bij de hoge arachidinezuur dosisgroep dan bij de lage en matige dosisgroep (beide <span class="math inline">\(p&lt;0.001\)</span>). De gemiddelde prostacycline concentratie in de hoge dosis groep is respectievelijk 43.3ng/ml (95% BI [21.9,64.6]ng/ml) en 35ng/ml (95% BI [13.6,56.4]ng/ml) hoger dan in de lage en matige dosis groep. Het verschil in gemiddelde prostacycline concentratie tussen de matige en lage dosisgroep is niet significant (p=0.61, 95% BI op gemiddelde verschil [-13.1,29.6]ng/ml). (De p-waarden en betrouwbaarheidsintervallen van de post-hoc tests werden gecorrigeerd voor multipliciteit d.m.v. de Tukey methode).</p>
+<p>Merk op dat we eveneens niet significante resultaten vermelden. Het is namelijk belangrijk om eveneens negatieve resultaten te rapporteren!</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="46">
+<li id="fn46"><p>onafhankelijk en identiek verdeeld (i.i.d., independent and identically distributed)<a href="chap-anova.html#fnref46">↩</a></p></li>
+<li id="fn47"><p>Onder <span class="math inline">\(H_1\)</span> bestaat er dus minimum 1 dummy-variabele in het model waarvoor de overeenkomstige parameter <span class="math inline">\(\beta_k\)</span> verschillend is van nul onder de alternatieve hypothese<a href="chap-anova.html#fnref47">↩</a></p></li>
+<li id="fn48"><p>maar enkel van de data in de twee groepen die getest worden<a href="chap-anova.html#fnref48">↩</a></p></li>
+<li id="fn49"><p>De nulhypothese onterecht verwerpen<a href="chap-anova.html#fnref49">↩</a></p></li>
+<li id="fn50"><p>theoretisch moet dit <span class="math inline">\(5\%\)</span> zijn, maar we tonen “slechts” het resultaat gebaseerd op 10000 simulaties<a href="chap-anova.html#fnref50">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-linReg.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="niet-parametrische-statistiek.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-VariantieAnalyse.Rmd",
+"text": "Edit"
+},
+"download": ["Statistiek_2018_2019.pdf", "Statistiek_2018_2019.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

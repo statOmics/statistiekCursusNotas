@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cursus Statistiek 2018-2019</title>
+  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Cursus Statistiek 2018-2019" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  <meta name="github-repo" content="statOmics/statistiek2deBach" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cursus Statistiek 2018-2019" />
+  
+  <meta name="twitter:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  
+
+<meta name="author" content="Lieven Clement">
+
+
+<meta name="date" content="2018-09-20">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="chap-anova.html">
+<link rel="next" href="chap-categorisch.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Cursus Statistiek 2017-2018</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Woord vooraf</a></li>
+<li class="chapter" data-level="" data-path="links.html"><a href="links.html"><i class="fa fa-check"></i>Links</a></li>
+<li class="chapter" data-level="1" data-path="inleiding.html"><a href="inleiding.html"><i class="fa fa-check"></i><b>1</b> Inleiding</a><ul>
+<li class="chapter" data-level="1.1" data-path="inleiding.html"><a href="inleiding.html#sec:wetMeth"><i class="fa fa-check"></i><b>1.1</b> De Wetenschappelijke Methode</a></li>
+<li class="chapter" data-level="1.2" data-path="inleiding.html"><a href="inleiding.html#voorbeeld-horizon---homeopathy-the-test"><i class="fa fa-check"></i><b>1.2</b> Voorbeeld: Horizon - Homeopathy the test</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="inleiding.html"><a href="inleiding.html#wetenschappelijke-hypothese-fragmenten-1-2-000-600-740-1130"><i class="fa fa-check"></i><b>1.2.1</b> Wetenschappelijke hypothese (fragmenten 1-2: 0’00’‘-6’00’‘&amp; 7’40’‘-11’30’’)</a></li>
+<li class="chapter" data-level="1.2.2" data-path="inleiding.html"><a href="inleiding.html#onderzoek-dient-reproduceerbaar-te-zijn.-wat-ging-er-fout-fragment-1450-1856"><i class="fa fa-check"></i><b>1.2.2</b> Onderzoek dient reproduceerbaar te zijn. Wat ging er fout? (Fragment: 14’50”-18’56”)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="inleiding.html"><a href="inleiding.html#the-ultimate-test---proefopzet-fragment-3100-3930"><i class="fa fa-check"></i><b>1.2.3</b> The ultimate test - proefopzet (Fragment 31’00-39’30’’)</a></li>
+<li class="chapter" data-level="1.2.4" data-path="inleiding.html"><a href="inleiding.html#the-ultimate-test---data-analyse-fragment-3930-4300"><i class="fa fa-check"></i><b>1.2.4</b> The ultimate test - data analyse (Fragment 39’30-43’00’’)</a></li>
+<li class="chapter" data-level="1.2.5" data-path="inleiding.html"><a href="inleiding.html#mogelijke-fouten"><i class="fa fa-check"></i><b>1.2.5</b> Mogelijke fouten</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html"><i class="fa fa-check"></i><b>2</b> Belangrijke concepten &amp; conventies</a><ul>
+<li class="chapter" data-level="2.1" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#variabelen"><i class="fa fa-check"></i><b>2.1</b> Variabelen</a></li>
+<li class="chapter" data-level="2.2" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#subsec:pop"><i class="fa fa-check"></i><b>2.2</b> Populatie</a></li>
+<li class="chapter" data-level="2.3" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#toevalsveranderlijken-of-toevallige-veranderlijken"><i class="fa fa-check"></i><b>2.3</b> Toevalsveranderlijken (of toevallige veranderlijken)</a></li>
+<li class="chapter" data-level="2.4" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#beschrijven-van-de-populatie"><i class="fa fa-check"></i><b>2.4</b> Beschrijven van de populatie</a></li>
+<li class="chapter" data-level="2.5" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#steekproef"><i class="fa fa-check"></i><b>2.5</b> Steekproef</a></li>
+<li class="chapter" data-level="2.6" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#schatten-van-de-verdeling-in-de-populatie"><i class="fa fa-check"></i><b>2.6</b> Schatten van de verdeling in de populatie</a></li>
+<li class="chapter" data-level="2.7" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#statistieken"><i class="fa fa-check"></i><b>2.7</b> Statistieken</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-design.html"><a href="chap-design.html"><i class="fa fa-check"></i><b>3</b> Studiedesign</a><ul>
+<li class="chapter" data-level="3.1" data-path="chap-design.html"><a href="chap-design.html#inleiding-1"><i class="fa fa-check"></i><b>3.1</b> Inleiding</a></li>
+<li class="chapter" data-level="3.2" data-path="chap-design.html"><a href="chap-design.html#sec:steekproefdesigns"><i class="fa fa-check"></i><b>3.2</b> Steekproefdesigns</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="chap-design.html"><a href="chap-design.html#replicatie"><i class="fa fa-check"></i><b>3.2.1</b> Replicatie</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap-design.html"><a href="chap-design.html#experimentele-studies"><i class="fa fa-check"></i><b>3.3</b> Experimentele studies</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chap-design.html"><a href="chap-design.html#de-salk-vaccin-veldstudie"><i class="fa fa-check"></i><b>3.3.1</b> De Salk Vaccin Veldstudie</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chap-design.html"><a href="chap-design.html#gerandomiseerd-gecontroleerde-studies"><i class="fa fa-check"></i><b>3.3.2</b> Gerandomiseerd gecontroleerde studies</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chap-design.html"><a href="chap-design.html#parallelle-designs"><i class="fa fa-check"></i><b>3.3.3</b> Parallelle designs</a></li>
+<li class="chapter" data-level="3.3.4" data-path="chap-design.html"><a href="chap-design.html#cross-over-designs"><i class="fa fa-check"></i><b>3.3.4</b> Cross-over designs</a></li>
+<li class="chapter" data-level="3.3.5" data-path="chap-design.html"><a href="chap-design.html#factoriele-designs"><i class="fa fa-check"></i><b>3.3.5</b> Factoriële designs</a></li>
+<li class="chapter" data-level="3.3.6" data-path="chap-design.html"><a href="chap-design.html#quasi-experimentele-designs"><i class="fa fa-check"></i><b>3.3.6</b> Quasi-experimentele designs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chap-design.html"><a href="chap-design.html#sec:observational"><i class="fa fa-check"></i><b>3.4</b> Observationele studies</a></li>
+<li class="chapter" data-level="3.5" data-path="chap-design.html"><a href="chap-design.html#subsec:design:prosp"><i class="fa fa-check"></i><b>3.5</b> Prospectieve studies</a></li>
+<li class="chapter" data-level="3.6" data-path="chap-design.html"><a href="chap-design.html#subsec:design:retro"><i class="fa fa-check"></i><b>3.6</b> Retrospectieve studies</a></li>
+<li class="chapter" data-level="3.7" data-path="chap-design.html"><a href="chap-design.html#niet-gecontroleerde-studies"><i class="fa fa-check"></i><b>3.7</b> Niet-gecontroleerde studies</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="chap-design.html"><a href="chap-design.html#subsec:prepost"><i class="fa fa-check"></i><b>3.7.1</b> Pre-test/Post-test studies</a></li>
+<li class="chapter" data-level="3.7.2" data-path="chap-design.html"><a href="chap-design.html#cross-sectionele-surveys"><i class="fa fa-check"></i><b>3.7.2</b> Cross-sectionele surveys</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-describe.html"><a href="chap-describe.html"><i class="fa fa-check"></i><b>4</b> Data exploratie en beschrijvende statistiek</a><ul>
+<li class="chapter" data-level="4.1" data-path="chap-describe.html"><a href="chap-describe.html#inleiding-2"><i class="fa fa-check"></i><b>4.1</b> Inleiding</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-describe.html"><a href="chap-describe.html#sec:univar"><i class="fa fa-check"></i><b>4.2</b> Univariate beschrijving van de variabelen</a></li>
+<li class="chapter" data-level="4.3" data-path="chap-describe.html"><a href="chap-describe.html#sec:summarize"><i class="fa fa-check"></i><b>4.3</b> Samenvattingsmaten voor continue variabelen</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chap-describe.html"><a href="chap-describe.html#maten-voor-de-centrale-ligging"><i class="fa fa-check"></i><b>4.3.1</b> Maten voor de centrale ligging</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:spreiding"><i class="fa fa-check"></i><b>4.3.2</b> Spreidingsmaten</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chap-describe.html"><a href="chap-describe.html#sec:normal"><i class="fa fa-check"></i><b>4.4</b> De Normale benadering van gegevens</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="chap-describe.html"><a href="chap-describe.html#subsec:normalcalc"><i class="fa fa-check"></i><b>4.4.1</b> Bepalen van oppervlaktes onder de Normale curve</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chap-describe.html"><a href="chap-describe.html#sec:qq"><i class="fa fa-check"></i><b>4.4.2</b> QQ-plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chap-describe.html"><a href="chap-describe.html#sec:explCatVar"><i class="fa fa-check"></i><b>4.5</b> Samenvattingsmaten voor categorische variabelen</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="chap-describe.html"><a href="chap-describe.html#prospectieve-studies-en-lukrake-steekproeven"><i class="fa fa-check"></i><b>4.5.1</b> Prospectieve studies en lukrake steekproeven</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:retrospect"><i class="fa fa-check"></i><b>4.5.2</b> Retrospectieve studies</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-describe.html"><a href="chap-describe.html#rates-versus-risicos"><i class="fa fa-check"></i><b>4.5.3</b> Rates versus risico’s</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="chap-describe.html"><a href="chap-describe.html#associaties-tussen-twee-variabelen"><i class="fa fa-check"></i><b>4.6</b> Associaties tussen twee variabelen</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="chap-describe.html"><a href="chap-describe.html#subsec:kruistabel"><i class="fa fa-check"></i><b>4.6.1</b> Associatie tussen twee kwalitatieve variabelen</a></li>
+<li class="chapter" data-level="4.6.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:asskwalcont"><i class="fa fa-check"></i><b>4.6.2</b> Associatie tussen één kwalitatieve en één continue variabele</a></li>
+<li class="chapter" data-level="4.6.3" data-path="chap-describe.html"><a href="chap-describe.html#sec:correlatie"><i class="fa fa-check"></i><b>4.6.3</b> Associatie tussen twee continue variabelen</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="chap-describe.html"><a href="chap-describe.html#sec:missing"><i class="fa fa-check"></i><b>4.7</b> Onvolledige gegevens</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-besluit.html"><a href="chap-besluit.html"><i class="fa fa-check"></i><b>5</b> Statistische besluitvorming</a><ul>
+<li class="chapter" data-level="5.1" data-path="chap-besluit.html"><a href="chap-besluit.html#inleiding-3"><i class="fa fa-check"></i><b>5.1</b> Inleiding</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-besluit.html"><a href="chap-besluit.html#captopril-voorbeeld"><i class="fa fa-check"></i><b>5.2</b> Captopril voorbeeld</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="chap-besluit.html"><a href="chap-besluit.html#proefopzet"><i class="fa fa-check"></i><b>5.2.1</b> Proefopzet</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-besluit.html"><a href="chap-besluit.html#data-exploratie-beschrijvende-statistiek"><i class="fa fa-check"></i><b>5.2.2</b> Data Exploratie &amp; Beschrijvende Statistiek</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chap-besluit.html"><a href="chap-besluit.html#schatten"><i class="fa fa-check"></i><b>5.2.3</b> Schatten</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chap-besluit.html"><a href="chap-besluit.html#puntschatters-het-steekproefgemiddelde"><i class="fa fa-check"></i><b>5.3</b> Puntschatters: het steekproefgemiddelde</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="chap-besluit.html"><a href="chap-besluit.html#het-steekproefgemiddelde-is-onvertekend"><i class="fa fa-check"></i><b>5.3.1</b> Het steekproefgemiddelde is onvertekend</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap-besluit.html"><a href="chap-besluit.html#imprecisiestandard-error"><i class="fa fa-check"></i><b>5.3.2</b> Imprecisie/standard error</a></li>
+<li class="chapter" data-level="5.3.3" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:verdelingXbar"><i class="fa fa-check"></i><b>5.3.3</b> Verdeling van het steekproefgemiddelde</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="chap-besluit.html"><a href="chap-besluit.html#intervalschatters"><i class="fa fa-check"></i><b>5.4</b> Intervalschatters</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:bigek"><i class="fa fa-check"></i><b>5.4.1</b> Gekende variantie op de metingen</a></li>
+<li class="chapter" data-level="5.4.2" data-path="chap-besluit.html"><a href="chap-besluit.html#sec:tBI"><i class="fa fa-check"></i><b>5.4.2</b> Ongekende variantie op de metingen</a></li>
+<li class="chapter" data-level="5.4.3" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:interpretBI"><i class="fa fa-check"></i><b>5.4.3</b> Interpretatie van betrouwbaarheidsintervallen</a></li>
+<li class="chapter" data-level="5.4.4" data-path="chap-besluit.html"><a href="chap-besluit.html#wat-rapporteren"><i class="fa fa-check"></i><b>5.4.4</b> Wat rapporteren?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="chap-besluit.html"><a href="chap-besluit.html#principe-van-hypothesetoetsen-via-one-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Principe van Hypothesetoetsen (via one sample t-test)</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-besluit.html"><a href="chap-besluit.html#hypotheses"><i class="fa fa-check"></i><b>5.5.1</b> Hypotheses</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-besluit.html"><a href="chap-besluit.html#test-statistiek"><i class="fa fa-check"></i><b>5.5.2</b> Test-statistiek</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-besluit.html"><a href="chap-besluit.html#de-p-waarde"><i class="fa fa-check"></i><b>5.5.3</b> De p-waarde</a></li>
+<li class="chapter" data-level="5.5.4" data-path="chap-besluit.html"><a href="chap-besluit.html#kritieke-waarde"><i class="fa fa-check"></i><b>5.5.4</b> Kritieke waarde</a></li>
+<li class="chapter" data-level="5.5.5" data-path="chap-besluit.html"><a href="chap-besluit.html#beslissingsfouten"><i class="fa fa-check"></i><b>5.5.5</b> Beslissingsfouten</a></li>
+<li class="chapter" data-level="5.5.6" data-path="chap-besluit.html"><a href="chap-besluit.html#conclusies-captopril-voorbeeld."><i class="fa fa-check"></i><b>5.5.6</b> Conclusies Captopril voorbeeld.</a></li>
+<li class="chapter" data-level="5.5.7" data-path="chap-besluit.html"><a href="chap-besluit.html#eenzijdig-of-tweezijdig-toetsen"><i class="fa fa-check"></i><b>5.5.7</b> Eenzijdig of tweezijdig toetsen?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-besluit.html"><a href="chap-besluit.html#two-sample-t-test"><i class="fa fa-check"></i><b>5.6</b> Two-sample t-test</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="chap-besluit.html"><a href="chap-besluit.html#oksel-voorbeeld"><i class="fa fa-check"></i><b>5.6.1</b> Oksel-voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="chap-besluit.html"><a href="chap-besluit.html#aannames"><i class="fa fa-check"></i><b>5.7</b> Aannames</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="chap-besluit.html"><a href="chap-besluit.html#nagaan-van-de-veronderstelling-van-normaliteit"><i class="fa fa-check"></i><b>5.7.1</b> Nagaan van de veronderstelling van Normaliteit</a></li>
+<li class="chapter" data-level="5.7.2" data-path="chap-besluit.html"><a href="chap-besluit.html#nagaan-van-homoscedasticiteit"><i class="fa fa-check"></i><b>5.7.2</b> Nagaan van homoscedasticiteit</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="chap-besluit.html"><a href="chap-besluit.html#wat-rapporteren-1"><i class="fa fa-check"></i><b>5.8</b> Wat rapporteren?</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="chap-besluit.html"><a href="chap-besluit.html#reden-1-relatie-toetsen-en-betrouwbaarheidsintervallen"><i class="fa fa-check"></i><b>5.8.1</b> Reden 1: Relatie toetsen en betrouwbaarheidsintervallen</a></li>
+<li class="chapter" data-level="5.8.2" data-path="chap-besluit.html"><a href="chap-besluit.html#reden-2-statistische-significantie-versus-wetenschappelijke-relevantie"><i class="fa fa-check"></i><b>5.8.2</b> Reden 2: Statistische significantie versus wetenschappelijke relevantie</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="chap-besluit.html"><a href="chap-besluit.html#equivalentie-intervallen"><i class="fa fa-check"></i><b>5.9</b> Equivalentie-intervallen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-linReg.html"><a href="chap-linReg.html"><i class="fa fa-check"></i><b>6</b> Enkelvoudige lineaire regressie</a><ul>
+<li class="chapter" data-level="6.1" data-path="chap-linReg.html"><a href="chap-linReg.html#inleiding-4"><i class="fa fa-check"></i><b>6.1</b> Inleiding</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="chap-linReg.html"><a href="chap-linReg.html#borstkanker-dataset"><i class="fa fa-check"></i><b>6.1.1</b> Borstkanker dataset</a></li>
+<li class="chapter" data-level="6.1.2" data-path="chap-linReg.html"><a href="chap-linReg.html#data-exploratie"><i class="fa fa-check"></i><b>6.1.2</b> Data exploratie</a></li>
+<li class="chapter" data-level="6.1.3" data-path="chap-linReg.html"><a href="chap-linReg.html#model"><i class="fa fa-check"></i><b>6.1.3</b> Model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chap-linReg.html"><a href="chap-linReg.html#lineaire-regressie"><i class="fa fa-check"></i><b>6.2</b> Lineaire regressie</a></li>
+<li class="chapter" data-level="6.3" data-path="chap-linReg.html"><a href="chap-linReg.html#parameterschatting"><i class="fa fa-check"></i><b>6.3</b> Parameterschatting</a></li>
+<li class="chapter" data-level="6.4" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linBesluit"><i class="fa fa-check"></i><b>6.4</b> Statistische besluitvorming</a></li>
+<li class="chapter" data-level="6.5" data-path="chap-linReg.html"><a href="chap-linReg.html#nagaan-van-modelveronderstellingen"><i class="fa fa-check"></i><b>6.5</b> Nagaan van modelveronderstellingen</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="chap-linReg.html"><a href="chap-linReg.html#lineariteit"><i class="fa fa-check"></i><b>6.5.1</b> Lineariteit</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap-linReg.html"><a href="chap-linReg.html#veronderstelling-van-homoscedasticiteit-gelijkheid-van-variantie"><i class="fa fa-check"></i><b>6.5.2</b> Veronderstelling van homoscedasticiteit (gelijkheid van variantie)</a></li>
+<li class="chapter" data-level="6.5.3" data-path="chap-linReg.html"><a href="chap-linReg.html#veronderstelling-van-normaliteit"><i class="fa fa-check"></i><b>6.5.3</b> Veronderstelling van normaliteit</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap-linReg.html"><a href="chap-linReg.html#afwijkingen-van-modelveronderstellingen"><i class="fa fa-check"></i><b>6.6</b> Afwijkingen van Modelveronderstellingen</a></li>
+<li class="chapter" data-level="6.7" data-path="chap-linReg.html"><a href="chap-linReg.html#besluitvorming-over-gemiddelde-uitkomst"><i class="fa fa-check"></i><b>6.7</b> Besluitvorming over gemiddelde uitkomst</a></li>
+<li class="chapter" data-level="6.8" data-path="chap-linReg.html"><a href="chap-linReg.html#predictie-intervallen"><i class="fa fa-check"></i><b>6.8</b> Predictie-intervallen</a></li>
+<li class="chapter" data-level="6.9" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linAnova"><i class="fa fa-check"></i><b>6.9</b> Kwadratensommen en Anova-tabel</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="chap-linReg.html"><a href="chap-linReg.html#determinatie-coefficient"><i class="fa fa-check"></i><b>6.9.1</b> Determinatie-coëfficiënt</a></li>
+<li class="chapter" data-level="6.9.2" data-path="chap-linReg.html"><a href="chap-linReg.html#f-testen-in-het-enkelvoudig-lineair-regressiemodel"><i class="fa fa-check"></i><b>6.9.2</b> F-Testen in het enkelvoudig lineair regressiemodel</a></li>
+<li class="chapter" data-level="6.9.3" data-path="chap-linReg.html"><a href="chap-linReg.html#anova-tabel"><i class="fa fa-check"></i><b>6.9.3</b> Anova Tabel</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linDummy"><i class="fa fa-check"></i><b>6.10</b> Dummy variabelen</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-anova.html"><a href="chap-anova.html"><i class="fa fa-check"></i><b>7</b> Variantie analyse</a><ul>
+<li class="chapter" data-level="7.1" data-path="chap-anova.html"><a href="chap-anova.html#inleiding-5"><i class="fa fa-check"></i><b>7.1</b> Inleiding</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="chap-anova.html"><a href="chap-anova.html#prostacycline-voorbeeld"><i class="fa fa-check"></i><b>7.1.1</b> Prostacycline voorbeeld</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap-anova.html"><a href="chap-anova.html#model-1"><i class="fa fa-check"></i><b>7.1.2</b> Model</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap-anova.html"><a href="chap-anova.html#variantie-analyse"><i class="fa fa-check"></i><b>7.2</b> Variantie-analyse</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="chap-anova.html"><a href="chap-anova.html#model-2"><i class="fa fa-check"></i><b>7.2.1</b> Model</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chap-anova.html"><a href="chap-anova.html#kwadratensommen-en-anova"><i class="fa fa-check"></i><b>7.2.2</b> Kwadratensommen en Anova</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chap-anova.html"><a href="chap-anova.html#anova-test"><i class="fa fa-check"></i><b>7.2.3</b> Anova-test</a></li>
+<li class="chapter" data-level="7.2.4" data-path="chap-anova.html"><a href="chap-anova.html#anova-tabel-1"><i class="fa fa-check"></i><b>7.2.4</b> Anova Tabel</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="chap-anova.html"><a href="chap-anova.html#post-hoc-analyse-meervoudig-vergelijken-van-gemiddelden"><i class="fa fa-check"></i><b>7.3</b> Post hoc analyse: Meervoudig Vergelijken van Gemiddelden</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="chap-anova.html"><a href="chap-anova.html#naieve-methode"><i class="fa fa-check"></i><b>7.3.1</b> Naïeve methode</a></li>
+<li class="chapter" data-level="7.3.2" data-path="chap-anova.html"><a href="chap-anova.html#family-wise-error-rate"><i class="fa fa-check"></i><b>7.3.2</b> Family-wise error rate</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="chap-anova.html"><a href="chap-anova.html#conclusies-prostacycline-voorbeeld"><i class="fa fa-check"></i><b>7.4</b> Conclusies: Prostacycline Voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html"><i class="fa fa-check"></i><b>8</b> Niet-parametrische statistiek</a><ul>
+<li class="chapter" data-level="8.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#inleiding-6"><i class="fa fa-check"></i><b>8.1</b> Inleiding</a></li>
+<li class="chapter" data-level="8.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#vergelijken-van-twee-groepen"><i class="fa fa-check"></i><b>8.2</b> Vergelijken van twee groepen</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#cholestorol-voorbeeld"><i class="fa fa-check"></i><b>8.2.1</b> Cholestorol voorbeeld</a></li>
+<li class="chapter" data-level="8.2.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#permutatietesten"><i class="fa fa-check"></i><b>8.2.2</b> Permutatietesten</a></li>
+<li class="chapter" data-level="8.2.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#rank-testen"><i class="fa fa-check"></i><b>8.2.3</b> Rank Testen</a></li>
+<li class="chapter" data-level="8.2.4" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#wilcoxon-mann-whitney-test"><i class="fa fa-check"></i><b>8.2.4</b> Wilcoxon-Mann-Whitney Test</a></li>
+<li class="chapter" data-level="8.2.5" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#conclusie-cholestorol-voorbeeld"><i class="fa fa-check"></i><b>8.2.5</b> Conclusie Cholestorol Voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#vergelijken-van-g-behandelingen"><i class="fa fa-check"></i><b>8.3</b> Vergelijken van <span class="math inline">\(g\)</span> Behandelingen</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#dmh-voorbeeld"><i class="fa fa-check"></i><b>8.3.1</b> DMH Voorbeeld</a></li>
+<li class="chapter" data-level="8.3.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#permutatietest"><i class="fa fa-check"></i><b>8.3.2</b> Permutatietest</a></li>
+<li class="chapter" data-level="8.3.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#kruskal-wallis-rank-test"><i class="fa fa-check"></i><b>8.3.3</b> Kruskal-Wallis Rank Test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap-categorisch.html"><a href="chap-categorisch.html"><i class="fa fa-check"></i><b>9</b> Categorische data analyse</a><ul>
+<li class="chapter" data-level="9.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#inleiding-7"><i class="fa fa-check"></i><b>9.1</b> Inleiding</a></li>
+<li class="chapter" data-level="9.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#toetsen-voor-een-proportie"><i class="fa fa-check"></i><b>9.2</b> Toetsen voor een proportie</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#subsec:binom"><i class="fa fa-check"></i><b>9.2.1</b> Binomiale test</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#betrouwbaarheidsinterval-op-een-proportie"><i class="fa fa-check"></i><b>9.2.2</b> Betrouwbaarheidsinterval op een proportie</a></li>
+<li class="chapter" data-level="9.2.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#conclusie"><i class="fa fa-check"></i><b>9.2.3</b> Conclusie</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#toets-voor-associatie-tussen-2-kwalitatieve-variabelen"><i class="fa fa-check"></i><b>9.3</b> Toets voor associatie tussen 2 kwalitatieve variabelen</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#gepaarde-gegevens"><i class="fa fa-check"></i><b>9.3.1</b> Gepaarde gegevens</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#subsec:catOnPaired"><i class="fa fa-check"></i><b>9.3.2</b> Ongepaarde gegevens</a></li>
+<li class="chapter" data-level="9.3.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#de-pearson-chi-kwadraat-test-voor-ongepaarde-gegevens"><i class="fa fa-check"></i><b>9.3.3</b> De Pearson Chi-kwadraat test voor ongepaarde gegevens</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap-categorisch.html"><a href="chap-categorisch.html#logistische-regressie"><i class="fa fa-check"></i><b>9.4</b> Logistische regressie</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#categorische-predictor"><i class="fa fa-check"></i><b>9.4.1</b> Categorische predictor</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#continue-predictor"><i class="fa fa-check"></i><b>9.4.2</b> Continue predictor</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap-glm.html"><a href="chap-glm.html"><i class="fa fa-check"></i><b>10</b> Algemeen lineair model</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2018-2019</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="niet-parametrische-statistiek" class="section level1">
+<h1><span class="header-section-number">Hoofdstuk 8</span> Niet-parametrische statistiek</h1>
+<div id="inleiding-6" class="section level2">
+<h2><span class="header-section-number">8.1</span> Inleiding</h2>
+<p>Alle methoden die in de vorige hoofdstukken behandeld werden, zijn zogenaamde parametrische methoden. Deze term duidt erop dat de geldigheid van de inferentie enkel correct is als er voldaan is aan parametrische veronderstellingen. Dit zijn voornamelijk de distributionele veronderstellingen, zoals dat de observaties normaal verdeeld zijn. Andere voorbeelden van een parametrische veronderstelling zijn de gelijkheid van varianties bij de two-sample <span class="math inline">\(t\)</span>-test en ANOVA en de lineariteit van een regressiemodel.</p>
+<p>Wanneer we over statistische besluitvorming spreken, is bijvoorbeeld de <span class="math inline">\(p\)</span>-waarde van een statistische test, of de probabilistische interpretatie van een betrouwbaarheidsinterval enkel correct interpreteerbaar onder bepaalde veronderstellingen:</p>
+<ul>
+<li><p>De <span class="math inline">\(p\)</span>-waarde is de kans dat de teststatistiek <span class="math inline">\(T\)</span> onder de nulhypothese meer extreem is dan de waargenomen waarde <span class="math inline">\(t\)</span> (gegeven dat <span class="math inline">\(H_0\)</span> waar is). Die kans wordt berekend op basis van de nuldistributie van <span class="math inline">\(T\)</span>. Deze distributie wordt bij parametrische testen afgeleid door te steunen op veronderstellingen over de verdeling van de observaties. Indien er niet voldaan is aan deze veronderstellingen, is de berekende <span class="math inline">\(p\)</span>-waarde fout. Dit betekent dat de conclusies die op <span class="math inline">\(p\)</span> gebaseerd worden, eveneens mogelijks fout kunnen zijn.</p></li>
+<li><p>De berekening van bv. een <span class="math inline">\(95\%\)</span> betrouwbaarheidsinterval steunt eveneens op distributionele veronderstellingen. Als er niet voldaan is aan de veronderstellingen, is er geen garantie meer dat de berekende intervallen de (correcte) interpretatie hebben dat dergelijke intervallen de juiste parameterwaarde omvatten met <span class="math inline">\(95\%\)</span> kans.</p></li>
+</ul>
+<p>Asymptotische theorie is misschien moeilijker te plaatsen onder parametrisch of niet-parametrisch. Je zou kunnen stellen dat bv. een <span class="math inline">\(t\)</span>-test asymptotisch niet-parametrisch is, omdat bij erg grote steekproefgroottes de distributionele veronderstelling van normaliteit niet meer belangrijk is.</p>
+<p>De reden waarom we in deze cursus een focus hebben op parametrische methoden is omdat ze efficiënter en meer flexibel zijn wanneer er aan de voorwaarden voldaan is. Efficiëntie betekent dat bij een constante steekproefgrootte de testen een grotere power hebben en dat de betrouwbaarheidsintervallen smaller zijn. Met meer flexibel bedoelen we dat het eenvoudiger is om de methoden in te zetten voor experimenten met meer complexe designs. Als er niet voldaan is aan de veronderstellingen van de parameterische methoden kunnen we voor bepaalde designs overschakelen naar niet-parametrische methoden die in deze situatie nog steeds formeel geldig zijn.</p>
+</div>
+<div id="vergelijken-van-twee-groepen" class="section level2">
+<h2><span class="header-section-number">8.2</span> Vergelijken van twee groepen</h2>
+<div id="cholestorol-voorbeeld" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Cholestorol voorbeeld</h3>
+<p>In een studie werd de cholestorolconcentratie in het bloed gemeten bij 5 patiënten (groep=1) die twee dagen geleden een hartaanval hadden en bij 5 gezonde personen (groep=2). De onderzoekers wensen na te gaan of de cholestorolconcentratie verschillend is bij hartpatiënten en gezonde personen. Boxplots van de data worden weergegeven in Figuur <a href="niet-parametrische-statistiek.html#fig:cholBox">8.1</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">chol &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;dataset/chol.txt&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>)
+chol<span class="op">$</span>group &lt;-<span class="st"> </span><span class="kw">as.factor</span>(chol<span class="op">$</span>group)
+<span class="kw">head</span>(chol)</code></pre></div>
+<pre><code>##   group cholest
+## 1     1     244
+## 2     1     206
+## 3     1     242
+## 4     1     278
+## 5     1     236
+## 6     2     188</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(cholest<span class="op">~</span>group,<span class="dt">data=</span>chol,<span class="dt">ylab=</span><span class="st">&quot;cholestorol (mg/dl)&quot;</span>,<span class="dt">outline=</span><span class="ot">FALSE</span>,<span class="dt">ylim=</span><span class="kw">range</span>(chol<span class="op">$</span>cholest))
+<span class="kw">set.seed</span>(<span class="dv">10</span>)
+<span class="kw">stripchart</span>(cholest<span class="op">~</span>group,<span class="dt">data=</span>chol, <span class="dt">vertical =</span> <span class="ot">TRUE</span>, <span class="dt">method =</span> <span class="st">&quot;jitter&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span><span class="kw">c</span>(<span class="st">&quot;bisque&quot;</span>,<span class="st">&quot;coral&quot;</span>),  <span class="dt">add =</span> <span class="ot">TRUE</span>)
+<span class="kw">set.seed</span>(<span class="dv">10</span>)
+<span class="kw">stripchart</span>(cholest<span class="op">~</span>group,<span class="dt">data=</span>chol, <span class="dt">vertical =</span> <span class="ot">TRUE</span>, <span class="dt">method =</span> <span class="st">&quot;jitter&quot;</span>, <span class="dt">pch =</span> <span class="dv">1</span>,  <span class="dt">add =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:cholBox"></span>
+<img src="Statistiek_2018_2019_files/figure-html/cholBox-1.png" alt="Boxplot van de cholesterol concentratie in het bloed bij hartpatiënten (groep 1) en gezonde individuen (groep 2)." width="100%" />
+<p class="caption">
+Figuur 8.1: Boxplot van de cholesterol concentratie in het bloed bij hartpatiënten (groep 1) en gezonde individuen (groep 2).
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nGroups=<span class="kw">table</span>(chol<span class="op">$</span>group)
+n=<span class="kw">sum</span>(nGroups)</code></pre></div>
+<p>De boxplots geven aan dat er mogelijks outliers in de data voorkomen. Het is moeilijk om inzicht te krijgen in de verdeling van de data gezien we maar 5 observaties hebben per groep.</p>
+</div>
+<div id="permutatietesten" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> Permutatietesten</h3>
+<p>De vraagstelling van het cholestorol voorbeeld is geformuleerd in erg ruime bewoordingen en dit laat vrijheid in de vertaling ervan naar een nulhypothese.</p>
+<p>Laten we starten met een nulhypothese in termen van gemiddelden. Stel dat <span class="math inline">\(\mu_1\)</span> en <span class="math inline">\(\mu_2\)</span> de gemiddelde uitkomsten in behandelingsgroep 1 (hartpatiënten) en 2 (gezonde personen) voorstellen, dan zouden de hypotheses kunnen zijn: <span class="math display">\[H_0: \mu_1=\mu_2 \text{ versus } H_1: \mu_1\neq \mu_2.\]</span></p>
+<p>Voor het testen van deze hypotheses kunnen we bijvoorbeeld gebruik maken van de two-sample <span class="math inline">\(t\)</span>-test.</p>
+<p>We gaan de voorwaarden na:</p>
+<ul>
+<li>Normaliteit van de uitkomsten in de twee behandelingsgroepen. Met slechts 5 observaties in iedere groep, kan de veronderstelling niet nagegaan worden.</li>
+<li>Gelijkheid van varianties. Met slechts 5 observaties in iedere groep, kan de veronderstelling niet nagegaan worden.</li>
+</ul>
+<p>We kunnen dus de veronderstellingen van de two-sample <span class="math inline">\(t\)</span>-test niet nagaan. We kunnen ook geen beroep doen op de asymptotische benadering omdat 5 observaties per groep te weinig is.</p>
+<p>Samengevat: de veronderstellingen van de <span class="math inline">\(t\)</span>-test kunnen niet worden nagegaan en er zijn te weinig observaties om gebruik te kunnen maken van de asymptotische benadering. Aangezien het erg gevaarlijk is een statistische methode te gebruiken waarvan de voorwaarden niet nagegaan kunnen worden, is de klassieke <span class="math inline">\(t\)</span>-test niet de geschikte methode. De oplossing die in dit hoofdstuk besproken wordt, zijn permutatietesten. Om deze te kunnen beschrijven, zullen we eerst de nulhypothese anders formuleren.</p>
+<div id="hypothesen" class="section level4">
+<h4><span class="header-section-number">8.2.2.1</span> Hypothesen</h4>
+<p>De oplossing die in deze sectie besproken wordt, zijn de permutatietesten. Om deze te kunnen beschrijven, zullen we eerst de nulhypothese anders formuleren.</p>
+<p>De veronderstelling voor de two-sample <span class="math inline">\(t\)</span>-test kunnen we als volgt schrijven, met <span class="math inline">\(Y_{1j}\)</span> en <span class="math inline">\(Y_{2j}\)</span> de notatie voor de uitkomsten uit respectievelijk groep 1 en 2: <span class="math display">\[Y_{1j} \text{ iid } N(\mu_1,\sigma^2) \;\;\;\text{ en }\;\;\; Y_{2j} \text{ iid } N(\mu_2,\sigma^2).\]</span> Onder <span class="math inline">\(H_0:\mu_1=\mu_2\)</span>, wordt dit (stel <span class="math inline">\(\mu=\mu_1=\mu_2\)</span> onder <span class="math inline">\(H_0\)</span>) <span class="math display">\[ Y_{ij} \text{ iid } N(\mu,\sigma^2),\]</span></p>
+wat uitdrukt dat alle <span class="math inline">\(n=n_1+n_2\)</span> uitkomsten uit dezelfde normale distributie komen en onafhankelijk verdeeld zijn. Dit laat ons dus toe om de oorspronkelijke nulhypothese van de two-sample <span class="math inline">\(t\)</span>-test anders te schrijven:
+<span class="math display" id="eq:H0F1F2">\[\begin{equation}
+H_0: F_1(y) = F_2(y) \text{ voor alle } y \;\;\;\text{ of }\;\;\; H_0: f_1(y) = f_2(y) \text{ voor alle } y \tag{8.1}
+\end{equation}\]</span>
+<p>met <span class="math inline">\(F_1\)</span> en <span class="math inline">\(F_2\)</span> de distributiefuncties en <span class="math inline">\(f_1\)</span> en <span class="math inline">\(f_2\)</span> de densiteitfuncties van de verdeling van de uitkomsten in respectievelijk behandelingsgroep 1 en 2, en met de bijkomende veronderstelling dat <span class="math inline">\(f_1\)</span> en <span class="math inline">\(f_2\)</span> de distributiefuncties van Normale verdelingen zijn.</p>
+<p>Onder de alternatieve hypothese wordt een locatie-shift verondersteld: <span class="math display">\[H_1: f_1(y)=f_2(y-\Delta) \;\;\;\text{ voor alle } y\]</span> met <span class="math inline">\(\Delta=\mu_1-\mu_2\)</span>, verder hebben de Normale verdelingen dezelfde variantie.</p>
+<p>We illustreren dit in R voor <span class="math inline">\(f_1\sim N(0,1)\)</span> en <span class="math inline">\(f_2\sim N(1,1)\)</span> en <span class="math inline">\(\Delta=-1\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mu1 &lt;-<span class="st"> </span><span class="dv">0</span>
+sigma1 &lt;-<span class="st"> </span><span class="dv">1</span>
+mu2 &lt;-<span class="st"> </span><span class="dv">1</span>
+sigma2 &lt;-<span class="st"> </span><span class="dv">1</span>
+y &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">2</span><span class="op">:</span><span class="dv">2</span>
+delta &lt;-<span class="st"> </span>mu1<span class="op">-</span>mu2
+delta</code></pre></div>
+<pre><code>## [1] -1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dnorm</span>(y,mu1,sigma1)</code></pre></div>
+<pre><code>## [1] 0.05399097 0.24197072 0.39894228 0.24197072 0.05399097</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dnorm</span>(y<span class="op">-</span>delta,mu2,sigma2)</code></pre></div>
+<pre><code>## [1] 0.05399097 0.24197072 0.39894228 0.24197072 0.05399097</code></pre>
+<p>De permutatietesten die in de volgende sectie ontwikkeld worden, kunnen gebruikt worden voor het testen van de hypothese <a href="niet-parametrische-statistiek.html#eq:H0F1F2">(8.1)</a>, maar dan zonder de Normaliteitsveronderstelling.</p>
+<p>We schrijven hypothese <a href="niet-parametrische-statistiek.html#eq:H0F1F2">(8.1)</a> verkort als <span class="math display">\[
+  H_0: F_1=F_2 \;\;\;\text{ of }\;\;\; H_0:f_1=f_2.
+\]</span></p>
+<p>Als de nulhypothese waar is, met name dat de verdelingen van de cholestorolconcentraties gelijk zijn voor hartpatiënten en gezonde personen, dan zijn de groep-labels van de 10 personen niet informatief. Gezien er geen verschil is in de verdeling tussen beide groepen is elke groepering immers irrelevant. We kunnen bijgevolg de verdeling van de test-statistiek onder de nulhypothese bekomen door de groepslabels <span class="math inline">\(G\)</span> te permuteren.</p>
+</div>
+<div id="verdeling-van-de-statistiek-onder-h_0" class="section level4">
+<h4><span class="header-section-number">8.2.2.2</span> Verdeling van de statistiek onder <span class="math inline">\(H_0\)</span></h4>
+<p>In praktijk zijn er <span class="math inline">\(m=\binom{n_1+n_2}{n_1}=\binom{n}{n_1}=\binom{n}{n_2}\)</span> mogelijke unieke permutaties <span class="math inline">\(\cal{G}\)</span> van de groepslabels. Voor ons voorbeeld zijn dat er <span class="math inline">\(m=\)</span> 252. Als <span class="math inline">\(m\)</span> niet te groot is dan kunnen alle unieke permutaties van de groepslabels berekend worden. Voor iedere unique permutatie <span class="math inline">\(g \in \cal{G}\)</span> wordt de teststatistiek <span class="math inline">\(t^*_g\)</span> berekend<a href="#fn51" class="footnoteRef" id="fnref51"><sup>51</sup></a>.</p>
+<p>We kunnen alle m=252 permutaties in R genereren a.d.h.v. de functie <code>combn(n,n_1)</code>. Dit wordt geïllustreerd in de onderstaande R code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">G=<span class="kw">combn</span>(n,nGroups[<span class="dv">1</span>])
+<span class="kw">dim</span>(G)</code></pre></div>
+<pre><code>## [1]   5 252</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">G[,<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+## [1,]    1    1    1    1    1    1    1    1    1     1
+## [2,]    2    2    2    2    2    2    2    2    2     2
+## [3,]    3    3    3    3    3    3    3    3    3     3
+## [4,]    4    4    4    4    4    4    5    5    5     5
+## [5,]    5    6    7    8    9   10    6    7    8     9</code></pre>
+<p>De matrix G bevat voor elke permutatie de volgnummers van de observaties die tot de eerste groep zullen behoren. We tonen enkel de eerste 10 permutaties. We kunnen nu de teststatistiek berekenen voor de originele steekproef en voor elke permutatie</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Originele test statistiek</span>
+tOrig=<span class="kw">t.test</span>(cholest<span class="op">~</span>group,chol)<span class="op">$</span>statistic
+<span class="co">#bereken alle permutatiecombinaties en voer voor </span>
+<span class="co">#elke combinantie een functie uit die de t-test statistiek </span>
+<span class="co">#berekent voor de gepermuteerde groepslabels</span>
+tStar=<span class="kw">combn</span>(n,nGroups[<span class="dv">1</span>], <span class="cf">function</span>(g,<span class="dt">y=</span>chol<span class="op">$</span>cholest) <span class="kw">t.test</span>(y[g],y[<span class="op">-</span>g])<span class="op">$</span>statistic)
+<span class="kw">head</span>(tStar)</code></pre></div>
+<pre><code>## [1] 3.6644253 1.6397911 2.3973923 1.5876250 1.9217173 0.9967105</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(tStar)</code></pre></div>
+<pre><code>## [1] 252</code></pre>
+<p>Merk op dat <code>y[g]</code> de data selecteert met volgnummers g uit de vector y en <code>y[-g]</code> de data waarvoor de volgnummers niet tot g behoren. De vector <code>tStar</code> bevat de waarden van de teststatistiek <span class="math inline">\(t^*_g\)</span> voor alle <span class="math inline">\(g \in {\cal{G}}\)</span>.</p>
+<p>We kunnen een frequentietabel van de teststatistiek verkrijgen en de unieke resultaten uitzetten in een plot of er een histogram van maken.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab=<span class="kw">table</span>(tStar)
+<span class="kw">head</span>(tab)</code></pre></div>
+<pre><code>## tStar
+## -4.17457930205164 -3.66442526456221 -3.14250320139171 -2.64368173056088 
+##                 1                 1                 1                 1 
+## -2.55798397117996 -2.39739232497298 
+##                 1                 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))
+<span class="kw">plot</span>(<span class="kw">table</span>(tStar),<span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Frequency&quot;</span>,
+     <span class="dt">xlab=</span><span class="kw">expression</span>(<span class="st">&quot;permutatiestatistiek t&quot;</span><span class="op">^</span><span class="st">&quot;*&quot;</span>))
+<span class="kw">axis</span>(<span class="dv">1</span>,<span class="dt">at=</span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>))
+<span class="kw">abline</span>(<span class="dt">v=</span>tOrig,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">hist</span>(tStar,<span class="dt">ylab=</span><span class="st">&quot;Frequency&quot;</span>,
+     <span class="dt">xlab=</span><span class="kw">expression</span>(<span class="st">&quot;permutatiestatistiek t&quot;</span><span class="op">^</span><span class="st">&quot;*&quot;</span>))
+<span class="kw">abline</span>(<span class="dt">v=</span>tOrig,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:tPermDist"></span>
+<img src="Statistiek_2018_2019_files/figure-html/tPermDist-1.png" alt="Exacte permutatie nuldistributie van de Welch t-test voor het cholestorol voorbeeld. Bovenaan histogram van elke mogelijke waarde voor de test-statistiek. Onderaan een gewoon histogram met balkbreedtes gelijk aan 1. De geobserveerde waarde voor de test-statistiek is aangeduid met een rode verticale lijn." width="100%" />
+<p class="caption">
+Figuur 8.2: Exacte permutatie nuldistributie van de Welch t-test voor het cholestorol voorbeeld. Bovenaan histogram van elke mogelijke waarde voor de test-statistiek. Onderaan een gewoon histogram met balkbreedtes gelijk aan 1. De geobserveerde waarde voor de test-statistiek is aangeduid met een rode verticale lijn.
+</p>
+</div>
+<p>De frequentietabel of het histogram (Figuur <a href="niet-parametrische-statistiek.html#fig:tPermDist">8.2</a>) bevat alle informatie voor de permutatienuldistributie van de two-sample <span class="math inline">\(t\)</span>-teststatistiek voor de geobserveerde uitkomsten; merk op dat er 110 unieke waarden van de teststatistiek berekend zijn.<br />
+Het histogram in Figuur <a href="niet-parametrische-statistiek.html#fig:tPermDist">8.2</a> is de verdeling van de teststatistiek onder de nulhypothese. We zien eveneens dat de geobserveerde teststatistiek vrij extreem is.</p>
+</div>
+<div id="p-waarde" class="section level4">
+<h4><span class="header-section-number">8.2.2.3</span> p-waarde</h4>
+<p>Nu we in staat zijn de permutatienuldistributie te berekenen, kunnen we hypothesetesten uitvoeren net als in de parametrische statistiek. Voor een permutatietest is de <span class="math inline">\(p\)</span>-waarde voor de tweezijdige test (immers <span class="math inline">\(H_1: \mu_1 \neq \mu_2\)</span>) <span class="math display">\[p=\text{P}_0\left[\vert T\vert \geq \vert t\vert \mid \mathbf{y}\right].\]</span></p>
+<p>Merk op dat deze p-waarde geconditioneerd is op de geobserveerde cholestorolwaarden die weergegeven worden in de vector <span class="math inline">\(\mathbf{y}=(y_{11},\ldots,y_{51},y_{12},\ldots,y_{52})^T\)</span>.</p>
+<p>Aangezien de permutatienuldistrubutie van <span class="math inline">\(T\)</span> bepaald wordt door <span class="math inline">\(t^*_g\)</span>, <span class="math inline">\(g \in{\cal{G}}\)</span>, berekenen we <span class="math display">\[p  = \text{P}_0\left[\left\vert T\right\vert \geq \left\vert t\right\vert \mid \mathbf{y}\right] = \frac{\#\{g\in {\cal{G}}: \vert t^*_g\vert \geq \vert t \vert \}}{m},\]</span></p>
+<p>m.a.w. als de ratio van het aantal permutaties waarvoor de statistiek minstens even extreem is als de geobserveerde statistiek op het totaal aantal permutaties. In R kunnen we dit als volgt berekenen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pval=<span class="kw">mean</span>(<span class="kw">abs</span>(tStar)<span class="op">&gt;=</span><span class="kw">abs</span>(tOrig))
+pval</code></pre></div>
+<pre><code>## [1] 0.01587302</code></pre>
+<p>We vinden dus een <span class="math inline">\(p\)</span>-waarde van 0.0159. Aangezien <span class="math inline">\(p&lt;5\%\)</span>, besluiten we op het <span class="math inline">\(5\%\)</span> significantieniveau dat de distributies van de cholestorol concentraties niet gelijk zijn bij hartpatiënten en bij gezonde personen. De <span class="math inline">\(p\)</span>-waarde die gevonden wordt via de permutatienuldistributie op basis van alle permutaties wordt een <strong>exacte</strong> <span class="math inline">\(p\)</span>-waarde genoemd. De permutatienuldistributie wordt een <strong>exacte</strong> nuldistributie genoemd. De term <strong>exact</strong> betekent dat de resultaten correct zijn voor iedere steekproefgrootte <span class="math inline">\(n\)</span>.</p>
+</div>
+<div id="kritieke-waarde-1" class="section level4">
+<h4><span class="header-section-number">8.2.2.4</span> Kritieke waarde</h4>
+<p>Ook de kritieke waarde <span class="math inline">\(c\)</span> voor de test op het <span class="math inline">\(\alpha\)</span> significantieniveau kan eenvoudig bekomen worden. <span class="math display">\[
+   \text{P}_0\left[\vert T\vert&gt; c \mid \mathbf{y}\right] =\alpha. 
+ \]</span> Gezien de discrete natuur van de permutatienuldistributie van <span class="math inline">\(T\)</span>, is het onwaarschijnlijk om een kritieke waarde te vinden zodat deze gelijkheid exact opgaat. Daarom zoeken we de kleinste waarde <span class="math inline">\(c\)</span> zodat <span class="math display">\[
+   \text{P}_0\left[\vert T\vert&gt; c \mid \mathbf{y}\right]  \leq \alpha. 
+ \]</span> Dit impliceert dat een permutatietest mogelijks conservatief is, maar meestal is <span class="math inline">\(m\)</span> voldoende groot zodat de kans op een type I fout (<span class="math inline">\(\text{P}_{0}\left[ \vert T \vert &gt; c \mid \mathbf{y}\right]\)</span>) erg dicht bij het nominale significantieniveau ligt.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alpha&lt;-<span class="fl">0.05</span>
+m &lt;-<span class="st"> </span><span class="kw">length</span>(tStar)
+t.crit&lt;-<span class="kw">sort</span>(<span class="kw">abs</span>(tStar))[<span class="kw">ceiling</span>((<span class="dv">1</span><span class="op">-</span>alpha)<span class="op">*</span>m)]
+t.crit</code></pre></div>
+<pre><code>## [1] 2.179236</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">abs</span>(tStar)<span class="op">&gt;</span>t.crit)</code></pre></div>
+<pre><code>## [1] 0.04761905</code></pre>
+<p>De kans op een type I fout wordt dus gecontroleerd door een permutatietest, maar wel conditioneel op de geobserveerde uitkomsten data <span class="math inline">\(\mathbf{y}\)</span>.</p>
+<p>We hebben steeds geconditioneerd op de observaties van de steekproef. <strong>We kunnen ons nu afvragen of we de conclusies kunnen veralgemenen naar de populatie toe? Het antwoord is ja, als de subjecten at random getrokken zijn uit de populatie.</strong> Het bewijs hiervan valt buiten het bestek van de cursus.</p>
+<p>Soms treedt er een praktisch probleem op omdat het aantal permutaties <span class="math inline">\(m=\#{\cal{G}}\)</span> erg groot is. Enkele voorbeelden: <span class="math inline">\(\binom{20}{10}=\)</span> 184756, <span class="math inline">\(\binom{30}{15}=\)</span> 1.55e+08 en <span class="math inline">\(\binom{40}{20}=\)</span> 1.38e+11. Dus zelfs met slechts 40 observaties en een gebalanceerde proefopzet is het quasi onmogelijk om alle permutaties één voor één door te rekenen. De oplossing bestaat erin om niet alle <span class="math inline">\(g \in {\cal{G}}\)</span> te beschouwen, maar slechts een beperkt aantal (bv. 10000 of 100000). We kunnen m.a.w. de nuldistributie benaderen door een groot aantal random permutaties uit te voeren. We illustreren dit principe voor ons voorbeeld waar we in alle permutaties door konden rekenen en de exacte p-waarde kennen.</p>
+<p>Merk op dat wanneer men een aantal random permutaties genereert de p-waarde lichtjes anders wordt berekend. Als men niet alle permutaties uitvoert, kan het dat de geobserveerde statistiek niet berekend wordt in de permutaties die worden beschouwd. Als de statistiek erg extreem is, dan kan het voorkomen dat de de statistiek groter is dan alle statistieken die in de permutaties werden berekend. Als we de p-waarde dan berekenen zoals voor de exacte p-waarde, dan kan het voorkomen dat de approximatieve p-waarde op basis van het aantal random permutatries gelijk is aan nul. Dat is theoretisch niet mogelijk omdat de geobserveerde waarde voor de teststatistiek ten minste 1 keer dient te worden behaald in de permutatiedistributie. Daarom wordt de p-waarde op basis van B willekeurige permutaties vaak berekend als <span class="math display">\[p=\frac{\#\{\vert t^*_g\vert \geq \vert t \vert \}+1}{B+1},\]</span> zodat ze nooit nul wordt.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">304</span>)
+B=<span class="dv">10000</span>
+tStar2=<span class="kw">sapply</span>(<span class="dt">X=</span><span class="dv">1</span><span class="op">:</span>B, <span class="dt">FUN=</span><span class="cf">function</span>(b,y,groep) {<span class="kw">t.test</span>(y<span class="op">~</span><span class="kw">sample</span>(groep))<span class="op">$</span>statistic},<span class="dt">y=</span>chol<span class="op">$</span>cholest,<span class="dt">groep=</span>chol<span class="op">$</span>group) 
+<span class="co">#een for lus is niet efficient mbt tot </span>
+<span class="co">#geheugengebruik in R daarom gebruikt men beter </span>
+<span class="co">#de sapply functie.</span>
+<span class="co">#</span>
+<span class="co">#argument X: een vector of lijst </span>
+<span class="co">#over de welke men wil itereren.</span>
+<span class="co">#</span>
+<span class="co">#argument FUN: een functie die men wil uitvoeren op X.</span>
+<span class="co">#Het argument die niet bepaald is in de functie wordt </span>
+<span class="co">#vervangen door een element van X in elke iteratie.</span>
+<span class="co">#De functie mag extra argumenten hebben.</span>
+<span class="co">#Deze kunnen worden geinitialiseerd</span>
+<span class="co">#door gebruik te maken van extra argumenten </span>
+<span class="co">#in de sapply functie call.</span>
+<span class="co">#</span>
+<span class="co">#Argumenten van onze functie:</span>
+<span class="co">#Hier staat X voor het aantal iteraties,</span>
+<span class="co">#b: is iteratienummer,</span>
+<span class="co">#y: extra argument met data,</span>
+<span class="co">#groep: extra argument met groepsindictator.</span>
+<span class="co">#</span>
+<span class="co">#Wat doet onze functies?</span>
+<span class="co">#Er wordt een t-test uitgevoerd na het permuteren van </span>
+<span class="co">#de groepslabels sample(groep).</span>
+<span class="co">#De t-statistic wordt teruggegeven.</span>
+<span class="kw">head</span>(tStar2)</code></pre></div>
+<pre><code>##          t          t          t          t          t          t 
+##  0.2574372 -0.1540545 -0.9967105 -0.7233167 -1.5876250  0.4322569</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pval2=(<span class="kw">sum</span>(<span class="kw">abs</span>(tStar2)<span class="op">&gt;=</span><span class="kw">mean</span>(tOrig))<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(B<span class="op">+</span><span class="dv">1</span>)
+pval2</code></pre></div>
+<pre><code>## [1] 0.01409859</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))
+<span class="kw">plot</span>(<span class="kw">table</span>(tStar2),<span class="dt">type=</span><span class="st">&quot;h&quot;</span>,<span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>,
+     <span class="dt">xlab=</span><span class="kw">expression</span>(<span class="st">&quot;permutatiestatistiek t&quot;</span><span class="op">^</span><span class="st">&quot;*&quot;</span>))
+<span class="kw">axis</span>(<span class="dv">1</span>,<span class="dt">at=</span><span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>tOrig,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">hist</span>(tStar2,
+     <span class="dt">xlab=</span><span class="kw">expression</span>(<span class="st">&quot;permutatiestatistiek t&quot;</span><span class="op">^</span><span class="st">&quot;*&quot;</span>))
+<span class="kw">abline</span>(<span class="dt">v=</span>tOrig,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:tPermDist2"></span>
+<img src="Statistiek_2018_2019_files/figure-html/tPermDist2-1.png" alt="Approximatieve permutatie nulldistributie van de Welch t-test voor het cholestorol voorbeeld op basis van 10000 permutaties. De geobserveerde waarde voor de test-statistiek is aangeduid met een rode verticale lijn." width="100%" />
+<p class="caption">
+Figuur 8.3: Approximatieve permutatie nulldistributie van de Welch t-test voor het cholestorol voorbeeld op basis van 10000 permutaties. De geobserveerde waarde voor de test-statistiek is aangeduid met een rode verticale lijn.
+</p>
+</div>
+<p>We vinden een approximatieve <span class="math inline">\(p\)</span>-waarde van 0.0141, wat niet ver verwijderd is van de exacte <span class="math inline">\(p\)</span>-waarde (p=0.0159) die we eerder berekend hadden. Het histogram van de approximatieve permutatiedistributie is weergegeven in Figuur <a href="niet-parametrische-statistiek.html#fig:tPermDist2">8.3</a>.</p>
+</div>
+</div>
+<div id="rank-testen" class="section level3">
+<h3><span class="header-section-number">8.2.3</span> Rank Testen</h3>
+<p>De ontwikkeling van rank testen startte in de eerste helft van de twintigste eeuw, maar ze vormen vandaag nog steeds de belangrijkste groep van niet-parametrische testen. Aanvankelijk hadden ze hun populariteit te danken aan het feit dat ze niet-parametrisch zijn en dat ze exacte <span class="math inline">\(p\)</span>-waarden geven op basis van de permutatienuldistributie. In tegenstelling tot de test besproken in de vorige sectie, hebben rank testen geen nood aan het numeriek opstellen van de permutatienuldistributie voor iedere nieuwe dataset. De permutatienuldistributie van rank testen hangt alleen af van de steekproefgroottes. Bovendien zal blijken dat de testen erg robust zijn tegen uitschieters (Engels: <em>outliers</em>) en dat ze nuttig zijn als het locatie-shift model niet opgaat.</p>
+<p>Rank testen starten vanuit rank-getransformeerde uitkomsten.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-116" class="definition"><strong>Definitie 8.1  (Rank)  </strong></span>Beschouw <span class="math inline">\(Y_1, \ldots, Y_n\)</span>. We veronderstellen voorlopig dat er geen twee gelijke observaties voorkomen (i.e. geen <em>ties</em>). De rank van observatie <span class="math inline">\(Y_i\)</span> wordt dan gedefinieerd als
+<span class="math display">\[\begin{equation*}
+   R_i=R(Y_i) = \#\{Y_j: Y_j\leq Y_i; j=1,\ldots, n\}.
+  \end{equation*}\]</span>
+<p>De kleinste observatie krijgt dus rank 1, de tweede kleinste rank 2, enzovoort, en de grootste observatie, tenslotte, krijgt rank <span class="math inline">\(n\)</span>.</p>
+<p><strong>Einde Definitie</strong></p>
+</div>
+
+<p>De rank transformatie wordt geïllustreerd op basis van het cholestorol voorbeeld.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(chol<span class="op">$</span>cholest)</code></pre></div>
+<pre><code>##  [1] 160 186 188 198 206 212 236 242 244 278</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(<span class="kw">sort</span>(chol<span class="op">$</span>cholest))</code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">chol<span class="op">$</span>cholest</code></pre></div>
+<pre><code>##  [1] 244 206 242 278 236 188 212 186 198 160</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(chol<span class="op">$</span>cholest)</code></pre></div>
+<pre><code>##  [1]  9  5  8 10  7  3  6  2  4  1</code></pre>
+<p>Soms komen <em>ties</em> voor in de data, i.e. minstens twee observaties hebben dezelfde numerieke waarde. Een klein voorbeeld:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">metTies=<span class="kw">c</span>(<span class="dv">403</span>,<span class="dv">507</span>,<span class="dv">507</span>,<span class="dv">610</span>,<span class="dv">651</span>,<span class="dv">651</span>,<span class="dv">651</span>,<span class="dv">830</span>,<span class="dv">900</span>)
+<span class="kw">rank</span>(metTies)</code></pre></div>
+<pre><code>## [1] 1.0 2.5 2.5 4.0 6.0 6.0 6.0 8.0 9.0</code></pre>
+<p>De numerieke waarde 507 komt tweemaal voor en de numerieke waarde 651 komt driemaal voor. Dit zijn voorbeelden van <em>ties</em>. Wanneer <em>ties</em> voorkomen, wordt dikwijls de definitie van <em>midranks</em> toegepast voor de rank-transformatie.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-119" class="definition"><strong>Definitie 8.2  (Midrank)  </strong></span>Beschouw <span class="math inline">\(Y_1, \ldots, Y_n\)</span>. De <strong>midrank</strong> van observatie <span class="math inline">\(Y_i\)</span> wordt dan gedefinieerd als
+<span class="math display">\[\begin{eqnarray*}
+   R_i &amp;=&amp; \frac{ \#\{Y_j: Y_j\leq Y_i\} + ( \#\{Y_j: Y_j &lt; Y_i\} +1)}{2}.
+    \end{eqnarray*}\]</span>
+<p><strong>Einde Definitie</strong></p>
+</div>
+
+<p>In wat volgt hebben we dikwijls de ranks van de uitkomsten nodig in de gepoolde steekproef. Bijvoorbeeld: beschouw de uitkomsten <span class="math inline">\(Y_{ij}\)</span>, <span class="math inline">\(i=1,\ldots, n_j\)</span> en <span class="math inline">\(j=1,2\)</span>. Deze uitkomsten kunnen ook gerepresenteerd worden door <span class="math inline">\(Z_1,\ldots, Z_n\)</span> (<span class="math inline">\(n=n_1+n_2\)</span>), de uitkomsten uit de gepoolde steekproef.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">chol</code></pre></div>
+<pre><code>##    group cholest
+## 1      1     244
+## 2      1     206
+## 3      1     242
+## 4      1     278
+## 5      1     236
+## 6      2     188
+## 7      2     212
+## 8      2     186
+## 9      2     198
+## 10     2     160</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z=chol<span class="op">$</span>cholest
+z</code></pre></div>
+<pre><code>##  [1] 244 206 242 278 236 188 212 186 198 160</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(z)</code></pre></div>
+<pre><code>##  [1]  9  5  8 10  7  3  6  2  4  1</code></pre>
+</div>
+<div id="wilcoxon-mann-whitney-test" class="section level3">
+<h3><span class="header-section-number">8.2.4</span> Wilcoxon-Mann-Whitney Test</h3>
+<p>De test werd gelijktijdig ontwikkeld door Wilcoxon en door Mann en Whitney. Om deze reden wordt de test dikwijls de <strong>Wilcoxon-Mann-Whitney</strong> (WMW) test genoemd. Soms wordt de test ook de <strong>Wilcoxon rank sum test</strong> of de <strong>Mann-Whitney U test</strong> genoemd.</p>
+<p>De test werd ontwikkeld voor het testen van de nulhypothese <a href="niet-parametrische-statistiek.html#eq:H0F1F2">(8.1)</a> tegenover het alternatief <span class="math inline">\(H_1: \mu_1\neq \mu_2\)</span> (of de eenzijdige versies). Eerst wordt er een distributionele veronderstelling gemaakt: het <strong>locatie-shift</strong> model, later relaxeren we deze aanname.</p>
+<p>Stel dat <span class="math inline">\(Y_1\)</span> en <span class="math inline">\(Y_2\)</span> uitkomsten zijn uit respectievelijk de eerste en tweede behandelingsgroep, met respectievelijke verdelingen <span class="math inline">\(f_1\)</span> en <span class="math inline">\(f_2\)</span>. Het locatie-shift model geldt als er een <span class="math inline">\(\Delta\)</span> bestaat waarvoor geldt <span class="math display">\[
+   f_1(y)=f_2(y-\Delta) \;\;\;\text{ voor alle } y.
+ \]</span></p>
+<p>Locatie-shift betekent dat <span class="math inline">\(f_1\)</span> en <span class="math inline">\(f_2\)</span> dezelfde vorm hebben, maar ze mogen over <span class="math inline">\(\Delta\)</span> verschoven zijn. De <span class="math inline">\(\Delta\)</span> uit de definitie heeft als interpretatie: <span class="math inline">\(\Delta = \mu_1-\mu_2\)</span>. Door locatie-shift aan te nemen, zal het verwerpen van <span class="math inline">\(H_0: f_1=f_2\)</span> de conclusie <span class="math inline">\(\mu_1\neq \mu_2\)</span> impliceren.</p>
+<p>De klassieke two-sample <span class="math inline">\(t\)</span>-teststatistiek is gebouwd rond het verschil in steekproefgemiddelden <span class="math inline">\(\bar{Y}_1-\bar{Y}_2\)</span>. We beschouwen nu ook het verschil in steekproefgemiddelden, maar niet op basis van de oorspronkelijke uitkomsten, maar op basis van de rank-getransformeerde uitkomsten. De ranks zijn toegekend op basis van de gepoolde observaties (i.e. na samenvoegen van de uitkomsten uit groep 1 en groep 2); dus <span class="math inline">\(R_{ij}=R(Y_{ij})\)</span> is de rank van uitkomst <span class="math inline">\(Y_{ij}\)</span> in de gepoolde steekproef. Beschouw de teststatistiek <span class="math display">\[
+  T = \frac{1}{n_1}\sum_{i=1}^{n_1} R(Y_{i1}) - \frac{1}{n_2}\sum_{i=1}^{n_2} R(Y_{i2}) .
+\]</span></p>
+<p>De statistiek vergelijkt dus de gemiddelde rank in groep 1 met de gemiddelde rank in groep 2.</p>
+<p>Dit is een zinvolle teststatistiek, want</p>
+<ul>
+<li><p>als <span class="math inline">\(H_0\)</span> waar is, dan verwachten we dat de gemiddelde rank in de eerste groep ongeveer gelijk is aan de gemiddelde rank in de tweede groep en dus verwachten we dat <span class="math inline">\(T\)</span> dicht bij nul ligt.</p></li>
+<li><p>als <span class="math inline">\(H_1\)</span> waar is dan verwachten we dat de gemiddelde ranks zullen verschillen en dus dat <span class="math inline">\(T\)</span> niet dicht bij nul zal liggen.</p></li>
+</ul>
+<p>Er kan echter worden aangetoond dat het volstaat het om <span class="math display">\[S_1=\sum_{i=1}^{n_1} R(Y_{i1})\]</span> als teststatistiek te beschouwen. <span class="math inline">\(S_1\)</span> is de som van de ranks van de observaties uit de eerste behandelingsgroep; dit verklaart de naam <em>rank sum test</em>.</p>
+<p><span class="math inline">\(S_1\)</span> en <span class="math inline">\(S_2\)</span> bevatten immers dezelfde informatie en zijn gerelateerd via <span class="math display">\[
+  S_1+S_2 = \text{som van alle ranks} = 1+2+\cdots + n=\frac{1}{2}n(n+1).
+\]</span></p>
+<p>Nu we weten dat <span class="math inline">\(S_1\)</span> (en <span class="math inline">\(S_2\)</span>) een goede teststatistiek is, kan de permutatietestmethode toegepast worden om de exacte permutatienuldistributie op te stellen en de test uit te voeren. Voor een gegeven steekproefgrootte <span class="math inline">\(n\)</span>, en veronderstellend dat er geen <em>ties</em> zijn, nemen de rank-getransformeerde uitkomsten altijd de waarden <span class="math inline">\(1, 2, \ldots, n\)</span> aan. Voor gegeven groepsgroottes <span class="math inline">\(n_1\)</span> en <span class="math inline">\(n_2\)</span>, zal de permutatienuldistributie dan ook steeds dezelfde zijn! In de vorige eeuw (tot ongeveer de jaren 1980) werd dit als een groot voordeel beschouwd omdat de nuldistributies voor gegeven <span class="math inline">\(n_1\)</span> en <span class="math inline">\(n_2\)</span> getabuleerd konden worden (belangrijke kwantielen werden als tabellen in boeken gepubliceerd zodat ze konden gebruikt worden voor het bepalen van kritische waarden en <span class="math inline">\(p\)</span>-waarden), waardoor de gebruiker geen nood had aan zware rekencapaciteit. Vandaag de dag speelt dit argument niet meer mee, maar toch blijven de rank testen erg populair, maar dan wel om andere, heel belangrijke redenen.</p>
+<p>Niettegenstaande <span class="math inline">\(S_1\)</span> en <span class="math inline">\(S_2\)</span> perfect als teststatistieken gebruikt kunnen worden, wordt dikwijls gewerkt met de gestandaardiseerde teststatistiek <span class="math display">\[
+  T = \frac{S_1-\text{E}_{0}\left[S_1\right]}{\sqrt{\text{Var}_{0}\left[S_1\right]}},
+\]</span> met <span class="math inline">\(\text{E}_{0}\left[S_1\right]\)</span> en <span class="math inline">\(\text{Var}_{0}\left[S_1\right]\)</span> de verwachtingswaarde en variantie van <span class="math inline">\(S_1\)</span> onder <span class="math inline">\(H_0\)</span>. Dit zijn dus het gemiddelde en variantie van de permutatienuldistributie van <span class="math inline">\(S_1\)</span>.</p>
+<p>Onder <span class="math inline">\(H_0\)</span> geldt <span class="math display">\[
+   \text{E}_{0}\left[S_1\right]= \frac{1}{2}n_1(n+1) \;\;\;\;\text{ en }\;\;\;\; \text{Var}_{0}\left[S_1\right]=\frac{1}{12}n_1n_2(n+1).
+ \]</span></p>
+<p>Verder kan men onder <span class="math inline">\(H_0\)</span> en als <span class="math inline">\(\min(n_1,n_2)\rightarrow \infty\)</span> opgaat aantonen dat, <span class="math display">\[
+    T = \frac{S_1-\text{E}_{0}\left[S_1\right]}{\sqrt{\text{Var}_{0}\left[S_1\right]}} \rightarrow N(0,1).  
+ \]</span></p>
+<p>Asymptotisch volgt de gestandaardiseerde teststatistiek dus een standaardnormaal verdeling.</p>
+<p>We illustreren de WMW test aan de hand van de R functie <code>wilcox.test</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(cholest<span class="op">~</span>group,<span class="dt">data=</span>chol)</code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test
+## 
+## data:  cholest by group
+## W = 24, p-value = 0.01587
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>We zien dat we op basis van de test de nulhypothese kunnen verwerpen op het 5% significantie-niveau.</p>
+<p>De output geeft de teststatistiek <span class="math inline">\(W=\)</span> 24. In volgende lijnen berekenen we <span class="math inline">\(S_1\)</span> en <span class="math inline">\(S_2\)</span> manueel voor de dataset.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">attach</span>(chol)
+S1=<span class="kw">sum</span>(<span class="kw">rank</span>(cholest)[group<span class="op">==</span><span class="dv">1</span>])
+S1</code></pre></div>
+<pre><code>## [1] 39</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S2=<span class="kw">sum</span>(<span class="kw">rank</span>(cholest)[group<span class="op">==</span><span class="dv">2</span>])
+S2</code></pre></div>
+<pre><code>## [1] 16</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">detach</span>(chol)</code></pre></div>
+<p>Waar komt <span class="math inline">\(W=\)</span> 24 vandaan? Dit wordt zodadelijk toegelicht.</p>
+<p>De teststatistieken <span class="math inline">\(S_1\)</span> en <span class="math inline">\(S_2\)</span> werden voorgesteld door Wilcoxon, maar tezelfdertijd werd een equivalente test voorgesteld door Mann en Whitney. Hun teststatistiek wordt gegeven door<a href="#fn52" class="footnoteRef" id="fnref52"><sup>52</sup></a> <span class="math display">\[
+ U_1 = \sum_{i=1}^{n_1}\sum_{k=1}^{n_2} \text{I}\left\{Y_{i1}\geq Y_{k2}\right\}.
+\]</span></p>
+<p>waarbij <span class="math inline">\(\text{I}\left\{.\right\}\)</span> een indicator is die 1 is als de uitdrukking waar is en 0 als dit niet het geval is. Er wordt voor elke observatie uit de eerste groep geteld hoeveel keer zij groter of gelijk is aan een observatie uit de tweede groep. We berekenen de Mann-Whitney statistiek nu manueel in R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y1=<span class="kw">subset</span>(chol,group<span class="op">==</span><span class="dv">1</span>)<span class="op">$</span>cholest
+y2=<span class="kw">subset</span>(chol,group<span class="op">==</span><span class="dv">2</span>)<span class="op">$</span>cholest
+u1Hlp=<span class="kw">sapply</span>(y1,<span class="cf">function</span>(y1i,y2) {y1i<span class="op">&gt;=</span>y2},<span class="dt">y2=</span>y2)
+<span class="kw">colnames</span>(u1Hlp)=y1
+<span class="kw">rownames</span>(u1Hlp)=y2
+u1Hlp</code></pre></div>
+<pre><code>##      244   206  242  278  236
+## 188 TRUE  TRUE TRUE TRUE TRUE
+## 212 TRUE FALSE TRUE TRUE TRUE
+## 186 TRUE  TRUE TRUE TRUE TRUE
+## 198 TRUE  TRUE TRUE TRUE TRUE
+## 160 TRUE  TRUE TRUE TRUE TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">U1=<span class="kw">sum</span>(u1Hlp)
+U1</code></pre></div>
+<pre><code>## [1] 24</code></pre>
+<p>Er kan worden aangetoond dat</p>
+<p><span class="math display">\[U_1 = S_1 - \frac{1}{2}n_1(n_1+1).\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">S1<span class="op">-</span>nGroups[<span class="dv">1</span>]<span class="op">*</span>(nGroups[<span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span><span class="dv">2</span></code></pre></div>
+<pre><code>##  1 
+## 24</code></pre>
+<p>Hieruit concluderen we (1) dat <span class="math inline">\(U_1\)</span> en <span class="math inline">\(S_1\)</span> dezelfde informatie bevatten, (2) dat <span class="math inline">\(U_1\)</span> ook een rankstatistiek is en dat exacte testen gebaseerd op <span class="math inline">\(U_1\)</span> en <span class="math inline">\(S_1\)</span> equivalent zijn.</p>
+De statistiek <span class="math inline">\(U_1\)</span> heeft als voordeel dat het een informatieve interpretatie heeft. Stel <span class="math inline">\(Y_j\)</span> een willekeurige uitkomst uit behandelingsgroep <span class="math inline">\(j\)</span> (<span class="math inline">\(j=1,2\)</span>). Dan geldt
+<span class="math display">\[\begin{eqnarray*}
+  \frac{1}{n_1n_2}\text{E}\left[U_1\right] 
+     &amp;=&amp; \text{P}\left[Y_1 \geq Y_2\right].
+\end{eqnarray*}\]</span>
+<p>Intuïtief voelen we dit aan: Op basis van de steekproef kunnen we die kans schatten door het gemiddelde te berekenen van alle indicator waarden <span class="math inline">\(\text{I}\left\{Y_{i1}\geq Y_{k2}\right\}\)</span>. We voerden inderdaad <span class="math inline">\(n_1 \times n_2\)</span> vergelijkingen uit.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(u1Hlp)</code></pre></div>
+<pre><code>## [1] 0.96</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">U1<span class="op">/</span>(nGroups[<span class="dv">1</span>]<span class="op">*</span>nGroups[<span class="dv">2</span>])</code></pre></div>
+<pre><code>##    1 
+## 0.96</code></pre>
+<p>De kans <span class="math inline">\(\text{P}\left[Y_1 \geq Y_2\right]\)</span> wordt een <strong>probabilistische index</strong> (Engels: <em>probabilistic index</em>) genoemd. Het is de kans dat een uitkomst uit de eerste groep groter of gelijk is dan een uitkomst uit de tweede groep. Als <span class="math inline">\(H_0\)</span> waar is, dan is <span class="math inline">\(\text{P}\left[Y_1 \geq Y_2\right]=\frac{1}{2}\)</span>.</p>
+<p>De gestandaardiseerde Mann-Whitney statistiek is <span class="math display">\[
+  T = \frac{U_1 - \frac{n_1n_2}{2}}{\sqrt{\frac{1}{12}n_1n_2(n+1)}}. 
+\]</span></p>
+<p>De R functie <code>wilcox.test</code> geeft niet de Wilcoxon rank sum statistiek, maar wel de Mann-Whitney statistiek <span class="math inline">\(U_1\)</span>. We weten echter dat exacte permutatietesten gebaseerd op <span class="math inline">\(U_1\)</span>, <span class="math inline">\(U_2\)</span>, <span class="math inline">\(S_1\)</span> of <span class="math inline">\(S_2\)</span> dezelfde resultaten geven. We bekijken nogmaals de output</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wTest=<span class="kw">wilcox.test</span>(cholest<span class="op">~</span>group,<span class="dt">data=</span>chol)
+wTest</code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test
+## 
+## data:  cholest by group
+## W = 24, p-value = 0.01587
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">U1</code></pre></div>
+<pre><code>## [1] 24</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">probInd=wTest<span class="op">$</span>statistic<span class="op">/</span><span class="kw">prod</span>(nGroups)
+probInd</code></pre></div>
+<pre><code>##    W 
+## 0.96</code></pre>
+<p>Aangezien <span class="math inline">\(p=\)</span> 0.0159 <span class="math inline">\(&lt;0.05\)</span> besluiten we op het <span class="math inline">\(5\%\)</span> significantieniveau dat de gemiddelde cholestorolconcentratie groter is bij hartpatiënten kort na een hartaanval dan bij gezonde personen. We nemen aan dat locatie-shift opgaat.</p>
+<p>Nu we weten hoe <span class="math inline">\(U_1\)</span> berekend wordt, weten we ook meteen dat een cholestorolwaarde van hartpatiënten met een kans van <span class="math inline">\(U1/(n_1\times n_2)=\)</span> 96% groter is die van gezonde personen. Aangezien we het locatie-shift model veronderstellen, besluiten we ook dat de gemiddelde uitkomst uit de behandelingsgroep groter is dan de gemiddelde uitkomst uit de placebogroep.</p>
+<p>We zouden de veronderstelling van de locatie-shift moeten nagaan, maar met slechts 5 observaties in elke behandelingsgroep is dit zinloos. Zonder verder theorie hierover te geven, geven we nog mee dat zonder de locatie-shift veronderstelling de conclusie in termen van de probabilistische index correct blijft en de conclusie ook zo zou moeten worden geformuleerd.</p>
+<p>Dus wanneer we geen locatie-shift veronderstellen en een tweezijdige test uitvoeren testen we eigenlijk</p>
+<p><span class="math display">\[H_0: F_1=F_2 \text{ vs P}(Y_1 \geq Y_2) \neq 0.5.\]</span></p>
+</div>
+<div id="conclusie-cholestorol-voorbeeld" class="section level3">
+<h3><span class="header-section-number">8.2.5</span> Conclusie Cholestorol Voorbeeld</h3>
+<p>Er is een significant verschil in de distributie van de cholestorolconcentraties bij hartpatiënten 2 dagen na hun hartaanval en gezonde individuen (<span class="math inline">\(p=\)</span> 0.0159). Het is meer waarschijnlijk om hogere cholestorolconcentraties te observeren bij hartpatiënten dan bij gezonde individuen. De puntschatting voor deze kans bedraagt 96%.</p>
+</div>
+</div>
+<div id="vergelijken-van-g-behandelingen" class="section level2">
+<h2><span class="header-section-number">8.3</span> Vergelijken van <span class="math inline">\(g\)</span> Behandelingen</h2>
+<p>In deze sectie veralgemenen we de methoden uit de vorige sectie. De methoden kunnen ook gezien worden als niet-parametrische tegenhangers van de <span class="math inline">\(F\)</span>-test uit een one-way ANOVA.</p>
+<div id="dmh-voorbeeld" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> DMH Voorbeeld</h3>
+<p>Nieuwe (en bestaande) chemische substaties moeten getest worden op genotoxiciteit. De resultaten van genotoxiciteitstesten vormen de basis voor risic0-analyses en de classificatie en labeling van chemische substanties in de EU (<em>Dangerous Substances Directive 67/548/EEC and Regulation (EC) No. 1272/2008</em>). In dat kader werd een studie met 24 ratten opgezet voor het testen van de genotoxiciteit van 1,2-dimethylhydrazine dihydrochloride (DMH). De ratten werden at random verdeeld over vier groepen die een verschillende dagelijkse DMH dosis kregen toegediend (controle, laag, medium, hoog). Na drie weken werden de dieren afgemaakt en werd genotoxiciteit van DMH in de lever bepaald a.d.h.v. een comet assay waarbij DNA strengbreuken worden gevisualiseerd via gel electroforese. De lengte van de comet staart is een proxy voor het aantal strengbreuken. De onderzoekers wensen na te gaan of er verschillen zijn in de DNA schade tengevolge van de DMH dosis. Boxplots van de data worden weergegeven in Figuur <a href="niet-parametrische-statistiek.html#fig:dnaBox">8.4</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dna &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;dataset/dna.txt&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>)
+dna<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">as.factor</span>(dna<span class="op">$</span>dose)
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
+<span class="kw">boxplot</span>(length<span class="op">~</span>dose,<span class="dt">data=</span>dna,<span class="dt">ylab=</span><span class="st">&quot;lengte&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;dosis&quot;</span>,<span class="dt">outline=</span><span class="ot">FALSE</span>,<span class="dt">ylim=</span><span class="kw">range</span>(dna<span class="op">$</span>length))
+<span class="kw">set.seed</span>(<span class="dv">10</span>)
+<span class="kw">stripchart</span>(length<span class="op">~</span>dose,<span class="dt">data=</span>dna, <span class="dt">vertical =</span> <span class="ot">TRUE</span>, <span class="dt">method =</span> <span class="st">&quot;jitter&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span><span class="kw">c</span>(<span class="st">&quot;bisque&quot;</span>,<span class="st">&quot;coral&quot;</span>,<span class="st">&quot;darkcyan&quot;</span>,<span class="st">&quot;purple&quot;</span>),  <span class="dt">add =</span> <span class="ot">TRUE</span>)
+<span class="kw">set.seed</span>(<span class="dv">10</span>)
+<span class="kw">stripchart</span>(length<span class="op">~</span>dose,<span class="dt">data=</span>dna, <span class="dt">vertical =</span> <span class="ot">TRUE</span>, <span class="dt">method =</span> <span class="st">&quot;jitter&quot;</span>, <span class="dt">pch =</span> <span class="dv">1</span>,  <span class="dt">add =</span> <span class="ot">TRUE</span>)
+<span class="kw">boxplot</span>(<span class="kw">log</span>(length)<span class="op">~</span>dose,<span class="dt">data=</span>dna,<span class="dt">ylab=</span><span class="st">&quot;log-lengte&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;dosis&quot;</span>,<span class="dt">outline=</span><span class="ot">FALSE</span>,<span class="dt">ylim=</span><span class="kw">range</span>(<span class="kw">log</span>(dna<span class="op">$</span>length)))
+<span class="kw">set.seed</span>(<span class="dv">10</span>)
+<span class="kw">stripchart</span>(<span class="kw">log</span>(length)<span class="op">~</span>dose,<span class="dt">data=</span>dna, <span class="dt">vertical =</span> <span class="ot">TRUE</span>, <span class="dt">method =</span> <span class="st">&quot;jitter&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span><span class="kw">c</span>(<span class="st">&quot;bisque&quot;</span>,<span class="st">&quot;coral&quot;</span>,<span class="st">&quot;darkcyan&quot;</span>,<span class="st">&quot;purple&quot;</span>),  <span class="dt">add =</span> <span class="ot">TRUE</span>)
+<span class="kw">set.seed</span>(<span class="dv">10</span>)
+<span class="kw">stripchart</span>(<span class="kw">log</span>(length)<span class="op">~</span>dose,<span class="dt">data=</span>dna, <span class="dt">vertical =</span> <span class="ot">TRUE</span>, <span class="dt">method =</span> <span class="st">&quot;jitter&quot;</span>, <span class="dt">pch =</span> <span class="dv">1</span>,  <span class="dt">add =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:dnaBox"></span>
+<img src="Statistiek_2018_2019_files/figure-html/dnaBox-1.png" alt="Boxplot van de comet staart lengte in functie van de DMH dosis." width="100%" />
+<p class="caption">
+Figuur 8.4: Boxplot van de comet staart lengte in functie van de DMH dosis.
+</p>
+</div>
+<p>De boxplots lijken een indicatie te geven dat de controle groep een andere variabiliteit heeft. Merk wel op dat er slechts 6 observaties zijn per groep wat eigenlijk te weinig is om de aannames na te gaan.</p>
+</div>
+<div id="permutatietest" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> Permutatietest</h3>
+<p>Merk eerst op dat het one-way ANOVA model ook een locatie-shift impliceert. De distributies hebben opnieuw dezelfde vorm (normale verdeling met zelfde variantie) maar met een verschillend gemiddeld.</p>
+Onder de veronderstellingen van het one-way ANOVA model kunnen we de nulhypothese net zoals bij de permutatie t-test algemener formuleren:
+<span class="math display">\[\begin{equation*}
+   H_0: f_1(y)=f_2(y) = \ldots = f_t(y) \text{ voor alle } y.
+  \end{equation*}\]</span>
+<p>Nu veronderstellen we echter niet dat de densiteitsfuncties <span class="math inline">\(f(y)\)</span> normale distributies zijn.</p>
+<p>Als we een locatie-shift model kunnen veronderstellen dan is de alternatieve hypothese analoog als bij de ANOVA test nl. <span class="math display">\[H_1: \exists\ j,k \in \{1,\ldots,g\} : \mu_j\neq\mu_k.\]</span></p>
+<p>We kunnen nu opnieuw de groepslabels permuteren om de nuldistributie van de test-statistiek te bekomen. Men kan aantonen dat er <span class="math display">\[m=\frac{n!}{n_1!\ldots n_g!}\]</span> unieke permutaties <span class="math inline">\(\cal{G}\)</span> bestaan. Voor ons voorbeeld zijn dat er <span class="math inline">\(m=(24!)/(6!)^4=\)</span> 2.31e+12.</p>
+<p>De permutatienuldistributie wordt opnieuw opgesteld door de F-teststatistiek te berekenen voor iedere <span class="math inline">\(g\in \cal{G}\)</span> of voor een willekeurige steekproef van permutaties uit <span class="math inline">\(\cal{G}\)</span>.</p>
+<p>Hieronder wordt de R code gegeven voor het benaderen van de <span class="math inline">\(p\)</span>-waarde op basis van 10000 willekeurige permutaties.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">165</span>)
+B=<span class="dv">10000</span>
+fOrig=<span class="kw">anova</span>(<span class="kw">lm</span>(<span class="kw">log</span>(length)<span class="op">~</span>dose,<span class="dt">data=</span>dna))<span class="op">$</span>F[<span class="dv">1</span>] 
+fStar=<span class="kw">sapply</span>(<span class="dt">X=</span><span class="dv">1</span><span class="op">:</span>B, <span class="dt">FUN=</span><span class="cf">function</span>(b,y,groep) {<span class="kw">anova</span>(<span class="kw">lm</span>(y<span class="op">~</span><span class="kw">sample</span>(groep)))<span class="op">$</span>F[<span class="dv">1</span>]},<span class="dt">y=</span><span class="kw">log</span>(dna<span class="op">$</span>length),<span class="dt">groep=</span>dna<span class="op">$</span>dose) 
+pval=(<span class="kw">sum</span>(fStar<span class="op">&gt;=</span>fOrig)<span class="op">+</span><span class="dv">1</span>)<span class="op">/</span>(B<span class="op">+</span><span class="dv">1</span>)
+pval</code></pre></div>
+<pre><code>## [1] 9.999e-05</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(fStar,<span class="dt">breaks=</span><span class="dv">100</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:fPermDist"></span>
+<img src="Statistiek_2018_2019_files/figure-html/fPermDist-1.png" alt="Approximatieve permutatie nulldistributie van de F-statistiek voor het DMH voorbeeld op basis van 10000 permutaties. De geobserveerde waarde voor de F-statistiek is 367.76." width="100%" />
+<p class="caption">
+Figuur 8.5: Approximatieve permutatie nulldistributie van de F-statistiek voor het DMH voorbeeld op basis van 10000 permutaties. De geobserveerde waarde voor de F-statistiek is 367.76.
+</p>
+</div>
+<p>De benaderde <span class="math inline">\(p\)</span>-waarde is <span class="math inline">\(p&lt;0.001\)</span>, dus we besluiten dat het effect van de dosis van DMH op DNA beschadiging in levercellen van ratten extreem significant is. Via een posthoc analyse zouden we de groepen paarsgewijs met elkaar kunnen vergelijken.</p>
+<p>Merk op, dat als het locatie-shift model niet opgaat, het moeilijk is om inzicht te krijgen in de precieze alternatieve hypothese van de toets. De verdelingen hebben dan een andere vorm. Vandaar dat we geen formele conclusie formuleren voor dit voorbeeld.</p>
+</div>
+<div id="kruskal-wallis-rank-test" class="section level3">
+<h3><span class="header-section-number">8.3.3</span> Kruskal-Wallis Rank Test</h3>
+<p>De Kruskal-Wallis Rank Test (KW-test) is een niet-parameterisch alternatief voor de ANOVA F-test.</p>
+<p>De klassieke <span class="math inline">\(F\)</span>-teststatistiek kan geschreven worden als <span class="math display">\[
+    F = \frac{\text{SST}/(g-1)}{\text{SSE}/(n-g)} = \frac{\text{SST}/(g-1)}{(\text{SSTot}-\text{SST})/(n-g)} ,
+  \]</span> met <span class="math inline">\(g\)</span> het aantal groepen.</p>
+<p>Merk op dat SSTot enkel afhangt van de uitkomsten <span class="math inline">\(\mathbf{y}\)</span> en niet zal variëren bij permutaties. Het is dus eigenlijk voldoende om SST als teststatistiek te gebruiken. Ter herinnering: <span class="math inline">\(\text{SST}=\sum_{j=1}^t n_j(\bar{Y}_j-\bar{Y})^2\)</span>.</p>
+<p>De KW teststatistiek maakt gebruik van SST maar dan gebaseerd op de rank-getransformeerde uitkomsten<a href="#fn53" class="footnoteRef" id="fnref53"><sup>53</sup></a>, <span class="math display">\[
+     \text{SST} = \sum_{j=1}^g n_j \left(\bar{R}_j - \bar{R}\right)^2 = \sum_{j=1}^g n_j \left(\bar{R}_j - \frac{n+1}{2}\right)^2 ,
+  \]</span> met <span class="math inline">\(\bar{R}_j\)</span> het gemiddelde van de ranks in behandelingsgroep <span class="math inline">\(j\)</span>, en <span class="math inline">\(\bar{R}\)</span> het gemiddelde van alle ranks, <span class="math display">\[
+    \bar{R} = \frac{1}{n}(1+2+\cdots + n) = \frac{1}{n}\frac{1}{2}n(n+1) = \frac{n+1}{2}.
+  \]</span> De KW teststatistiek wordt gegeven door <span class="math display">\[
+    KW = \frac{12}{n(n+1)}  \sum_{j=1}^g n_j \left(\bar{R}_j - \frac{n+1}{2}\right)^2.
+  \]</span> De factor <span class="math inline">\(\frac{12}{n(n+1)}\)</span> zorgt ervoor dat <span class="math inline">\(KW\)</span> een eenvoudige asymptotische nuldistributie heeft. In het bijzonder, onder <span class="math inline">\(H_0\)</span>, als <span class="math inline">\(\min(n_1,\ldots, n_g)\rightarrow \infty\)</span>, <span class="math display">\[
+    KW  \rightarrow \chi^2_{t-1}.
+  \]</span></p>
+<p>De exacte KW-test kan uitgevoerd worden via de berekening van de permutatienuldistributie (die enkel afhangt van <span class="math inline">\(n_1, \ldots, n_g\)</span>) voor het testen van <span class="math display">\[H_0: f_1=\ldots=f_g \text{ vs } H_1: \text{ minstens twee gemiddelden verschillend}.\]</span></p>
+<p>Om toe te laten dat <span class="math inline">\(H_1\)</span> geformuleerd is in termen van gemiddelden, moet locatie-shift verondersteld worden. Indien locatie-shift niet opgaat, zou <span class="math inline">\(H_1\)</span> eigenlijk geformuleerd moeten worden in termen van probabilistische indexen: <span class="math display">\[H_0: f_1=\ldots=f_g \text{ vs } H_1: \exists\ j,k \in \{1,\ldots,g\} : \text{P}\left[Y_j\geq Y_k\right]\neq 0.5\]</span></p>
+<div id="dna-schade-voorbeeld" class="section level4">
+<h4><span class="header-section-number">8.3.3.1</span> DNA Schade Voorbeeld</h4>
+<p>Eerst analyseren we de data met de R functie <code>kruskal.test</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kruskal.test</span>(length<span class="op">~</span>dose,<span class="dt">data=</span>dna)</code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  length by dose
+## Kruskal-Wallis chi-squared = 14, df = 3, p-value = 0.002905</code></pre>
+<p>De waarde van de KW teststatistiek is 14, met een <span class="math inline">\(p\)</span>-waarde van 0.00291. Dus op het <span class="math inline">\(5\%\)</span> significantieniveau kan de nulhypothese worden verworpen.</p>
+<p>Het is belangrijk om op te merken dat de R-functie <code>kruskal.test</code> steeds de asymptotische benadering gebruikt voor de berekening van de <span class="math inline">\(p\)</span>-waarden. Met slechts 6 observaties per groep, is dit geen optimale benadering van de exacte <span class="math inline">\(p\)</span>-waarde! Met de <code>coin</code> R package kunnen we de exacte <span class="math inline">\(p\)</span>-waarde wel berekenen via het argument <code>distribution='exact'</code>of benaderen a.d.h.v. simulaties <code>distribution=approximate(B=100000)</code>, waarbij B het aantal permutaties is.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(coin)
+kwPerm &lt;-<span class="st"> </span><span class="kw">kruskal_test</span>(length<span class="op">~</span>dose,<span class="dt">data=</span>dna,
+         <span class="dt">distribution=</span><span class="kw">approximate</span>(<span class="dt">B=</span><span class="dv">100000</span>))
+kwPerm</code></pre></div>
+<pre><code>## 
+##  Approximative Kruskal-Wallis Test
+## 
+## data:  length by dose (0, 1.25, 2.5, 5)
+## chi-squared = 14, p-value = 0.00036</code></pre>
+<p>We kunnen besluiten dat er een extreem significant verschil is in distributie van de DNA schade ten gevolge van de dosis. We voeren nu verdere posthoc testen uit voor alle paarsgewijse verschillen a.d.h.v WMW testen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pairWilcox &lt;-<span class="st"> </span><span class="kw">pairwise.wilcox.test</span>(dna<span class="op">$</span>length,dna<span class="op">$</span>dose)
+pairWilcox</code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using Wilcoxon rank sum test 
+## 
+## data:  dna$length and dna$dose 
+## 
+##      0     1.25  2.5  
+## 1.25 0.013 -     -    
+## 2.5  0.013 0.818 -    
+## 5    0.013 0.721 0.788
+## 
+## P value adjustment method: holm</code></pre>
+<p>De output geeft pairsgewijze p-waarden weer voor elke vergelijking. De output wordt in een matrix geordend. De p-waarde voor elk element van de matrix behoort tot de paarsgewijze vergelijking van de groep in de kolom en de groep in de rij. Standaard wordt de Holm multiple testing methode gebruikt. Dat is een variant van Bonferroni die minder conservatief is.</p>
+<p>We zien dat alle DMH behandelingen significant verschillen van de controle. Maar er is geen significant verschil in de distributie van de DNA schade tussen de verschillende dosisgroepen waarbij DMH werd toegediend. Om een puntschatter op de kans op hogere DNA-schade te berekenen voor de vergelijkingen tussen de behandelingen met DMH en de controle zouden we ook de statistieken U1 nodig hebben. Dit kunnen we niet bekomen uit de <code>pairwise.wilcox.test</code> output. Hiervoor zullen we de individuele wilcoxon testen aan moeten roepen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nGroep &lt;-<span class="st"> </span><span class="kw">table</span>(dna<span class="op">$</span>dose)
+probInd &lt;-<span class="st"> </span><span class="kw">combn</span>(<span class="kw">levels</span>(dna<span class="op">$</span>dose),<span class="dv">2</span>,<span class="cf">function</span>(x) <span class="kw">wilcox.test</span>(length<span class="op">~</span>dose,<span class="kw">subset</span>(dna,dose<span class="op">%in%</span>x))<span class="op">$</span>statistic<span class="op">/</span><span class="kw">prod</span>(nGroep[x]))
+<span class="kw">names</span>(probInd) &lt;-<span class="st"> </span><span class="kw">combn</span>(<span class="kw">levels</span>(dna<span class="op">$</span>dose),<span class="dv">2</span>,paste,<span class="dt">collapse=</span><span class="st">&quot;vs&quot;</span>)
+probInd</code></pre></div>
+<pre><code>##   0vs1.25    0vs2.5      0vs5 1.25vs2.5   1.25vs5    2.5vs5 
+## 0.0000000 0.0000000 0.0000000 0.4444444 0.2777778 0.3333333</code></pre>
+<p>Omdat er twijfels zijn of het locatie-shift model geldig is, doen we enkel uitspraken in termen van de probabilistische index.</p>
+<p>We besluiten dat er extreem significant verschil is in de distributie van de DNA-schade metingen tengevolge van de DMH behandeling (<span class="math inline">\(p&lt;0.001\)</span> KW-test). DNA-schade is meer waarschijnlijk na behandeling met DMH dan in de controle behandeling (alle p=0.013, WMW-testen). De kansen op hogere DNA-schade na blootstelling aan DMH bedraagt 100%<a href="#fn54" class="footnoteRef" id="fnref54"><sup>54</sup></a>. Er zijn geen significante verschillen in de distributies van de comit-lengtes tussen de DMH behandelingen onderling (<span class="math inline">\(p=\)</span> 0.72-0.82). DMH vertoont dus al bij de lage dosis genotoxische effecten. (Alle paarsgewijze testen werden gecorrigeerd voor multiple testing d.m.v. Holm’s methode).</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="51">
+<li id="fn51"><p>in ons geval de t-test statistiek door de originele reponses te gebruiken die nu gekoppeld worden aan de gepermuteerde groepslabels <span class="math inline">\(G_g^*\)</span><a href="niet-parametrische-statistiek.html#fnref51">↩</a></p></li>
+<li id="fn52"><p>in de afwezigheid van <em>ties</em><a href="niet-parametrische-statistiek.html#fnref52">↩</a></p></li>
+<li id="fn53"><p>we veronderstellen afwezigheid van <em>ties</em><a href="niet-parametrische-statistiek.html#fnref53">↩</a></p></li>
+<li id="fn54"><p>Het berekenen van een BI op deze kansen valt buiten het bestek van de cursus<a href="niet-parametrische-statistiek.html#fnref54">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap-categorisch.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-NietParametrischeStatistiek.Rmd",
+"text": "Edit"
+},
+"download": ["Statistiek_2018_2019.pdf", "Statistiek_2018_2019.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cursus Statistiek 2018-2019</title>
+  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Cursus Statistiek 2018-2019" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  <meta name="github-repo" content="statOmics/statistiek2deBach" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cursus Statistiek 2018-2019" />
+  
+  <meta name="twitter:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  
+
+<meta name="author" content="Lieven Clement">
+
+
+<meta name="date" content="2018-09-20">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="niet-parametrische-statistiek.html">
+<link rel="next" href="chap-glm.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Cursus Statistiek 2017-2018</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Woord vooraf</a></li>
+<li class="chapter" data-level="" data-path="links.html"><a href="links.html"><i class="fa fa-check"></i>Links</a></li>
+<li class="chapter" data-level="1" data-path="inleiding.html"><a href="inleiding.html"><i class="fa fa-check"></i><b>1</b> Inleiding</a><ul>
+<li class="chapter" data-level="1.1" data-path="inleiding.html"><a href="inleiding.html#sec:wetMeth"><i class="fa fa-check"></i><b>1.1</b> De Wetenschappelijke Methode</a></li>
+<li class="chapter" data-level="1.2" data-path="inleiding.html"><a href="inleiding.html#voorbeeld-horizon---homeopathy-the-test"><i class="fa fa-check"></i><b>1.2</b> Voorbeeld: Horizon - Homeopathy the test</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="inleiding.html"><a href="inleiding.html#wetenschappelijke-hypothese-fragmenten-1-2-000-600-740-1130"><i class="fa fa-check"></i><b>1.2.1</b> Wetenschappelijke hypothese (fragmenten 1-2: 0’00’‘-6’00’‘&amp; 7’40’‘-11’30’’)</a></li>
+<li class="chapter" data-level="1.2.2" data-path="inleiding.html"><a href="inleiding.html#onderzoek-dient-reproduceerbaar-te-zijn.-wat-ging-er-fout-fragment-1450-1856"><i class="fa fa-check"></i><b>1.2.2</b> Onderzoek dient reproduceerbaar te zijn. Wat ging er fout? (Fragment: 14’50”-18’56”)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="inleiding.html"><a href="inleiding.html#the-ultimate-test---proefopzet-fragment-3100-3930"><i class="fa fa-check"></i><b>1.2.3</b> The ultimate test - proefopzet (Fragment 31’00-39’30’’)</a></li>
+<li class="chapter" data-level="1.2.4" data-path="inleiding.html"><a href="inleiding.html#the-ultimate-test---data-analyse-fragment-3930-4300"><i class="fa fa-check"></i><b>1.2.4</b> The ultimate test - data analyse (Fragment 39’30-43’00’’)</a></li>
+<li class="chapter" data-level="1.2.5" data-path="inleiding.html"><a href="inleiding.html#mogelijke-fouten"><i class="fa fa-check"></i><b>1.2.5</b> Mogelijke fouten</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html"><i class="fa fa-check"></i><b>2</b> Belangrijke concepten &amp; conventies</a><ul>
+<li class="chapter" data-level="2.1" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#variabelen"><i class="fa fa-check"></i><b>2.1</b> Variabelen</a></li>
+<li class="chapter" data-level="2.2" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#subsec:pop"><i class="fa fa-check"></i><b>2.2</b> Populatie</a></li>
+<li class="chapter" data-level="2.3" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#toevalsveranderlijken-of-toevallige-veranderlijken"><i class="fa fa-check"></i><b>2.3</b> Toevalsveranderlijken (of toevallige veranderlijken)</a></li>
+<li class="chapter" data-level="2.4" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#beschrijven-van-de-populatie"><i class="fa fa-check"></i><b>2.4</b> Beschrijven van de populatie</a></li>
+<li class="chapter" data-level="2.5" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#steekproef"><i class="fa fa-check"></i><b>2.5</b> Steekproef</a></li>
+<li class="chapter" data-level="2.6" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#schatten-van-de-verdeling-in-de-populatie"><i class="fa fa-check"></i><b>2.6</b> Schatten van de verdeling in de populatie</a></li>
+<li class="chapter" data-level="2.7" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#statistieken"><i class="fa fa-check"></i><b>2.7</b> Statistieken</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-design.html"><a href="chap-design.html"><i class="fa fa-check"></i><b>3</b> Studiedesign</a><ul>
+<li class="chapter" data-level="3.1" data-path="chap-design.html"><a href="chap-design.html#inleiding-1"><i class="fa fa-check"></i><b>3.1</b> Inleiding</a></li>
+<li class="chapter" data-level="3.2" data-path="chap-design.html"><a href="chap-design.html#sec:steekproefdesigns"><i class="fa fa-check"></i><b>3.2</b> Steekproefdesigns</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="chap-design.html"><a href="chap-design.html#replicatie"><i class="fa fa-check"></i><b>3.2.1</b> Replicatie</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap-design.html"><a href="chap-design.html#experimentele-studies"><i class="fa fa-check"></i><b>3.3</b> Experimentele studies</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chap-design.html"><a href="chap-design.html#de-salk-vaccin-veldstudie"><i class="fa fa-check"></i><b>3.3.1</b> De Salk Vaccin Veldstudie</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chap-design.html"><a href="chap-design.html#gerandomiseerd-gecontroleerde-studies"><i class="fa fa-check"></i><b>3.3.2</b> Gerandomiseerd gecontroleerde studies</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chap-design.html"><a href="chap-design.html#parallelle-designs"><i class="fa fa-check"></i><b>3.3.3</b> Parallelle designs</a></li>
+<li class="chapter" data-level="3.3.4" data-path="chap-design.html"><a href="chap-design.html#cross-over-designs"><i class="fa fa-check"></i><b>3.3.4</b> Cross-over designs</a></li>
+<li class="chapter" data-level="3.3.5" data-path="chap-design.html"><a href="chap-design.html#factoriele-designs"><i class="fa fa-check"></i><b>3.3.5</b> Factoriële designs</a></li>
+<li class="chapter" data-level="3.3.6" data-path="chap-design.html"><a href="chap-design.html#quasi-experimentele-designs"><i class="fa fa-check"></i><b>3.3.6</b> Quasi-experimentele designs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chap-design.html"><a href="chap-design.html#sec:observational"><i class="fa fa-check"></i><b>3.4</b> Observationele studies</a></li>
+<li class="chapter" data-level="3.5" data-path="chap-design.html"><a href="chap-design.html#subsec:design:prosp"><i class="fa fa-check"></i><b>3.5</b> Prospectieve studies</a></li>
+<li class="chapter" data-level="3.6" data-path="chap-design.html"><a href="chap-design.html#subsec:design:retro"><i class="fa fa-check"></i><b>3.6</b> Retrospectieve studies</a></li>
+<li class="chapter" data-level="3.7" data-path="chap-design.html"><a href="chap-design.html#niet-gecontroleerde-studies"><i class="fa fa-check"></i><b>3.7</b> Niet-gecontroleerde studies</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="chap-design.html"><a href="chap-design.html#subsec:prepost"><i class="fa fa-check"></i><b>3.7.1</b> Pre-test/Post-test studies</a></li>
+<li class="chapter" data-level="3.7.2" data-path="chap-design.html"><a href="chap-design.html#cross-sectionele-surveys"><i class="fa fa-check"></i><b>3.7.2</b> Cross-sectionele surveys</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-describe.html"><a href="chap-describe.html"><i class="fa fa-check"></i><b>4</b> Data exploratie en beschrijvende statistiek</a><ul>
+<li class="chapter" data-level="4.1" data-path="chap-describe.html"><a href="chap-describe.html#inleiding-2"><i class="fa fa-check"></i><b>4.1</b> Inleiding</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-describe.html"><a href="chap-describe.html#sec:univar"><i class="fa fa-check"></i><b>4.2</b> Univariate beschrijving van de variabelen</a></li>
+<li class="chapter" data-level="4.3" data-path="chap-describe.html"><a href="chap-describe.html#sec:summarize"><i class="fa fa-check"></i><b>4.3</b> Samenvattingsmaten voor continue variabelen</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chap-describe.html"><a href="chap-describe.html#maten-voor-de-centrale-ligging"><i class="fa fa-check"></i><b>4.3.1</b> Maten voor de centrale ligging</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:spreiding"><i class="fa fa-check"></i><b>4.3.2</b> Spreidingsmaten</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chap-describe.html"><a href="chap-describe.html#sec:normal"><i class="fa fa-check"></i><b>4.4</b> De Normale benadering van gegevens</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="chap-describe.html"><a href="chap-describe.html#subsec:normalcalc"><i class="fa fa-check"></i><b>4.4.1</b> Bepalen van oppervlaktes onder de Normale curve</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chap-describe.html"><a href="chap-describe.html#sec:qq"><i class="fa fa-check"></i><b>4.4.2</b> QQ-plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chap-describe.html"><a href="chap-describe.html#sec:explCatVar"><i class="fa fa-check"></i><b>4.5</b> Samenvattingsmaten voor categorische variabelen</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="chap-describe.html"><a href="chap-describe.html#prospectieve-studies-en-lukrake-steekproeven"><i class="fa fa-check"></i><b>4.5.1</b> Prospectieve studies en lukrake steekproeven</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:retrospect"><i class="fa fa-check"></i><b>4.5.2</b> Retrospectieve studies</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-describe.html"><a href="chap-describe.html#rates-versus-risicos"><i class="fa fa-check"></i><b>4.5.3</b> Rates versus risico’s</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="chap-describe.html"><a href="chap-describe.html#associaties-tussen-twee-variabelen"><i class="fa fa-check"></i><b>4.6</b> Associaties tussen twee variabelen</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="chap-describe.html"><a href="chap-describe.html#subsec:kruistabel"><i class="fa fa-check"></i><b>4.6.1</b> Associatie tussen twee kwalitatieve variabelen</a></li>
+<li class="chapter" data-level="4.6.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:asskwalcont"><i class="fa fa-check"></i><b>4.6.2</b> Associatie tussen één kwalitatieve en één continue variabele</a></li>
+<li class="chapter" data-level="4.6.3" data-path="chap-describe.html"><a href="chap-describe.html#sec:correlatie"><i class="fa fa-check"></i><b>4.6.3</b> Associatie tussen twee continue variabelen</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="chap-describe.html"><a href="chap-describe.html#sec:missing"><i class="fa fa-check"></i><b>4.7</b> Onvolledige gegevens</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-besluit.html"><a href="chap-besluit.html"><i class="fa fa-check"></i><b>5</b> Statistische besluitvorming</a><ul>
+<li class="chapter" data-level="5.1" data-path="chap-besluit.html"><a href="chap-besluit.html#inleiding-3"><i class="fa fa-check"></i><b>5.1</b> Inleiding</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-besluit.html"><a href="chap-besluit.html#captopril-voorbeeld"><i class="fa fa-check"></i><b>5.2</b> Captopril voorbeeld</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="chap-besluit.html"><a href="chap-besluit.html#proefopzet"><i class="fa fa-check"></i><b>5.2.1</b> Proefopzet</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-besluit.html"><a href="chap-besluit.html#data-exploratie-beschrijvende-statistiek"><i class="fa fa-check"></i><b>5.2.2</b> Data Exploratie &amp; Beschrijvende Statistiek</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chap-besluit.html"><a href="chap-besluit.html#schatten"><i class="fa fa-check"></i><b>5.2.3</b> Schatten</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chap-besluit.html"><a href="chap-besluit.html#puntschatters-het-steekproefgemiddelde"><i class="fa fa-check"></i><b>5.3</b> Puntschatters: het steekproefgemiddelde</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="chap-besluit.html"><a href="chap-besluit.html#het-steekproefgemiddelde-is-onvertekend"><i class="fa fa-check"></i><b>5.3.1</b> Het steekproefgemiddelde is onvertekend</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap-besluit.html"><a href="chap-besluit.html#imprecisiestandard-error"><i class="fa fa-check"></i><b>5.3.2</b> Imprecisie/standard error</a></li>
+<li class="chapter" data-level="5.3.3" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:verdelingXbar"><i class="fa fa-check"></i><b>5.3.3</b> Verdeling van het steekproefgemiddelde</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="chap-besluit.html"><a href="chap-besluit.html#intervalschatters"><i class="fa fa-check"></i><b>5.4</b> Intervalschatters</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:bigek"><i class="fa fa-check"></i><b>5.4.1</b> Gekende variantie op de metingen</a></li>
+<li class="chapter" data-level="5.4.2" data-path="chap-besluit.html"><a href="chap-besluit.html#sec:tBI"><i class="fa fa-check"></i><b>5.4.2</b> Ongekende variantie op de metingen</a></li>
+<li class="chapter" data-level="5.4.3" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:interpretBI"><i class="fa fa-check"></i><b>5.4.3</b> Interpretatie van betrouwbaarheidsintervallen</a></li>
+<li class="chapter" data-level="5.4.4" data-path="chap-besluit.html"><a href="chap-besluit.html#wat-rapporteren"><i class="fa fa-check"></i><b>5.4.4</b> Wat rapporteren?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="chap-besluit.html"><a href="chap-besluit.html#principe-van-hypothesetoetsen-via-one-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Principe van Hypothesetoetsen (via one sample t-test)</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-besluit.html"><a href="chap-besluit.html#hypotheses"><i class="fa fa-check"></i><b>5.5.1</b> Hypotheses</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-besluit.html"><a href="chap-besluit.html#test-statistiek"><i class="fa fa-check"></i><b>5.5.2</b> Test-statistiek</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-besluit.html"><a href="chap-besluit.html#de-p-waarde"><i class="fa fa-check"></i><b>5.5.3</b> De p-waarde</a></li>
+<li class="chapter" data-level="5.5.4" data-path="chap-besluit.html"><a href="chap-besluit.html#kritieke-waarde"><i class="fa fa-check"></i><b>5.5.4</b> Kritieke waarde</a></li>
+<li class="chapter" data-level="5.5.5" data-path="chap-besluit.html"><a href="chap-besluit.html#beslissingsfouten"><i class="fa fa-check"></i><b>5.5.5</b> Beslissingsfouten</a></li>
+<li class="chapter" data-level="5.5.6" data-path="chap-besluit.html"><a href="chap-besluit.html#conclusies-captopril-voorbeeld."><i class="fa fa-check"></i><b>5.5.6</b> Conclusies Captopril voorbeeld.</a></li>
+<li class="chapter" data-level="5.5.7" data-path="chap-besluit.html"><a href="chap-besluit.html#eenzijdig-of-tweezijdig-toetsen"><i class="fa fa-check"></i><b>5.5.7</b> Eenzijdig of tweezijdig toetsen?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-besluit.html"><a href="chap-besluit.html#two-sample-t-test"><i class="fa fa-check"></i><b>5.6</b> Two-sample t-test</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="chap-besluit.html"><a href="chap-besluit.html#oksel-voorbeeld"><i class="fa fa-check"></i><b>5.6.1</b> Oksel-voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="chap-besluit.html"><a href="chap-besluit.html#aannames"><i class="fa fa-check"></i><b>5.7</b> Aannames</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="chap-besluit.html"><a href="chap-besluit.html#nagaan-van-de-veronderstelling-van-normaliteit"><i class="fa fa-check"></i><b>5.7.1</b> Nagaan van de veronderstelling van Normaliteit</a></li>
+<li class="chapter" data-level="5.7.2" data-path="chap-besluit.html"><a href="chap-besluit.html#nagaan-van-homoscedasticiteit"><i class="fa fa-check"></i><b>5.7.2</b> Nagaan van homoscedasticiteit</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="chap-besluit.html"><a href="chap-besluit.html#wat-rapporteren-1"><i class="fa fa-check"></i><b>5.8</b> Wat rapporteren?</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="chap-besluit.html"><a href="chap-besluit.html#reden-1-relatie-toetsen-en-betrouwbaarheidsintervallen"><i class="fa fa-check"></i><b>5.8.1</b> Reden 1: Relatie toetsen en betrouwbaarheidsintervallen</a></li>
+<li class="chapter" data-level="5.8.2" data-path="chap-besluit.html"><a href="chap-besluit.html#reden-2-statistische-significantie-versus-wetenschappelijke-relevantie"><i class="fa fa-check"></i><b>5.8.2</b> Reden 2: Statistische significantie versus wetenschappelijke relevantie</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="chap-besluit.html"><a href="chap-besluit.html#equivalentie-intervallen"><i class="fa fa-check"></i><b>5.9</b> Equivalentie-intervallen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-linReg.html"><a href="chap-linReg.html"><i class="fa fa-check"></i><b>6</b> Enkelvoudige lineaire regressie</a><ul>
+<li class="chapter" data-level="6.1" data-path="chap-linReg.html"><a href="chap-linReg.html#inleiding-4"><i class="fa fa-check"></i><b>6.1</b> Inleiding</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="chap-linReg.html"><a href="chap-linReg.html#borstkanker-dataset"><i class="fa fa-check"></i><b>6.1.1</b> Borstkanker dataset</a></li>
+<li class="chapter" data-level="6.1.2" data-path="chap-linReg.html"><a href="chap-linReg.html#data-exploratie"><i class="fa fa-check"></i><b>6.1.2</b> Data exploratie</a></li>
+<li class="chapter" data-level="6.1.3" data-path="chap-linReg.html"><a href="chap-linReg.html#model"><i class="fa fa-check"></i><b>6.1.3</b> Model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chap-linReg.html"><a href="chap-linReg.html#lineaire-regressie"><i class="fa fa-check"></i><b>6.2</b> Lineaire regressie</a></li>
+<li class="chapter" data-level="6.3" data-path="chap-linReg.html"><a href="chap-linReg.html#parameterschatting"><i class="fa fa-check"></i><b>6.3</b> Parameterschatting</a></li>
+<li class="chapter" data-level="6.4" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linBesluit"><i class="fa fa-check"></i><b>6.4</b> Statistische besluitvorming</a></li>
+<li class="chapter" data-level="6.5" data-path="chap-linReg.html"><a href="chap-linReg.html#nagaan-van-modelveronderstellingen"><i class="fa fa-check"></i><b>6.5</b> Nagaan van modelveronderstellingen</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="chap-linReg.html"><a href="chap-linReg.html#lineariteit"><i class="fa fa-check"></i><b>6.5.1</b> Lineariteit</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap-linReg.html"><a href="chap-linReg.html#veronderstelling-van-homoscedasticiteit-gelijkheid-van-variantie"><i class="fa fa-check"></i><b>6.5.2</b> Veronderstelling van homoscedasticiteit (gelijkheid van variantie)</a></li>
+<li class="chapter" data-level="6.5.3" data-path="chap-linReg.html"><a href="chap-linReg.html#veronderstelling-van-normaliteit"><i class="fa fa-check"></i><b>6.5.3</b> Veronderstelling van normaliteit</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap-linReg.html"><a href="chap-linReg.html#afwijkingen-van-modelveronderstellingen"><i class="fa fa-check"></i><b>6.6</b> Afwijkingen van Modelveronderstellingen</a></li>
+<li class="chapter" data-level="6.7" data-path="chap-linReg.html"><a href="chap-linReg.html#besluitvorming-over-gemiddelde-uitkomst"><i class="fa fa-check"></i><b>6.7</b> Besluitvorming over gemiddelde uitkomst</a></li>
+<li class="chapter" data-level="6.8" data-path="chap-linReg.html"><a href="chap-linReg.html#predictie-intervallen"><i class="fa fa-check"></i><b>6.8</b> Predictie-intervallen</a></li>
+<li class="chapter" data-level="6.9" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linAnova"><i class="fa fa-check"></i><b>6.9</b> Kwadratensommen en Anova-tabel</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="chap-linReg.html"><a href="chap-linReg.html#determinatie-coefficient"><i class="fa fa-check"></i><b>6.9.1</b> Determinatie-coëfficiënt</a></li>
+<li class="chapter" data-level="6.9.2" data-path="chap-linReg.html"><a href="chap-linReg.html#f-testen-in-het-enkelvoudig-lineair-regressiemodel"><i class="fa fa-check"></i><b>6.9.2</b> F-Testen in het enkelvoudig lineair regressiemodel</a></li>
+<li class="chapter" data-level="6.9.3" data-path="chap-linReg.html"><a href="chap-linReg.html#anova-tabel"><i class="fa fa-check"></i><b>6.9.3</b> Anova Tabel</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linDummy"><i class="fa fa-check"></i><b>6.10</b> Dummy variabelen</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-anova.html"><a href="chap-anova.html"><i class="fa fa-check"></i><b>7</b> Variantie analyse</a><ul>
+<li class="chapter" data-level="7.1" data-path="chap-anova.html"><a href="chap-anova.html#inleiding-5"><i class="fa fa-check"></i><b>7.1</b> Inleiding</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="chap-anova.html"><a href="chap-anova.html#prostacycline-voorbeeld"><i class="fa fa-check"></i><b>7.1.1</b> Prostacycline voorbeeld</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap-anova.html"><a href="chap-anova.html#model-1"><i class="fa fa-check"></i><b>7.1.2</b> Model</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap-anova.html"><a href="chap-anova.html#variantie-analyse"><i class="fa fa-check"></i><b>7.2</b> Variantie-analyse</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="chap-anova.html"><a href="chap-anova.html#model-2"><i class="fa fa-check"></i><b>7.2.1</b> Model</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chap-anova.html"><a href="chap-anova.html#kwadratensommen-en-anova"><i class="fa fa-check"></i><b>7.2.2</b> Kwadratensommen en Anova</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chap-anova.html"><a href="chap-anova.html#anova-test"><i class="fa fa-check"></i><b>7.2.3</b> Anova-test</a></li>
+<li class="chapter" data-level="7.2.4" data-path="chap-anova.html"><a href="chap-anova.html#anova-tabel-1"><i class="fa fa-check"></i><b>7.2.4</b> Anova Tabel</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="chap-anova.html"><a href="chap-anova.html#post-hoc-analyse-meervoudig-vergelijken-van-gemiddelden"><i class="fa fa-check"></i><b>7.3</b> Post hoc analyse: Meervoudig Vergelijken van Gemiddelden</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="chap-anova.html"><a href="chap-anova.html#naieve-methode"><i class="fa fa-check"></i><b>7.3.1</b> Naïeve methode</a></li>
+<li class="chapter" data-level="7.3.2" data-path="chap-anova.html"><a href="chap-anova.html#family-wise-error-rate"><i class="fa fa-check"></i><b>7.3.2</b> Family-wise error rate</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="chap-anova.html"><a href="chap-anova.html#conclusies-prostacycline-voorbeeld"><i class="fa fa-check"></i><b>7.4</b> Conclusies: Prostacycline Voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html"><i class="fa fa-check"></i><b>8</b> Niet-parametrische statistiek</a><ul>
+<li class="chapter" data-level="8.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#inleiding-6"><i class="fa fa-check"></i><b>8.1</b> Inleiding</a></li>
+<li class="chapter" data-level="8.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#vergelijken-van-twee-groepen"><i class="fa fa-check"></i><b>8.2</b> Vergelijken van twee groepen</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#cholestorol-voorbeeld"><i class="fa fa-check"></i><b>8.2.1</b> Cholestorol voorbeeld</a></li>
+<li class="chapter" data-level="8.2.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#permutatietesten"><i class="fa fa-check"></i><b>8.2.2</b> Permutatietesten</a></li>
+<li class="chapter" data-level="8.2.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#rank-testen"><i class="fa fa-check"></i><b>8.2.3</b> Rank Testen</a></li>
+<li class="chapter" data-level="8.2.4" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#wilcoxon-mann-whitney-test"><i class="fa fa-check"></i><b>8.2.4</b> Wilcoxon-Mann-Whitney Test</a></li>
+<li class="chapter" data-level="8.2.5" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#conclusie-cholestorol-voorbeeld"><i class="fa fa-check"></i><b>8.2.5</b> Conclusie Cholestorol Voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#vergelijken-van-g-behandelingen"><i class="fa fa-check"></i><b>8.3</b> Vergelijken van <span class="math inline">\(g\)</span> Behandelingen</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#dmh-voorbeeld"><i class="fa fa-check"></i><b>8.3.1</b> DMH Voorbeeld</a></li>
+<li class="chapter" data-level="8.3.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#permutatietest"><i class="fa fa-check"></i><b>8.3.2</b> Permutatietest</a></li>
+<li class="chapter" data-level="8.3.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#kruskal-wallis-rank-test"><i class="fa fa-check"></i><b>8.3.3</b> Kruskal-Wallis Rank Test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap-categorisch.html"><a href="chap-categorisch.html"><i class="fa fa-check"></i><b>9</b> Categorische data analyse</a><ul>
+<li class="chapter" data-level="9.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#inleiding-7"><i class="fa fa-check"></i><b>9.1</b> Inleiding</a></li>
+<li class="chapter" data-level="9.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#toetsen-voor-een-proportie"><i class="fa fa-check"></i><b>9.2</b> Toetsen voor een proportie</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#subsec:binom"><i class="fa fa-check"></i><b>9.2.1</b> Binomiale test</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#betrouwbaarheidsinterval-op-een-proportie"><i class="fa fa-check"></i><b>9.2.2</b> Betrouwbaarheidsinterval op een proportie</a></li>
+<li class="chapter" data-level="9.2.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#conclusie"><i class="fa fa-check"></i><b>9.2.3</b> Conclusie</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#toets-voor-associatie-tussen-2-kwalitatieve-variabelen"><i class="fa fa-check"></i><b>9.3</b> Toets voor associatie tussen 2 kwalitatieve variabelen</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#gepaarde-gegevens"><i class="fa fa-check"></i><b>9.3.1</b> Gepaarde gegevens</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#subsec:catOnPaired"><i class="fa fa-check"></i><b>9.3.2</b> Ongepaarde gegevens</a></li>
+<li class="chapter" data-level="9.3.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#de-pearson-chi-kwadraat-test-voor-ongepaarde-gegevens"><i class="fa fa-check"></i><b>9.3.3</b> De Pearson Chi-kwadraat test voor ongepaarde gegevens</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap-categorisch.html"><a href="chap-categorisch.html#logistische-regressie"><i class="fa fa-check"></i><b>9.4</b> Logistische regressie</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#categorische-predictor"><i class="fa fa-check"></i><b>9.4.1</b> Categorische predictor</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#continue-predictor"><i class="fa fa-check"></i><b>9.4.2</b> Continue predictor</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap-glm.html"><a href="chap-glm.html"><i class="fa fa-check"></i><b>10</b> Algemeen lineair model</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2018-2019</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap:categorisch" class="section level1">
+<h1><span class="header-section-number">Hoofdstuk 9</span> Categorische data analyse</h1>
+<div id="inleiding-7" class="section level2">
+<h2><span class="header-section-number">9.1</span> Inleiding</h2>
+<p>Tot nog toe zijn we hoofdzakelijk ingegaan op het modelleren van een continue uitkomst a.d.h.v. een categorische of continue predictor. In dit hoofdstuk onderzoeken we hoe we tot besluitvorming kunnen komen voor een categorische uitkomst. We zullen hierbij focussen op de associatie tussen een categorische uitkomst en een categorische predictor. Zoals we in Sectie <a href="chap-describe.html#subsec:kruistabel">4.6.1</a> hebben gezien zijn <em>kruistabellen</em> aangewezen om hun associatie voor te stellen.</p>
+</div>
+<div id="toetsen-voor-een-proportie" class="section level2">
+<h2><span class="header-section-number">9.2</span> Toetsen voor een proportie</h2>
+<p>In Saksen werd een studie opgezet binnen een vrij gesloten populatie mensen (weinig immigratie en emigratie) om te bepalen hoe waarschijnlijk het was dat een ongeboren kind mannelijk is.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">boys &lt;-<span class="st"> </span><span class="dv">3175</span>
+n &lt;-<span class="st"> </span><span class="dv">6155</span></code></pre></div>
+<p>Op 6155 ongeboren kinderen werden 3175 jongens geobserveerd. We wensen na te gaan of er een verschil is in de kans dat het ongeboren kind een jongen is of een meisje. In het vervolg van deze sectie vatten we deze gegevens op als uitkomsten van een numerieke toevalsveranderlijke <span class="math inline">\(X\)</span> met uitkomst 1 voor jongens en 0 voor meisjes. Merk op dat we hier met een zogenaamd telprobleem te maken hebben omdat de uitkomst een telling (nl. het aantal jongens) voorstelt.</p>
+<p>Formeel hebben we nu een populatie van ongeboren kinderen beschouwd waarin elk individu gekenmerkt wordt door een 0 of een 1. De uitkomst variabele is dus binair. Binaire data kan worden gemodelleerd a.d.h.v. een Bernoulli verdeling: <span class="math display">\[X_i \sim B(\pi) \text{ met}\]</span> <span class="math display">\[B(\pi)=\pi^{X_i}(1-\pi)^{(1-X_i)},\]</span> een distributie met 1 model parameter <span class="math inline">\(\pi\)</span>. <span class="math inline">\(\pi\)</span> is de verwachte waarde van <span class="math inline">\(X_i\)</span>: <span class="math display">\[\text{E}[X_i]=\pi,\]</span> de proportie van ongeboren jongens (d.i. kinderen met een 1) in de populatie. Bijgevolg is <span class="math inline">\(\pi\)</span> ook de kans dat een lukraak getrokken individu een jongen is (een observatie die 1 oplevert).</p>
+<p>De variantie van Bernoulli data is eveneens gerelateerd aan de kans <span class="math inline">\(\pi\)</span>. <span class="math display">\[\text{Var}[X_i]=\pi (1-\pi).\]</span></p>
+<p>Een grafische weergave van enkele Bernoulli kansverdelingen wordt weergegeven in Figuur <a href="chap-categorisch.html#fig:bernoulli">9.1</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))
+probs=<span class="kw">c</span>(<span class="fl">0.25</span>,.<span class="dv">5</span>,.<span class="dv">75</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(probs))
+{
+<span class="kw">plot</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">1</span><span class="op">-</span>probs[i],probs[i]),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">type=</span><span class="st">&quot;h&quot;</span>,<span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;X&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Kans (Dichtheid)&quot;</span>,<span class="dt">main=</span> <span class="kw">as.expression</span>(<span class="kw">substitute</span>(pi <span class="op">==</span><span class="st"> </span>val,<span class="kw">list</span>(<span class="dt">val=</span>probs[i]))),<span class="dt">lwd=</span><span class="dv">3</span>)
+<span class="kw">axis</span>(<span class="dv">1</span>,<span class="dt">at=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))
+}</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:bernoulli"></span>
+<img src="Statistiek_2018_2019_files/figure-html/bernoulli-1.png" alt="Bernoulli verdelingen." width="100%" />
+<p class="caption">
+Figuur 9.1: Bernoulli verdelingen.
+</p>
+</div>
+<p>In het voorbeeld werden lukraak 6155 observaties getrokken uit de populatie. We kunnen <span class="math inline">\(\pi\)</span> schatten op basis van de data d.m.v. het steekproefgemiddelde van de binaire data: <span class="math display">\[\hat \pi = \bar X = \frac{\sum\limits_{i=1}^n X_i}{n},\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pi=boys<span class="op">/</span>n
+pi</code></pre></div>
+<pre><code>## [1] 0.5158408</code></pre>
+<p>In ons voorbeeld is <span class="math inline">\(\bar x =\)</span> 3175 / 6155 = 51.6%.</p>
+<div id="subsec:binom" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Binomiale test</h3>
+<p>De vraag stelt zich nu of het feit dat 51.6% van de kinderen in de studie mannelijk zijn, voldoende overtuigingskracht draagt om te beweren dat er meer kans is dat een ongeboren kind een jongen is dan een meisje. Met andere woorden, we wensen op basis van deze observaties statistisch te toetsen of de kans <span class="math inline">\(\pi\)</span> al dan niet gelijk is aan 50%. Om een toets te kunnen construeren van de nulhypothese dat <span class="math display">\[H_0: \pi=1/2 \text{ versus } H_1: \pi\neq 1/2,\]</span> moeten we de verdeling van de gegevens <span class="math inline">\(X\)</span> en van de proportie <span class="math inline">\(\bar X\)</span> (of equivalent de som <span class="math inline">\(S=n\bar X\)</span>) kennen.</p>
+<p>Stel dat het voorkomen van jongens en meisjes in de populatie even waarschijnlijk zijn; m.a.w. stel dat de nulhypothese waar is. Bij lukrake trekking van één individu uit de populatie is de kans dat men een jongen observeert dan gelijk aan <span class="math inline">\(P(X=1) = \pi = 1/2.\)</span> Als twee kinderen onafhankelijk van elkaar getrokken worden (en de populatie is bij benadering oneindig groot) dan heeft zowel het eerste als het tweede kind kans 1/2 om mannelijk te zijn (onafhankelijk van elkaar). De uitkomsten <span class="math inline">\((x_1, x_2)\)</span> voor beide kinderen hebben dan 4 mogelijke waarden: <span class="math inline">\((0,0), (0,1),(1,0)\)</span> en <span class="math inline">\((1,1).\)</span> Deze komen elk voor met kans <span class="math inline">\(1/4 = 1/2 \times 1/2\)</span>. Bijgevolg kan de toevalsveranderlijke <span class="math inline">\(S\)</span> die de som van de uitkomsten weergeeft, de volgende waarden aannemen:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\((x_1,x_2)\)</span></th>
+<th align="center"><span class="math inline">\(s\)</span></th>
+<th align="center"><span class="math inline">\(P(S = s)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">(0,0)</td>
+<td align="center">0</td>
+<td align="center">1/4</td>
+</tr>
+<tr class="even">
+<td align="center">(0,1), (1,0)</td>
+<td align="center">1</td>
+<td align="center">1/2</td>
+</tr>
+<tr class="odd">
+<td align="center">(1,1)</td>
+<td align="center">2</td>
+<td align="center">1/4</td>
+</tr>
+</tbody>
+</table>
+In het algemeen, als men <span class="math inline">\(n\)</span> onafhankelijke observaties trekt telkens met kans <span class="math inline">\(\pi\)</span> op “succes” (uitkomst 1), dan kan het totaal aantal successen <span class="math inline">\(S\)</span> (of de som van alle 1-en), <span class="math inline">\(n+1\)</span> mogelijke waarden hebben. Men kan aantonen dat elke waarde <span class="math inline">\(k\)</span> tussen 0 en <span class="math inline">\(n\)</span> dan de volgende kans op voorkomen heeft:
+<span class="math display" id="eq:binomk">\[\begin{equation}
+P(S=k) = \left ( 
+\begin{array}{c}
+n \\ 
+k \\ 
+\end{array}
+\right ) \pi^k (1-\pi)^{n-k}  \tag{9.1}
+\end{equation}\]</span>
+waarbij <span class="math inline">\(1-\pi\)</span> de kans is op mislukking in 1 enkele trekking (uitkomst met 0 genoteerd) en <span class="math inline">\(\left(\begin{array}{c} n \\ k \\ \end{array}\right)\)</span> de binomiaalcoëfficient<a href="#fn55" class="footnoteRef" id="fnref55"><sup>55</sup></a><br />
+
+<span class="math display">\[\begin{equation*}
+\left ( 
+\begin{array}{c}
+n \\ 
+k \\ 
+\end{array}
+\right ) = \frac{n \times (n-1) \times ...\times (n-k+1) }{ k!} = \frac{ n!}{ k!(n-k)! }
+\end{equation*}\]</span>
+<p>is, waarbij <span class="math inline">\(0!=1!=1\)</span>.</p>
+<p>In R kan je die kansen opvragen met behulp van het commando <code>dbinom(k,n,p)</code>.</p>
+<p>Een toevalsveranderlijke <span class="math inline">\(S\)</span> met een kansverdeling zoals in Model <a href="chap-categorisch.html#eq:binomk">(9.1)</a> noemt men een <em>Binomiaal verdeelde toevalsveranderlijke</em>. De bijhorende kansverdeling is de <em>Binomiale kansverdeling</em> met parameters <span class="math inline">\(n\)</span> (d.i. het aantal trekkingen of, equivalent, de maximale uitkomstwaarde) en <span class="math inline">\(\pi\)</span> (de kans op een `succes’ bij elke trekking). Ze kan gebruikt worden om te berekenen wat de kans is dat er zich op een vast totaal van <span class="math inline">\(n\)</span> onafhankelijke experimenten <span class="math inline">\(k\)</span> gebeurtenissen van een bepaald type voordoen, als je weet dat de kans dat zich 1 zo’n gebeurtenis voordoet op 1 experiment, <span class="math inline">\(\pi\)</span> bedraagt. De Binomiale kansverdeling wordt vooral gebruikt voor de analyse van gegevens die slechts 2 mogelijke waarden kunnen aannemen. Dergelijke gegevens komen vaak voor in wetenschappelijk onderzoek (bijvoorbeeld: al dan niet besmet met HIV, wild type van een gen vs een mutant,…). Kennis van de Binomiale verdeling kan dan helpen om proporties of risico’s op een gebeurtenis van een bepaald type te vergelijken tussen verschillende groepen. Een grafische weergave van enkele Binomiale kansverdelingen is gegeven in Figuur <a href="chap-categorisch.html#fig:binoms">9.2</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
+probs=<span class="kw">c</span>(<span class="fl">0.25</span>,.<span class="dv">5</span>,.<span class="dv">75</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(probs))
+{
+<span class="kw">plot</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">10</span>,<span class="kw">dbinom</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">10</span>,<span class="dt">prob=</span>probs[i],<span class="dt">size=</span><span class="dv">10</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">type=</span><span class="st">&quot;h&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;X&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Kans (Dichtheid)&quot;</span>,<span class="dt">main=</span> <span class="kw">as.expression</span>(<span class="kw">substitute</span>(pi <span class="op">==</span><span class="st"> </span>val,<span class="kw">list</span>(<span class="dt">val=</span><span class="kw">paste</span>(probs[i],<span class="st">&quot;, nobs=10&quot;</span>)))),<span class="dt">lwd=</span><span class="dv">3</span>)
+}
+<span class="kw">plot</span>(<span class="dv">2925</span><span class="op">:</span><span class="dv">3225</span>,<span class="kw">dbinom</span>(<span class="dv">2925</span><span class="op">:</span><span class="dv">3225</span>,<span class="dt">prob=</span>.<span class="dv">5</span>,<span class="dt">size=</span>n),<span class="dt">type=</span><span class="st">&quot;h&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;X&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Kans (Dichtheid)&quot;</span>,<span class="dt">main=</span> <span class="kw">as.expression</span>(<span class="kw">substitute</span>(pi <span class="op">==</span><span class="st"> </span>val,<span class="kw">list</span>(<span class="dt">val=</span><span class="kw">paste0</span>(<span class="st">&quot;0.5, nobs=&quot;</span>,n)))))</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:binoms"></span>
+<img src="Statistiek_2018_2019_files/figure-html/binoms-1.png" alt="Binomiale verdelingen." width="100%" />
+<p class="caption">
+Figuur 9.2: Binomiale verdelingen.
+</p>
+</div>
+<p>Om nu te toetsen of <span class="math inline">\(\pi=1/2\)</span> versus het alternatief dat <span class="math inline">\(\pi\neq 1/2\)</span>, is een voor de hand liggende toetsstatistiek <span class="math inline">\(\bar X-1/2\)</span> of, equivalent, <span class="math inline">\(\Delta=n(\bar X-\pi_0)=S-s_0\)</span>. De verdeling van deze laatste toetsstatistiek volgt rechtstreeks uit de Binomiale verdeling.</p>
+<p>We observeren <span class="math inline">\(s=\)</span> 3175 en dus <span class="math inline">\(\delta=s-s_0=\)</span> 3175 <span class="math inline">\(-\)</span> 6155 <span class="math inline">\(\times 0.5=\)</span> 97.5. In de onderstelling dat jongens en meisjes even waarschijnlijk zijn (d.i. onder de nulhypothese <span class="math inline">\(H_0:\pi=1/2\)</span>), kunnen we de bijhorende tweezijdige p-waarde berekenen als de kans dat de uitkomst <span class="math display">\[p=\text{P}_0\left[S-s_0\geq \vert \delta\vert \right] + \text{P}_0\left[S-s_0\leq - \vert \delta\vert \right].\]</span></p>
+<p>Merk op dat we dit kunnen herschrijven in termen van S. <span class="math display">\[p=\text{P}_0\left[S\geq s_0+ \vert \delta\vert \right] + \text{P}_0\left[S \leq s_0 - \vert \delta\vert \right].\]</span></p>
+<p>Voor ons voorbeeld kunnen we deze kansen als volgt berekenen:</p>
+<span class="math display">\[\begin{eqnarray*}
+\text{P}_0\left[S\geq s_0+ \vert \delta\vert \right] &amp;=&amp; P(S \geq 6155 \times 0.5 + \vert 3175 - 6155 \times 0.5\vert ) = P(S \geq 3175)\\ 
+&amp;= &amp;P(S= 3175) + P(S=3176) + ... + P(S=6155)\\
+&amp; =&amp; 0.0067\\\\
+\text{P}_0\left[S \leq s_0 - \vert \delta\vert \right] &amp;=&amp; P(S \leq  6155 \times 0.5 - \vert 3175- 6155 \times 0.5\vert) = P(S \leq 2980)\\ &amp;= &amp;P(S=0) + ... + P(S=2980) \\
+&amp;=&amp;0.0067
+\end{eqnarray*}\]</span>
+<p>Gezien <span class="math inline">\(\pi=0.5\)</span> zijn deze kansen gelijk omdat de binomiale distributie dan symmetrisch is. Dat is niet langer het geval wanneer <span class="math inline">\(\pi\)</span> afwijkt van 0.5.</p>
+<p>In R kan men de kansen berekenen via de commando’s:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pi0 &lt;-<span class="st"> </span><span class="fl">0.5</span>
+s0 &lt;-<span class="st"> </span>pi0 <span class="op">*</span>n
+delta &lt;-<span class="st"> </span><span class="kw">abs</span>(boys<span class="op">-</span><span class="st"> </span>s0)
+delta</code></pre></div>
+<pre><code>## [1] 97.5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sUp &lt;-<span class="st"> </span>s0 <span class="op">+</span><span class="st"> </span>delta
+sDown &lt;-<span class="st"> </span>s0 <span class="op">-</span>delta
+<span class="kw">c</span>(sDown,sUp)</code></pre></div>
+<pre><code>## [1] 2980 3175</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Merk op dat we voor de berekening naar rechts </span>
+<span class="co">#pbinom(sUp-1,n,pi) gebruiken omdat we met</span>
+<span class="co">#pbinom de kans berekenen in de linkse staart</span>
+<span class="co">#anders wordt s=3175 er niet bij geteld!</span>
+pUp &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pbinom</span>(sUp<span class="op">-</span><span class="dv">1</span>,n,pi0)
+pUp</code></pre></div>
+<pre><code>## [1] 0.006699883</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pDown &lt;-<span class="st"> </span><span class="kw">pbinom</span>(sDown,n,pi0)
+pDown</code></pre></div>
+<pre><code>## [1] 0.006699883</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span>pUp<span class="op">+</span>pDown
+p</code></pre></div>
+<pre><code>## [1] 0.01339977</code></pre>
+<p>waarbij <code>pbinom(sUp-1,n,pi0)</code> de kans op een resultaat kleiner of gelijk aan <span class="math inline">\(s_0+\vert \delta\vert -1 =\)</span> 3174 berekent. Als <span class="math inline">\(\pi= 1/2\)</span>, dan zou de kans om door toeval minstens <span class="math inline">\(\delta=\)</span> 97.5 jongens meer of minder te observeren dan het gemiddelde onder <span class="math inline">\(H_0: s_0=\)</span> 3077.5 , slechts 1.34% is, de <span class="math inline">\(p\)</span>-waarde van de binomiale test.<br />
+Dit geeft aan dat het heel onwaarschijnlijk is om een dergelijk groot aantal jongens te observeren als in realiteit jongens en meisjes even waarschijnlijk zijn. Het drukt met andere woorden uit dat de onderstelling dat jongens en meisjes even waarschijnlijk zijn, weinig gesteund wordt door de data. Dit blijkt ook uit Figuur <a href="chap-categorisch.html#fig:pitests">9.3</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(s0<span class="op">+</span><span class="kw">seq</span>(<span class="op">-</span><span class="fl">150.5</span>,<span class="fl">150.5</span>,<span class="dv">1</span>),<span class="kw">dbinom</span>(s0<span class="op">+</span><span class="kw">seq</span>(<span class="op">-</span><span class="fl">150.5</span>,<span class="fl">150.5</span>,<span class="dv">1</span>),<span class="dt">prob=</span>.<span class="dv">5</span>,<span class="dt">size=</span>n),<span class="dt">type=</span><span class="st">&quot;h&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;X&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Kans (Dichtheid)&quot;</span>,<span class="dt">main=</span> <span class="kw">as.expression</span>(<span class="kw">substitute</span>(pi <span class="op">==</span><span class="st"> </span>val,<span class="kw">list</span>(<span class="dt">val=</span><span class="kw">paste0</span>(<span class="st">&quot;0.5, nobs=&quot;</span>,n)))),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span>.<span class="dv">0009</span>,<span class="fl">0.011</span>))
+<span class="kw">abline</span>(<span class="dt">v=</span>s0,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">4</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>boys,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">2</span>)
+<span class="kw">abline</span>(<span class="dt">v=</span>sDown,<span class="dt">lwd=</span><span class="dv">1</span>,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lty=</span><span class="dv">2</span>)
+<span class="kw">text</span>(<span class="kw">c</span>(sDown,s0,boys,boys),<span class="kw">c</span>(<span class="kw">rep</span>(<span class="fl">0.011</span>,<span class="dv">3</span>),<span class="fl">0.01</span>),<span class="dt">labels=</span><span class="kw">c</span>(<span class="kw">expression</span>(<span class="kw">paste</span>(s[<span class="dv">0</span>]<span class="op">-</span>delta)),<span class="kw">expression</span>(s[<span class="dv">0</span>]),<span class="kw">expression</span>(s<span class="op">==</span>s[<span class="dv">0</span>]<span class="op">+</span>delta),<span class="kw">as.expression</span>(<span class="kw">substitute</span>(s<span class="op">==</span>val,<span class="kw">list</span>(<span class="dt">val=</span>boys)))),<span class="dt">pos=</span><span class="dv">4</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>))
+<span class="kw">text</span>(sDown<span class="op">-</span><span class="dv">50</span>,<span class="op">-</span>.<span class="dv">0005</span>,<span class="dt">label=</span><span class="st">&quot;p-waarde&quot;</span>,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">pos=</span><span class="dv">4</span>)
+<span class="kw">text</span>(sUp,<span class="op">-</span>.<span class="dv">0005</span>,<span class="dt">label=</span><span class="st">&quot;p-waarde&quot;</span>,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">pos=</span><span class="dv">4</span>)
+<span class="kw">arrows</span>(s0<span class="op">+</span><span class="fl">1500.5</span>,<span class="op">-</span>.<span class="dv">0009</span>,sUp,<span class="op">-</span>.<span class="dv">0009</span>,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">20</span>,<span class="dt">length=</span>.<span class="dv">1</span>)
+<span class="kw">arrows</span>(s0<span class="op">-</span><span class="fl">1500.5</span>,<span class="op">-</span>.<span class="dv">0009</span>,sDown,<span class="op">-</span>.<span class="dv">0009</span>,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">20</span>,<span class="dt">length=</span>.<span class="dv">1</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:pitests"></span>
+<img src="Statistiek_2018_2019_files/figure-html/pitests-1.png" alt="Binomiale verdeling van het aantal jongens S onder $H_0: \pi=0.5 (n=6155)$." width="100%" />
+<p class="caption">
+Figuur 9.3: Binomiale verdeling van het aantal jongens S onder <span class="math inline">\(H_0: \pi=0.5 (n=6155)\)</span>.
+</p>
+</div>
+<p>De test kan eveneens worden uitgevoerd a.d.h.v. de <code>binomial.test</code> functie in R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">binom.test</span>(<span class="dt">x=</span>boys,<span class="dt">n=</span>n,<span class="dt">p=</span>pi0)</code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  boys and n
+## number of successes = 3175, number of trials = 6155, p-value =
+## 0.0134
+## alternative hypothesis: true probability of success is not equal to 0.5
+## 95 percent confidence interval:
+##  0.5032696 0.5283969
+## sample estimates:
+## probability of success 
+##              0.5158408</code></pre>
+<p>Op het 5% significantie-niveau besluiten we dat er gemiddeld meer kans is dat een ongeboren kind mannelijk dan vrouwelijk is.</p>
+</div>
+<div id="betrouwbaarheidsinterval-op-een-proportie" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> Betrouwbaarheidsinterval op een proportie</h3>
+<p>De schatter van de proportie van jongens in de populatie, is het steekproefgemiddelde <span class="math inline">\(\hat \pi=\bar x=\)</span> 0.516 en de standaard error is <span class="math display">\[SE_{\bar x}=\sqrt{\frac{\text{Var}[X]}{n}}=\sqrt{\frac{\pi(1-\pi)}{n}}\]</span> We kunnen dit schatten o.b.v. de steekproef: <span class="math inline">\(SE_{\bar x}=\sqrt{\frac{\hat\pi(1-\hat\pi)}{n}}=\)</span> 0.0064. Op basis van de centrale limietstelling (CLT, Sectie <a href="chap-besluit.html#subsec:verdelingXbar">5.3.3</a>) kunnen we nu eveneens een 95% betrouwbaarheidsinterval bouwen:</p>
+<p><span class="math display">\[\hat\pi \pm 1.96 SE_{\hat\pi}.\]</span></p>
+<p>We kunnen dit in R bekomen:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">se=<span class="kw">sqrt</span>(pi<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>pi)<span class="op">/</span>n)
+pi<span class="op">+</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span>se</code></pre></div>
+<pre><code>## [1] 0.5033559 0.5283257</code></pre>
+<p>Een alternatief dat geen grote dataset vereist, is het inverteren van de one-sample test voor proporties. Stop daartoe in het 95% betrouwbaarheidsinterval alle waarden <span class="math inline">\(\pi_0\)</span> die niet verworpen worden door deze test op het 5% significantieniveau. Dit is geïmplementeerd in de <code>binom.test</code> functie.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">BI &lt;-<span class="st"> </span><span class="kw">binom.test</span>(<span class="dt">x=</span>boys,<span class="dt">n=</span>n,<span class="dt">p=</span>pi0)<span class="op">$</span>conf.int
+BI</code></pre></div>
+<pre><code>## [1] 0.5032696 0.5283969
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<p>We verfiëren dit nu:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">binom.test</span>(<span class="dt">x=</span>boys,<span class="dt">n=</span>n,<span class="dt">p=</span>BI[<span class="dv">1</span>],<span class="dt">alternative=</span><span class="st">&quot;greater&quot;</span>)</code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  boys and n
+## number of successes = 3175, number of trials = 6155, p-value =
+## 0.025
+## alternative hypothesis: true probability of success is greater than 0.5032696
+## 95 percent confidence interval:
+##  0.5052779 1.0000000
+## sample estimates:
+## probability of success 
+##              0.5158408</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">binom.test</span>(<span class="dt">x=</span>boys,<span class="dt">n=</span>n,<span class="dt">p=</span>BI[<span class="dv">2</span>],<span class="dt">alternative=</span><span class="st">&quot;less&quot;</span>)</code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  boys and n
+## number of successes = 3175, number of trials = 6155, p-value =
+## 0.025
+## alternative hypothesis: true probability of success is less than 0.5283969
+## 95 percent confidence interval:
+##  0.0000000 0.5263925
+## sample estimates:
+## probability of success 
+##              0.5158408</code></pre>
+<p>De p-waardes van de exacte eenzijdige testen waarbij <span class="math inline">\(\pi_0\)</span> gelijk gesteld wordt aan de onder- en bovengrens van het 95% BI zijn inderdaad beiden gelijk aan 0.025. Het exacte BI is te verkiezen boven het BI dat gebaseerd is op de CLT. Voor de Saksen-studie ligt het BI op basis van de CLT heel dicht bij het exacte BI omdat de studie is gebaseerd op een grote steekproef (<span class="math inline">\(n=\)</span> 6155).</p>
+</div>
+<div id="conclusie" class="section level3">
+<h3><span class="header-section-number">9.2.3</span> Conclusie</h3>
+<p>Merk op dat het testen voor een proportie kan gezien worden als het equivalent van een one-sample t-test voor binaire data.</p>
+<p>Voor de Saksen populatie besluiten we op het 5% significantieniveau dat er meer kans is dat een ongeboren kind mannelijk dan vrouwelijk is (<span class="math inline">\(p=\)</span> 0.013). De kans dat een ongeboren kind mannelijk is, bedraagt 51.6% (95% BI [50.3,52.8]%).</p>
+</div>
+</div>
+<div id="toets-voor-associatie-tussen-2-kwalitatieve-variabelen" class="section level2">
+<h2><span class="header-section-number">9.3</span> Toets voor associatie tussen 2 kwalitatieve variabelen</h2>
+<div id="gepaarde-gegevens" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> Gepaarde gegevens</h3>
+<p>Net zoals bij het vergelijken van gemiddelden (uitkomsten op 2 continue veranderlijken) is het ook hier in principe mogelijk dezelfde individuen 2 keer te meten (bijvoorbeeld, vóór en na blootstelling aan de experimentele stof) en telkens de uitkomst te observeren. In dat geval hebben we te maken met <em>gepaarde binaire uitkomsten</em> en moeten we in de statistische analyse rekening houden met de paring.</p>
+<div id="voorbeeld" class="section level4">
+<h4><span class="header-section-number">9.3.1.1</span> Voorbeeld</h4>
+<p><span class="citation">Rogovin et al. (<a href="#ref-Rogovin2017">2017</a>)</span> onderzochten de partnerkeuze van seksueel mature vrouwelijke <em>Campbelli</em> dwerghamster. Hiervoor bekeken ze verschillende karakteristieken van de mannetjes, waaronder seksgerelateerde morfologische kenmerken (lichaamsmassa, externe testikel diameter), testosteron niveau, immunocompetentie kenmerken (de concentratie aan T-cel en B-cel immuuncellen in het bloed), maar ook gedragskenmerken zoals agressiviteit en seksuele dominantie van het mannetje.</p>
+<p>De experimentele set-up betreft een rechthoekige doos van plexiglas met drie compartimenten, waarin het vrouwtje zich in het middenste gedeelte bevindt (zie Figuur <a href="chap-categorisch.html#fig:hamsterKooi">9.4</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:hamsterKooi"></span>
+<img src="Statistiek_2018_2019_files/figure-html/hamsterKooi-1.png" alt="Experimentele opstelling voor het bepalen van de partnerkeuze bij dwerghamsters" width="100%" />
+<p class="caption">
+Figuur 9.4: Experimentele opstelling voor het bepalen van de partnerkeuze bij dwerghamsters
+</p>
+</div>
+<p>De mannetjes, die overigens broers zijn, hangen vast aan de doos waardoor ze zich slechts over drie vierden van de ruimte van hun compartiment vrij kunnen bewegen. Na alle dieren enkele minuten te laten acclimatiseren worden niet-doorzichtige wanden die de compartimenten scheidden, opgetrokken waardoor het vrouwtje zich via de aangegeven deurtjes naar de mannetjes kan begeven. Aangezien de mannetjes zich niet buiten hun compartiment kunnen begeven, ligt de keuze volledig in de handen van het vrouwtje. Het wordt aangenomen dat het vrouwtje een partnerkeuze maakt indien ze meer dan twee derden van de tijd met één mannetje doorbrengt, relatief ten opzichte van de totale tijd die ze met mannetjes doorbrengt.</p>
+<p>Elk vrouwtje onderging tweemaal de test, waarbij ze telkens kon kiezen tussen één agressief en één niet-agressief mannetje. Om te onderzoeken of de partnerkeuze van het vrouwtje beïnvloed wordt door de omgeving, kwam het vrouwtje in één van de testen uit een vijandige omgeving (hoge populatie, weinig voedsel, veel concurrentie) en in een andere test uit een vriendelijkere omgeving.</p>
+<p>De resultaten van de studie zijn samengevat in de onderstaande kruistabel (Tabel <a href="chap-categorisch.html#tab:catHamster">9.1</a>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hamster &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">17</span>,<span class="dv">1</span>,<span class="dv">13</span>),<span class="dt">ncol=</span><span class="dv">2</span>,<span class="dt">byrow=</span><span class="ot">TRUE</span>)
+<span class="kw">rownames</span>(hamster) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;vijandig-agressief&quot;</span>, <span class="st">&quot;vijandig-niet-agressief&quot;</span>)
+<span class="kw">colnames</span>(hamster) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;vriendelijk-agressief&quot;</span>,<span class="st">&quot;vriendelijk-niet-agressief&quot;</span>)</code></pre></div>
+<table>
+<caption>
+<span id="tab:catHamster">Tabel 9.1: </span>Kruistabel van partnerkeuze bij dwerghamster.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+vriendelijk-agressief
+</th>
+<th style="text-align:left;">
+vriendelijk-niet-agressief
+</th>
+<th style="text-align:left;">
+totaal
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+vijandig-agressief
+</td>
+<td style="text-align:left;">
+3 (e)
+</td>
+<td style="text-align:left;">
+17 (f)
+</td>
+<td style="text-align:left;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+vijandig-niet-agressief
+</td>
+<td style="text-align:left;">
+1 (g)
+</td>
+<td style="text-align:left;">
+13 (h)
+</td>
+<td style="text-align:left;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+totaal
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:left;">
+34
+</td>
+</tr>
+</tbody>
+</table>
+De kans op de keuze voor een agressief mannetje na verblijf in een vijandige omgeving noteren we als <span class="math inline">\(\pi_1\)</span> en kunnen we schatten als <span class="math inline">\((e+f)/n\)</span>, waarbij <span class="math inline">\(n=e+f+g+h\)</span>. De kans op de keuze voor een agressief mannetje na een vriendelijke omgeving noteren we met <span class="math inline">\(\pi_0\)</span> en kunnen we schatten als <span class="math inline">\((e+g)/n\)</span>. Het verschil tussen beide kansen, het absoluut riscoverschil (ARV), schatten we als
+<span class="math display">\[\begin{equation*}
+\widehat{\text{ARV}}=\hat\pi_1-\hat\pi_0=\frac{e+f}{n}-\frac{e+g}{n}=\frac{f-g}{n}
+\end{equation*}\]</span>
+en wordt enkel beïnvloed door de aantallen discordante paren <span class="math inline">\(f\)</span> en <span class="math inline">\(g\)</span><a href="#fn56" class="footnoteRef" id="fnref56"><sup>56</sup></a>. Men kan aantonen dat de standaard error van dit verschil gelijk is aan
+<span class="math display">\[\begin{equation*}
+\text{SE}_{\widehat{\text{ARV}}}=\frac{1}{n}\sqrt{f+g-\frac{(f-g)^2}{n}}
+\end{equation*}\]</span>
+<p>Als er voldoende gegevens zijn, kan men een <span class="math inline">\((1-\alpha)100\%\)</span> betrouwbaarheidsinterval voor het absolute risicoverschil op de keuze voor een agressief mannetje t.g.v. de omgeving schatten als <span class="math display">\[\left[\widehat{\text{ARV}}-z_{\alpha/2}\text{SE}_{\widehat{\text{ARV}}},\widehat{\text{ARV}}-z_{\alpha/2}\text{SE}_{\widehat{\text{ARV}}}\right]\]</span> of <span class="math display">\[\left[\frac{f-g}{n}-\frac{z_{\alpha/2}}{n}\sqrt{f+g-\frac{(f-g)^2}{n}},\frac{f-g}{n}+\frac{z_{\alpha/2}}{n}\sqrt{f+g-\frac{(f-g)^2}{n}}\right] \]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f=hamster[<span class="dv">1</span>,<span class="dv">2</span>]
+g=hamster[<span class="dv">2</span>,<span class="dv">1</span>]
+n=<span class="kw">sum</span>(hamster)
+riskdiff=(f<span class="op">-</span>g)<span class="op">/</span>n
+riskdiff</code></pre></div>
+<pre><code>## [1] 0.4705882</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">se=<span class="kw">sqrt</span>(f<span class="op">+</span>g<span class="op">-</span>(f<span class="op">-</span>g)<span class="op">^</span><span class="dv">2</span><span class="op">/</span>n)<span class="op">/</span>n
+se</code></pre></div>
+<pre><code>## [1] 0.09517144</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bi=riskdiff<span class="op">+</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)<span class="op">*</span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span>se
+bi</code></pre></div>
+<pre><code>## [1] 0.2840556 0.6571208</code></pre>
+Het absolute risicoverschil op de keuze van een agressief mannetje tussen een verblijf in een vijandige en vriendelijke omgeving bedraagt<br />
+
+<span class="math display">\[\begin{equation*}
+\widehat{\text{ARV}}=\frac{17-1}{34}=0.471
+\end{equation*}\]</span>
+of 47.1%. De standaard error van dit verschil is
+<span class="math display">\[\begin{equation*}
+\text{SE}_{\widehat{\text{ARV}}}=\frac{1}{34}\sqrt{17+1-\frac{(17-1)^2}{34}}=0.0952
+\end{equation*}\]</span>
+Een 95% betrouwbaarheidsinterval absolute risicoverschil op de keuze van een agressief mannetje tussen een verblijf in een vijandige en vriendelijke omgeving is bijgevolg
+<span class="math display">\[\begin{equation*}
+\left[0.471-1.96\times 0.0952,0.471+1.96\times 0.0952\right]=[0.284,0.658]
+\end{equation*}\]</span>
+<p>We hebben dus geschat dat het absolute risico met 95% kans in het interval [28.4,65.8]% ligt.</p>
+</div>
+<div id="mcnemar-test" class="section level4">
+<h4><span class="header-section-number">9.3.1.2</span> McNemar test</h4>
+We gaan vervolgens na hoe we kunnen toetsen of de risico’s verschillen tussen de vijandige en vriendelijke omgeving. Indien alle vrouwtjes in zowel de vijandige als vriendelijke omgeving dezelfde partnerkeuze hadden, dan was er geen informatie over de vraag of de omgeving geassocieerd is met de partnerkeuze. Enkel de discordante paren leveren hier informatie over. Als er meer discordante paren zijn waar een vrouwtje een agressief mannetje kiest na verblijf in een vijandige omgeving en een niet-agressief mannetje na een vriendelijke omgeving, dan discordante paren waar het vrouwtje een niet-agressief mannetje kiest na verblijf in een vijandige omgeving en een agressief mannetje kiest na een vriendelijke omgeving, dan is er een indicatie tegen de nulhypothese dat er geen associatie is tussen de partnerkeuze en de omgeving. Men kan daarom toetsen of de partnerkeuze geassocieerd is met de omgeving door de kans te evalueren dat in een lukraak discordant paar, het vrouwtje na verblijf in een vijandige omgeving kiest voor het agressieve mannetje. Deze kans wordt geschat als <span class="math inline">\(f/(f+g)\)</span> en wordt verwacht in de buurt van 0.5 te liggen als de nulhypothese geldt dat er geen associatie is tussen partnerkeuze en omgeving. Meer bepaald volgt het getal <span class="math inline">\(f\)</span> binnen de groep discordante paren onder de nulhypothese een Binomiale verdeling met parameters <span class="math inline">\(f+g\)</span> en 0.5. De standaarddeviatie van <span class="math inline">\(f\)</span> is bijgevolg gelijk aan
+<span class="math display">\[\begin{equation*}
+\sqrt{(f+g)\times 0.5\times 0.5}=\frac{\sqrt{f+g}}{2}
+\end{equation*}\]</span>
+onder de nulhypothese. Op voorwaarde dat er voldoende observaties zijn, kan men nu de one-sample z-test<a href="#fn57" class="footnoteRef" id="fnref57"><sup>57</sup></a> gebruiken om te toetsen of de kans dat een lukraak discordant paar in de cel rechtsboven van de tabel gelegen is, 0.5 bedraagt. M.a.w. bekijken we het gestandaardiseerde verschil tussen <span class="math inline">\(f\)</span> en haar verwachtingswaarde onder de nulhypothese:
+<span class="math display">\[\begin{equation*}
+\frac{f-(f+g)/2}{\sqrt{f+g}/2}=\frac{f-g}{\sqrt{f+g}}
+\end{equation*}\]</span>
+<p>die bij benadering een Normale verdeling volgt onder de nulhypothese. De Normale benadering is goed als <span class="math display">\[f \times g/(f+g) \geq 5\]</span> De toets gebaseerd op bovenstaande toetsingsgrootheid heet de <em>Mc Nemar toets</em>.</p>
+In kleine steekproeven is het meer aangewezen om een continuïteitscorrectie te gebruiken d.m.v. de toetsingsgrootheid
+<span class="math display">\[\begin{equation*}
+\frac{|f-g|-1}{\sqrt{f+g}}
+\end{equation*}\]</span>
+<p>De <strong>Mc Nemar test</strong> wordt gebruikt om te toetsen of er een associatie is tussen 2 kwalitatieve, binaire variabelen, i.h.b. om te toetsen of de kans op succes voor de ene variabele verschilt tussen de 2 strata van de andere kwalitatieve variabele. Ze vereist dat alle metingen voor de ene kwalitatieve variabele (uitkomst) in het ene stratum van de andere kwalitatieve variabele, onafhankelijk zijn, en dat elke meting uit het ene stratum gepaard is met een meting uit het andere stratum in die zin dat ze van verwante subjecten afkomstig zijn. Op die manier vormt ze het analogon van de gepaarde t-test voor binaire, kwalitatieve i.p.v. continue variabelen.</p>
+<p>We voeren nu de analyse uit voor het hamstervoorbeeld in R:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">correct=f<span class="op">*</span>g<span class="op">/</span>(f<span class="op">+</span>g)
+correct</code></pre></div>
+<pre><code>## [1] 0.9444444</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#continuiteitscorrectie</span>
+t=<span class="st"> </span>(<span class="kw">abs</span>(f<span class="op">-</span>g)<span class="op">-</span><span class="dv">1</span>)<span class="op">/</span><span class="kw">sqrt</span>(f<span class="op">+</span>g)
+t</code></pre></div>
+<pre><code>## [1] 3.535534</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p=(<span class="dv">1</span><span class="op">-</span><span class="kw">pnorm</span>(t))<span class="op">*</span><span class="dv">2</span>
+p</code></pre></div>
+<pre><code>## [1] 0.000406952</code></pre>
+<p>Voor het dwerghamster voorbeeld observeren we dat <span class="math inline">\(f\times g/(f+g)=\)</span> 0.944 <span class="math inline">\(&lt;5\)</span>. We zullen dus de continuïteitscorrectie uitvoeren. De McNemar toetsingsgrootheid bedraagt <span class="math inline">\((\vert 17-1 \vert -1)/\sqrt{17+1}=\)</span> 3.54. De kans dat een Normaal verdeelde toevalsveranderlijke groter is dan 3.54 of kleiner is dan -3.54 bedraagt 0.0407% en stelt ook de p-waarde van de toets voor. We verwerpen bijgevolg de nulhypothese op het 5% significantieniveau en besluiten dat de parternkeuze extreem significant geassocieerd is met de omgeving.</p>
+<p>In R kan de analyse ook worden uitgevoerd a.d.h.v. de <code>mcnemar.test</code> functie</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcnemar.test</span>(hamster)</code></pre></div>
+<pre><code>## 
+##  McNemar&#39;s Chi-squared test with continuity correction
+## 
+## data:  hamster
+## McNemar&#39;s chi-squared = 12.5, df = 1, p-value = 0.000407</code></pre>
+<p>We zien dat hier eveneens de continuïteitscorrectie werd uitgevoerd en dat we exact dezelfde p-waarde bekomen.</p>
+<p>Merk echter op dat de Normale benadering van deze toetstatistiek niet ideaal is omdat <span class="math inline">\(f \times g/(f+g)=\)</span> 0.944 <span class="math inline">\(&lt;5\)</span>. Bovenstaande p-waarde is om die reden niet accuraat. Het is hier meer aangewezen om een exacte toets te gebruiken op basis van het principe in Sectie <a href="chap-categorisch.html#subsec:binom">9.2.1</a>. Dergelijke toetsen maken gebruik van de exacte Binomiale verdeling van de gegevens om te toetsen of de kans dat een lukraak discordant paar in de cel rechtsboven van de tabel gelegen is, 0.5 bedraagt.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">binom.test</span>(<span class="dt">x=</span>f,<span class="dt">n=</span>f<span class="op">+</span>g,<span class="dt">p=</span><span class="fl">0.5</span>)</code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  f and f + g
+## number of successes = 17, number of trials = 18, p-value =
+## 0.000145
+## alternative hypothesis: true probability of success is not equal to 0.5
+## 95 percent confidence interval:
+##  0.7270564 0.9985944
+## sample estimates:
+## probability of success 
+##              0.9444444</code></pre>
+</div>
+<div id="conclusie-1" class="section level4">
+<h4><span class="header-section-number">9.3.1.3</span> Conclusie</h4>
+<p>Op basis van de exacte test besluiten we eveneens dat de parternkeuze extreem significant geassocieerd is met de omgeving (<span class="math inline">\(p&lt;0.001\)</span>). De kans op de keuze van een agressief mannetje ligt 47.1% hoger als een dwerghamster vrouwtje zich in een vijandige omgeving bevindt dan wanneer ze zich in een vriendelijke omgeving bevindt (95% BI [28.4,65.7]%).</p>
+</div>
+</div>
+<div id="subsec:catOnPaired" class="section level3">
+<h3><span class="header-section-number">9.3.2</span> Ongepaarde gegevens</h3>
+<p>We beschouwen hier opnieuw Voorbeeld <a href="chap-design.html#exm:brcaLeu">3.16</a>. Het is belangrijk om dit voorbeeld eerst grondig door te nemen alsook de Sectie rond data exploratie van categorische variabelen (Sectie <a href="chap-describe.html#sec:explCatVar">4.5</a>).</p>
+<p>Deze genetische associatiestudie was erop gericht om na te gaan of polymorfismen in het BRCA1 gen geassocieerd is met borstkanker. Het was een retrospectieve case-controle studie die 800 borstkankercases en 572 controles omvatte. Een R object met de data is opgeslagen in de file <code>brca.rda</code> in de dataset folder.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;dataset/brca.rda&quot;</span>)
+<span class="kw">head</span>(brca)</code></pre></div>
+<pre><code>##    cancer variant variant2
+## 1 control pro/pro   andere
+## 2 control pro/pro   andere
+## 3 control pro/pro   andere
+## 4 control pro/pro   andere
+## 5 control pro/pro   andere
+## 6 control pro/pro   andere</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(brca)</code></pre></div>
+<pre><code>##      cancer       variant       variant2   
+##  control:572   pro/pro:608   andere :1227  
+##  case   :800   pro/leu:619   leu/leu: 145  
+##                leu/leu:145</code></pre>
+<p>De dataset bevat 3 categorische variabelen: de ziekte status (factor cancer: controle vs case), brca variant (variant: wild type Pro/Pro, enkele mutatie Pro/Leu, dubbele mutatie Leu/Leu) en een factor of men de dubbele Leu/Leu mutatie bevat of niet (variant2).</p>
+<p>Een kruistabel kan in R verkregen worden door</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brcaTab &lt;-<span class="st"> </span><span class="kw">table</span>(brca<span class="op">$</span>variant,brca<span class="op">$</span>cancer)
+brcaTab</code></pre></div>
+<pre><code>##          
+##           control case
+##   pro/pro     266  342
+##   pro/leu     250  369
+##   leu/leu      56   89</code></pre>
+<p>Informatie omtrent het BRCA1-polymorfisme werd bekomen via DNA-analyse en staat opnieuw getabuleerd in Tabel <a href="chap-categorisch.html#tab:leu3">9.2</a>.</p>
+<table>
+<caption>
+<span id="tab:leu3">Tabel 9.2: </span>Kruistabel van borstkanker-status versus BRCA1-allel.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Genotype
+</th>
+<th style="text-align:left;">
+Controles
+</th>
+<th style="text-align:left;">
+Cases
+</th>
+<th style="text-align:left;">
+Totaal
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Pro/Pro
+</td>
+<td style="text-align:left;">
+266 (a)
+</td>
+<td style="text-align:left;">
+342 (d)
+</td>
+<td style="text-align:left;">
+608 (a+d)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pro/Leu
+</td>
+<td style="text-align:left;">
+250 (b)
+</td>
+<td style="text-align:left;">
+369 (e)
+</td>
+<td style="text-align:left;">
+619 (b+e)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leu/Leu
+</td>
+<td style="text-align:left;">
+56 (c)
+</td>
+<td style="text-align:left;">
+89 (f)
+</td>
+<td style="text-align:left;">
+145 (c+f)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Totaal
+</td>
+<td style="text-align:left;">
+572 (a+b+c)
+</td>
+<td style="text-align:left;">
+800 (d+e+f)
+</td>
+<td style="text-align:left;">
+1372 (n)
+</td>
+</tr>
+</tbody>
+</table>
+<p>In Sectie <a href="chap-describe.html#subsec:retrospect">4.5.2</a> zagen we reeds dat <em>het relatief risico</em> op de aandoening (d.w.z. op <em>case</em>) in de populatie voor blootgestelden versus niet-blootgestelden niet rechtstreeks kan geschat worden op basis van gegevens uit een <em>case-controle studie</em>. We zagen dat we wel een uitspraak konden doen hierover a.d.h.v. odds ratio’s, gezien het een symmetrische associatie maat is.<br />
+In voorbeeld <a href="chap-design.html#exm:brcaLeu">3.16</a> konden we daarom de odds op borstkanker berekenen voor vrouwen met allel Leu/Leu versus vrouwen zonder de dubbele mutatie als <span class="math inline">\(OR=89\times (266+250)/(56\times (342+369))=89\times 512/(56 \times 711)=1.15\)</span>. De odds op borstkanker is bijgevolg 15% hoger bij vrouwen met die specifieke allelcombinatie. We kunnen ons nu afvragen of dat verschil groot genoeg is zodat we het effect die we in de steekproef zien kunnen veralgemenen naar de populatie toe.</p>
+<p>Hiertoe zullen we de kruistabel eerst herschrijven tot een 2x2 tabel zodat we de vrouwen met een Leu/Leu variant vergelijken met de vrouwen in de studie die niet homozygoot zijn in de mutatie<a href="#fn58" class="footnoteRef" id="fnref58"><sup>58</sup></a> (Tabel <a href="chap-categorisch.html#tab:leu4">9.3</a>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brcaTab2 &lt;-<span class="st"> </span><span class="kw">table</span>(brca<span class="op">$</span>variant2,brca<span class="op">$</span>cancer)
+brcaTab2</code></pre></div>
+<pre><code>##          
+##           control case
+##   andere      516  711
+##   leu/leu      56   89</code></pre>
+<table>
+<caption>
+<span id="tab:leu4">Tabel 9.3: </span>Kruistabel van borstkanker-status versus Leu/Leu-variant.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Genotype
+</th>
+<th style="text-align:left;">
+Controles
+</th>
+<th style="text-align:left;">
+Cases
+</th>
+<th style="text-align:left;">
+Totaal
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+andere
+</td>
+<td style="text-align:left;">
+516 (a)
+</td>
+<td style="text-align:left;">
+711 (c)
+</td>
+<td style="text-align:left;">
+1227 (a+c)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leu/Leu
+</td>
+<td style="text-align:left;">
+56 (b)
+</td>
+<td style="text-align:left;">
+89 (d)
+</td>
+<td style="text-align:left;">
+145 (b+d)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Totaal
+</td>
+<td style="text-align:left;">
+572 (a+b)
+</td>
+<td style="text-align:left;">
+800 (c+d)
+</td>
+<td style="text-align:left;">
+1372 (n)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="de-pearson-chi-kwadraat-test-voor-ongepaarde-gegevens" class="section level3">
+<h3><span class="header-section-number">9.3.3</span> De Pearson Chi-kwadraat test voor ongepaarde gegevens</h3>
+<p>We zullen een toets ontwikkelen voor het testen van associatie tussen de categorische blootstelling (bvb. variant, X) en de categorische uitkomst (bvb. ziekte, Y). Concreet zullen we <span class="math display">\[H_0: \text{Er is geen associatie tussen } X \text{ en } Y \text{ vs } H_1: X \text{ en } Y \text{ zijn geassocieerd}\]</span> testen.</p>
+<p>Beschouw de rijtotalen <span class="math inline">\(n_\text{andere}=a+c\)</span>, <span class="math inline">\(n_\text{leu,leu}=b+d\)</span> enerzijds en de kolomtotalen <span class="math inline">\(n_\text{contr}=a+b\)</span> en <span class="math inline">\(n_\text{case}=c+d\)</span> anderzijds. Zij verstrekken informatie over de <em>marginale verdeling</em> van de blootstelling (bvb. variant, X) en de uitkomst (bvb. ziekte, Y), maar niet over de associatie tussen die veranderlijken. Als de nulhypothese waar is dat <span class="math inline">\(X\)</span> en <span class="math inline">\(Y\)</span> onafhankelijk zijn, dan verwacht men dat een proportie <span class="math inline">\((b+d)/n\)</span> van <span class="math inline">\(a+b\)</span> controles met een Leu/Leu variant, of dat <span class="math inline">\((a+b)(b+d)/n\)</span> een Leu/Leu variant hebben omdat een proportie <span class="math inline">\((b+d)/n\)</span> van alle geobserveerde individuen een Leu/Leu variant heeft. Analoog kan men op basis van de marginale gegevens het verwachte aantal berekenen dat onder de nulhypothese in <em>elke cel</em> van de <span class="math inline">\(2\times 2\)</span> tabel zou liggen. Dit verwachte aantal onder <span class="math inline">\(H_0\)</span> in de <span class="math inline">\((i,j)\)</span>-de cel (conditioneel op de marges van de tabel) wordt aangeduid met <span class="math inline">\(E_{ij}\)</span> en is het product van het <span class="math inline">\(i\)</span>-de rijtotaal met het <span class="math inline">\(j\)</span>-de kolomtotaal gedeeld door het algemene totaal. In bovenstaand voorbeeld vinden we</p>
+<ul>
+<li><p><span class="math inline">\(E_{11}\)</span> = het verwachte aantal onder <span class="math inline">\(H_0\)</span> in de (1,1)-cel = 1227 <span class="math inline">\(\times\)</span> 572/1372 = 511.5 ;</p></li>
+<li><p><span class="math inline">\(E_{12}\)</span> = het verwachte aantal onder <span class="math inline">\(H_0\)</span> in de (1,2)-cel = 1227 <span class="math inline">\(\times\)</span> 800/1372 = 715.5 ;</p></li>
+<li><p><span class="math inline">\(E_{21}\)</span> = het verwachte aantal onder <span class="math inline">\(H_0\)</span> in de (2,1)-cel = 145 <span class="math inline">\(\times\)</span> 572/1372 = 60.45 ;</p></li>
+<li><p><span class="math inline">\(E_{22}\)</span> = het verwachte aantal onder <span class="math inline">\(H_0\)</span> in de (2,2)-cel = 145 <span class="math inline">\(\times\)</span> 800/1372 = 84.55 ;</p></li>
+</ul>
+Een toets van de nulhypothese gebeurt nu op basis van een vergelijking tussen de geobserveerde aantallen in cellen <span class="math inline">\((i,j),\)</span> genoteerd met <span class="math inline">\(O_{ij}\)</span> en de verwachte aantallen <span class="math inline">\(E_{ij}\)</span>. In dat opzicht levert de toetsingsgrootheid<br />
+
+<span class="math display">\[\begin{equation*}
+X^2 = \frac{\left (|O_{11} - E_{11}| - .5 \right)^2 }{ E_{11}} + \frac{
+\left ( |O_{12} - E_{12}| - .5 \right)^2 }{E_{12} }+ \frac{ \left ( |O_{21}
+- E_{21}| - .5 \right)^2 }{E_{21}}+ \frac{ \left ( |O_{22} - E_{22}| - .5
+\right)^2 }{E_{22} }
+\end{equation*}\]</span>
+<p>een goede discriminatie tussen de nulhypothese en de alternatieve hypothese. Men kan aantonen dat ze onder de nulhypothese bij benadering een zogenaamde <span class="math inline">\(\chi^2\)</span>-verdeling volgt met 1 vrijheidsgraad. Deze verdeling neemt uiteraard alleen positieve waarden aan en is scheef naar rechts verdeeld, behalve als het aantal vrijheidsgraden groot is (minstens 100), in welk geval ze meer symmetrisch wordt.</p>
+<p>Figuur <a href="chap-categorisch.html#fig:chidist">9.5</a> toont haar algemene vorm.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">grid=<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,.<span class="dv">1</span>)
+<span class="kw">plot</span>(grid,<span class="kw">dchisq</span>(grid,<span class="dv">1</span>),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
+dfs=<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>)
+    <span class="kw">lines</span>(grid,<span class="kw">dchisq</span>(grid,dfs[i]),<span class="dt">col=</span>i,<span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="dt">lty=</span><span class="dv">1</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">legend=</span><span class="kw">sapply</span>(dfs, <span class="cf">function</span>(d) <span class="kw">as.expression</span>(<span class="kw">substitute</span>(chi[df<span class="op">==</span>val]<span class="op">^</span><span class="dv">2</span>,<span class="kw">list</span>(<span class="dt">val=</span>d)))))</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:chidist"></span>
+<img src="Statistiek_2018_2019_files/figure-html/chidist-1.png" alt="Dichtheidsfuncties voor enkele Chi-kwadraat verdelingen" width="100%" />
+<p class="caption">
+Figuur 9.5: Dichtheidsfuncties voor enkele Chi-kwadraat verdelingen
+</p>
+</div>
+<p>Een grote waarde van de toetsingsgrootheid geeft een indicatie van een afwijking van de nulhypothese. Concreet zal een toets op het <span class="math inline">\(\alpha 100\%\)</span> significantieniveau de nulhypothese verwerpen zodra de geobserveerde waarde van de toetsingsgrootheid het <span class="math inline">\(100\%(1-\alpha)\)</span>-percentiel, <span class="math inline">\(\chi^2_{1, \alpha}\)</span>, van de <span class="math inline">\(\chi^2_1\)</span>-verdeling overschrijdt. Ze kan niet verwerpen in het andere geval. De p-waarde voor een 2-zijdige toets is in dit geval de kans om een grotere waarde voor de toetsingsgrootheid te observeren dan de geobserveerde waarde <span class="math inline">\(x^2\)</span> als de nulhypothese waar is. Dit is de kans dat een <span class="math inline">\(\chi^2_1\)</span>-verdeelde toevalsveranderlijke waarden groter dan <span class="math inline">\(x^2\)</span> aanneemt.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">expected &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dt">nrow=</span><span class="dv">2</span>,<span class="dt">ncol=</span><span class="dv">2</span>)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) 
+    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>)
+        expected[i,j] &lt;-<span class="st"> </span><span class="kw">sum</span>(brcaTab2[i,])<span class="op">*</span><span class="kw">sum</span>(brcaTab2[,j])<span class="op">/</span><span class="kw">sum</span>(brcaTab2)
+expected</code></pre></div>
+<pre><code>##          [,1]     [,2]
+## [1,] 511.5481 715.4519
+## [2,]  60.4519  84.5481</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x2 &lt;-<span class="st"> </span><span class="kw">sum</span>((<span class="kw">abs</span>(brcaTab2<span class="op">-</span>expected) <span class="op">-</span><span class="st"> </span>.<span class="dv">5</span>)<span class="op">^</span><span class="dv">2</span><span class="op">/</span>expected)
+<span class="dv">1</span><span class="op">-</span><span class="kw">pchisq</span>(x2,<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 0.481519</code></pre>
+<p>Omdat de observaties <span class="math inline">\(O_{ij}\)</span> in feite discrete getallen zijn, kan de toetsingsgrootheid <span class="math inline">\(X^2\)</span> slechts discrete waarden aannemen en kan een continue verdeling zoals de <span class="math inline">\(\chi^2_1\)</span>-verdeling slechts een benadering zijn voor haar werkelijke verdeling. Om de discrete verdeling beter bij de continue <span class="math inline">\(\chi^2_1\)</span>-verdeling te doen aansluiten, heeft men in de uitdrukking van de toetsingsgrootheid voor elke cel telkens 0.5 afgetrokken. Dit wordt een <em>continuïteitscorrectie</em> genoemd. In dit geval gaat het om de correctie van Yates en noemt men deze toets dan ook de <em>Pearson Chi-kwadraat toets met Yates correctie</em>. Wanneer de correctie niet gebruikt wordt (d.w.z. wanneer de getallen `0.5’ in de uitdrukking voor <span class="math inline">\(X^2\)</span> door 0 vervangen worden), dan spreekt men van de <em>Pearson Chi-kwadraat toets</em>. In R kan je deze toetsen uitvoeren door de optie  op TRUE of FALSE te zetten:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(brcaTab2)</code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  brcaTab2
+## X-squared = 0.49542, df = 1, p-value = 0.4815</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(brcaTab2,<span class="dt">correct=</span><span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  brcaTab2
+## X-squared = 0.62871, df = 1, p-value = 0.4278</code></pre>
+<p>Zelfs wanneer de continuïteitscorrectie wordt gebruikt, zal de <span class="math inline">\(\chi^2_1\)</span> benadering voor de verdeling van de toetsingsgrootheid slechts verantwoord zijn als in geen enkele van de cellen het verwachte aantal onder <span class="math inline">\(H_0\)</span> kleiner is dan 5. Wanneer de <span class="math inline">\(\chi^2\)</span>-benadering niet verantwoord is, kan men een <em>exacte toets</em> uitvoeren die rekening houdt met de echte mogelijke verdelingen van de marginale tellingen over de individuele cellen in de tabel. Dergelijke test maakt bijgevolg geen <span class="math inline">\(\chi^2\)</span>-benadering voor de verdeling van de toetsingsgrootheid onder de nulhypothese. De test die met de exacte verdeling van de marginale tellingen over de individuele cellen rekening houdt, wordt in de literatuur <em>Fisher’s exact test</em> genoemd. De nulhypothese van deze test is eveneens dat <span class="math inline">\(X\)</span> en <span class="math inline">\(Y\)</span> onafhankelijk zijn, en de alternatieve hypothese dat <span class="math inline">\(X\)</span> en <span class="math inline">\(Y\)</span> afhankelijk zijn. Een nadeel van de exacte test, is dat ze conservatief is (d.w.z. dat ze een kleinere kans hebben op een Type I fout dan vooropgesteld, en bijgevolg een grotere kans op Type II fouten). In R bekomt men deze test als volgt:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fisher.test</span>(brcaTab2)</code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  brcaTab2
+## p-value = 0.4764
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  0.7998798 1.6738449
+## sample estimates:
+## odds ratio 
+##   1.153279</code></pre>
+<p>Merk op dat deze functie tevens 95% betrouwbaarheidsintervallen rapporteert voor de bijhorende odds ratio.</p>
+<div id="uitbreiding-naar-categorische-variabelen-met-meerdere-niveaus" class="section level4">
+<h4><span class="header-section-number">9.3.3.1</span> Uitbreiding naar categorische variabelen met meerdere niveaus</h4>
+<p>Als minstens 1 van de discrete variabelen <span class="math inline">\(X\)</span> en <span class="math inline">\(Y\)</span> meer dan 2 mogelijke waarden aanneemt, kan men nagaan of de kansverdeling van <span class="math inline">\(Y\)</span> afhangt van de <span class="math inline">\(X\)</span>-waarde in de populatie door een veralgemening van de <span class="math inline">\(\chi^2\)</span>-toets uit vorige sectie. Ook hier toetst men de nulhypothese <span class="math inline">\(H_0: X\)</span> en <span class="math inline">\(Y\)</span> zijn onafhankelijk, ten opzichte van het tweezijdig alternatief <span class="math inline">\(H_A: X\)</span> en <span class="math inline">\(Y\)</span> zijn niet onafhankelijk. Als de variabele voorgesteld op de rijen <span class="math inline">\(r\)</span> mogelijke uitkomsten heeft en die op de kolommen <span class="math inline">\(c\)</span> mogelijke uitkomsten, dan noemt men de kruistabel die <span class="math inline">\(X\)</span> tegenover <span class="math inline">\(Y\)</span> uitzet, een <span class="math inline">\(r \times c\)</span> tabel.</p>
+Zoals voorheen vergelijkt men het aantal geobserveerde waarden in cel <span class="math inline">\((i,j)\)</span>, <span class="math inline">\(O_{ij}\)</span> genoteerd, met het aantal verwachte waarden onder de nulhypothese in deze cel, <span class="math inline">\(E_{ij}\)</span> genoemd, op basis van de marginale totalen. Net als voorheen is <span class="math inline">\(E_{ij}\)</span> het product van het <span class="math inline">\(i\)</span>-de rijtotaal met het <span class="math inline">\(j\)</span>-de kolomtotaal gedeeld door het algemene totaal. De toetsingsgrootheid is nu
+<span class="math display">\[\begin{equation*}
+X^2 = \sum_{ij} \frac{\left (O_{ij} - E_{ij}\right)^2 }{ E_{ij}} 
+\end{equation*}\]</span>
+<p>Men kan aantonen dat ze een Chi-kwadraat verdeling volgt met <span class="math inline">\((r-1) \times (c-1)\)</span> vrijheidsgraden als de nulhypothese waar is. De continuïteitscorrectie wordt meestal niet gebruikt bij meer dan 2 rijen of kolommen.</p>
+<p>We voeren nu de test uit voor het BRCA voorbeeld waarbij we nu gebruik maken van alle varianten</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(brcaTab)</code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  brcaTab
+## X-squared = 2.0551, df = 2, p-value = 0.3579</code></pre>
+<p>Om te onderzoeken of het BRCA1 gen geassocieerd is met borstkanker, berekenen we de Pearson chi-kwadraat toets voor de case-controle studie uit Tabel <a href="chap-categorisch.html#tab:leu3">9.2</a>. De toetsingsgrootheid bedraagt nu 2.055 en volgt een Chi-kwadraat verdeling met 2 vrijheidsgraden. De kans dat zo’n <span class="math inline">\(\chi^2\)</span>- verdeelde toevalsveranderlijke extremer is dan 2.055, bedraagt 36%. Op het 5% significantieniveau kunnen we dus niet besluiten dat het BRCA1 gen geassocieerd is met borstkanker.</p>
+<p>De <strong>Pearson <span class="math inline">\(\chi^2\)</span> test</strong> wordt gebruikt om te toetsen of er een associatie is tussen 2 kwalitatieve (mogelijks niet binaire) variabelen, i.h.b. om te toetsen of de verdeling<a href="#fn59" class="footnoteRef" id="fnref59"><sup>59</sup></a> van de ene kwalitatieve variabele verschilt alnaargelang de waarde van de andere kwalitatieve variabele. Ze vereist dat de 2 metingen voor de 2 kwalitatieve variabelen telkens bekomen werden van onafhankelijke subjecten, en dat minstens 80% van de cellen in de overeenkomstige kruistabel een verwacht aantal observaties van minstens 5 bezitten. Op die manier vormt ze het analogon van de one-way variantie-analyse voor kwalitatieve i.p.v. continue variabelen.</p>
+</div>
+</div>
+</div>
+<div id="logistische-regressie" class="section level2">
+<h2><span class="header-section-number">9.4</span> Logistische regressie</h2>
+<p>In de statistische literatuur bestaat ook een raamwerk voor het modelleren van binaire data (vb. kanker vs geen kanker): <em>logistische regressie-modellen</em>. Net zoals we bij het regressiemodel voor Normale continue gegevens hebben gezien in Hoofdstuk <a href="chap-linReg.html#chap:linReg">6</a>, <a href="chap-anova.html#chap:anova">7</a> en <a href="chap-glm.html#chap:glm">10</a>, laten logistische regressie modellen toe om binaire gegevens te modelleren a.d.h.v. continue en/of dummy variabelen.</p>
+De modellen veronderstellen dat de observaties voor subject <span class="math inline">\(i=1,\ldots,n\)</span> onafhankelijk zijn en een Bernoulli verdeling volgen. Het logaritme van de odds wordt dan gemodelleerd d.m.v. een lineair model, ook wel lineaire predictor genoemd:
+<span class="math display">\[\begin{equation}
+\left\{
+\begin{array}{ccl}
+Y_i&amp;\sim&amp;B(\pi_i)\\\\
+\log \frac{\pi_i}{1-\pi_i}&amp;=&amp;\beta_0 + \beta_1X_{i1} + \ldots + \beta_p X_{ip}
+\end{array}\right.
+\end{equation}\]</span>
+<div id="categorische-predictor" class="section level3">
+<h3><span class="header-section-number">9.4.1</span> Categorische predictor</h3>
+<p>We illustreren logistische regressie aan de hand van het borstkanker voorbeeld waar we bestuderen of de BRCA 1 variant geassocieerd is met het krijgen van borstkanker (zie Sectie <a href="chap-categorisch.html#subsec:catOnPaired">9.3.2</a>).</p>
+<p>Net zoals in de anova context, kunnen we een factor in het regressieraamwerk introduceren door gebruik te maken van dummy variabelen. We zullen hierbij 1 dummy variable minder nodig hebben dan er groepen zijn.</p>
+<p>Voor het BRCA 1 voorbeeld zijn dus twee dummy variabelen nodig en kunnen we de data dus modelleren met onderstaande lineaire predictor:</p>
+<span class="math display">\[\begin{eqnarray*}
+  \log \frac{\pi_i}{1-\pi_i} &amp;=&amp; \beta_0+\beta_1 x_{i1} +\beta_2 x_{i2}
+\end{eqnarray*}\]</span>
+<p>Waarbij de predictoren dummy-variabelen zijn: <span class="math display">\[x_{i1} = \left\{ \begin{array}{ll} 
+1 &amp; \text{ als subject $i$ heterozygoot is, Pro/Leu variant} \\
+0 &amp; \text{ als subject $i$ homozygoot is, (Pro/Pro of Leu/Leu variant)} \end{array}\right. .\]</span> en <span class="math display">\[x_{i2} = \left\{ \begin{array}{ll} 
+1 &amp; \text{ als subject $i$ homozygoot is in de Leucine mutatie: Leu/Leu variant} \\
+0 &amp; \text{ als subject $i$ niet homozygoot is in de Leu/Leu variant} \end{array}\right. .\]</span></p>
+<p>Homozygositeit in het wild type allel Pro/Pro wordt voor dit model de <strong>referentiegroep</strong>.</p>
+<p>Het model wordt als volgt in R gefit:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">brcaLogit &lt;-<span class="st"> </span><span class="kw">glm</span>(cancer<span class="op">~</span>variant,<span class="dt">data=</span>brca,<span class="dt">family=</span>binomial)
+<span class="kw">summary</span>(brcaLogit)</code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = cancer ~ variant, family = binomial, data = brca)
+## 
+## Deviance Residuals: 
+##    Min      1Q  Median      3Q     Max  
+## -1.379  -1.286   1.017   1.017   1.073  
+## 
+## Coefficients:
+##                Estimate Std. Error z value Pr(&gt;|z|)   
+## (Intercept)     0.25131    0.08175   3.074  0.00211 **
+## variantpro/leu  0.13802    0.11573   1.193  0.23302   
+## variantleu/leu  0.21197    0.18915   1.121  0.26243   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1863.9  on 1371  degrees of freedom
+## Residual deviance: 1861.9  on 1369  degrees of freedom
+## AIC: 1867.9
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+Het intercept is de log-odds op kanker in de referentieklasse (Pro/Pro) en de hellingstermen zijn log odds ratio’s tussen de behandeling en de referentieklasse:
+<span class="math display">\[\begin{eqnarray*}
+\log \text{ODDS}_\text{Pro/Pro}&amp;=&amp;\beta_0\\\\
+\log \text{ODDS}_\text{Pro/Leu}&amp;=&amp;\beta_0+\beta_1\\\\
+\log \text{ODDS}_\text{Leu/Leu}&amp;=&amp;\beta_0+\beta_2\\\\
+\log  \frac{\text{ODDS}_\text{Pro/Leu}}{\text{ODDS}_\text{Pro/Pro}}&amp;=&amp;\log \text{ODDS}_\text{Pro/Leu}-\log ODDS_{Pro/Pro}\\
+&amp;=&amp;\beta_0+\beta_1-\beta_0=\beta_1\\\\
+\log  \frac{\text{ODDS}_\text{Leu/Leu}}{\text{ODDS}_\text{Pro/Pro}}&amp;=&amp;\beta_2
+\end{eqnarray*}\]</span>
+<p>De analyse laat dus toe om de resultaten onmiddellijk te interpreteren in termen van Odds’es en Odds-ratio’s!</p>
+<p>Net zoals bij een ANOVA analyse bij een continue response, kan de anova functie worden gebruikt voor het testen of er een associatie is tussen het voorkomen van kanker en de genetische variant.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(brcaLogit,<span class="dt">test=</span><span class="st">&quot;Chisq&quot;</span>)</code></pre></div>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model: binomial, link: logit
+## 
+## Response: cancer
+## 
+## Terms added sequentially (first to last)
+## 
+## 
+##         Df Deviance Resid. Df Resid. Dev Pr(&gt;Chi)
+## NULL                     1371     1863.9         
+## variant  2   2.0562      1369     1861.9   0.3577</code></pre>
+<p>De <span class="math inline">\(\chi^2\)</span>-test in het logistische regressiemodel geeft eveneens aan dat er geen significante associatie is tussen de uitkomst (voorkomen van kanker) en de factor ( de genetische variant van het BRCA gen) (<span class="math inline">\(p=\)</span> 0.358). De p-waarde is bijna equivalent aan de p-waarde van de <span class="math inline">\(\chi^2\)</span>-test uit de vorige sectie.</p>
+<p>Als er een significante associatie was geweest, dan hadden we post-hoc tests kunnen uitvoeren om te evalueren welke odds ratio’s verschillend zijn. Voor het BRCA1 voorbeeld zouden we uiteraard geen post-hoc testen uitvoeren omdat de globale <span class="math inline">\(\chi^2\)</span>-test voor het testen van associatie niet significant is. We illustreren de post-hoc analyse toch zodat jullie over de code beschikken voor het uitvoeren van de analyses.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(multcomp)
+posthoc=<span class="kw">glht</span>(brcaLogit,<span class="dt">linfct=</span><span class="kw">mcp</span>(<span class="dt">variant =</span> <span class="st">&quot;Tukey&quot;</span>))
+posthocTests=<span class="kw">summary</span>(posthoc)
+posthocTests</code></pre></div>
+<pre><code>## 
+##   Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: glm(formula = cancer ~ variant, family = binomial, data = brca)
+## 
+## Linear Hypotheses:
+##                        Estimate Std. Error z value Pr(&gt;|z|)
+## pro/leu - pro/pro == 0  0.13802    0.11573   1.193    0.449
+## leu/leu - pro/pro == 0  0.21197    0.18915   1.121    0.493
+## leu/leu - pro/leu == 0  0.07395    0.18922   0.391    0.917
+## (Adjusted p values reported -- single-step method)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">posthocBI=<span class="kw">confint</span>(posthoc)
+posthocBI</code></pre></div>
+<pre><code>## 
+##   Simultaneous Confidence Intervals
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: glm(formula = cancer ~ variant, family = binomial, data = brca)
+## 
+## Quantile = 2.3256
+## 95% family-wise confidence level
+##  
+## 
+## Linear Hypotheses:
+##                        Estimate lwr      upr     
+## pro/leu - pro/pro == 0  0.13802 -0.13112  0.40716
+## leu/leu - pro/pro == 0  0.21197 -0.22790  0.65184
+## leu/leu - pro/leu == 0  0.07395 -0.36609  0.51399</code></pre>
+<p>Door middel van de <code>confint</code> functie worden BI’s verkregen op de log-odds ratios die gecorrigeerd zijn voor multiple testing. Deze kunnen als volgt worden teruggetransformeerd naar odds ratios:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">OR=<span class="kw">exp</span>(posthocBI<span class="op">$</span>confint)
+OR</code></pre></div>
+<pre><code>##                   Estimate       lwr      upr
+## pro/leu - pro/pro 1.148000 0.8771158 1.502543
+## leu/leu - pro/pro 1.236111 0.7962014 1.919075
+## leu/leu - pro/leu 1.076752 0.6934417 1.671942
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95
+## attr(,&quot;calpha&quot;)
+## [1] 2.325567</code></pre>
+<p>De odds ratios die worden bekomen met het logistisch regressiemodel zijn exact gelijk aan de odds ratios die we zouden bekomen op basis van Tabel <a href="chap-categorisch.html#tab:leu3">9.2</a>: vb. <span class="math inline">\(\text{OR}_\text{Leu/Leu-Pro/Pro}=89\times 266/(56\times 342)=\)</span> 1.236.</p>
+<p>Merk op dat de statistische besluitvorming bij logistische modellen beroep doet op asymptotische theorie. Ze is dus enkel correct voor grote steekproeven.</p>
+</div>
+<div id="continue-predictor" class="section level3">
+<h3><span class="header-section-number">9.4.2</span> Continue predictor</h3>
+<p>Om het toxicologisch effect van een stof te kwantificeren worden dierproeven uitgevoerd waarbij dieren bij verschillende concentraties van de stof worden blootgesteld voor een bepaalde tijd. In dit voorbeeld wordt koolstofdisulfide (CS<span class="math inline">\(_2\)</span>) bestudeerd in proeven met kevers. De centrale onderzoeksvraag is of de concentratie van CS<span class="math inline">\(_2\)</span> een effect heeft op de mortaliteit (i.e. kans op sterven) van de kevers?</p>
+<p><strong>Design</strong> In 32 onafhankelijk experimenten wordt een kever blootgesteld aan één van 8 concentraties (mg/l) van CS<span class="math inline">\(_2\)</span> voor een gegeven periode. De uitkomst van het experiment is: de kever sterft (<span class="math inline">\(y=1\)</span>) of de kever overleeft (<span class="math inline">\(y=0\)</span>). Een R object met de data is opgeslagen in de file <code>kevers.rda</code> in de dataset folder.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;dataset/kevers.rda&quot;</span>)
+<span class="kw">head</span>(kevers)</code></pre></div>
+<pre><code>##    dosis status
+## 1 169.07      1
+## 2 169.07      0
+## 3 169.07      0
+## 4 169.07      0
+## 5 172.42      1
+## 6 172.42      0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(kevers<span class="op">$</span>dosis,kevers<span class="op">$</span>status)</code></pre></div>
+<pre><code>##         
+##          0 1
+##   169.07 3 1
+##   172.42 3 1
+##   175.52 3 1
+##   178.42 2 2
+##   181.13 1 3
+##   183.69 0 4
+##   186.1  0 4
+##   188.39 0 4</code></pre>
+<p>We bouwen nu een logistisch regressiemodel waarbij we de log odds modelleren in functie van de dosis <span class="math inline">\(x_i\)</span>: <span class="math display">\[\log \frac{\pi_i}{1-\pi_i}=\beta_0+\beta_1 \times x_i.\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">keverModel&lt;-<span class="kw">glm</span>(status<span class="op">~</span>dosis,<span class="dt">data=</span>kevers,<span class="dt">family=</span>binomial)
+<span class="kw">summary</span>(keverModel)</code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = status ~ dosis, family = binomial, data = kevers)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.7943  -0.7136   0.2825   0.5177   2.1670  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)   
+## (Intercept) -53.1928    18.0046  -2.954  0.00313 **
+## dosis         0.3013     0.1014   2.972  0.00296 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 42.340  on 31  degrees of freedom
+## Residual deviance: 26.796  on 30  degrees of freedom
+## AIC: 30.796
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<p>Het intercept heeft als betekenis de log odds op mortaliteit wanneer er geen <span class="math inline">\(\text{CS}_2\)</span> gas wordt toegediend. Het duidt op een heel erg lage odds op sterfte (<span class="math inline">\(\pi/(1-\pi)=\exp(-53.2)\)</span>) en dus op een kans die nagenoeg nul is. We verwachten inderdaad dat de kevers niet zullen sterven als we geen gas gebruiken in het experiment. Merk op dat de interpretatie van het intercept echter wel op een heel sterke extrapolatie berust gezien de minimum dosis in de dataset 169.07 mg/l bedroeg.</p>
+<p>De geschatte odds ratio voor het effect van dosis op de mortaliteitskans is <span class="math inline">\(\exp(0.3013)=1.35\)</span>. Dus bij een toename van de dosis CS<span class="math inline">\(_2\)</span> met 1 mg/l, is de odds ratio voor de mortaliteit <span class="math inline">\(1.35\)</span>. We besluiten dat dit effect heel significant is (<span class="math inline">\(p=\)</span> 0.003). Een toename in de CS<span class="math inline">\(_2\)</span> dosis doet de kans op sterven toenemen.</p>
+<p>Figuur <a href="chap-categorisch.html#fig:keversFit">9.6</a> toont de geschatte probabiliteit in functie van de dosis die werd gefit a.d.h.v. het regressiemodel. De figuur werd bekomen met onderstaande R code. We kunnen predicties voor nieuwe dosissen berekenen d.m.v. de <code>predict</code> functie. Het argument <code>type=&quot;response&quot;</code> geeft aan dat we de predicties op de probabiliteitsschaal wensen. Wanneer we dat niet specifiëren genereert het model predictie op de log odds schaal.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dosisGrid=<span class="kw">seq</span>(<span class="kw">min</span>(kevers<span class="op">$</span>dosis),<span class="kw">max</span>(kevers<span class="op">$</span>dosis),.<span class="dv">1</span>)
+piHat=<span class="kw">predict</span>(keverModel,<span class="dt">newdata=</span><span class="kw">data.frame</span>(<span class="dt">dosis=</span>dosisGrid),<span class="dt">type=</span><span class="st">&quot;response&quot;</span>)
+
+<span class="kw">plot</span>(dosisGrid, piHat, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">xlab=</span><span class="st">&quot;dosis&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Prob(dood)&quot;</span>)
+
+<span class="co">#omdat we meerdere observaties hebben voor elke dosis, </span>
+<span class="co">#zullen we berekenen hoeveel kevers er leefden voor elke dosis</span>
+<span class="co">#en dat uitzetten in de grafiek</span>
+<span class="co">#zodat de ruwe gegevens ook worden weergegeven.</span>
+tabKevers=<span class="kw">table</span>(kevers)
+<span class="kw">text</span>(<span class="kw">as.double</span>(<span class="kw">rownames</span>(tabKevers)),<span class="dv">0</span>,<span class="dt">labels=</span>tabKevers[,<span class="dv">1</span>])
+<span class="kw">text</span>(<span class="kw">as.double</span>(<span class="kw">rownames</span>(tabKevers)),<span class="dv">1</span>,<span class="dt">labels=</span>tabKevers[,<span class="dv">2</span>])</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:keversFit"></span>
+<img src="Statistiek_2018_2019_files/figure-html/keversFit-1.png" alt="Fit van het logistische regressiemodel voor de kevers data. Het aantal kevers die dood/levend was per dosis is weergegeven met een cijfer." width="100%" />
+<p class="caption">
+Figuur 9.6: Fit van het logistische regressiemodel voor de kevers data. Het aantal kevers die dood/levend was per dosis is weergegeven met een cijfer.
+</p>
+</div>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Rogovin2017">
+<p>Rogovin, Konstantin A., Anastasiya M. Khrushchova, Olga N. Shekarova, Nina A. Vasilieva, and Nina Yu Vasilieva. 2017. “Females Choose Gentle, but Not Healthy or Macho Males in Campbell Dwarf Hamsters (Phodopus Campbelli Thomas 1905).” <em>Current Zoology</em> 63 (5): 545–54. doi:<a href="https://doi.org/10.1093/cz/zow090">10.1093/cz/zow090</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="55">
+<li id="fn55"><p>Wees voorzichtig als je een binomiaalcoëfficient met een zakrekenmachine berekent. Teller en noemer kunnen snel zeer groot worden. Om (afrondings)fouten te vermijden moet men de uitdrukking eerst zoveel mogelijk vereenvoudigen.<a href="chap-categorisch.html#fnref55">↩</a></p></li>
+<li id="fn56"><p>Indien de partnerkeuze niet geassocieerd zou zijn van de omgeving, verwachten we dat deze kansen (<span class="math inline">\(\pi_1\)</span> en <span class="math inline">\(\pi_2\)</span>) gelijk zijn op populatieniveau. Als we een associatie verwachten, met name partnerkeuze wordt beïnvloed door omgeving, dan zouden we verwachten dat vele hamsters zouden “switchen” van partnervoorkeur als ze uit een andere omgeving komen. De observaties waarbij geswitch wordt van partner worden discordante paren genoemd<a href="chap-categorisch.html#fnref56">↩</a></p></li>
+<li id="fn57"><p>Inderdaad, vermits de variantie onder de nulhypothese exact gekend is, moet er geen correctie worden uitgevoerd voor het schatten van de variantie en kunnen we de z-test gebruiken.<a href="chap-categorisch.html#fnref57">↩</a></p></li>
+<li id="fn58"><p>heterozygoot Pro/Leu of homozygoot Pro/Pro<a href="chap-categorisch.html#fnref58">↩</a></p></li>
+<li id="fn59"><p>Indien de ene kwalitatieve variabele 2 waarden aanneemt, bvb, succes of faling, dan kan deze toets gebruikt worden om na te gaan of de kans op succes verschilt tussen strata van de andere kwalitatieve variabele.<a href="chap-categorisch.html#fnref59">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="niet-parametrische-statistiek.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap-glm.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/09-CategorischeDataAnalyse.Rmd",
+"text": "Edit"
+},
+"download": ["Statistiek_2018_2019.pdf", "Statistiek_2018_2019.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
