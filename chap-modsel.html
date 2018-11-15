@@ -316,13 +316,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.2" data-path="chap-modsel.html"><a href="chap-modsel.html#modelselectie-op-basis-van-hypothesetesten"><i class="fa fa-check"></i><b>11.2</b> Modelselectie op basis van hypothesetesten</a><ul>
 <li class="chapter" data-level="11.2.1" data-path="chap-modsel.html"><a href="chap-modsel.html#voorwaartse-modelselectie"><i class="fa fa-check"></i><b>11.2.1</b> Voorwaartse modelselectie</a></li>
 <li class="chapter" data-level="11.2.2" data-path="chap-modsel.html"><a href="chap-modsel.html#achterwaartse-modelselectie"><i class="fa fa-check"></i><b>11.2.2</b> Achterwaartse modelselectie</a></li>
+<li class="chapter" data-level="11.2.3" data-path="chap-modsel.html"><a href="chap-modsel.html#stapsgewijze-modelselectie"><i class="fa fa-check"></i><b>11.2.3</b> Stapsgewijze modelselectie</a></li>
+<li class="chapter" data-level="11.2.4" data-path="chap-modsel.html"><a href="chap-modsel.html#opmerkingen"><i class="fa fa-check"></i><b>11.2.4</b> Opmerkingen</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="chap-modsel.html"><a href="chap-modsel.html#stapsgewijze-modelselectie"><i class="fa fa-check"></i><b>11.3</b> Stapsgewijze modelselectie</a></li>
-<li class="chapter" data-level="11.4" data-path="chap-modsel.html"><a href="chap-modsel.html#opmerkingen"><i class="fa fa-check"></i><b>11.4</b> Opmerkingen</a></li>
-<li class="chapter" data-level="11.5" data-path="chap-modsel.html"><a href="chap-modsel.html#modelselectie-voor-predictie"><i class="fa fa-check"></i><b>11.5</b> Modelselectie voor predictie</a><ul>
-<li class="chapter" data-level="11.5.1" data-path="chap-modsel.html"><a href="chap-modsel.html#inleiding-10"><i class="fa fa-check"></i><b>11.5.1</b> Inleiding</a></li>
-<li class="chapter" data-level="11.5.2" data-path="chap-modsel.html"><a href="chap-modsel.html#selectie-criterium"><i class="fa fa-check"></i><b>11.5.2</b> Selectie-criterium</a></li>
-<li class="chapter" data-level="11.5.3" data-path="chap-modsel.html"><a href="chap-modsel.html#alternatieve-criteria"><i class="fa fa-check"></i><b>11.5.3</b> Alternatieve criteria</a></li>
+<li class="chapter" data-level="11.3" data-path="chap-modsel.html"><a href="chap-modsel.html#modelselectie-voor-predictie"><i class="fa fa-check"></i><b>11.3</b> Modelselectie voor predictie</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="chap-modsel.html"><a href="chap-modsel.html#inleiding-10"><i class="fa fa-check"></i><b>11.3.1</b> Inleiding</a></li>
+<li class="chapter" data-level="11.3.2" data-path="chap-modsel.html"><a href="chap-modsel.html#selectie-criterium"><i class="fa fa-check"></i><b>11.3.2</b> Selectie-criterium</a></li>
+<li class="chapter" data-level="11.3.3" data-path="chap-modsel.html"><a href="chap-modsel.html#alternatieve-criteria"><i class="fa fa-check"></i><b>11.3.3</b> Alternatieve criteria</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -522,9 +522,8 @@ dropHlp&lt;-<span class="kw">drop1</span>(m,<span class="dt">test=</span><span c
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Merk op dat opnieuw hetzelfde model wordt gekozen. Dat is in het algemeen niet het geval. Vaak heeft achterwaartse modelselectie de eigenschap om te resulteren in een meer complex model dan voorwaartse selectie.</p>
 </div>
-</div>
-<div id="stapsgewijze-modelselectie" class="section level2">
-<h2><span class="header-section-number">11.3</span> Stapsgewijze modelselectie</h2>
+<div id="stapsgewijze-modelselectie" class="section level3">
+<h3><span class="header-section-number">11.2.3</span> Stapsgewijze modelselectie</h3>
 <p>Deze methode is een combinatie van voorwaartse en achterwaartse modelselectie. Het kan starten van het maximale of het minimale model. We implementeren de methode, startende van het minimale model. In elke stap zal eerst worden gekeken of een predictor kan worden toegevoegd, vervolgens zal worden nagegaan of een predictor kan worden verwijderd van het model.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alphaIn &lt;-<span class="st"> </span>alphaOut &lt;-<span class="st"> </span><span class="fl">0.05</span>
 m &lt;-<span class="st"> </span><span class="kw">lm</span>(lpsa <span class="op">~</span><span class="st"> </span><span class="dv">1</span> ,prostate)
@@ -623,17 +622,18 @@ dropHlp&lt;-<span class="kw">drop1</span>(m,<span class="dt">test=</span><span c
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Merk op dat er voor dit voorbeeld nooit een predictor uit het model werd verwijderd eens die werd opgenomen in het model. Dat is in het algemeen niet het geval.</p>
 </div>
-<div id="opmerkingen" class="section level2">
-<h2><span class="header-section-number">11.4</span> Opmerkingen</h2>
+<div id="opmerkingen" class="section level3">
+<h3><span class="header-section-number">11.2.4</span> Opmerkingen</h3>
 <p>Eerst een opmerking over de toepassing van de drie modelselectiemethoden op het prostaat voorbeeld. De drie methoden resulteerden in hetzelfde finale geselecteerde model (met enkel hoofdeffecten van lcavol, lweight en svi). In het algemeen leiden de drie methoden niet noodzakelijk tot eenzelfde finale model.</p>
 <p>De <span class="math inline">\(p\)</span>-waarden in het geselecteerde model mogen niet geïnterpreteerd worden. Dit is minder eenvoudig om in te zien. We hebben immers meerdere hypothese testen uitgevoerd om tot dit model te komen. Bovendien zorgt de modelselectie ervoor dat enkel “significante” termen in het finale model staan; de selectieprocedure is dus een doelbewuste aanrijkingsprocedure. Herinner je dat de definitie van de <span class="math inline">\(p\)</span>-waarde de kans onder <span class="math inline">\(H_0\)</span> is dat de teststatistiek “door zuiver toeval” minstens zo extreem is dan deze die waargenomen werd. Door de aanrijking via de modelselectieprocedure, is het niet langer “zuiver toeval” dat de teststatistiek groter is dan de geobserveerde.</p>
 <p>Er is geen theoretische basis voor de selectieprocedure. Intuïtief lijkt de procedure zinvol omdat we gewend zijn om beslissingen te nemen aan de hand van hypothesetesten, maar hypothesetesten zijn eigenlijk enkel geldig wanneer ze doelgericht toegepast worden om een vooraf (i.e. voor het observeren van de data) duidelijk omschreven onderzoeksvraag te beantwoorden. Bij modelselectie wordt het pad doorheen de modellenruimte bepaald door de geobserveerde data, waardoor de <span class="math inline">\(p\)</span>-waarden hun betekenis verliezen, i.e. de hypotheses worden niet vooraf door de onderzoekers geformuleerd, maar ze worden door de data bepaald.</p>
 <p>De analyse van lpsa in het vorige hoofdstuk zou ook als modelselectie kunnen worden bekeken: we startten met het model met de hoofdeffecten en met interactietermen. Vervolgens werd getest of de interactieterm nul was. Indien de interactieterm niet significant was, dan werd deze verwijderd en werden de hoofdeffecten getest. Dit lijkt op een achterwaartse modelselectie, maar in dat voorbeeld moeten we de procedure interpreteren als een klassieke hypothesetest (voor interactie) waarvan de nulhypothese in de onderzoeksvraag verscholen lag en dus niet door de data gesuggereerd werd.</p>
 </div>
+</div>
 <div id="modelselectie-voor-predictie" class="section level2">
-<h2><span class="header-section-number">11.5</span> Modelselectie voor predictie</h2>
+<h2><span class="header-section-number">11.3</span> Modelselectie voor predictie</h2>
 <div id="inleiding-10" class="section level3">
-<h3><span class="header-section-number">11.5.1</span> Inleiding</h3>
+<h3><span class="header-section-number">11.3.1</span> Inleiding</h3>
 <p>In het vroege stadium van de ontwikkeling van een nieuw geneesmiddel (Engels: <em>early drug development</em>) kijkt men tegenwoordig ook naar het effect van de werkzame stof (<em>compound</em>) op genexpressie. Dit kan een dieper inzicht geven in de werking van het geneesmiddel, of kan toxiciteit van de compound in een vroeg stadium detecteren (toxicogenomics). De gewenste activiteit van een compound wordt in vitro bepaald aan de hand van bio-assays (BA). De uitkomst is bv. een maat voor de bindingscapaciteiten van de compound aan de geviseerde receptor op de celwand (IC<span class="math inline">\(_{50}\)</span>). Deze receptor wordt de target genoemd.</p>
 <p>In deze vroege fase van de ontwikkeling van een geneesmiddel worden typisch 20 tot 50 gelijkaardige compounds uitvoerig getest. Op basis van de in vitro resultaten nemen de chemici beslissingen over hoe de molecules moeten aangepast worden om tot een (hopelijk) betere compound te komen (i.e. een hogere on-target activiteit en minder toxiciteit).</p>
 <p>De kleine variaties in moleculaire structuur geven aanleiding tot variaties in BA en genexpressies.</p>
@@ -667,7 +667,7 @@ Figuur 11.1: Scatterplot matrix voor de observaties in de bioactiviteit dataset.
 <p>De doelstelling is om een zo optimaal mogelijk model te selecteren dat gebruikt kan worden voor predictie van de uitkomst. Niettegenstaande de predictie voor een lineair regressiemodel gegeven wordt door <span class="math inline">\(\hat{Y}=\beta_0+\sum_{j=1}^{p-1}\beta_jX_j\)</span>, weten we dat de <span class="math inline">\(\beta\)</span>-parameters een interpretatie hebben met betrekking tot de gemiddelde uitkomst <span class="math inline">\(\text{E}[Y\mid (X_1,\ldots,X_{p-1})]=\beta_0+\sum_{j=1}^{p-1}\beta_jX_j\)</span>. Hypothesetesten voor <span class="math inline">\(H_0:\beta_j=0\)</span> gaan dus na of predictor <span class="math inline">\(X_j\)</span> (conditioneel op de andere regressoren in het model) gerelateerd is tot de gemiddelde uitkomst. Het al dan niet verwerpen van <span class="math inline">\(H_0\)</span> heeft niet enkel te maken met de werkelijke waarde van <span class="math inline">\(\beta_j\)</span>, maar ook met de kracht van de hypothesetest en dus ook met de steekproefgrootte <span class="math inline">\(n\)</span>. Hypothesetesten maken een afweging van de evidentie in de data tegen/voor de gestelde hypotheses die betrekking hebben op de gemiddelde uitkomst. Voor een goed predictiemodel is het minder belangrijk dat het model de werkelijkheid weerspiegelt met betrekking tot het verband tussen de gemiddelde uitkomst en de regressoren; het is enkel belangrijk dat het model goede predicties geeft voor individuele uitkomsten. Om deze reden wordt modelselectie voor predictiemodellen uitgevoerd door gebruik te maken van specifieke modelselectiecriteria die de kwaliteit van het predictieve karakter van een model kwantificeert.</p>
 </div>
 <div id="selectie-criterium" class="section level3">
-<h3><span class="header-section-number">11.5.2</span> Selectie-criterium</h3>
+<h3><span class="header-section-number">11.3.2</span> Selectie-criterium</h3>
 <p>Het is aanlokkelijk om <span class="math inline">\(R^2\)</span> te gebruiken als een criterium voor hoe goed het model in staat is om predicties te maken, gezien het aangeeft hoeveel procent van de variabiliteit in de data verklaard kan worden door het model. <span class="math inline">\(R^2\)</span> is echter geen goed criterium. Hoe complexer het model (hoe meer predictoren er worden opgenomen) hoe hoger <span class="math inline">\(R^2\)</span> wordt. <span class="math inline">\(R^2 = 1-SSE/SSTot = SSR/SSTot\)</span> en SSE (SSR) neemt immers steeds af(toe) als een extra predictor in het model wordt opgenomen terwijl SSTot constant blijft. Het gebruik van <span class="math inline">\(R^2\)</span> zal dus aanleiding geven tot overfitting. We zullen immers steeds het meest complexe model selecteren. Hierdoor zal het model niet meer goed veralgemenen naar nieuwe data toe: het model wordt als het ware te goed getuned naar de dataset die is gebruikt om het model te trainen waardoor het niet meer bruikbaar is om predicties te doen.</p>
 <p>Het Akaike Information Criterium (AIC) is een criterium dat een compromis maakt tussen de kwaliteit van de fit en de complexiteit van het model. <span class="math display">\[AIC = -2 \text{ln } L(\hat \beta_0, \ldots, \hat \beta_{p-1}, \hat \sigma^2) + 2 (p+1),\]</span></p>
 <p>waarbij de eerste term het natuurlijke logaritme is van likelihood, die voor een steekproef van <span class="math inline">\(n\)</span> i.i.d. normaal verdeelde observaties met dichtheidsfunctie <span class="math inline">\(f(Y_i \vert x_{i1} \ldots x_{ip-1}, \beta_0,\ldots, \beta_{p-1} ,\sigma^2)\)</span> en conditioneel gemiddelde <span class="math inline">\(E[Y_i \vert x_{i1} \ldots x_{ip-1}]=\beta_0 + \sum_{j=1}^{p-1} \beta_j x_{j}\)</span> gedefinieerd is als: <span class="math display">\[
@@ -1065,7 +1065,7 @@ mfull</code></pre></div>
 ##      -6.538        2.165       -1.784        1.240</code></pre>
 </div>
 <div id="alternatieve-criteria" class="section level3">
-<h3><span class="header-section-number">11.5.3</span> Alternatieve criteria</h3>
+<h3><span class="header-section-number">11.3.3</span> Alternatieve criteria</h3>
 <p>Recent zijn er binnen de machine learning diverse alternatieve technieken voor modelbouw ontwikkeld die hoofdzakelijk steunen op crossvalidatie, d.i. een techniek waarbij men telkens het regressiemodel schat op basis van een subset van de observaties en haar performantie evalueert door na te gaan hoe goed ze de resterende observaties voorspelt. Deze methoden zijn nog beter geschikt voor het bouwen van predictiemodellen. Ze evalueren het model immers op data die het model nog niet heeft gezien tijdens de training (fitting) fase.</p>
 
 <div id="refs" class="references">
