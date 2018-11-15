@@ -124,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2018-09-20}
+  \date{2018-11-15}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -195,16 +195,16 @@ software pakket R via het fantastische bookdown package van Yihui Xie.
 \tightlist
 \item
   Een html versie van de cursus is beschikbaar op
-  \url{https://users.ugent.be/~lclement/statistiek/} waardoor alle
+  \url{https://statomics.github.io/statistiekCursusNotas/} waardoor alle
   voorbeelden en code in deze cursus makkelijk in R kunnen worden
   gereproduceerd, wat handig kan zijn wanneer je zelf r-markdown scripts
   ontwikkeld.
 \item
   Een pdf versie van de cursus is beschikbaar op
-  \url{https://users.ugent.be/~lclement/statistiek/Statistiek_2018_2019.pdf}
+  \url{https://statomics.github.io/statistiekCursusNotas/Statistiek_2018_2019.pdf}
 \item
   Alle datasets zijn beschikbaar op
-  \url{https://users.ugent.be/~lclement/statistiek/data.zip}
+  \url{https://statomics.github.io/statistiekCursusNotas/data.zip}
 \end{itemize}
 
 \chapter{Inleiding}\label{inleiding}
@@ -9706,7 +9706,9 @@ ontbonden worden
     &=&  \text{SSE }+\text{SSR}  
   \end{eqnarray*}
 
-De ontbinding van de totale kwadratensom kan als volgt worden
+Merk op dat de dubbel product term wegvalt. Er kan aangetoond worden dat
+de ze gelijk is aan nul. Dat valt buiten het bestek van de ze cursus. De
+ontbinding van de totale kwadratensom kan als volgt worden
 geïnterpreteerd: De totale variabiliteit in de data (SSTot) wordt
 gedeeltelijk verklaard door het regressieverband (SSR). De variabiliteit
 die niet door het regressieverband verklaard wordt, is de residuele
@@ -14233,30 +14235,2717 @@ het model predictie op de log odds schaal.
 
 \chapter{Algemeen lineair model}\label{chap:glm}
 
+\section{Inleiding}\label{inleiding-8}
+
+Tot nog toe hebben we ons geconcentreerd op het beschrijven van een
+associatie tussen een uitkomst \(Y\) en één enkele predictor \(X\). Vaak
+is het echter nuttig om de gemiddelde uitkomst niet in termen van één,
+maar in termen van meerdere predictoren simultaan te beschrijven. De
+volgende voorbeelden illustreren waarom:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Vaak is de associatie tussen een verklarende variabele X en een
+  uitkomst Y verstoord als gevolg van een confounder C. Bijvoorbeeld,
+  bij het bepalen van het effect van de duur van blootstelling aan
+  asbest (X) op de longfunctie (Y), is leeftijd (C) een confounder omdat
+  het zowel de duur van blootstelling als de longfunctie beïnvloedt. Om
+  hiervoor te corrigeren, is het noodzakelijk om de associatie tussen X
+  en Y afzonderlijk te beschrijven voor mensen van dezelfde leeftijd
+  (m.a.w. individuen met dezelfde waarde voor de confounder). Voor elke
+  geobserveerde leeftijd (C=c) een aparte lineaire regressie uitvoeren
+  onder mensen van die leeftijd (C=c), is weinig zinvol omdat er vaak
+  weinig mensen met exact dezelfde leeftijd in de studie opgenomen zijn.
+  Dit is in het bijzonder zo wanneer er meerdere confounders zijn. In
+  deze sectie zullen we dit probleem oplossen door de confounder C als
+  extra variabele in het lineaire model op te nemen.
+\item
+  In heel wat studies is men geïnteresseerd in welke van een groep
+  variabelen een gegeven uitkomst het meest beïnvloedt. Bijvoorbeeld,
+  het begrijpen van welke aspecten van habitat en menselijke activiteit
+  een voorname impact hebben op de biodiversiteit in het regenwoud is
+  een belangrijk streefdoel van de conservatie-biologie. Daartoe wil men
+  niet alleen de grootte van het woud in rekening brengen, maar ook
+  andere factoren, zoals de ouderdom en hoogteligging van het woud, de
+  nabijheid van andere wouden, \ldots{} Een studie van het simultane
+  effect van die verschillende variabelen laat toe om beter inzicht te
+  krijgen in de variatie in biodiversiteit tussen verschillende wouden.
+  Door in het bijzonder wouden met hoge of lage biodiversiteit nader te
+  bekijken, kan men nieuwe predictieve factoren voor biodiversiteit
+  ontdekken.
+\item
+  Wanneer men een uitkomst wil voorspellen voor individuen, is het
+  belangrijk om veel predictieve informatie voor hen beschikbaar te
+  hebben en die informatie simultaan in een regressiemodel te kunnen
+  gebruiken. Bijvoorbeeld, na behandeling van patiënten met gevorderde
+  borstkanker is de prognose zeer onzeker. Op basis van gemeten
+  predictoren voor en na de operatie kan men echter regressiemodellen
+  opbouwen die toelaten om in de toekomst voor elke patiënt, op basis
+  van zijn/haar karakteristieken, de prognose te voorspellen. Verwante
+  predicties (maar dan voor het risico op sterfte) worden dagdagelijks
+  gebruikt in eenheden intensieve zorgen om de ernst van de
+  gezondheidstoestand van een patiënt uit te drukken. Het spreekt voor
+  zich dat betere predicties kunnen gemaakt worden wanneer een groot
+  aantal predictoren simultaan worden in rekening gebracht.
+\end{enumerate}
+
+In dit hoofdstuk breiden we daarom enkelvoudige lineaire regressie
+(Hoofdstuk \ref{chap:linReg}) uit door meerdere predictoren toe te
+laten. We zullen dus de gemiddelde uitkomsten modelleren als een functie
+van meerdere predictoren. We illustreren meervoudige lineaire regressie
+aan de hand van de prostaatkanker dataset.
+
+\subsection{Prostaatkanker dataset}\label{sec:prostate}
+
+Stamey et al., 1989, bestudeerden het niveau van het prostaat specific
+antigen (PSA) en een aantal klinische metingen bij 97 mannen waarvan de
+prostaat werd verwijderd. Het doel van de studie is om de associatie van
+de PSA te bestuderen in functie van het tumorvolume (lcavol), het
+gewicht van de prostaat (lweight), leeftijd (age), de goedaardige
+prostaathypertrofie hoeveelheid (lbph), een indicator voor de aantasting
+van de zaadblaasjes (svi), capsulaire penetratie (lcp), Gleason score
+(gleason) die de graad van kwaadaardigheid van de kanker weergeeft (hoe
+hoger de score hoe minder de kankercellen op normaal prostaatweefsel
+lijken), en, het precentage gleason score 4/5 (pgg45), die de proportie
+aangeeft van de tumor die ingenomen wordt door kankerweefsel van een
+hoge graad. De onderzoekers die de dataset verspreidden hebben het
+tumorvolume, het gewicht, de goedaardige prostraat hypertrofie
+hoeveelheid en de capsulaire penetratie reeds log-getransformeerd.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prostate <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"dataset/prostate.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(prostate)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       lcavol  lweight age      lbph     svi       lcp gleason   pgg45
+## 1 -0.5798185 2.769459  50 -1.386294 healthy -1.386294       6 healthy
+## 2 -0.9942523 3.319626  58 -1.386294 healthy -1.386294       6 healthy
+## 3 -0.5108256 2.691243  74 -1.386294 healthy -1.386294       7      20
+## 4 -1.2039728 3.282789  58 -1.386294 healthy -1.386294       6 healthy
+## 5  0.7514161 3.432373  62 -1.386294 healthy -1.386294       6 healthy
+## 6 -1.0498221 3.228826  50 -1.386294 healthy -1.386294       6 healthy
+##         lpsa
+## 1 -0.4307829
+## 2 -0.1625189
+## 3 -0.1625189
+## 4 -0.1625189
+## 5  0.3715636
+## 6  0.7654678
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(prostate)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/lpsaAll-1} 
+
+}
+
+\caption{Scatterplot matrix voor de observaties in de prostaat kanker dataset.}\label{fig:lpsaAll}
+\end{figure}
+
+Figuur \ref{fig:lpsaAll} toont de scatter matrix van de data en
+suggereert dat de lpsa sterk positief gecorreleerd is met het volume en
+svi. We zien verder dat lcp en lbph links-gecensureerd lijken te zijn.
+Er lijkt een ondergrens/detectielimiet te zijn voor deze metingen.
+Verder blijkt het merendeel van de gleason scores gelijk te zijn aan 6
+of 7. We zullen de analyse in dit hoofdstuk beperken tot de associatie
+van lpsa met het log tumorvolume (lcavol), het log gewicht (lweight) en
+de aantasting van de zaadblaasjes (svi).
+
+\section{Het additieve meervoudig lineaire regressie
+model}\label{het-additieve-meervoudig-lineaire-regressie-model}
+
+Afzonderlijke lineaire regressiemodellen, zoals
+
+\[E(Y|X_v)=\alpha+\beta_v X_v\]
+
+laten enkel toe om de associatie tussen de prostaat specifieke antigeen
+concentratie te evalueren op basis van 1 variabele, bijvoorbeeld het
+log-tumorvolume. Het spreekt voor zich dat meer accurate predicties
+kunnen bekomen worden door meerdere predictoren simultaan in rekening te
+brengen. Bovendien geeft de parameter \(\beta_v\) in dit model mogelijks
+geen zuiver effect van het tumorvolume weer. Inderdaad, \(\beta_v\) is
+het gemiddeld verschil in log-psa voor patiënten die 1 eenheid in het
+log tumorvolume (lcavol) verschillen. Zelfs als lcavol niet is
+geassocieerd met het lpsa, dan nog kunnen patiënten met een groter
+tumorvolume een hoger lpsa hebben omdat ze bijvoorbeeld een aantasting
+van de zaadblaasjes hebben (svi status 1). Dit is een probleem van
+confounding (nl. het effect van lcavol wordt verward met het effect van
+svi) dat kan verholpen worden door patiënten te vergelijken met
+verschillend log-tumorvolume, maar met dezelfde status voor svi. We
+zullen in dit hoofdstuk aantonen dat meervoudige lineaire
+regressiemodellen dit op een natuurlijke wijze mogelijk maken.
+
+\subsection{Statistisch model}\label{statistisch-model}
+
+De techniek die we hiertoe gaan gebruiken heet \emph{meervoudige
+lineaire regressie}, in tegenstelling tot \emph{enkelvoudige lineaire
+regressie} die we eerder gebruikt hebben. Stel dat we \(p-1\)
+verklarende variabelen \(X_1,...,X_{p-1}\) en een uitkomst \(Y\)
+beschikbaar hebben voor \(n\) subjecten. Stel bovendien dat de
+gemiddelde uitkomst lineair kan beschreven worden in functie van deze
+verklarende variabelen; d.w.z.
+
+\begin{equation}  
+Y_i =\beta_0 + \beta_1 X_{i1} + ... +\beta_{p-1} X_{ip-1} + \epsilon_i
+\end{equation}
+
+waarbij \(\beta_0,\beta_1,...,\beta_{p-1}\) onbekende parameters zijn en
+\(\epsilon_i\) de residuen die niet kunnen worden verklaard a.d.h.v. de
+predictoren. Het principe van de \emph{kleinste kwadratenmethode} kan
+ook voor dit model worden gebruikt om schatters te bekomen voor de
+onbekende parameters \(\beta_0, \ldots, \beta_{p-1}\). De formules voor
+deze schattingen zijn nu een stuk complexer dan voorheen, maar worden
+door de software automatisch uitgerekend. Voor gegeven schattingen
+\(\hat{\beta}_0,\hat{\beta}_1,...,\hat{\beta}_{p-1}\) laat het lineaire
+regressiemodel dan toe om:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  de verwachte uitkomst te voorspellen voor subjecten met gegeven
+  waarden \(x_1,...,x_{p-1}\) voor de verklarende variabelen. Dit kan
+  geschat worden als
+  \(E[Y\vert X_1=x_1, \ldots X_{p-1}=x_{p-1}]=\hat{\beta}_0+\hat{\beta}_1x_1+...+\hat{\beta}_{p-1}x_{p-1}\).
+\item
+  na te gaan in welke mate de gemiddelde uitkomst verschilt tussen 2
+  groepen subjecten met \(\delta\) eenheden verschil in een verklarende
+  variabele \(X_j\) met \(j=1,\ldots,p\), maar met dezelfde waarden voor
+  alle andere variabelen \(\{X_k,k=1,...,p,k\ne j\}\). Namelijk: \[
+  \begin{array}{l}
+  E(Y|X_1=x_1,...,X_j=x_j+\delta,...,X_{p-1}=x_{p-1}) - E(Y|X_1=x_1,...,X_j=x_j,...,X_{p-1}=x_{p-1}) \\
+  \quad =\beta_0 + \beta_1 x_1 + ... + \beta_j(x_j+\delta)+...+\beta_{p-1} x_{p-1} - \beta_0 - \beta_1 x_1 - ... - \beta_jx_j-...-\beta_{p-1} x_{p-1} \\
+  \quad= \beta_j\delta
+  \end{array}
+  \]
+\end{enumerate}
+
+In het bijzonder kan \(\beta_j\) geïnterpreteerd worden als het verschil
+in gemiddelde uitkomst tussen subjecten die 1 eenheid verschillen in de
+waarde van \(X_j\), maar dezelfde waarde hebben van de overige
+verklarende variabelen in het model. Dit kan geschat worden als
+\(\hat{\beta}_j\).
+
+Voor het prostaatkanker voorbeeld levert een analyse van het
+enkelvoudige lineaire regressiemodel \(E(Y|X_v)=\beta_0+\beta_v X_v\) in
+R de volgende output.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lmV <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(lpsa }\OperatorTok{~}\StringTok{ }\NormalTok{lcavol, prostate)}
+\KeywordTok{summary}\NormalTok{(lmV)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = lpsa ~ lcavol, data = prostate)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.67624 -0.41648  0.09859  0.50709  1.89672 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  1.50730    0.12194   12.36   <2e-16 ***
+## lcavol       0.71932    0.06819   10.55   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7875 on 95 degrees of freedom
+## Multiple R-squared:  0.5394, Adjusted R-squared:  0.5346 
+## F-statistic: 111.3 on 1 and 95 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+We besluiten op basis van deze gegevens dat patiënten met een
+tumorvolume dat 1\% hoger ligt, gemiddeld gezien een prostaat antigeen
+concentratie zullen hebben die ongeveer 0.72\% hoger zal liggen. Merk op
+dat we voor deze interpretatie beroep hebben gedaan op het feit dat
+beide variabelen log getransformeerd zijn.
+
+Een analyse van het meervoudige lineaire regressiemodel met de
+predictoren lcavol (index v), lweight (index w) en svi (index s)
+\[E(Y|X_f,X_s,X_p,X_r)=\beta_0 +\beta_v X_v+\beta_w X_w+\beta_s X_s,\]
+
+wijzigt dit resultaat vrij behoorlijk, zoals onderstaande output
+aangeeft.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lmVWS <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(lpsa }\OperatorTok{~}\StringTok{ }\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }\NormalTok{lweight }\OperatorTok{+}\StringTok{ }\NormalTok{svi, prostate)}
+\KeywordTok{summary}\NormalTok{(lmVWS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = lpsa ~ lcavol + lweight + svi, data = prostate)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.72966 -0.45767  0.02814  0.46404  1.57012 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -0.26807    0.54350  -0.493  0.62301    
+## lcavol       0.55164    0.07467   7.388  6.3e-11 ***
+## lweight      0.50854    0.15017   3.386  0.00104 ** 
+## sviinvasion  0.66616    0.20978   3.176  0.00203 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7168 on 93 degrees of freedom
+## Multiple R-squared:  0.6264, Adjusted R-squared:  0.6144 
+## F-statistic: 51.99 on 3 and 93 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+De parameter bij lcavol geeft nu aan dat patiënten met een tumorvolume
+dat 1\% hoger ligt, maar eenzelfde prostaat gewicht en svi status
+hebben, een prostaat antigeen concentratie zullen hebben dat gemiddeld
+slechts 0.55\% hoger ligt. De reden dat we eerder een verschil van meer
+dan 0.7\% vonden, kan worden verklaard doordat patiënten met een
+verschil in tumorvolume vaak ook verschillen in prostaat gewicht en svi
+status.
+
+De parameter voor svi kunnen we als volgt interpreteren: de prostaat
+antigeen concentratie ligt gemiddeld een factor exp(0.666)=1.95 hoger
+voor patiënten met invasie van de zaadblaasjes dan voor patiënten zonder
+invasie van de zaadblaasjes na correctie voor het prostaat gewicht en
+het tumorvolume. De introductie van de factor svi in het additieve model
+zorgt ervoor dat we twee regressievlakken bekomen die evenwijdig zijn
+maar een verschillend intercept hebben (zie Figuur
+\ref{fig:prosAdditiveFit}).
+
+De \(R^2\)-waarde in bovenstaande analyse bedraagt 62.6\% en geeft aan
+62.6\% in de variabiliteit van het log-PSA verklaard kan worden d.m.v.
+het tumorvolume, het prostaat gewicht en de status van de zaadblaasjes.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/prosAdditiveFit-1} 
+
+}
+
+\caption{Fit van het additieve model met termen lcavol, lweight en svi. De figuur geeft duidelijk weer dat de gemiddelde lpsa toeneemt i.f.v. het log-tumorvolume, het log-prostaatgewicht en de invasie van de zaadblaasjes. Merk op dat de fit resulteert in twee parallele vlakken, een regressievlak voor patiënten zonder (blauw) en met invasie van de zaadblaasjes (oranje).}\label{fig:prosAdditiveFit}
+\end{figure}
+
+\section{Besluitvorming in
+regressiemodellen}\label{besluitvorming-in-regressiemodellen}
+
+Als de gegevens representatief zijn voor de populatie kan men in de
+meervoudige lineaire regressiecontext eveneens aantonen dat de kleinste
+kwadraten schatters voor het intercept en de hellingen onvertekend zijn,
+m.a.w \[E[\hat \beta_j]=\beta_j,\quad j=0,\ldots,p-1.\]
+
+Het feit dat de schatters gemiddeld (over een groot aantal vergelijkbare
+studies) niet afwijken van de waarden in de populatie, impliceert niet
+dat ze niet rond die waarde variëren. Om inzicht te krijgen hoe dicht we
+de parameterschatters bij het werkelijke intercept \(\beta_0\) en de
+werkelijke hellingen \(\beta_j\) mogen verwachten, wensen we bijgevolg
+ook haar variabiliteit te kennen.
+
+Net zoals in Hoofdstuk \ref{chap:linReg} is het op basis van de
+puntschatters voor de hellingen niet duidelijk of de verbanden werkelijk
+voorkomen in de populatie of indien we de verbanden door toeval hebben
+geobserveerd in de dataset. De schatting van de hellingen is immers
+onnauwkeurig en zal variëren van steekproef tot steekproef. Zoals steeds
+is het resultaat van een data-analyse dus niet interpreteerbaar zonder
+die variabiliteit in kaart te brengen.
+
+Om de resultaten uit de steekproef te kunnen veralgemenen naar de
+populatie zullen we in deze context eveneens inzicht nodig hebben op de
+verdeling van de parameterschatters. Om op basis van slechts één
+steekproef te kunnen voorspellen hoe de parameterschatters variëren van
+steekproef tot steekproef zullen we naast de onderstelling van
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Lineariteit}
+\end{enumerate}
+
+bijkomende aannames moeten maken over de verdeling van de gegevens, met
+name
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \emph{Onafhankelijkheid}: de metingen
+  \((X_{11},\dots, X_{1p-1}, Y_1), ..., (X_{n1},\ldots,X_{np-1},Y_n)\)
+  werden gemaakt bij n onafhankelijke subjecten/observationele eenheden
+\item
+  \emph{Homoscedasticiteit} of \emph{gelijkheid van variantie}: de
+  observaties variëren met een gelijke variantie rond het regressievlak.
+  De residuen \(\epsilon_i\) hebben dus een gelijke variantie
+  \(\sigma^2\) voor elk covariaat patroon
+  \((X_1=x_1, ..., X_{p-1}=x_{p-1})\). Dat impliceert ook dat de
+  conditionele variantie van \(Y\) gegeven \(X_1,\ldots,X_{p-1}\),
+  \(\text{var}(Y\vert X_1,\ldots,X_{p-1})\) dus gelijk is, met name
+  \(\text{var}(Y\vert X_1,\ldots,X_{p-1}) = \sigma^2\) voor elk
+  covariaat patroon \((X_1=x_1, ..., X_{p-1}=x_{p-1})\). De constante
+  \(\sigma\) wordt opnieuw de \emph{residuele standaarddeviatie}
+  genoemd.
+\item
+  \emph{Normaliteit}: de residuen \(\epsilon_i\) zijn normaal verdeeld.
+\end{enumerate}
+
+Uit aannames 2, 3 en 4 volgt dus dat de residuen \(\epsilon_i\)
+onafhankelijk zijn en dat ze allen eenzelfde Normale verdeling volgen
+\[\epsilon_i \sim N(0,\sigma^2).\] Als we ook steunen op de
+veronderstelling van lineariteit weten we dat de originele observaties
+conditioneel op \(X_1,\ldots,X_{p-1}\) eveneens Normaal verdeeld zijn
+\[Y_i\sim N(\beta_0+\beta_1 X_{i1}+\ldots+\beta_{p-1} X_{ip-1},\sigma^2),\]
+met een gemiddelde dat varieert in functie van de waarde van de
+onafhankelijke variabelen \(X_{i1},\ldots,X_{ip-1}\).
+
+Merk op dat de onzekerheid op de hellingen af zal nemen wanneer er meer
+observaties zijn en/of wanneer de observaties meer gespreid zijn. Voor
+het opzetten van een experiment kan dit belangrijke informatie zijn.
+Uiteraard wordt de precisie ook beïnvloed door de grootte van de
+variabiliteit van de observaties rond het regressievlak, \(\sigma^2\),
+maar dat heeft een onderzoeker typisch niet in de hand.
+
+De conditionele variantie (\(\sigma^2\)) is echter niet gekend en is
+noodzakelijk voor de berekening van de variantie op de
+parameterschatters. We kunnen \(\sigma^2\) echter opnieuw schatten op
+basis van de \emph{mean squared error} (MSE):
+
+\[\hat\sigma^2=MSE=\frac{\sum\limits_{i=1}^n \left(y_i-\hat\beta_0-\hat\beta_1 X_{i1}-\ldots-\hat\beta_{p-1} X_{ip-1}\right)^2}{n-p}=\frac{\sum\limits_{i=1}^n e^2_i}{n-p}.\]
+
+Analoog als in Hoofdstuk \ref{chap:linReg} kunnen we opnieuw toetsen en
+betrouwbaarheidsintervallen construeren op basis van de
+teststatistieken\\
+\[T_k=\frac{\hat{\beta}_k-\beta_k}{SE(\hat{\beta}_k)} \text{ met } k=0, \ldots, p-1.\]
+Als aan alle aannames is voldaan dan volgen deze statistieken \(T_k\)
+een t-verdeling met \(n-p\) vrijheidsgraden. Wanneer niet is voldaan aan
+de veronderstelling van normaliteit maar wel aan lineariteit,
+onafhankelijkheid en homoscedasticiteit dan kunnen we voor inferentie
+opnieuw beroep doen op de centrale limietstelling die zegt dat de
+statistiek \(T_k\) bij benadering een standaard Normale verdeling zal
+volgen wanneer het aantal observaties voldoende groot is.
+
+Voor het prostaatkanker voorbeeld kunnen we de effecten in de steekproef
+opnieuw veralgemenen naar de populatie toe door
+betrouwbaarheidsintervallen te bouwen voor de hellingen:
+\[[\hat\beta_j - t_{n-p,\alpha/2} \text{SE}_{\hat\beta_j},\hat\beta_j + t_{n-p,\alpha/2} \text{SE}_{\hat\beta_j}]\].
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{confint}\NormalTok{(lmVWS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  2.5 %    97.5 %
+## (Intercept) -1.3473509 0.8112061
+## lcavol       0.4033628 0.6999144
+## lweight      0.2103288 0.8067430
+## sviinvasion  0.2495824 1.0827342
+\end{verbatim}
+
+Gezien nul niet in de intervallen ligt weten we eveneens dat de
+associaties tussen lpsa \(\leftrightarrow\) lcavol, lpsa
+\(\leftrightarrow\) lweight, lpsa \(\leftrightarrow\) svi, statistisch
+significant zijn op het 5\% significantieniveau.
+
+Anderzijds kunnen we ook formele hypothesetoetsen uitvoeren. Onder de
+nulhypothese veronderstellen we dat er geen associatie is tussen lpsa en
+de predictor \(X_j\): \[H_0: \beta_j=0\] en onder de alternatieve
+hypothese is er een associatie tussen response en predictor \(X_j\):
+\[H_1: \beta_j\neq0\]
+
+Met de test statistiek \[T=\frac{\hat{\beta}_j-0}{SE(\hat{\beta}_j)}\]
+kunnen we de nulhypothese falsifiëren. Onder \(H_0\) volgt de statistiek
+een t-verdeling met \(n-p\) vrijheidsgraden, waarbij p het aantal model
+parameters is van het regressiemodel inclusief het intercept.
+
+Deze tweezijdige testen zijn standaard geïmplementeerd in de standaard
+output van R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(lmVWS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = lpsa ~ lcavol + lweight + svi, data = prostate)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.72966 -0.45767  0.02814  0.46404  1.57012 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -0.26807    0.54350  -0.493  0.62301    
+## lcavol       0.55164    0.07467   7.388  6.3e-11 ***
+## lweight      0.50854    0.15017   3.386  0.00104 ** 
+## sviinvasion  0.66616    0.20978   3.176  0.00203 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7168 on 93 degrees of freedom
+## Multiple R-squared:  0.6264, Adjusted R-squared:  0.6144 
+## F-statistic: 51.99 on 3 and 93 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+De testen geven weer dat de associaties tussen
+lpsa\(\leftrightarrow\)lcavol, lpsa\(\leftrightarrow\)lweight en
+lpsa\(\leftrightarrow\)svi, respectievelijk extreem significant
+(\(p << 0.001\)) en sterk significant (\(p=0.001\) en \(p=0.002\)) zijn.
+
+\section{Nagaan van
+modelveronderstellingen}\label{nagaan-van-modelveronderstellingen-1}
+
+Voor de statistische besluitvorming hebben we volgende aannames gedaan
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Lineariteit
+\item
+  Onafhankelijkheid\\
+\item
+  Homoscedasticiteit
+\item
+  Normaliteit
+\end{enumerate}
+
+Onafhankelijkheid is moeilijk te verifiëren op basis van de data, dat
+zou gegarandeerd moeten zijn door het design van de studie. Als we
+afwijkingen zien van lineariteit dan heeft besluitvorming geen zin
+gezien het de primaire veronderstelling is. In dat geval moeten we het
+conditioneel gemiddelde eerst beter modelleren. In geval van lineariteit
+maar schendingen van homoscedasticiteit of normaliteit dan weten we dat
+de besluitvorming mogelijks incorrect is omdat de teststatistieken dan
+niet langer een t-verdeling volgen.
+
+\subsection{Lineariteit}\label{lineariteit-1}
+
+De primaire veronderstelling in meervoudige lineaire regressie-analyse
+is de aanname dat de uitkomst (afhankelijke variabele) lineair varieert
+in functie van de verklarende variabelen.
+
+Afwijkingen van lineariteit kunnen opnieuw worden opgespoord d.m.v. een
+\emph{residuplot}. Deze wordt weergegeven in Figuur
+\ref{fig:prosLinDiag1} links boven. Als de veronderstelling van
+lineariteit opgaat, krijgt men in een residuplot geen patroon te zien.
+De residuen zijn immers gemiddeld nul voor elke waarde van de
+predictoren en zouden dus mooi rond nul moeten variëren. Dat is
+inderdaad het geval voor het meervoudig lineaire regressiemodel dat we
+hebben gefit o.b.v. de prostaat dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(lmVWS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/prosLinDiag1-1} 
+
+}
+
+\caption{Diagnostische plots voor het nagaan van de veronderstellingen van het lineair regressiemodel waarbij lpsa gemodelleerd wordt a.d.h.v. de predictoren lcavol, lweight en svi.}\label{fig:prosLinDiag1}
+\end{figure}
+
+\subsection{Homoscedasticiteit}\label{homoscedasticiteit}
+
+De residu-plot kan opnieuw worden gebruikt om de veronderstelling na te
+gaan van homoscedasticiteit of gelijkheid van variantie. De residu-plot
+voor het prostaatkanker voorbeeld Figuur \ref{fig:prosLinDiag1} links
+boven geeft geen afwijkingen weer van homoscedasiticiteit. Alle residuen
+zijn mooi gespreid binnen dezelfde grenzen voor elke gefitte waarde
+\(\hat y_i\). De plot van de vierkantswortel van de absolute waarde van
+de gestandardiseerde error \(\sqrt{|e_i|/\sqrt{MSE}}\) in functie van de
+predicties (Figuur \ref{fig:prosLinDiag1} links onder) geeft ook geen
+afwijkingen van homoscedasticiteit weer.
+
+\subsection{Normaliteit}\label{normaliteit}
+
+Opnieuw kunnen we de veronderstelling van normaliteit nagaan door
+gebruik te maken van QQ-plots. Figuur \ref{fig:prosLinDiag1} rechts
+boven geeft de QQ-plot weer van de residuen voor het prostaatkanker
+voorbeeld. We zien in de plot geen aanwijzing voor afwijkingen van
+normaliteit.
+
+\section{Het niet-additieve meervoudig lineair
+regressiemodel}\label{het-niet-additieve-meervoudig-lineair-regressiemodel}
+
+\subsection{Interactie tussen twee continue
+variabelen}\label{sec:intCont}
+
+We breiden het meervoudig lineaire regressie model nu uit door
+toevoeging van interactie-termen.
+
+Het model in de vorige secties werd een additief model genoemd omdat de
+bijdrage van het kanker volume in lpsa niet afhangt van de hoogte van
+het prostaat gewicht en de status van de zaadblaasjes. De helling voor
+lcavol hangt m.a.w. niet af van de hoogte van het log prostaat gewicht
+en de status van de zaadblaasjes.
+
+\[\beta_0 + \beta_v (x_{v}+\delta_v) + \beta_w x_{w} +\beta_s x_{s} - \beta_0 - \beta_v x_{v} - \beta_w x_{w} -\beta_s x_s = \beta_v \delta_v
+\]
+
+De svi status en de hoogte van het log-prostaatgewicht (\(x_w\)) heeft
+geen invloed op de bijdrage van het log-tumorvolume (\(x_v\)) in de
+gemiddelde log-prostaat antigeen concentratie en vice versa.
+
+Het zou nu echter kunnen zijn dat de associatie tussen lpsa en lcavol
+wel afhangt van het prostaatgewicht. De gemiddelde toename in lpsa
+tussen patiënten die één eenheid van log-tumorvolume verschillen zou
+bijvoorbeeld lager kunnen zijn voor patiënten met een hoog
+prostaatgewicht dan bij patiënten met een laag prostaatgewicht. Het
+effect van het tumorvolume op de prostaat antigeen concentratie hangt in
+dit geval af van het prostaatgewicht.
+
+Om een dergelijke \textit{interactie} of \textit{effectmodificatie}
+tussen 2 variabelen \(X_v\) en \(X_w\) statistisch te modelleren, kan
+men het product van beide variabelen in kwestie aan het model toevoegen:
+
+\[
+Y_i = \beta_0 + \beta_v x_{iv} + \beta_w x_{iw} +\beta_s x_{is} + \beta_{vw} x_{iv}x_{iw} +\epsilon_i
+\]
+
+Deze term kwantificeert het \emph{interactie-effect} van de predictoren
+\(x_v\) en \(x_w\) op de gemiddelde uitkomst. In dit model worden de
+termen \(\beta_vx_{iv}\) en \(\beta_wx_{iw}\) dikwijls de
+\emph{hoofdeffecten} van de predictoren \(x_v\) en \(x_w\) genoemd.
+
+Het `effect' van een verschil in 1 eenheid in \(X_v\) op de gemiddelde
+uitkomst bedraagt nu:
+
+\[
+\begin{array}{l}
+E(Y|X_v=x_v+1,X_w=x_w,X_s=x_s) − E(X_v=x_v,X_w=x_w,X_s=x_s) \\
+\quad = \beta_0 + \beta_v (x_{v}+1) + \beta_w x_w +\beta_s x_{s} + \beta_{vw} (x_{v}+1) x_w - \beta_0 - \beta_v x_{v} - \beta_w x_w -\beta_s x_{s} - \beta_{vw} (x_{v}) x_w \\
+\quad = \beta_v +  \beta_{vw} x_w
+ \end{array} 
+ \]
+
+wanneer het log-prostaatgewicht \(X_w=c\) en de \(X_s=x_s\) status
+ongewijzigd blijven. Merk op dat het `effect' van een wijzing in het
+tumorvolume bij constant log-prostaat gewicht nu inderdaad afhankelijk
+is van de hoogte van het log-prostaatgewicht \(x_w\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lmVWS_IntVW <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(lpsa }\OperatorTok{~}\StringTok{ }\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }\NormalTok{lweight }\OperatorTok{+}\StringTok{ }\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol}\OperatorTok{:}\NormalTok{lweight, }
+\NormalTok{    prostate)}
+\KeywordTok{summary}\NormalTok{(lmVWS_IntVW)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = lpsa ~ lcavol + lweight + svi + lcavol:lweight, 
+##     data = prostate)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.65886 -0.44673  0.02082  0.50244  1.57457 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)     -0.6430     0.7030  -0.915  0.36278   
+## lcavol           1.0046     0.5427   1.851  0.06734 . 
+## lweight          0.6146     0.1961   3.134  0.00232 **
+## sviinvasion      0.6859     0.2114   3.244  0.00164 **
+## lcavol:lweight  -0.1246     0.1478  -0.843  0.40156   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7179 on 92 degrees of freedom
+## Multiple R-squared:  0.6293, Adjusted R-squared:  0.6132 
+## F-statistic: 39.05 on 4 and 92 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+De output van het model geeft een schatting van -0.125 voor de
+interactie \(\beta_{vw}\) tussen het log-tumorvolume en het
+log-prostaatgewicht. Dat betekent dat de gemiddelde toename in lpsa
+tussen patiënten met een verschil in het log-tumorvolume maar met
+eenzelfde prostaatgewicht afhankelijk zal zijn van het prostaatgewicht.
+In het bijzonder suggereert de output dat patiënten die 1\% verschillen
+in het tumorvolume maar hetzelfde log prostaat gewicht hebben gemiddeld
+(\(1.004-0.125 \times x_w\))\% verschillen in prostaat antigeen
+concentratie (interpretatie volgt uit log transformatie van de response
+en tumorvolume). Patiënten die 1\% verschillen in tumorvolume en die een
+log-prostaatgewicht hebben van 3 zullen gemiddeld 0.631\% in prostaat
+antigeen concentratie verschillen. Terwijl patiënten die 1\% verschillen
+in tumorvolume en die een log-prostaatgewicht hebben van 4 gemiddeld een
+verschil van 0.506\% in prostaat antigeen concentratie hebben. De
+associatie van het log-tumorvolume en de log prostaat antigeen
+concentratie neemt dus af met toenemend prostaatgewicht.
+
+Grafische interpretatie wordt weergegeven in Figuur
+\ref{fig:prosIntFit1}. Hier worden het additieve model en het model met
+de lcavol:lweight interactie vergeleken. De fit toont duidelijk aan dat
+de associate tussen lpsa en lcavol gelijk is ongeacht de grootte van het
+prostaatgewicht voor het additieve model (parallele lijnen in het
+regressieoppervlak). Voor het model met interactie is dat niet het
+geval, de associate (helling) neemt af met toenemend prostaatgewicht. We
+zien een analoog effect wanneer we focussen op de associatie tussen lpsa
+en lweight. De lpsa \(\leftrightarrow\) lweight associatie neemt af met
+toenemend log-tumorvolume.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/prosIntFit1-1} 
+
+}
+
+\caption{Fit van het additieve model met de termen lcavol, lweight, svi (links) en het model met interactie lcavol, lweight, svi en lcavol:lweight (rechts). Merk op dat we enkel het regressieoppervlak weergeven voor patiënten zouder invasie van de zaadblaasjes. Dat voor patiënten met invasie van de zaadblaasjes is parallel met het getoonde oppervlak, maar ligt iets hoger. De rechtse figuur toont duidelijk dat de interactie ervoor zorgt dat de associatie tussen de response en het tumorvolume afhankelijk is van de hoogte van het prostaatgewicht en vice versa, dat zorgt voor een torsie in het regressievlak.}\label{fig:prosIntFit1}
+\end{figure}
+
+Merk op, dat het interactie effect dat geobserveerd wordt in de
+steekproef echter statistisch niet significant is (p=0.4). Gezien de
+hoofdeffecten die betrokken zijn in een interactie term niet los van
+elkaar kunnen worden geïnterpreteerd is de conventie om een
+interactieterm uit het model te verwijderen wanneer die niet significant
+is. Na verwijdering van de niet-significante interactieterm kunnen de
+hoofdeffecten worden geïnterpreteerd.
+
+\subsection{Interactie tussen continue variabele en factor
+variabele}\label{interactie-tussen-continue-variabele-en-factor-variabele}
+
+We kunnen ook de interactie bestuderen tussen lcavol \(\leftrightarrow\)
+svi en lweight \(\leftrightarrow\) svi. Merk op dat svi een factor is.
+Het model wordt dan
+
+\[Y=\beta_0+\beta_vX_v+\beta_wX_w+\beta_sX_s+\beta_{vs}X_vX_s + \beta_{ws}X_wX_s +\epsilon\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lmVWS_IntVS_WS <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(lpsa }\OperatorTok{~}\StringTok{ }\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }\NormalTok{lweight }\OperatorTok{+}\StringTok{ }\NormalTok{svi }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\NormalTok{svi}\OperatorTok{:}\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }\NormalTok{svi}\OperatorTok{:}\NormalTok{lweight, }\DataTypeTok{data =}\NormalTok{ prostate)}
+\KeywordTok{summary}\NormalTok{(lmVWS_IntVS_WS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = lpsa ~ lcavol + lweight + svi + svi:lcavol + svi:lweight, 
+##     data = prostate)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.50902 -0.44807  0.06455  0.45657  1.54354 
+## 
+## Coefficients:
+##                     Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)         -0.52642    0.56793  -0.927 0.356422    
+## lcavol               0.54060    0.07821   6.912 6.38e-10 ***
+## lweight              0.58292    0.15699   3.713 0.000353 ***
+## sviinvasion          3.43653    1.93954   1.772 0.079771 .  
+## lcavol:sviinvasion   0.13467    0.25550   0.527 0.599410    
+## lweight:sviinvasion -0.82740    0.52224  -1.584 0.116592    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7147 on 91 degrees of freedom
+## Multiple R-squared:  0.6367, Adjusted R-squared:  0.6167 
+## F-statistic: 31.89 on 5 and 91 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Het effect van lcavol op lpsa en het effect van lweight op lpsa zal nu
+afhangen van de waarde voor svi. \(X_s\) is echter een dummy variabele
+die twee waarden aan kan nemen, \(X_s=0\) als de zaadblaasjes niet
+aangetast zijn en \(X_s=1\) als er invasie is van de zaadblaadjes.
+Gezien \(X_S\) een dummy variabele is bekomen we nu twee verschillende
+regressievlakken:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Een regressievlak voor \(X_s=0\):
+  \[Y=\beta_0+\beta_vX_v+\beta_wX_w + \epsilon\] waar de hellingen voor
+  lcavol en lweight de hoofdeffecten zijn.
+\item
+  En een regressievlak voor \(X_s=1\):
+  \[Y=\beta_0+\beta_vX_v+\beta_s+\beta_wX_w+\beta_{vs}X_v + \beta_{ws}X_w +\epsilon=(\beta_0+\beta_s)+(\beta_v+\beta_{vs})X_v+(\beta_w+\beta_{ws})X_w+\epsilon\]
+  waar het intercept \(\beta_0 + \beta_s\) is, de som van het intercept
+  en het hoofdeffect voor \(X_s\), en de hellingen voor lcavol en
+  lweight respectievelijk \(\beta_v+\beta_{vs}\) en
+  \(\beta_w+\beta_{ws}\) zijn, m.a.w. de sum van het hoofdeffect en de
+  overeenkomstige interactieterm.
+\end{enumerate}
+
+Grafisch wordt het model weergegeven in Figuur \ref{fig:prosIntFit2}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/prosIntFit2-1} 
+
+}
+
+\caption{Fit van het additieve model met de termen lcavol, lweight, svi (links) en het model met interacties lcavol, lweight, svi . lcavol:svi, lweight:svi (rechts). De rechtse figuur toont duidelijk dat de interactie er nu voor zorgt dat de associaties tussen de response <-> het log-tumorvolume en de response <-> het log-gewicht afhankelijk is van de status van de zaadblaasjes. De interacties zorgen voor andere hellingen bij patiënten met (rood) en zonder invasie (blauw) van de zaadblaasjes. Voor het additieve model (links) zien we enkel een verschuiving van het regressievlak, maar parallelle hellingen. Het hoofdeffect voor een factor variabele zorgt m.a.w. voor een ander intercept.}\label{fig:prosIntFit2}
+\end{figure}
+
+Merk op dat de helling voor lcavol groter is bij patiënten met invasie
+van de zaadblaasjes dan bij patiënten zonder invasie van de zaadblaasjes
+en dat de helling voor lweight van teken veranderd. Verder zijn beide
+interactie-termen opnieuw niet significant.
+
+\section{ANOVA Tabel}\label{anova-tabel-2}
+
+\subsection{SSTot, SSR en SSE}\label{sstot-ssr-en-sse}
+
+Voor de enkelvoudige lineaire regressie hebben we in detail de
+decompositie van SSTot=SSR+SSE besproken. In deze sectie breiden we die
+resultaten uit naar meervoudige lineaire regressie.
+
+De totale kwadratensom SSTot is gedefinieerd zoals voorheen, \[
+  \text{SSTot} = \sum_{i=1}^n (Y_i - \bar{Y})^2.
+\]
+
+Het is nog steeds een maat voor de totale variabiliteit in de
+geobserveerde uitkomsten. Ook de residuele kwadratensom is zoals
+voorheen. \[
+  \text{SSE} = \sum_{i=1}^n (Y_i-\hat{Y}_i)^2.
+\]
+
+Beschouw nu een meervoudig lineair regressiemodel met \(p-1\)
+regressoren. Dan geldt de volgende decompositie van de totale
+kwadratensom, \[
+  \text{SSTot} = \text{SSR} + \text{SSE} ,
+\] met \[
+  \text{SSR} = \sum_{i=1}^n (\hat{Y}_i-\bar{Y})^2.
+\]
+
+De kwadratensom van de regressie (SSR) kan nog steeds geïnterpreteerd
+worden als de variabiliteit in de uitkomsten die verklaard kan worden
+door het regressiemodel.
+
+Voor de vrijheidsgraden en de gemiddelde kwadratensommen geldt:
+
 \begin{itemize}
 \tightlist
 \item
-  In dit hoofdstuk worden lineaire modellen gebouwd voor een continue
-  response i.f.v. meerdere continue en/of discrete predictor variabelen.
+  SSTot heeft \(n-1\) vrijheidsgraden en \(\text{SSTot}/(n-1)\) is een
+  schatter voor de variantie van \(Y\) (van de marginale distributie van
+  \(Y\)).
 \item
-  Het is enkel leerstof voor de studenten uit
-
-  \begin{itemize}
-  \tightlist
-  \item
-    de Bachelor of Science in de Biochemie en de Biotechnologie
-  \item
-    De Bachelor of Science in de Biomedische Wetenschappen
-  \item
-    Schakelprogramma tot Master of Science in Bioinformatics
-    afstudeerrichting Systems Biology
-  \item
-    Schakelprogramma tot Master of Science in Biochemistry and
-    Biotechnology.
-  \end{itemize}
+  SSE heeft \(n-p\) vrijheidsgraden en \(\text{MSE}=\text{SSE}/(n-p)\)
+  is een schatter voor de residuele variantie van \(Y\) gegeven de
+  regressoren (i.e.~een schatter voor de residuele variantie
+  \(\sigma^2\) van de foutterm \(\epsilon\)).
 \item
-  Het hoofdstuk komt gedurende het academiejaar online
+  SSR heeft \(p-1\) vrijheidsgraden en \(\text{MSR}=\text{SSR}/(p-1)\)
+  is de gemiddelde kwadratensom van de regressie.
 \end{itemize}
+
+Een gevolg van de decompositie van SSTot is dat de
+determinatiecoëfficiënt blijft zoals voorheen, i.e. \[
+  R^2 = 1-\frac{\text{SSE}}{\text{SSTot}} = \frac{\text{SSR}}{\text{SSTot}}
+\] is de fractie van de totale variabiliteit in de uitkomsten die
+verklaard wordt door het regressiemodel.
+
+De teststatistiek \(F=\text{MSR}/\text{MSE}\) is onder
+\(H_0:\beta_1=\ldots=\beta_{p-1}=0\) verdeeld als \(F_{p-1;n-p}\). De
+F-test test m.a.w. het effect van alle predictoren simultaan. Onder de
+nulhypothese is er geen associatie tussen de respons en elk van de
+predictoren. De output van deze F-test wordt standaard gegeven onderaan
+in de summary output.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(lmVWS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = lpsa ~ lcavol + lweight + svi, data = prostate)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.72966 -0.45767  0.02814  0.46404  1.57012 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -0.26807    0.54350  -0.493  0.62301    
+## lcavol       0.55164    0.07467   7.388  6.3e-11 ***
+## lweight      0.50854    0.15017   3.386  0.00104 ** 
+## sviinvasion  0.66616    0.20978   3.176  0.00203 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7168 on 93 degrees of freedom
+## Multiple R-squared:  0.6264, Adjusted R-squared:  0.6144 
+## F-statistic: 51.99 on 3 and 93 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+We zien dat de algemene nulhypothese heel significant kan worden
+verworpen. Minstens 1 predictor is extreem significant geassocieerd met
+de respons. In de individuele t-testen zien we dat elk van de
+predictoren een sterk significante associatie vertonen.
+
+\subsection{Extra Kwadratensommen}\label{extra-kwadratensommen}
+
+We kunnen een stap verder gaan en voor iedere individuele regressor een
+kwadratensom definiëren. Er zijn echter verschillende mogelijkheden.
+
+Beschouw de volgende twee regressiemodellen voor regressoren \(x_1\) en
+\(x_2\): \[
+  Y_i = \beta_0+\beta_1 x_{i1} + \epsilon_i,
+\] met \(\epsilon_i\text{ iid } N(0,\sigma_1^{2})\), en \[
+Y_i = \beta_0+\beta_1 x_{i1}+\beta_2 x_{i2} + \epsilon_i,
+\] met \(\epsilon_i\text{ iid } N(0,\sigma_2^{2})\).
+
+Merk op dat we subscript 1 en 2 toegevoegd hebben aan de residuele
+varianties, maar dat we dezelfde \(\beta\)-parameternotatie gebruiken
+voor beide modellen; dit is om de notatie niet nodeloos complex te
+maken, maar je moet je ervan bewust zijn dat de \(\beta\)-parameters uit
+beide modellen niet noodzakelijk gelijk zijn.
+
+Voor het eerste (gereduceerde) model geldt de decompositie \[
+  \text{SSTot} = \text{SSR}_1 + \text{SSE}_1
+\] en voor het tweede (niet-gereduceerde) model \[
+  \text{SSTot} = \text{SSR}_2 + \text{SSE}_2
+\] (SSTot is uiteraard dezelfde in beide modellen omdat dit niet afhangt
+van het regressiemodel).
+
+\textbf{Definitie extra kwadratensom} De \emph{extra kwadratensom}
+(Engels: \emph{extra sum of squares}) van predictor \(x_2\) t.o.v. het
+model met enkel \(x_1\) als predictor wordt gegeven door \[
+  \text{SSR}_{2\mid 1} = \text{SSE}_1-\text{SSE}_2=\text{SSR}_2-\text{SSR}_1.
+\]
+
+\textbf{Einde definitie}
+
+Merk eerst op dat
+\(\text{SSE}_1-\text{SSE}_2=\text{SSR}_2-\text{SSR}_1\) triviaal is
+gezien de decomposities van de totale kwadratensommen.
+
+De extra kwadratensom \(\text{SSR}_{2\mid 1}\) kan eenvoudig
+geïnterpreteerd worden als de extra variantie van de uitkomst die
+verklaard kan worden door regressor \(x_2\) toe te voegen aan een model
+waarin regressor \(x_1\) reeds aanwezig is.
+
+Met dit nieuw soort kwadratensom kunnen we voor het model met twee
+predictoren schrijven \[
+  \text{SSTot} = \text{SSR}_1+ \text{SSR}_{2\mid 1} + \text{SSE}.
+\] Dit volgt rechtstreeks uit de definitie van de extra kwadratensom
+\(\text{SSR}_{2\mid 1}\).
+
+De definitie voor de extra kwadratensom kan uitgebreid worden naar een
+situatie waar twee geneste lineaire regressiemodellen beschouwd worden.
+
+Zonder in te boeten in algemeenheid starten we met de regressiemodellen
+(\(s<p-1\)) \[
+Y_i = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_{s} x_{is} + \epsilon_i 
+\] met \(\epsilon_i\text{ iid }N(0,\sigma_1^{2})\), en
+(\(s< q\leq p-1\)) \[
+Y_i = \beta_0 + \beta_1 x_{i1} + \cdots + \beta_{s} x_{is} + \beta_{s+1} x_{is+1} + \cdots \beta_{q}x_{iq}+ \epsilon_i 
+\] met \(\epsilon_i\text{ iid } N(0,\sigma_2^{2})\).
+
+De \textbf{extra kwadratensom} van predictoren \(x_{s+1}, \ldots, x_q\)
+t.o.v. het model met enkel de predictoren \(x_1,\ldots, x_{s}\) wordt
+gegeven door \[
+  \text{SSR}_{s+1, \ldots, q\mid 1,\ldots, s} = \text{SSE}_1-\text{SSE}_2=\text{SSR}_2-\text{SSR}_1.
+\]
+
+De extra kwadratensom \(\text{SSR}_{s+1, \ldots, q\mid 1,\ldots, s}\)
+meet de extra variabiliteit in uitkomst die verklaard wordt door de
+predictoren \(x_{s+1}, \ldots, x_q\) toe te voegen aan een model met
+predictoren \(x_1,\ldots, x_{s}\). Anders gezegd: het meet de variatie
+van de uitkomsten verklaard door predictoren \(x_{s+1}, \ldots, x_q\)
+die niet verklaard wordt door de predictoren \(x_1,\ldots, x_{s}\).
+
+We hebben hier SSR notatie gebruikt met lange indexen (bv.
+\(\text{SSR}_{s, \ldots, q\mid 1,\ldots, s-1}\)). Soms wordt de voorkeur
+gegeven aan de notatie \[
+  \text{SSR}(s+1, \ldots, q\mid 1,\ldots, s).
+\]
+
+\subsection{Type I Kwadratensommen}\label{type-i-kwadratensommen}
+
+Stel dat \(p-1\) regressoren beschouwd worden, en beschouw een sequentie
+van modellen (\(s=2,\ldots, p-1\)) \[
+Y_i = \beta_0 + \sum_{j=1}^{s} \beta_j x_{ij} + \epsilon_i
+\] met \(\epsilon_i\text{ iid } N(0,\sigma^{2})\). De overeenkomstige
+kwadratensommen worden genoteerd als \(\text{SSR}_{s}\) en
+\(\text{SSE}_{s}\). De modelsequentie geeft ook aanleiding tot extra
+kwadratensommen \(\text{SSR}_{s\mid 1,\ldots, s-1}\). Deze laatste
+kwadratensom wordt een type I kwadratensom genoemd. Merk op dat deze
+afhangt van de volgorde (nummering) van regressoren.
+
+Er kan aangetoond worden dat voor Model met \(s=p-1\) geldt \[
+ \text{SSTot} = \text{SSR}_1 + \text{SSR}_{2\mid 1} + \text{SSR}_{3\mid 1,2} + \cdots + \text{SSR}_{p-1\mid 1,\ldots, p-2} + \text{SSE},
+\] met \(\text{SSE}\) de residuele kwadratensom van het model met alle
+\(p-1\) regressoren en \[
+  \text{SSR}_1 + \text{SSR}_{2\mid 1} + \text{SSR}_{3\mid 1,2} + \cdots + \text{SSR}_{p-1\mid 1,\ldots, p-2} = \text{SSR}
+\] met \(\text{SSR}\) de kwadratensom van de regressie van het model met
+alle \(p-1\) regressoren.
+
+De interpretatie van iedere individuele SSR term werd eerder gegeven,
+maar het is belangrijk om op te merken dat de interpretatie van iedere
+term afhangt van de volgorde van de regressoren in de sequentie van
+regressiemodellen.
+
+Dus de type I kwadratensommen laten een decompositie van SSTot toe, maar
+de SSR-termen hangen af van de volgorde waarin de regressoren in het
+regressiemodel voorkomen.
+
+Iedere type I SSR heeft betrekking op het effect van 1 regressor en
+heeft dus 1 vrijheidsgraad. Voor iedere type I SSR term kan een
+gemiddelde kwadratensom gedefinieerd worden als
+\(\text{MSR}_{j\mid 1,\ldots, j-1}=\text{SSR}_{j\mid 1,\ldots, j-1}/1\).
+De teststatistiek \(F=\text{MSR}_{j\mid 1,\ldots, j-1}/\text{MSE}\) is
+onder \(H_0:\beta_j=0\) met \(s=j\) verdeeld als \(F_{1;n-(j+1)}\).
+
+Deze kwadratensommen worden standaard weergegeven door de anova functie
+in R.
+
+\subsection{Type III Kwadratensommen}\label{type-iii-kwadratensommen}
+
+Beschouw opnieuw het regressiemodel met \(p-1\) regressoren. De type III
+kwadratensom van regressor \(x_j\) wordt gegeven door de extra
+kwadratensom \[
+  \text{SSR}_{j \mid 1,\ldots, j-1,j+1,\ldots, p-1} = \text{SSE}_1-\text{SSE}_2
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(\text{SSE}_2\) de residuele kwadratensom van regressiemodel met alle
+  \(p-1\) regressoren.
+\item
+  \(\text{SSE}_1\) de residuele kwadratensom van regressiemodel met alle
+  \(p-1\) regressoren, uitgezonderd regressor \(x_j\).
+\end{itemize}
+
+De type III kwadratensom
+\(\text{SSR}_{j \mid 1,\ldots, j-1,j+1,\ldots, p-1}\) kwantificeert dus
+het aandeel van de totale variantie van de uitkomst dat door regressor
+\(x_j\) verklaard wordt en dat niet door de andere \(p-2\) regressoren
+verklaard wordt.
+
+De type III kwadratensom heeft ook 1 vrijheidsgraad omdat het om 1
+\(\beta\)-parameter gaat.
+
+Voor iedere type III SSR term kan een gemiddelde kwadratensom
+gedefinieerd worden als
+\(\text{MSR}_{j \mid 1,\ldots, j-1,j+1,\ldots, p-1}=\text{SSR}_{j \mid 1,\ldots, j-1,j+1,\ldots, p-1}/1\).
+
+De teststatistiek
+\(F=\text{MSR}_{j \mid 1,\ldots, j-1,j+1,\ldots, p-1}/\text{MSE}\) is
+onder \(H_0:\beta_j=0\) verdeeld as \(F_{1;n-p}\).
+
+Deze kwadratensommen kunnen worden verkregen d.m.v. de Anova functie van
+het car package. In de Anova functie wordt hiervoor het argument
+`type=3' gebruikt.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(car)}
+\KeywordTok{Anova}\NormalTok{(lmVWS, }\DataTypeTok{type =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Anova Table (Type III tests)
+## 
+## Response: lpsa
+##             Sum Sq Df F value    Pr(>F)    
+## (Intercept)  0.125  1  0.2433  0.623009    
+## lcavol      28.045  1 54.5809 6.304e-11 ***
+## lweight      5.892  1 11.4678  0.001039 ** 
+## svi          5.181  1 10.0841  0.002029 ** 
+## Residuals   47.785 93                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Merk op dat de p-waarden die we verkrijgen voor het testen van elk van
+de effecten identiek zijn als de p-waarden van de tweezijdige t-testen.
+De F-test o.b.v. een type III kwadratensom voor 1 parameter is
+equivalent met de tweezijdige t-test voor deze parameter.
+
+\section{Regressiediagnostieken}\label{regressiediagnostieken}
+
+\subsection{Multicollineariteit}\label{multicollineariteit}
+
+Het is interessant om in de R output voor het model met lcavol:lweight
+interactie ook naar schattingen van de hoofdeffecten te kijken (Sectie
+\ref{sec:intCont}). De waarden van de schattingen zijn niet alleen
+verschillend van wat we in het additieve model vonden, maar de
+standaardfouten zijn nu veel groter! De oorzaak moet gezocht worden in
+het probleem van multicollineariteit. Wanneer 2 predictoren sterk
+gecorreleerd zijn, dan delen ze voor een groot stuk dezelfde informatie
+en is het moeilijk om de afzonderlijke effecten van beiden op de
+uitkomst te schatten. Dit uit zich in het feit dat de computationele
+berekening van de kleinste kwadratenschatters onstabiel wordt, in die
+zin dat kleine wijzigingen aan de gegevens of het toevoegen of weglaten
+van een predictorvariabele een belangrijke impact kunnen hebben op de
+grootte, en zelfs het teken, van de geschatte regressieparameters. Een
+tweede effect van multicollineariteit is dat standaard errors bij de
+geschatte regressieparameters fel kunnen worden opgeblazen en de
+bijhorende betrouwbaarheidsintervallen bijgevolg zeer breed kunnen
+worden. Zolang men enkel predicties tracht te bekomen op basis van het
+regressiemodel zonder daarbij te extrapoleren buiten het bereik van de
+predictoren is multicollineariteit geen probleem.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(prostate}\OperatorTok{$}\NormalTok{lcavol, prostate}\OperatorTok{$}\NormalTok{lweight, prostate}\OperatorTok{$}\NormalTok{lcavol }\OperatorTok{*}\StringTok{ }
+\StringTok{    }\NormalTok{prostate}\OperatorTok{$}\NormalTok{lweight))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           [,1]      [,2]      [,3]
+## [1,] 1.0000000 0.1941283 0.9893127
+## [2,] 0.1941283 1.0000000 0.2835608
+## [3,] 0.9893127 0.2835608 1.0000000
+\end{verbatim}
+
+We zien dat de correlatie inderdaad erg hoog is tussen het
+log-tumorvolume en de interactieterm. Het is gekend dat hogere orde
+termen (interacties en kwadratische termen) vaak een sterke correlatie
+vertonen.
+
+Problemen als gevolg van multicollineariteit kunnen herkend worden aan
+het feit dat de resultaten onstabiel worden. Zo kunnen grote wijzigingen
+optreden in de parameters na toevoeging van een predictor, kunnen zeer
+brede betrouwbaarheidsintervallen bekomen worden voor sommige parameters
+of kunnen gewoonweg onverwachte resultaten worden gevonden. Meer formeel
+kan men zich een idee vormen van de mate waarin er van
+multicollineariteit sprake is door de correlaties te inspecteren tussen
+elk paar predictoren in het regressiemodel of via een scatterplot matrix
+die elk paar predictoren uitzet op een scatterplot. Dergelijke
+diagnostieken voor multicollineariteit zijn echter niet ideaal.
+Vooreerst geven ze geen idee in welke mate de geobserveerde
+multicollineariteit de resultaten onstabiel maakt. Ten tweede kan het in
+modellen met 3 of meerdere predictoren, zeg X1, X2, X3, voorkomen dat er
+zware multicollineariteit is ondanks het feit dat alle paarsgewijze
+correlaties tussen de predictoren laag zijn. Dit kan bijvoorbeeld
+optreden wanneer de correlatie hoog is tussen X1 en een lineaire
+combinatie van X2 en X3.
+
+Bovenstaande nadelen kunnen vermeden worden door de
+\textit{variance inflation factor (VIF)} te onderzoeken, die voor de
+\(j\)-de parameter in het regressiemodel gedefinieerd wordt als
+\[\textrm{VIF}_j=\left(1-R_j^2\right)^{-1}\] In deze uitdrukking stelt
+\(R_j^2\) de meervoudige determinatiecoëfficiënt voor van een lineaire
+regressie van de \(j\)-de predictor op alle andere predictoren in het
+model. De VIF heeft de eigenschap dat ze gelijk is aan 1 indien de
+\(j\)-de predictor niet lineair geassocieerd is met de andere
+predictoren in het model, en bijgevolg wanneer de \(j\)-de parameter in
+het model niet onderhevig is aan het probleem van multicollineariteit.
+De VIF is groter dan 1 in alle andere gevallen. In het bijzonder drukt
+ze uit met welke factor de geobserveerde variantie op de schatting voor
+de \(j\)-de parameter groter is dan wanneer alle predictoren
+onafhankelijk zouden zijn. Hoe groter de VIF, hoe minder stabiel de
+schattingen bijgevolg zijn. Hoe kleiner de VIF, hoe dichter de
+schattingen dus bij de gezochte populatiewaarden verwacht worden. In de
+praktijk spreekt men van ernstige multicollineariteit voor een
+regressieparameter wanneer haar VIF de waarde 10 overschrijdt.
+
+We illustreren dat a.d.h.v. onderstaande voorbeeld.
+
+\textbf{Voorbeeld vetpercentage}
+
+Het percentage lichaamsvet van een persoon bepalen is een moeilijke en
+dure meting. Om die reden werden in het verleden verschillende studies
+opgezet met als doel het patroon te ontrafelen tussen werkelijk
+percentage lichaamsvet en verschillende, makkelijker te meten
+surrogaten. In een studie heeft men voor 20 gezonde vrouwen tussen 25 en
+34 jaar het percentage lichaamsvet \(Y\), de dikte van de huidplooi rond
+de triceps \(X_1\), de dij-omtrek \(X_2\) en de middenarmomtrek \(X_3\)
+gemeten. Indien we een nauwkeurig regressiemodel kunnen opstellen op
+basis van de gegevens, dan zal ons dat toelaten om in de toekomst met
+behulp van dat model voorspellingen te maken voor het percentage
+lichaamsvet in gezonde vrouwen tussen 25 en 34 jaar, op basis van de
+huidplooi rond de triceps, de dij-omtrek en de middenarmomtrek.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/vetScatter-1} 
+
+}
+
+\caption{Scatterplot matrix van de dataset bodyfat.}\label{fig:vetScatter}
+\end{figure}
+
+Wanneer we de 3 predictoren simultaan aan een regressiemodel toevoegen,
+bekomen we de volgende output.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lmFat <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(Body_fat }\OperatorTok{~}\StringTok{ }\NormalTok{Triceps }\OperatorTok{+}\StringTok{ }\NormalTok{Thigh }\OperatorTok{+}\StringTok{ }\NormalTok{Midarm, }\DataTypeTok{data =}\NormalTok{ bodyfat)}
+\KeywordTok{summary}\NormalTok{(lmFat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Body_fat ~ Triceps + Thigh + Midarm, data = bodyfat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.7263 -1.6111  0.3923  1.4656  4.1277 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)  117.085     99.782   1.173    0.258
+## Triceps        4.334      3.016   1.437    0.170
+## Thigh         -2.857      2.582  -1.106    0.285
+## Midarm        -2.186      1.595  -1.370    0.190
+## 
+## Residual standard error: 2.48 on 16 degrees of freedom
+## Multiple R-squared:  0.8014, Adjusted R-squared:  0.7641 
+## F-statistic: 21.52 on 3 and 16 DF,  p-value: 7.343e-06
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{vif}\NormalTok{(lmFat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Triceps    Thigh   Midarm 
+## 708.8429 564.3434 104.6060
+\end{verbatim}
+
+Hoewel het model meer dan 80\% van de variabiliteit in het vetpercentage
+kan verklaren en dat de F-test die test voor alle predictoren simultaan
+extreem significant is, is de associatie echter voor geen enkele
+predictor significant volgens de individuele t-testen. De scatterplot
+matrix in Figuur \ref{fig:vetScatter} geeft aan dat er
+multicollineariteit aanwezig is wat betreft de predictoren \(X_1\) en
+\(X_2\), maar niet meteen wat betreft de middenarmomtrek \(X_3\).
+Niettemin bekomen we erg hoge VIFs voor alle model parameters. Dit
+suggereert dat ook de middenarmomtrek gevoelig is aan ernstige
+multicollineariteit en bijgevolg dat scatterplot matrices inderdaad
+slechts een beperkt licht werpen op het probleem van
+multicollineariteit. De VIF varieert van 105-709, hetgeen aantoont dat
+de (kwadratische) afstand tussen de schattingen voor de
+regressieparameters en hun werkelijke waarden 105 tot 709 keer hoger kan
+worden verwacht dan wanneer er geen multicollineariteit zou zijn. Hoewel
+de paarsgewijze correlatie tussen Midarm en Triceps en Midarm en Thigh
+laag is, toont de regressie van Midarm op Triceps en Thigh echter aan
+dat beide variabelen samen 99\% van de variabiliteit in de variabiliteit
+van Midarm kunnen verklaren, wat er voor zorgt dat er ook voor Midarm
+een extreem hoge multicollineariteit is.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lmMidarm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(Midarm }\OperatorTok{~}\StringTok{ }\NormalTok{Triceps }\OperatorTok{+}\StringTok{ }\NormalTok{Thigh, }\DataTypeTok{data =}\NormalTok{ bodyfat)}
+\KeywordTok{summary}\NormalTok{(lmMidarm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Midarm ~ Triceps + Thigh, data = bodyfat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.58200 -0.30625  0.02592  0.29526  0.56102 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 62.33083    1.23934   50.29   <2e-16 ***
+## Triceps      1.88089    0.04498   41.82   <2e-16 ***
+## Thigh       -1.60850    0.04316  -37.26   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.377 on 17 degrees of freedom
+## Multiple R-squared:  0.9904, Adjusted R-squared:  0.9893 
+## F-statistic: 880.7 on 2 and 17 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\textbf{Einde voorbeeld}
+
+We evalueren nu de VIF in het prostaatkanker voorbeeld voor het
+additieve model en het model met interactie.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{vif}\NormalTok{(lmVWS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   lcavol  lweight      svi 
+## 1.447048 1.039188 1.409189
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{vif}\NormalTok{(lmVWS_IntVW)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         lcavol        lweight            svi lcavol:lweight 
+##      76.193815       1.767121       1.426646      80.611657
+\end{verbatim}
+
+We zien dat de variance inflation factors voor het additieve model laag
+zijn, ze liggen allen dicht bij 1. Deze voor het model met interactie
+zijn echter hoog, voor lcavol en de interactie liggen ze respectievelijk
+op 76.2 en 80.6. Wat wijst op zeer ernstige multicollineariteit.
+
+Merk op dat dit voor interactietermen vaak wordt veroorzaakt door het
+feit dat het hoofdeffect een andere interpretatie krijgt. Voor lcavol
+wordt dit b.v. het effect van het log-tumorvolume bij een
+log-prostaatgewicht van 0. Dit kan uiteraard niet voorkomen, alle
+log-prostaatgewichten liggen tussen 2.37 en 6.108 en berust dus op
+sterke extrapolatie. In de literatuur wordt daarom vaak voorgesteld om
+de variabelen te centreren rond het gemiddelde wanneer men hogere orde
+termen in het model opneemt. Dat is echter niet nodig, we weten immers
+dat het effect van het log-tumorvolume in het model met de
+lcavol:lweight interactie niet kan worden bestudeerd zonder het
+log-prostaatgewicht in rekening te brengen. We zullen in de practica
+zien dat we i.p.v. de data te centreren evengoed een test kunnen
+uitvoeren voor het effect van lcavol bij het gemiddelde
+log-prostaatgewicht, wat de interpretatie is voor het effect van lcavol
+bij het gecentreerde model.
+
+\subsection{Invloedrijke observaties}\label{invloedrijke-observaties}
+
+In onderstaande code wordt data gesimuleerd om de impact van outliers te
+illustreren.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{112358}\NormalTok{)}
+\NormalTok{nobs <-}\StringTok{ }\DecValTok{20}
+\NormalTok{sdy <-}\StringTok{ }\DecValTok{1}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DataTypeTok{length =}\NormalTok{ nobs)}
+\NormalTok{y <-}\StringTok{ }\DecValTok{10} \OperatorTok{+}\StringTok{ }\DecValTok{5} \OperatorTok{*}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(nobs, }\DataTypeTok{sd =}\NormalTok{ sdy)}
+\NormalTok{x1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(x, }\FloatTok{0.5}\NormalTok{)}
+\NormalTok{y1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(y, }\DecValTok{10} \OperatorTok{+}\StringTok{ }\DecValTok{5} \OperatorTok{*}\StringTok{ }\FloatTok{1.5} \OperatorTok{+}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{sd =}\NormalTok{ sdy))}
+\NormalTok{x2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(x, }\FloatTok{1.5}\NormalTok{)}
+\NormalTok{y2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(y, y1[}\DecValTok{21}\NormalTok{])}
+\NormalTok{x3 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(x, }\FloatTok{1.5}\NormalTok{)}
+\NormalTok{y3 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(y, }\DecValTok{11}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(x, y, }\DataTypeTok{xlim =} \KeywordTok{range}\NormalTok{(}\KeywordTok{c}\NormalTok{(x1, x2, x3)), }\DataTypeTok{ylim =} \KeywordTok{range}\NormalTok{(}\KeywordTok{c}\NormalTok{(y1, }
+\NormalTok{    y2, y3)))}
+\KeywordTok{points}\NormalTok{(}\KeywordTok{c}\NormalTok{(x1[}\DecValTok{21}\NormalTok{], x2[}\DecValTok{21}\NormalTok{], x3[}\DecValTok{21}\NormalTok{]), }\KeywordTok{c}\NormalTok{(y1[}\DecValTok{21}\NormalTok{], y2[}\DecValTok{21}\NormalTok{], }
+\NormalTok{    y3[}\DecValTok{21}\NormalTok{]), }\DataTypeTok{pch =} \KeywordTok{as.character}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{), }\DataTypeTok{col =} \DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(y }\OperatorTok{~}\StringTok{ }\NormalTok{x), }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(y1 }\OperatorTok{~}\StringTok{ }\NormalTok{x1), }\DataTypeTok{col =} \DecValTok{2}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(y2 }\OperatorTok{~}\StringTok{ }\NormalTok{x2), }\DataTypeTok{col =} \DecValTok{3}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{3}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(y3 }\OperatorTok{~}\StringTok{ }\NormalTok{x3), }\DataTypeTok{col =} \DecValTok{4}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{4}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topleft"}\NormalTok{, }\DataTypeTok{col =} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{legend =} \KeywordTok{paste}\NormalTok{(}\StringTok{"lm"}\NormalTok{, }
+    \KeywordTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\KeywordTok{as.character}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{))), }\DataTypeTok{text.col =} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/influential-1} 
+
+}
+
+\caption{Impact van outliers op de regressie. Regressie zonder outliers (zwart), regressie met outlier 1 (groen), regressie met outlier 2 (rood), regressie met outlier 3 (blauw).}\label{fig:influential}
+\end{figure}
+
+Een dataset bevat vaak extreme observaties voor zowel de uitkomst \(Y\)
+als de predictoren \(X\). Deze kunnen de geschatte regressieparameters
+en regressielijn sterk beïnvloeden. Dat is niet verwonderlijk vermits de
+regressielijn de gemiddelde uitkomst voorstelt in functie van \(X\) en
+gemiddelden zeer gevoelig zijn aan outliers. Figuur
+\ref{fig:influential} toont een puntenwolk met 3 afwijkende observaties
+samen met 4 lineaire regressielijnen één zonder en één met elk van deze
+observaties. Merk op dat de regressielijn in bijzondere mate afwijkt
+wanneer observatie 3 wordt opgenomen in de dataset. Dit kan als volgt
+worden verklaard. De aanwezigheid van observatie 1 impliceert dat de
+regressielijn (en bijgevolg het intercept) naar boven wordt getrokken,
+maar heeft verder geen invloed op het patroon van de regressielijn.
+Observatie 2 is extreem, maar heeft geen impact op de regressielijn
+omdat ze het patroon van de rechte volgt. Hoewel observatie 3 niet met
+een zeer extreme uitkomst \(y\) overeenstemt, zal deze observatie toch
+het meest invloedrijk zijn omdat de predictorwaarde \(x\) en, in het
+bijzonder, de \((x,y)\)-combinatie zeer afwijkend is.
+
+Het spreekt voor zich dat het niet wenselijk is dat een enkele
+observatie het resultaat van een lineaire regressie-analyse grotendeels
+bepaalt. We wensen daarom over diagnostieken te beschikken die ons
+toelaten om extreme observaties op te sporen. \emph{Residu's} geven weer
+hoe ver de uitkomst afwijkt van de regressielijn en kunnen bijgevolg
+gebruikt worden om extreme uitkomsten te identificeren. In het bijzonder
+hebben we eerder vermeld dat residu's bij benadering Normaal verdeeld
+zijn wanneer het model correct is en de uitkomst Normaal verdeeld (bij
+vaste predictorwaarden) met homogene variantie. Of een residu extreem
+is, kan in dat opzicht geverifieerd worden door haar te vergelijken met
+de Normale verdeling. Stel bijvoorbeeld dat men over 100 observaties
+beschikt, dan verwacht men dat ongeveer 5\% van de residu's in absolute
+waarde extremer zijn dan 1.96\(\hat{\sigma}\). Indien men veel meer
+extreme residu's observeert, dan is er een indicatie op outliers.
+
+In de literatuur heeft men een aantal modificaties van residu's
+ingevoerd met als doel deze nuttiger te maken voor de detectie van
+outliers. \emph{Studentized residu's} zijn een transformatie van de
+eerder gedefinieerde residu's die \(t\)-verdeeld zijn met \(n-1\)
+vrijheidsgraden onder de onderstellingen van het model. Outliers kunnen
+aldus nauwkeuriger worden opgespoord door na te gaan of veel meer dan
+5\% van de studentized residu's in absolute waarde het 97.5\% percentiel
+van de \(t_{n-1}\)-verdeling overschrijden.
+
+Extreme predictorwaarden kunnen in principe opgespoord worden via een
+scatterplot matrix voor de uitkomst en verschillende predictoren.
+Wanneer er meerdere predictoren zijn, hebben deze echter ernstige
+tekortkomingen omdat het een combinatie van meerdere predictoren kan
+zijn die ongewoon is en dit niet kan opgespoord worden via dergelijke
+grafieken. Om die reden is het veel zinvoller om de zogenaamde
+\emph{leverage (invloed, hefboom)} van elke observatie te onderzoeken.
+Dit is een diagnostische maat voor de mogelijkse invloed van
+predictor-observaties (in tegenstelling tot de residu's die een
+diagnostische maat vormen voor de invloed van de uitkomsten). In het
+bijzonder is de leverage van de \(i\)-de observatie een maat voor de
+afstand van predictorwaarde voor de \(i\)-de observatie tot de
+gemiddelde predictorwaarde in de steekproef. Hieruit volgt bijgevolg dat
+indien de leverage voor de \(i\)-de observatie groot is, ze
+predictorwaarden heeft die sterk afwijken van het gemiddelde. In dat
+geval heeft die observatie mogelijks ook grote invloed op de
+regressieparameters en predicties. Leverage waarden variëren normaal
+tussen \(1/n\) en 1 en zijn gemiddeld \((p+1)/n\) met \(p+1\) het aantal
+ongekende parameters (intercept + \(p\) hellingen). Een extreme leverage
+wordt typisch aanschouwd als een waarde groter dan \(2p/n\).
+
+\subsection{Cook's distance}\label{cooks-distance}
+
+Een meer rechtstreekse maat om de invloed van elke observatie op de
+regressie-analyse uit te drukken is de \emph{Cook's distance}. De Cook's
+distance voor de \(i\)-de observatie is een diagnostische maat voor de
+invloed van die observatie op alle predicties of, equivalent, voor haar
+invloed op \emph{alle} geschatte parameters. Men bekomt deze door elke
+predictie \(\hat{Y}_j\) die men op basis van het regressiemodel heeft
+bekomen voor de \(j\)-de uitkomst, \(j=1,...,n\), te vergelijken met de
+overeenkomstige predictie \(\hat{Y}_{j(i)}\) die men zou bekomen indien
+de \(i\)-de observatie niet gebruikt werd om het regressiemodel te
+fitten
+\[D_i=\frac{\sum_{j=1}^n(\hat{Y}_j-\hat{Y}_{j(i)})^2}{p\textrm{MSE}}\]
+Indien de Cook's distance \(D_i\) groot is, dan heeft de \(i\)-de
+observatie een grote invloed op de predicties en geschatte parameters.
+In het bijzonder stelt men dat een extreme Cook's distance het 50\%
+percentiel van de \(F_{p+1,n-(p+1)}\)-verdeling overschrijdt.
+
+Deze plots komen standaard bij diagnose van het lineair model. We
+evalueren dit voor het additieve model en het model met de
+lcavol:lweight interactie voor de prostaatkanker studie.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(lmVWS, }\DataTypeTok{which =} \DecValTok{5}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(lmVWS_IntVW, }\DataTypeTok{which =} \DecValTok{5}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{cooks.distance}\NormalTok{(lmVWS), }\DataTypeTok{type =} \StringTok{"h"}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }
+    \DecValTok{1}\NormalTok{), }\DataTypeTok{main =} \StringTok{"Additive model"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h =} \KeywordTok{qf}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\KeywordTok{length}\NormalTok{(lmVWS}\OperatorTok{$}\NormalTok{coef), }\KeywordTok{nrow}\NormalTok{(prostate) }\OperatorTok{-}\StringTok{ }
+\StringTok{    }\KeywordTok{length}\NormalTok{(lmVWS}\OperatorTok{$}\NormalTok{coef)), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{cooks.distance}\NormalTok{(lmVWS_IntVW), }\DataTypeTok{type =} \StringTok{"h"}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }
+    \DecValTok{1}\NormalTok{), }\DataTypeTok{main =} \StringTok{"Model with lcavol:lweight interaction"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h =} \KeywordTok{qf}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\KeywordTok{length}\NormalTok{(lmVWS_IntVW}\OperatorTok{$}\NormalTok{coef), }\KeywordTok{nrow}\NormalTok{(prostate) }\OperatorTok{-}\StringTok{ }
+\StringTok{    }\KeywordTok{length}\NormalTok{(lmVWS_IntVW}\OperatorTok{$}\NormalTok{coef)), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/prosCooksAdditiveInt-1} 
+
+}
+
+\caption{Evaluatie van de invloed van individuele observaties op het additieve model (links) en het model met de lcavol:lweight interactie (rechts).}\label{fig:prosCooksAdditiveInt}
+\end{figure}
+
+Het is duidelijk dat observatie 32 een grote leverage heeft. Het heeft
+in het model met interactie ook de grootste invloed van alle datapunten
+op de fit van het model.
+
+Eenmaal men vastgesteld heeft dat een observatie invloedrijk is, kan men
+zogenaamde \emph{DFBETAS} gebruiken om te bepalen op welke parameter(s)
+ze een grote invloed uitoefent. De DFBETAS van de \(i\)-de observatie
+vormen een diagnostische maat voor de invloed van die observatie
+\emph{op elke regressieparameter afzonderlijk}, in tegenstelling tot de
+Cook's distance die de invloed op alle parameters tegelijk evalueert. In
+het bijzonder bekomt men de DFBETAS voor de \(i\)-de observatie en de
+\(j\)-de parameter door de \(j\)-de parameter \(\hat{\beta}_j\) te
+vergelijken met de parameter \(\hat{\beta}_{j(i)}\) die men zou bekomen
+indien het regressiemodel gefit werd zonder de \(i\)-de observatie in de
+analyse te betrekken:
+\[\textrm{DFBETAS}_{j(i)}=\frac{\hat{\beta}_{j}-\hat{\beta}_{j(i)}}{\textrm{SD}(\hat{\beta}_{j})}\]
+Uit bovenstaande uitdrukking volgt dat het teken van de DFBETAS voor de
+\(i\)-de observatie aangeeft of het weglaten van die observatie uit de
+analyse een stijging (DFBETAS\(<0\)) of daling (DFBETAS\(>0\)) in de
+overeenkomstige parameter veroorzaakt. In het bijzonder stelt men dat
+een DFBETAS extreem is wanneer ze 1 overschrijdt in kleine tot
+middelgrote datasets en \(2/\sqrt{n}\) overschrijdt in grote datasets.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\KeywordTok{dfbetasPlots}\NormalTok{(lmVWS)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/prosDfBetasAdditive-1} 
+
+}
+
+\caption{DFBETAS voor additieve model in prostaatkanker.}\label{fig:prosDfBetasAdditive}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\KeywordTok{dfbetasPlots}\NormalTok{(lmVWS_IntVW)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/prosDfBetasInt-1} 
+
+}
+
+\caption{DFBETAS voor model met lcavol:lweight interactie.}\label{fig:prosDfBetasInt}
+\end{figure}
+
+De Cooks distances en de DFBETAS plots geven aan dat observatie 32 het
+grootste effect heeft op de regressieparameters. Daarnaast heeft deze
+observatie ook een extreme ``influence''.
+
+We gaan observatie 32 nu wat beter bestuderen.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{exp}\NormalTok{(prostate[}\DecValTok{32}\NormalTok{, }\StringTok{"lweight"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 449.25
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(}\KeywordTok{exp}\NormalTok{(prostate}\OperatorTok{$}\NormalTok{lweight), }\DataTypeTok{ylab =} \StringTok{"Prostaatgewicht (g)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/prosInfl-1} 
+
+}
+
+\caption{Boxplot met outlier voor prostaatgewicht.}\label{fig:prosInfl}
+\end{figure}
+
+Wanneer we het gewicht terugtransformeren naar de originele schaal zien
+we dat het prostaatgewicht voor deze patiënt449.25g bedraagt. De
+prostaat van een man heeft gewoonlijk een gewicht van 20-30 gram en het
+kan vergroten tot 50-100 gram. Een prostaatgewicht van meer dan 400 gram
+komt dus niet voor. De auteurs die de dataset uit de originele
+publicatie hebben opgenomen in een handboek, hebben gerapporteerd dat ze
+een tikfout hebben gemaakt en ze hebben het extreme prostaat gewicht
+later gecorrigeerd naar 49.25 gram, het gewicht dat in de originele
+publicatie werd gerapporteerd.
+
+Ga zelf na welke invloed het corrigeren van het prostaatgewicht heeft op
+het geschatte regressiemodel.
+
+\chapter{Modelselectie}\label{chap:modsel}
+
+\section{Inleiding}\label{inleiding-9}
+
+In de prostaatkanker dataset (Sectie \ref{sec:prostate}) zijn veel
+predictoren aanwezig. Automatische selectieprcedures kunnen behulpzaam
+zijn als het doel van het regressiemodel erin bestaat om (1) de uitkomst
+op basis van de predictoren te voorspellen; of (2) associaties tussen de
+uitkomst en predictoren te beschrijven. Net zoals in vele andere
+aspecten van de statistiek, zullen we een geobserveerde dataset
+(steekproef) gebruiken om tot een resultaat te komen (hier: een model)
+dat ruimer toepasbaar is dan enkel op de geobserveerde data. Het
+geselecteerde model moet toepasbaar zijn op de ruimere populatie waaruit
+de steekproefdata bekomen is en waarop de onderzoeksvraag van toepassing
+is.
+
+Modelselectie kan dan omschreven worden als een methode voor het
+selecteren van een model dat best geschikt is voor het beantwoorden van
+de onderzoeksvraag. In dit hoofdstuk beperken we ons tot meervoudige
+lineaire regressiemodellen waarin sommige van de \(p-1\) effecttermen
+mogelijks interactietermen voorstellen. Het totaal aantal mogelijke
+modellen is dan (zonder hiërarchie-restrictie) \(2^{p-1}\) (ieder van de
+\(p-1\) termen kan opgenomen worden in het model, of niet).
+
+We onderscheiden de volgende algemene procedures:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Alle mogelijke modellen worden geëvalueerd. Deze methode zal enkel
+  haalbaar blijken als het aantal kandidaat modellen niet te groot is.
+\item
+  Niet alle modellen worden geëvalueerd (stapsgewijze procedures): De
+  methode wordt geïnitialiseerd met een model. D.m.v. een regel en een
+  evaluatiecriterium wordt het pad doorheen de modelruimte bepaald.
+\end{enumerate}
+
+Merk op dat we hiërarchisch moeten modelleren als we interactietermen
+toelaten. Een interactieterm mag nooit in het model voorkomen zonder de
+lagere orde termen.
+
+\section{Modelselectie op basis van
+hypothesetesten}\label{modelselectie-op-basis-van-hypothesetesten}
+
+Stel, we willen een model selecteren voor lpsa waarbij lcavol, lweight
+en svi als predicoren worden toegelaten, alsook alle paarsgewijze
+interactietermen. We zullen drie verschillende strategiën beschouwen
+voorwaartse modelselectie, achterwaartse modelselecties en stapsgewijze
+modelselectie waarbij er in elke stap geëvalueerd wordt of een term in
+het model kan worden opgenomen en of er een andere term kan worden
+verwijderd.
+
+\subsection{Voorwaartse modelselectie}\label{voorwaartse-modelselectie}
+
+De procedure kan als volgt beschreven worden:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Start met het minimale model \(m_1\) met enkel het intercept
+\item
+  Test voor alle modellen met slechts 1 predictor (er zijn dus \(p-1\)
+  dergelijke modellen) of de toegevoegde regressor significant
+  verschillend is van 0 op het \(\alpha_{\text{IN}}\)
+  significantieniveau.
+\item
+  Indien geen enkele van de \(p\)-waarden kleiner is dan
+  \(\alpha_{\text{IN}}\), stop de procedure. Het finale model is het
+  minimale model \(m_1\), \[
+     Y_i = \beta_0 + \epsilon_i 
+   \] met \(\epsilon_i \text{ i.i.d. } N(0,\sigma^2)\).
+\item
+  Indien er minstens 1 \(p\)-waarde kleiner is dan
+  \(\alpha_{\text{IN}}\), selecteer het model dat overeenkomt met de
+  kleinste \(p\)-waarde. Dit model wordt \(m_2\) genoemd.
+\item
+  Stel \(k=2\).
+\item
+  Definieer de verzameling van modellen met 1 predictor toegevoegd aan
+  \(m_{k}\). Test dat de parameter van de toegevoegde regressor
+  significant verschillend is van 0 op het \(\alpha_{\text{IN}}\)
+  significantieniveau.
+\item
+  Indien geen enkel van de \(p\)-waarden kleiner is dan
+  \(\alpha_{\text{IN}}\), stop de procedure. Het finale model is \[
+     Y_i = \beta_0 + \sum_{j \in m_k} \beta_j x_{ij} + \epsilon_i 
+   \] met \(\epsilon_i \text{ i.i.d. } N(0,\sigma^2)\).
+\item
+  Indien er minstens één \(p\)-waarde kleiner is dan
+  \(\alpha_{\text{IN}}\), selecteer het model dat overeenkomt met de
+  kleinste \(p\)-waarde. Dit model wordt \(m_{k+1}\) genoemd.
+\item
+  Verhoog \(k\) met 1 (i.e. \(k\leftarrow k+1\)) en ga naar stap 6.
+\end{enumerate}
+
+Voorbeeld voor lpsa. We laten interactietermen toe, maar de modelbouw
+moet zich houden aan de hiërarchie van hoofd- en interactietermen. We
+stellen \(\alpha_{\text{IN}}=5\%\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(lpsa }\OperatorTok{~}\StringTok{ }\DecValTok{1}\NormalTok{, }\DataTypeTok{data =}\NormalTok{ prostate)}
+\KeywordTok{add1}\NormalTok{(m1, }\DataTypeTok{scope =} \OperatorTok{~}\NormalTok{lweight }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lweight}\OperatorTok{:}\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\NormalTok{lweight}\OperatorTok{:}\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol}\OperatorTok{:}\NormalTok{svi, }\DataTypeTok{test =} \StringTok{"F"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Single term additions
+## 
+## Model:
+## lpsa ~ 1
+##         Df Sum of Sq     RSS     AIC F value    Pr(>F)    
+## <none>               127.918  28.838                      
+## lweight  1    16.041 111.877  17.841  13.621  0.000373 ***
+## lcavol   1    69.003  58.915 -44.366 111.267 < 2.2e-16 ***
+## svi      1    41.011  86.907  -6.658  44.830 1.499e-09 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m2 <-}\StringTok{ }\KeywordTok{update}\NormalTok{(m1, }\OperatorTok{~}\NormalTok{. }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol)}
+\KeywordTok{add1}\NormalTok{(m2, }\DataTypeTok{scope =} \OperatorTok{~}\NormalTok{lweight }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lweight}\OperatorTok{:}\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\NormalTok{lweight}\OperatorTok{:}\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol}\OperatorTok{:}\NormalTok{svi, }\DataTypeTok{test =} \StringTok{"F"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol
+##         Df Sum of Sq    RSS     AIC F value   Pr(>F)   
+## <none>               58.915 -44.366                    
+## lweight  1    5.9484 52.966 -52.690 10.5567 0.001606 **
+## svi      1    5.2375 53.677 -51.397  9.1719 0.003172 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m3 <-}\StringTok{ }\KeywordTok{update}\NormalTok{(m2, }\OperatorTok{~}\NormalTok{. }\OperatorTok{+}\StringTok{ }\NormalTok{lweight)}
+\KeywordTok{add1}\NormalTok{(m3, }\DataTypeTok{scope =} \OperatorTok{~}\NormalTok{lweight }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lweight}\OperatorTok{:}\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\NormalTok{lweight}\OperatorTok{:}\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol}\OperatorTok{:}\NormalTok{svi, }\DataTypeTok{test =} \StringTok{"F"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol + lweight
+##                Df Sum of Sq    RSS     AIC F value   Pr(>F)   
+## <none>                      52.966 -52.690                    
+## svi             1    5.1814 47.785 -60.676  10.084 0.002029 **
+## lweight:lcavol  1    0.1222 52.844 -50.914   0.215 0.643962   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m4 <-}\StringTok{ }\KeywordTok{update}\NormalTok{(m3, }\OperatorTok{~}\NormalTok{. }\OperatorTok{+}\StringTok{ }\NormalTok{svi)}
+\KeywordTok{add1}\NormalTok{(m4, }\DataTypeTok{scope =} \OperatorTok{~}\NormalTok{lweight }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lweight}\OperatorTok{:}\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\NormalTok{lweight}\OperatorTok{:}\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol}\OperatorTok{:}\NormalTok{svi, }\DataTypeTok{test =} \StringTok{"F"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol + lweight + svi
+##                Df Sum of Sq    RSS     AIC F value Pr(>F)
+## <none>                      47.785 -60.676               
+## lweight:lcavol  1   0.36606 47.419 -59.422  0.7102 0.4016
+## lweight:svi     1   1.16445 46.621 -61.069  2.2979 0.1330
+## lcavol:svi      1   0.02433 47.761 -58.725  0.0469 0.8291
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(m4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = lpsa ~ lcavol + lweight + svi, data = prostate)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.72966 -0.45767  0.02814  0.46404  1.57012 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -0.26807    0.54350  -0.493  0.62301    
+## lcavol       0.55164    0.07467   7.388  6.3e-11 ***
+## lweight      0.50854    0.15017   3.386  0.00104 ** 
+## sviinvasion  0.66616    0.20978   3.176  0.00203 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7168 on 93 degrees of freedom
+## Multiple R-squared:  0.6264, Adjusted R-squared:  0.6144 
+## F-statistic: 51.99 on 3 and 93 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Het geselecteerde model is \[
+  Y_i  = \beta_0 + \beta_v X_{iv} + \beta_w X_{iw} + \beta_s X_{is} + \epsilon_i
+\] met \(\epsilon_i \text{ i.i.d. } N(0,\sigma^2)\).
+
+\subsection{Achterwaartse
+modelselectie}\label{achterwaartse-modelselectie}
+
+Achterwaartse modelselectie is een procedure die ook gekend staat als
+achterwaartse eliminatie (Engels: \emph{backward elimination}).
+
+De procedure start van het maximale model en gaat na welke predictoren
+uit het model kunnen worden verwijderd.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Start met het maximale model \(m_1\) met alle \(p-1\) regressoren
+\item
+  Bouw alle modellen waar 1 predictor wordt weggelaten en ga via een
+  F-test na of het verwijderen van de predictoren significant is op het
+  \(\alpha_{\text{OUT}}\) significantieniveau. Merk op dat deze test in
+  model \(m_1\) moet uitgevoerd worden.
+\item
+  Indien geen enkele van de \(p\)-waarden groter is dan
+  \(\alpha_{\text{OUT}}\), stop de procedure. Het finale model is het
+  maximale model \(m_1\).
+\item
+  Indien er minstens één \(p\)-waarde groter dan \(\alpha_{\text{OUT}}\)
+  is, selecteer het model dat overeenkomt met de grootste \(p\)-waarde.
+  Dit model wordt \(m_2\) genoemd.
+\item
+  Stel \(k=2\)
+\item
+  Bouw alle modellen waar 1 predictor wordt weggelaten uit \(m_k\) en ga
+  via een F-test na of het verwijderen van de predictoren significant is
+  op het \(\alpha_{\text{OUT}}\) significantieniveau. Merk op dat deze
+  test in model \(m_k\) moet uitgevoerd worden.
+\item
+  Indien geen enkel van de \(p\)-waarden groter is dan
+  \(\alpha_{\text{OUT}}\), stop de procedure. Het finale model is
+  \(m_k\)
+\item
+  Indien er minstens één \(p\)-waarde groter is dan
+  \(\alpha_{\text{OUT}}\), selecteer het model dat overeenkomt met de
+  grootste \(p\)-waarde. Dit model wordt \(m_{k+1}\) genoemd.
+\item
+  Verhoog \(k\) met één (i.e. \(k\leftarrow k+1\)) en ga naar stap 6.
+\end{enumerate}
+
+We passen de achterwaartse modelselectie toe op het prostaatkanker
+voorbeeld. We zoeken naar een model met enkel de belangrijke termen
+(i.e.~significante termen) die geassocieerd zijn met lpsa. We laten
+interactietermen toe, maar de modelbouw moet zich houden aan de
+hiërarchie van hoofd- en interactietermen. We stellen
+\(\alpha_{\text{OUT}}=5\%\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alphaOut <-}\StringTok{ }\FloatTok{0.05}
+\NormalTok{m <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(lpsa }\OperatorTok{~}\StringTok{ }\NormalTok{lweight }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lweight}\OperatorTok{:}\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\NormalTok{lweight}\OperatorTok{:}\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol}\OperatorTok{:}\NormalTok{svi, prostate)}
+\NormalTok{dropHlp <-}\StringTok{ }\KeywordTok{drop1}\NormalTok{(m, }\DataTypeTok{test =} \StringTok{"F"}\NormalTok{)}
+\NormalTok{dropHlp}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lweight + lcavol + svi + lweight:lcavol + lweight:svi + 
+##     lcavol:svi
+##                Df Sum of Sq    RSS     AIC F value Pr(>F)
+## <none>                      46.478 -57.365               
+## lweight:lcavol  1   0.00012 46.479 -59.365  0.0002 0.9878
+## lweight:svi     1   0.87404 47.353 -57.558  1.6925 0.1966
+## lcavol:svi      1   0.14093 46.619 -59.071  0.2729 0.6027
+\end{verbatim}
+
+Merk op dat eerst enkel de interactietermen worden getest. De
+hoofdeffecten mogen niet uit het model worden weggelaten zolang er
+interactie termen in het model zijn opgenomen waarin deze hoofdeffecten
+voorkomen.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{while}\NormalTok{ (}\KeywordTok{sum}\NormalTok{(dropHlp[, }\DecValTok{6}\NormalTok{] }\OperatorTok{>=}\StringTok{ }\NormalTok{alphaOut, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)) \{}
+\NormalTok{    dropVarName <-}\StringTok{ }\KeywordTok{rownames}\NormalTok{(dropHlp)[}\KeywordTok{which.max}\NormalTok{(dropHlp[, }
+        \DecValTok{6}\NormalTok{])]}
+\NormalTok{    m <-}\StringTok{ }\KeywordTok{update}\NormalTok{(m, }\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"~.-"}\NormalTok{, dropVarName)))}
+\NormalTok{    dropHlp <-}\StringTok{ }\KeywordTok{drop1}\NormalTok{(m, }\DataTypeTok{test =} \StringTok{"F"}\NormalTok{)}
+    \KeywordTok{print}\NormalTok{(dropHlp)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lweight + lcavol + svi + lweight:svi + lcavol:svi
+##             Df Sum of Sq    RSS     AIC F value Pr(>F)
+## <none>                   46.479 -59.365               
+## lweight:svi  1    1.2820 47.761 -58.725  2.5100 0.1166
+## lcavol:svi   1    0.1419 46.621 -61.069  0.2778 0.5994
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lweight + lcavol + svi + lweight:svi
+##             Df Sum of Sq    RSS     AIC F value    Pr(>F)    
+## <none>                   46.621 -61.069                      
+## lcavol       1   28.1995 74.820 -17.184 55.6484 4.711e-11 ***
+## lweight:svi  1    1.1644 47.785 -60.676  2.2979     0.133    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lweight + lcavol + svi
+##         Df Sum of Sq    RSS     AIC F value    Pr(>F)    
+## <none>               47.785 -60.676                      
+## lweight  1    5.8923 53.677 -51.397  11.468  0.001039 ** 
+## lcavol   1   28.0446 75.830 -17.884  54.581 6.304e-11 ***
+## svi      1    5.1814 52.966 -52.690  10.084  0.002029 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Merk op dat opnieuw hetzelfde model wordt gekozen. Dat is in het
+algemeen niet het geval. Vaak heeft achterwaartse modelselectie de
+eigenschap om te resulteren in een meer complex model dan voorwaartse
+selectie.
+
+\section{Stapsgewijze modelselectie}\label{stapsgewijze-modelselectie}
+
+Deze methode is een combinatie van voorwaartse en achterwaartse
+modelselectie. Het kan starten van het maximale of het minimale model.
+We implementeren de methode, startende van het minimale model. In elke
+stap zal eerst worden gekeken of een predictor kan worden toegevoegd,
+vervolgens zal worden nagegaan of een predictor kan worden verwijderd
+van het model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alphaIn <-}\StringTok{ }\NormalTok{alphaOut <-}\StringTok{ }\FloatTok{0.05}
+\NormalTok{m <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(lpsa }\OperatorTok{~}\StringTok{ }\DecValTok{1}\NormalTok{, prostate)}
+\NormalTok{notConverged <-}\StringTok{ }\OtherTok{TRUE}
+\ControlFlowTok{while}\NormalTok{ (notConverged) \{}
+\NormalTok{    addHlp <-}\StringTok{ }\KeywordTok{add1}\NormalTok{(m, }\DataTypeTok{scope =} \OperatorTok{~}\NormalTok{lweight }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }\NormalTok{svi }\OperatorTok{+}\StringTok{ }
+\StringTok{        }\NormalTok{lweight}\OperatorTok{:}\NormalTok{lcavol }\OperatorTok{+}\StringTok{ }\NormalTok{lweight}\OperatorTok{:}\NormalTok{svi }\OperatorTok{+}\StringTok{ }\NormalTok{lcavol}\OperatorTok{:}\NormalTok{svi, }
+        \DataTypeTok{test =} \StringTok{"F"}\NormalTok{)}
+    \KeywordTok{print}\NormalTok{(addHlp)}
+\NormalTok{    addVarName <-}\StringTok{ }\KeywordTok{rownames}\NormalTok{(addHlp)[}\KeywordTok{which.min}\NormalTok{(addHlp[, }
+        \DecValTok{6}\NormalTok{])]}
+    \ControlFlowTok{if}\NormalTok{ ((}\KeywordTok{sum}\NormalTok{(addHlp[, }\DecValTok{6}\NormalTok{] }\OperatorTok{<}\StringTok{ }\NormalTok{alphaIn, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)) }\OperatorTok{>}\StringTok{ }
+\StringTok{        }\DecValTok{0}\NormalTok{) }
+\NormalTok{        m <-}\StringTok{ }\KeywordTok{update}\NormalTok{(m, }\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"~.+"}\NormalTok{, addVarName)))}
+\NormalTok{    dropHlp <-}\StringTok{ }\KeywordTok{drop1}\NormalTok{(m, }\DataTypeTok{test =} \StringTok{"F"}\NormalTok{)}
+    \KeywordTok{print}\NormalTok{(dropHlp)}
+    \ControlFlowTok{if}\NormalTok{ ((}\KeywordTok{sum}\NormalTok{(dropHlp[, }\DecValTok{6}\NormalTok{] }\OperatorTok{>=}\StringTok{ }\NormalTok{alphaOut, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)) }\OperatorTok{>}\StringTok{ }
+\StringTok{        }\DecValTok{0}\NormalTok{) }
+\NormalTok{        m <-}\StringTok{ }\KeywordTok{update}\NormalTok{(m, }\KeywordTok{as.formula}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"~.-"}\NormalTok{, dropVarName)))}
+    \ControlFlowTok{if}\NormalTok{ ((}\KeywordTok{sum}\NormalTok{(addHlp[, }\DecValTok{6}\NormalTok{] }\OperatorTok{<}\StringTok{ }\NormalTok{alphaIn, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{        }\KeywordTok{sum}\NormalTok{(dropHlp[, }\DecValTok{6}\NormalTok{] }\OperatorTok{>=}\StringTok{ }\NormalTok{alphaOut, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)) }\OperatorTok{>}\StringTok{ }
+\StringTok{        }\DecValTok{0}\NormalTok{) }
+\NormalTok{        notConverged <-}\StringTok{ }\OtherTok{TRUE} \ControlFlowTok{else}\NormalTok{ notConverged <-}\StringTok{ }\OtherTok{FALSE}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Single term additions
+## 
+## Model:
+## lpsa ~ 1
+##         Df Sum of Sq     RSS     AIC F value    Pr(>F)    
+## <none>               127.918  28.838                      
+## lweight  1    16.041 111.877  17.841  13.621  0.000373 ***
+## lcavol   1    69.003  58.915 -44.366 111.267 < 2.2e-16 ***
+## svi      1    41.011  86.907  -6.658  44.830 1.499e-09 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lcavol
+##        Df Sum of Sq     RSS     AIC F value    Pr(>F)    
+## <none>               58.915 -44.366                      
+## lcavol  1    69.003 127.918  28.838  111.27 < 2.2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol
+##         Df Sum of Sq    RSS     AIC F value   Pr(>F)   
+## <none>               58.915 -44.366                    
+## lweight  1    5.9484 52.966 -52.690 10.5567 0.001606 **
+## svi      1    5.2375 53.677 -51.397  9.1719 0.003172 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lcavol + lweight
+##         Df Sum of Sq     RSS     AIC F value    Pr(>F)    
+## <none>                52.966 -52.690                      
+## lcavol   1    58.910 111.877  17.841 104.549 < 2.2e-16 ***
+## lweight  1     5.948  58.915 -44.366  10.557  0.001606 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol + lweight
+##                Df Sum of Sq    RSS     AIC F value   Pr(>F)   
+## <none>                      52.966 -52.690                    
+## svi             1    5.1814 47.785 -60.676  10.084 0.002029 **
+## lweight:lcavol  1    0.1222 52.844 -50.914   0.215 0.643962   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lcavol + lweight + svi
+##         Df Sum of Sq    RSS     AIC F value    Pr(>F)    
+## <none>               47.785 -60.676                      
+## lcavol   1   28.0446 75.830 -17.884  54.581 6.304e-11 ***
+## lweight  1    5.8923 53.677 -51.397  11.468  0.001039 ** 
+## svi      1    5.1814 52.966 -52.690  10.084  0.002029 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol + lweight + svi
+##                Df Sum of Sq    RSS     AIC F value Pr(>F)
+## <none>                      47.785 -60.676               
+## lweight:lcavol  1   0.36606 47.419 -59.422  0.7102 0.4016
+## lweight:svi     1   1.16445 46.621 -61.069  2.2979 0.1330
+## lcavol:svi      1   0.02433 47.761 -58.725  0.0469 0.8291
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lcavol + lweight + svi
+##         Df Sum of Sq    RSS     AIC F value    Pr(>F)    
+## <none>               47.785 -60.676                      
+## lcavol   1   28.0446 75.830 -17.884  54.581 6.304e-11 ***
+## lweight  1    5.8923 53.677 -51.397  11.468  0.001039 ** 
+## svi      1    5.1814 52.966 -52.690  10.084  0.002029 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Merk op dat er voor dit voorbeeld nooit een predictor uit het model werd
+verwijderd eens die werd opgenomen in het model. Dat is in het algemeen
+niet het geval.
+
+\section{Opmerkingen}\label{opmerkingen}
+
+Eerst een opmerking over de toepassing van de drie modelselectiemethoden
+op het prostaat voorbeeld. De drie methoden resulteerden in hetzelfde
+finale geselecteerde model (met enkel hoofdeffecten van lcavol, lweight
+en svi). In het algemeen leiden de drie methoden niet noodzakelijk tot
+eenzelfde finale model.
+
+De \(p\)-waarden in het geselecteerde model mogen niet geïnterpreteerd
+worden. Dit is minder eenvoudig om in te zien. We hebben immers meerdere
+hypothese testen uitgevoerd om tot dit model te komen. Bovendien zorgt
+de modelselectie ervoor dat enkel ``significante'' termen in het finale
+model staan; de selectieprocedure is dus een doelbewuste
+aanrijkingsprocedure. Herinner je dat de definitie van de \(p\)-waarde
+de kans onder \(H_0\) is dat de teststatistiek ``door zuiver toeval''
+minstens zo extreem is dan deze die waargenomen werd. Door de aanrijking
+via de modelselectieprocedure, is het niet langer ``zuiver toeval'' dat
+de teststatistiek groter is dan de geobserveerde.
+
+Er is geen theoretische basis voor de selectieprocedure. Intuïtief lijkt
+de procedure zinvol omdat we gewend zijn om beslissingen te nemen aan de
+hand van hypothesetesten, maar hypothesetesten zijn eigenlijk enkel
+geldig wanneer ze doelgericht toegepast worden om een vooraf (i.e.~voor
+het observeren van de data) duidelijk omschreven onderzoeksvraag te
+beantwoorden. Bij modelselectie wordt het pad doorheen de modellenruimte
+bepaald door de geobserveerde data, waardoor de \(p\)-waarden hun
+betekenis verliezen, i.e.~de hypotheses worden niet vooraf door de
+onderzoekers geformuleerd, maar ze worden door de data bepaald.
+
+De analyse van lpsa in het vorige hoofdstuk zou ook als modelselectie
+kunnen worden bekeken: we startten met het model met de hoofdeffecten en
+met interactietermen. Vervolgens werd getest of de interactieterm nul
+was. Indien de interactieterm niet significant was, dan werd deze
+verwijderd en werden de hoofdeffecten getest. Dit lijkt op een
+achterwaartse modelselectie, maar in dat voorbeeld moeten we de
+procedure interpreteren als een klassieke hypothesetest (voor
+interactie) waarvan de nulhypothese in de onderzoeksvraag verscholen lag
+en dus niet door de data gesuggereerd werd.
+
+\section{Modelselectie voor
+predictie}\label{modelselectie-voor-predictie}
+
+\subsection{Inleiding}\label{inleiding-10}
+
+In het vroege stadium van de ontwikkeling van een nieuw geneesmiddel
+(Engels: \emph{early drug development}) kijkt men tegenwoordig ook naar
+het effect van de werkzame stof (\emph{compound}) op genexpressie. Dit
+kan een dieper inzicht geven in de werking van het geneesmiddel, of kan
+toxiciteit van de compound in een vroeg stadium detecteren
+(toxicogenomics). De gewenste activiteit van een compound wordt in vitro
+bepaald aan de hand van bio-assays (BA). De uitkomst is bv. een maat
+voor de bindingscapaciteiten van de compound aan de geviseerde receptor
+op de celwand (IC\(_{50}\)). Deze receptor wordt de target genoemd.
+
+In deze vroege fase van de ontwikkeling van een geneesmiddel worden
+typisch 20 tot 50 gelijkaardige compounds uitvoerig getest. Op basis van
+de in vitro resultaten nemen de chemici beslissingen over hoe de
+molecules moeten aangepast worden om tot een (hopelijk) betere compound
+te komen (i.e.~een hogere on-target activiteit en minder toxiciteit).
+
+De kleine variaties in moleculaire structuur geven aanleiding tot
+variaties in BA en genexpressies.
+
+De doelstelling van de studie is het opstellen van een model dat toelaat
+de bioactiviteit (BA) te voorspellen aan de hand van genexpressies in
+een levercellijn.
+
+In het volgend voorbeeld, wordt het effect van 35 compounds getest op de
+genexpressie van levercellen. De levercellen werden gedurende 24 uur
+blootgesteld aan de compound, waarna genexpressie gemeten werd m.b.v.
+microarrays. De on-target bioactiviteit van ieder van de 35 compounds
+wordt via een in-vitro bioassay bekomen (IC\(_{50}\)).
+
+We beperken ons hier tot 10 genen (geselecteerd door het onderzoeksteam
+op basis van a-priori kennis van de pathways betrokken bij de
+ontwikkeling van de ziekte). Figuur \ref{fig:MCXScatter} toont de
+scatter plot matrix.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mcx <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"dataset/mcx.txt"}\NormalTok{, }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(mcx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     BA    HOXB5    PNISR     ATRX LOC100505650   PLK1S1  DNAJC12    ZFHX4
+## 1 5.70 9.864744 9.421823 8.557665     11.08555 8.892243 8.198292 8.846125
+## 2 5.87 9.847176 9.301424 8.550591     11.18236 9.196701 8.343191 8.873578
+## 3 5.70 9.859438 9.360302 8.536606     11.03822 8.903690 8.231318 8.859549
+## 4 5.54 9.862448 9.283498 8.535854     10.98804 9.136609 8.292451 8.857473
+## 5 5.32 9.836761 9.309442 8.543522     10.94489 8.855404 8.197822 8.826820
+## 6 5.73 9.848315 9.318502 8.545635     11.01789 8.919469 8.272741 8.838364
+##      BSDC1    FTSJ1    YPEL1
+## 1 8.848922 10.38470 8.265589
+## 2 9.022556 10.23077 8.426856
+## 3 8.888275 10.37585 8.244617
+## 4 8.985628 10.35854 8.257426
+## 5 8.832436 10.37179 8.250075
+## 6 8.864538 10.38892 8.280436
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(mcx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Statistiek_2018_2019_files/figure-latex/MCXScatter-1} 
+
+}
+
+\caption{Scatterplot matrix voor de observaties in de bioactiviteit dataset.}\label{fig:MCXScatter}
+\end{figure}
+
+Figuur \ref{fig:MCXScatter} suggereert dat de BA uitkomst sterk
+gecorreleerd is met alle genexpressies, maar de figuur toont tevens dat
+vele genexpressies ook onderling sterk gecorreleerd zijn. Het zal dus
+waarschijnlijk niet nodig zijn om alle genen simultaan in het model op
+te nemen. Niettegenstaande de hypothesetest-gebaseerde methoden
+toepasbaar lijken, argumenteren we hier dat die methoden niet geschikt
+zijn in de huidige context.
+
+De doelstelling is om een zo optimaal mogelijk model te selecteren dat
+gebruikt kan worden voor predictie van de uitkomst. Niettegenstaande de
+predictie voor een lineair regressiemodel gegeven wordt door
+\(\hat{Y}=\beta_0+\sum_{j=1}^{p-1}\beta_jX_j\), weten we dat de
+\(\beta\)-parameters een interpretatie hebben met betrekking tot de
+gemiddelde uitkomst
+\(\text{E}[Y\mid (X_1,\ldots,X_{p-1})]=\beta_0+\sum_{j=1}^{p-1}\beta_jX_j\).
+Hypothesetesten voor \(H_0:\beta_j=0\) gaan dus na of predictor \(X_j\)
+(conditioneel op de andere regressoren in het model) gerelateerd is tot
+de gemiddelde uitkomst. Het al dan niet verwerpen van \(H_0\) heeft niet
+enkel te maken met de werkelijke waarde van \(\beta_j\), maar ook met de
+kracht van de hypothesetest en dus ook met de steekproefgrootte \(n\).
+Hypothesetesten maken een afweging van de evidentie in de data
+tegen/voor de gestelde hypotheses die betrekking hebben op de gemiddelde
+uitkomst. Voor een goed predictiemodel is het minder belangrijk dat het
+model de werkelijkheid weerspiegelt met betrekking tot het verband
+tussen de gemiddelde uitkomst en de regressoren; het is enkel belangrijk
+dat het model goede predicties geeft voor individuele uitkomsten. Om
+deze reden wordt modelselectie voor predictiemodellen uitgevoerd door
+gebruik te maken van specifieke modelselectiecriteria die de kwaliteit
+van het predictieve karakter van een model kwantificeert.
+
+\subsection{Selectie-criterium}\label{selectie-criterium}
+
+Het is aanlokkelijk om \(R^2\) te gebruiken als een criterium voor hoe
+goed het model in staat is om predicties te maken, gezien het aangeeft
+hoeveel procent van de variabiliteit in de data verklaard kan worden
+door het model. \(R^2\) is echter geen goed criterium. Hoe complexer het
+model (hoe meer predictoren er worden opgenomen) hoe hoger \(R^2\)
+wordt. \(R^2 = 1-SSE/SSTot = SSR/SSTot\) en SSE (SSR) neemt immers
+steeds af(toe) als een extra predictor in het model wordt opgenomen
+terwijl SSTot constant blijft. Het gebruik van \(R^2\) zal dus
+aanleiding geven tot overfitting. We zullen immers steeds het meest
+complexe model selecteren. Hierdoor zal het model niet meer goed
+veralgemenen naar nieuwe data toe: het model wordt als het ware te goed
+getuned naar de dataset die is gebruikt om het model te trainen waardoor
+het niet meer bruikbaar is om predicties te doen.
+
+Het Akaike Information Criterium (AIC) is een criterium dat een
+compromis maakt tussen de kwaliteit van de fit en de complexiteit van
+het model.
+\[AIC = -2 \text{ln } L(\hat \beta_0, \ldots, \hat \beta_{p-1}, \hat \sigma^2) + 2 (p+1),\]
+
+waarbij de eerste term het natuurlijke logaritme is van likelihood, die
+voor een steekproef van \(n\) i.i.d. normaal verdeelde observaties met
+dichtheidsfunctie
+\(f(Y_i \vert x_{i1} \ldots x_{ip-1}, \beta_0,\ldots, \beta_{p-1} ,\sigma^2)\)
+en conditioneel gemiddelde
+\(E[Y_i \vert x_{i1} \ldots x_{ip-1}]=\beta_0 + \sum_{j=1}^{p-1} \beta_j x_{j}\)
+gedefinieerd is als: \[
+L(\beta_0, \ldots, \beta_{p-1}, \sigma^2) = \prod\limits_{i=1}^n f(y_i \ldots x_{ip-1}, \beta_0,\ldots, \beta_{p-1} ,\sigma^2)  
+\]
+
+De likelihood geeft dus weer hoe waarschijnlijk het is om de data te
+observeren onder het normale regressiemodel. Gezien we de parameters
+niet kennen zullen we ze vervangen door de geschatte modelparameters. We
+kunnen voor het Normale lineaire regressie model aantonen dat
+\(-2 \text{ln } L(\hat \beta_0, \ldots, \hat \beta_{p-1}, \hat \sigma^2)\)
+evenredig is met SSE. Hoe slechter de fit is, hoe hoger het AIC
+criterium.
+
+De tweede term straft de kwaliteit van de fit als het ware af voor
+complexiteit. Merk op dat \(p+1\) het aantal modelparameters is die we
+schatten met het normale regressie model: \(p\) parameters van het
+lineaire model + de parameter \(\sigma^2\). Het AIC criterium zal dus
+ook toenemen i.f.v. de complexiteit van het model (aantal parameters).
+Hierdoor wordt een afweging gemaakt tussen de kwaliteit van de model fit
+(term 1) en de complexiteit van het model (term 2).
+
+Merk op dat de data analist het werkelijk model niet kent. Hij/zij zal
+dus verschillende kandidaat modellen met elkaar vergelijken. Vervolgens
+wordt het model geselecteerd waaronder het zo waarschijnlijk mogelijk is
+om de geobserveerde data te trekken in een steekproef (eerste term
+minimaal, SSE zo laag mogelijk), maar zonder dat de modelcomplexiteit
+daarbij te hoog wordt (tweede term). De analist zal dus het
+modelselecteren met een zo klein mogelijke AIC.
+
+Opnieuw kan men gebruik maken van voorwaarts, achterwaartse of
+stapsgewijze modelselectie. Dat kan eenvoudig in R worden
+geïmplementeerd a.d.h.v. de `step' functie.
+
+We passen de strategie nu toe op het bioactiviteitsvoorbeeld. We zullen
+opnieuw voorwaartse, achterwaartse en stapsgewijze modelselectie
+uitvoeren.
+
+Bij voorwaartse modelselectie starten we van een model zonder
+predictoren:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m1 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(BA }\OperatorTok{~}\StringTok{ }\DecValTok{1}\NormalTok{, mcx)}
+\NormalTok{m1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = BA ~ 1, data = mcx)
+## 
+## Coefficients:
+## (Intercept)  
+##        5.55
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mfull <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(BA }\OperatorTok{~}\StringTok{ }\NormalTok{., mcx)}
+\NormalTok{mfull}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = BA ~ ., data = mcx)
+## 
+## Coefficients:
+##  (Intercept)         HOXB5         PNISR          ATRX  LOC100505650  
+##      -9.5823        1.1665        2.6174       -2.0386        0.3095  
+##       PLK1S1       DNAJC12         ZFHX4         BSDC1         FTSJ1  
+##       0.4614        0.4616       -0.7015       -0.2761       -1.6318  
+##        YPEL1  
+##       1.3044
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mForward <-}\StringTok{ }\KeywordTok{step}\NormalTok{(m1, }\DataTypeTok{scope =} \KeywordTok{formula}\NormalTok{(mfull), }\DataTypeTok{direction =} \StringTok{"forward"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Start:  AIC=-19.33
+## BA ~ 1
+## 
+##                Df Sum of Sq     RSS     AIC
+## + LOC100505650  1    14.668  4.3588 -68.910
+## + PNISR         1    14.376  4.6505 -66.643
+## + ATRX          1    14.104  4.9231 -64.650
+## + ZFHX4         1    13.869  5.1574 -63.022
+## + PLK1S1        1    13.860  5.1671 -62.956
+## + FTSJ1         1    13.781  5.2459 -62.426
+## + BSDC1         1    13.703  5.3234 -61.913
+## + DNAJC12       1    13.412  5.6141 -60.052
+## + HOXB5         1    13.400  5.6263 -59.976
+## + YPEL1         1    13.049  5.9774 -57.858
+## <none>                      19.0266 -19.333
+## 
+## Step:  AIC=-68.91
+## BA ~ LOC100505650
+## 
+##           Df Sum of Sq    RSS     AIC
+## + YPEL1    1   1.20478 3.1540 -78.233
+## + DNAJC12  1   0.91062 3.4482 -75.112
+## + PLK1S1   1   0.81030 3.5485 -74.109
+## + FTSJ1    1   0.78960 3.5692 -73.905
+## + BSDC1    1   0.75759 3.6012 -73.592
+## + HOXB5    1   0.69933 3.6595 -73.031
+## + ZFHX4    1   0.69895 3.6599 -73.027
+## + ATRX     1   0.63276 3.7261 -72.400
+## + PNISR    1   0.36333 3.9955 -69.956
+## <none>                 4.3588 -68.910
+## 
+## Step:  AIC=-78.23
+## BA ~ LOC100505650 + YPEL1
+## 
+##           Df Sum of Sq    RSS     AIC
+## <none>                 3.1540 -78.233
+## + PNISR    1  0.133032 3.0210 -77.741
+## + HOXB5    1  0.116332 3.0377 -77.548
+## + FTSJ1    1  0.063065 3.0910 -76.940
+## + ATRX     1  0.048977 3.1051 -76.781
+## + DNAJC12  1  0.044347 3.1097 -76.729
+## + ZFHX4    1  0.029234 3.1248 -76.559
+## + BSDC1    1  0.029032 3.1250 -76.557
+## + PLK1S1   1  0.025778 3.1283 -76.520
+\end{verbatim}
+
+Nu achterwaartse modelselectie:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mBackward <-}\StringTok{ }\KeywordTok{step}\NormalTok{(mfull, }\DataTypeTok{direction =} \StringTok{"backward"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Start:  AIC=-67.34
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + DNAJC12 + 
+##     ZFHX4 + BSDC1 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - BSDC1         1  0.003369 2.7288 -69.302
+## - DNAJC12       1  0.005688 2.7312 -69.272
+## - LOC100505650  1  0.014735 2.7402 -69.156
+## - PLK1S1        1  0.025044 2.7505 -69.025
+## - ZFHX4         1  0.030840 2.7563 -68.951
+## - HOXB5         1  0.039762 2.7652 -68.838
+## - ATRX          1  0.063271 2.7887 -68.542
+## - YPEL1         1  0.139909 2.8654 -67.593
+## - FTSJ1         1  0.157697 2.8832 -67.376
+## <none>                      2.7255 -67.345
+## - PNISR         1  0.211967 2.9374 -66.723
+## 
+## Step:  AIC=-69.3
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + DNAJC12 + 
+##     ZFHX4 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - DNAJC12       1  0.006916 2.7357 -71.213
+## - LOC100505650  1  0.014255 2.7431 -71.119
+## - PLK1S1        1  0.025052 2.7539 -70.982
+## - ZFHX4         1  0.028026 2.7569 -70.944
+## - HOXB5         1  0.036934 2.7658 -70.831
+## - ATRX          1  0.087988 2.8168 -70.191
+## - YPEL1         1  0.136972 2.8658 -69.587
+## - FTSJ1         1  0.155963 2.8848 -69.356
+## <none>                      2.7288 -69.302
+## - PNISR         1  0.228042 2.9569 -68.492
+## 
+## Step:  AIC=-71.21
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + ZFHX4 + FTSJ1 + 
+##     YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - LOC100505650  1  0.014893 2.7506 -73.023
+## - ZFHX4         1  0.025561 2.7613 -72.887
+## - PLK1S1        1  0.031313 2.7671 -72.815
+## - HOXB5         1  0.044757 2.7805 -72.645
+## - ATRX          1  0.081205 2.8170 -72.189
+## <none>                      2.7357 -71.213
+## - YPEL1         1  0.171775 2.9075 -71.082
+## - FTSJ1         1  0.183246 2.9190 -70.944
+## - PNISR         1  0.221272 2.9570 -70.491
+## 
+## Step:  AIC=-73.02
+## BA ~ HOXB5 + PNISR + ATRX + PLK1S1 + ZFHX4 + FTSJ1 + YPEL1
+## 
+##          Df Sum of Sq    RSS     AIC
+## - ZFHX4   1   0.02825 2.7789 -74.665
+## - HOXB5   1   0.04052 2.7912 -74.511
+## - PLK1S1  1   0.05611 2.8068 -74.316
+## - ATRX    1   0.13350 2.8841 -73.364
+## - YPEL1   1   0.15739 2.9080 -73.075
+## <none>                2.7506 -73.023
+## - FTSJ1   1   0.31935 3.0700 -71.178
+## - PNISR   1   0.90015 3.6508 -65.114
+## 
+## Step:  AIC=-74.67
+## BA ~ HOXB5 + PNISR + ATRX + PLK1S1 + FTSJ1 + YPEL1
+## 
+##          Df Sum of Sq    RSS     AIC
+## - HOXB5   1   0.02391 2.8028 -76.365
+## - PLK1S1  1   0.03749 2.8164 -76.196
+## - YPEL1   1   0.14939 2.9283 -74.832
+## <none>                2.7789 -74.665
+## - ATRX    1   0.19488 2.9738 -74.293
+## - FTSJ1   1   0.29613 3.0750 -73.121
+## - PNISR   1   0.89851 3.6774 -66.860
+## 
+## Step:  AIC=-76.37
+## BA ~ PNISR + ATRX + PLK1S1 + FTSJ1 + YPEL1
+## 
+##          Df Sum of Sq    RSS     AIC
+## - PLK1S1  1   0.05400 2.8568 -77.698
+## - YPEL1   1   0.15995 2.9628 -76.423
+## <none>                2.8028 -76.365
+## - ATRX    1   0.17201 2.9748 -76.281
+## - FTSJ1   1   0.28291 3.0857 -75.000
+## - PNISR   1   1.01508 3.8179 -67.548
+## 
+## Step:  AIC=-77.7
+## BA ~ PNISR + ATRX + FTSJ1 + YPEL1
+## 
+##         Df Sum of Sq    RSS     AIC
+## - ATRX   1   0.11974 2.9766 -78.260
+## <none>               2.8568 -77.698
+## - YPEL1  1   0.26844 3.1252 -76.554
+## - FTSJ1  1   0.50227 3.3591 -74.029
+## - PNISR  1   0.96156 3.8184 -69.543
+## 
+## Step:  AIC=-78.26
+## BA ~ PNISR + FTSJ1 + YPEL1
+## 
+##         Df Sum of Sq    RSS     AIC
+## <none>               2.9766 -78.260
+## - YPEL1  1   0.18969 3.1662 -78.098
+## - FTSJ1  1   0.39421 3.3708 -75.907
+## - PNISR  1   1.59191 4.5685 -65.266
+\end{verbatim}
+
+We kunnen ook stapsgewijze modelselectie doen startende vanaf het meest
+eenvoudige model:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mForStep <-}\StringTok{ }\KeywordTok{step}\NormalTok{(m1, }\DataTypeTok{scope =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{lower =} \KeywordTok{formula}\NormalTok{(m1), }
+    \DataTypeTok{upper =} \KeywordTok{formula}\NormalTok{(mfull)), }\DataTypeTok{direction =} \StringTok{"both"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Start:  AIC=-19.33
+## BA ~ 1
+## 
+##                Df Sum of Sq     RSS     AIC
+## + LOC100505650  1    14.668  4.3588 -68.910
+## + PNISR         1    14.376  4.6505 -66.643
+## + ATRX          1    14.104  4.9231 -64.650
+## + ZFHX4         1    13.869  5.1574 -63.022
+## + PLK1S1        1    13.860  5.1671 -62.956
+## + FTSJ1         1    13.781  5.2459 -62.426
+## + BSDC1         1    13.703  5.3234 -61.913
+## + DNAJC12       1    13.412  5.6141 -60.052
+## + HOXB5         1    13.400  5.6263 -59.976
+## + YPEL1         1    13.049  5.9774 -57.858
+## <none>                      19.0266 -19.333
+## 
+## Step:  AIC=-68.91
+## BA ~ LOC100505650
+## 
+##                Df Sum of Sq     RSS     AIC
+## + YPEL1         1    1.2048  3.1540 -78.233
+## + DNAJC12       1    0.9106  3.4482 -75.112
+## + PLK1S1        1    0.8103  3.5485 -74.109
+## + FTSJ1         1    0.7896  3.5692 -73.905
+## + BSDC1         1    0.7576  3.6012 -73.592
+## + HOXB5         1    0.6993  3.6595 -73.031
+## + ZFHX4         1    0.6990  3.6599 -73.027
+## + ATRX          1    0.6328  3.7261 -72.400
+## + PNISR         1    0.3633  3.9955 -69.956
+## <none>                       4.3588 -68.910
+## - LOC100505650  1   14.6678 19.0266 -19.333
+## 
+## Step:  AIC=-78.23
+## BA ~ LOC100505650 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## <none>                      3.1540 -78.233
+## + PNISR         1   0.13303 3.0210 -77.741
+## + HOXB5         1   0.11633 3.0377 -77.548
+## + FTSJ1         1   0.06306 3.0910 -76.940
+## + ATRX          1   0.04898 3.1051 -76.781
+## + DNAJC12       1   0.04435 3.1097 -76.729
+## + ZFHX4         1   0.02923 3.1248 -76.559
+## + BSDC1         1   0.02903 3.1250 -76.557
+## + PLK1S1        1   0.02578 3.1283 -76.520
+## - YPEL1         1   1.20478 4.3588 -68.910
+## - LOC100505650  1   2.82334 5.9774 -57.858
+\end{verbatim}
+
+Nu stapsgewijze modelselectie startende vanaf het meest complexe model:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mBackStep <-}\StringTok{ }\KeywordTok{step}\NormalTok{(mfull, }\DataTypeTok{scope =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{lower =} \KeywordTok{formula}\NormalTok{(m1), }
+    \DataTypeTok{upper =} \KeywordTok{formula}\NormalTok{(mfull)), }\DataTypeTok{direction =} \StringTok{"both"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Start:  AIC=-67.34
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + DNAJC12 + 
+##     ZFHX4 + BSDC1 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - BSDC1         1  0.003369 2.7288 -69.302
+## - DNAJC12       1  0.005688 2.7312 -69.272
+## - LOC100505650  1  0.014735 2.7402 -69.156
+## - PLK1S1        1  0.025044 2.7505 -69.025
+## - ZFHX4         1  0.030840 2.7563 -68.951
+## - HOXB5         1  0.039762 2.7652 -68.838
+## - ATRX          1  0.063271 2.7887 -68.542
+## - YPEL1         1  0.139909 2.8654 -67.593
+## - FTSJ1         1  0.157697 2.8832 -67.376
+## <none>                      2.7255 -67.345
+## - PNISR         1  0.211967 2.9374 -66.723
+## 
+## Step:  AIC=-69.3
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + DNAJC12 + 
+##     ZFHX4 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - DNAJC12       1  0.006916 2.7357 -71.213
+## - LOC100505650  1  0.014255 2.7431 -71.119
+## - PLK1S1        1  0.025052 2.7539 -70.982
+## - ZFHX4         1  0.028026 2.7569 -70.944
+## - HOXB5         1  0.036934 2.7658 -70.831
+## - ATRX          1  0.087988 2.8168 -70.191
+## - YPEL1         1  0.136972 2.8658 -69.587
+## - FTSJ1         1  0.155963 2.8848 -69.356
+## <none>                      2.7288 -69.302
+## - PNISR         1  0.228042 2.9569 -68.492
+## + BSDC1         1  0.003369 2.7255 -67.345
+## 
+## Step:  AIC=-71.21
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + ZFHX4 + FTSJ1 + 
+##     YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - LOC100505650  1  0.014893 2.7506 -73.023
+## - ZFHX4         1  0.025561 2.7613 -72.887
+## - PLK1S1        1  0.031313 2.7671 -72.815
+## - HOXB5         1  0.044757 2.7805 -72.645
+## - ATRX          1  0.081205 2.8170 -72.189
+## <none>                      2.7357 -71.213
+## - YPEL1         1  0.171775 2.9075 -71.082
+## - FTSJ1         1  0.183246 2.9190 -70.944
+## - PNISR         1  0.221272 2.9570 -70.491
+## + DNAJC12       1  0.006916 2.7288 -69.302
+## + BSDC1         1  0.004597 2.7312 -69.272
+## 
+## Step:  AIC=-73.02
+## BA ~ HOXB5 + PNISR + ATRX + PLK1S1 + ZFHX4 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - ZFHX4         1   0.02825 2.7789 -74.665
+## - HOXB5         1   0.04052 2.7912 -74.511
+## - PLK1S1        1   0.05611 2.8068 -74.316
+## - ATRX          1   0.13350 2.8841 -73.364
+## - YPEL1         1   0.15739 2.9080 -73.075
+## <none>                      2.7506 -73.023
+## + LOC100505650  1   0.01489 2.7358 -71.213
+## - FTSJ1         1   0.31935 3.0700 -71.178
+## + DNAJC12       1   0.00755 2.7431 -71.119
+## + BSDC1         1   0.00409 2.7466 -71.075
+## - PNISR         1   0.90015 3.6508 -65.114
+## 
+## Step:  AIC=-74.67
+## BA ~ HOXB5 + PNISR + ATRX + PLK1S1 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - HOXB5         1   0.02391 2.8028 -76.365
+## - PLK1S1        1   0.03749 2.8164 -76.196
+## - YPEL1         1   0.14939 2.9283 -74.832
+## <none>                      2.7789 -74.665
+## - ATRX          1   0.19488 2.9738 -74.293
+## - FTSJ1         1   0.29613 3.0750 -73.121
+## + ZFHX4         1   0.02825 2.7506 -73.023
+## + LOC100505650  1   0.01759 2.7613 -72.887
+## + DNAJC12       1   0.00489 2.7740 -72.727
+## + BSDC1         1   0.00072 2.7782 -72.674
+## - PNISR         1   0.89851 3.6774 -66.860
+## 
+## Step:  AIC=-76.37
+## BA ~ PNISR + ATRX + PLK1S1 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - PLK1S1        1   0.05400 2.8568 -77.698
+## - YPEL1         1   0.15995 2.9628 -76.423
+## <none>                      2.8028 -76.365
+## - ATRX          1   0.17201 2.9748 -76.281
+## - FTSJ1         1   0.28291 3.0857 -75.000
+## + HOXB5         1   0.02391 2.7789 -74.665
+## + LOC100505650  1   0.01287 2.7899 -74.526
+## + ZFHX4         1   0.01165 2.7912 -74.511
+## + DNAJC12       1   0.01066 2.7921 -74.499
+## + BSDC1         1   0.00070 2.8021 -74.374
+## - PNISR         1   1.01508 3.8179 -67.548
+## 
+## Step:  AIC=-77.7
+## BA ~ PNISR + ATRX + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - ATRX          1   0.11974 2.9766 -78.260
+## <none>                      2.8568 -77.698
+## - YPEL1         1   0.26844 3.1252 -76.554
+## + PLK1S1        1   0.05400 2.8028 -76.365
+## + HOXB5         1   0.04042 2.8164 -76.196
+## + LOC100505650  1   0.03471 2.8221 -76.125
+## + BSDC1         1   0.03081 2.8260 -76.077
+## + DNAJC12       1   0.02797 2.8288 -76.042
+## + ZFHX4         1   0.00022 2.8566 -75.700
+## - FTSJ1         1   0.50227 3.3591 -74.029
+## - PNISR         1   0.96156 3.8184 -69.543
+## 
+## Step:  AIC=-78.26
+## BA ~ PNISR + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## <none>                      2.9766 -78.260
+## - YPEL1         1   0.18969 3.1662 -78.098
+## + ATRX          1   0.11974 2.8568 -77.698
+## + LOC100505650  1   0.08940 2.8871 -77.328
+## + ZFHX4         1   0.04005 2.9365 -76.735
+## + BSDC1         1   0.00413 2.9724 -76.309
+## + HOXB5         1   0.00203 2.9745 -76.284
+## + PLK1S1        1   0.00173 2.9748 -76.281
+## + DNAJC12       1   0.00061 2.9759 -76.268
+## - FTSJ1         1   0.39421 3.3708 -75.907
+## - PNISR         1   1.59191 4.5685 -65.266
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mForward}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = BA ~ LOC100505650 + YPEL1, data = mcx)
+## 
+## Coefficients:
+##  (Intercept)  LOC100505650         YPEL1  
+##      -32.240         1.671         2.337
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mBackward}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = BA ~ PNISR + FTSJ1 + YPEL1, data = mcx)
+## 
+## Coefficients:
+## (Intercept)        PNISR        FTSJ1        YPEL1  
+##      -6.538        2.165       -1.784        1.240
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mForStep}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = BA ~ LOC100505650 + YPEL1, data = mcx)
+## 
+## Coefficients:
+##  (Intercept)  LOC100505650         YPEL1  
+##      -32.240         1.671         2.337
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mBackStep}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = BA ~ PNISR + FTSJ1 + YPEL1, data = mcx)
+## 
+## Coefficients:
+## (Intercept)        PNISR        FTSJ1        YPEL1  
+##      -6.538        2.165       -1.784        1.240
+\end{verbatim}
+
+\subsection{Alternatieve criteria}\label{alternatieve-criteria}
+
+Recent zijn er binnen de machine learning diverse alternatieve
+technieken voor modelbouw ontwikkeld die hoofdzakelijk steunen op
+crossvalidatie, d.i. een techniek waarbij men telkens het regressiemodel
+schat op basis van een subset van de observaties en haar performantie
+evalueert door na te gaan hoe goed ze de resterende observaties
+voorspelt. Deze methoden zijn nog beter geschikt voor het bouwen van
+predictiemodellen. Ze evalueren het model immers op data die het model
+nog niet heeft gezien tijdens de training (fitting) fase.
 
 \bibliography{book.bib,packages.bib}
 

@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cursus Statistiek 2018-2019</title>
+  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Cursus Statistiek 2018-2019" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  <meta name="github-repo" content="statOmics/statistiek2deBach" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cursus Statistiek 2018-2019" />
+  
+  <meta name="twitter:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  
+
+<meta name="author" content="Lieven Clement">
+
+
+<meta name="date" content="2018-11-15">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="chap-glm.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Cursus Statistiek 2018-2019</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Woord vooraf</a></li>
+<li class="chapter" data-level="" data-path="links.html"><a href="links.html"><i class="fa fa-check"></i>Links</a></li>
+<li class="chapter" data-level="1" data-path="inleiding.html"><a href="inleiding.html"><i class="fa fa-check"></i><b>1</b> Inleiding</a><ul>
+<li class="chapter" data-level="1.1" data-path="inleiding.html"><a href="inleiding.html#sec:wetMeth"><i class="fa fa-check"></i><b>1.1</b> De Wetenschappelijke Methode</a></li>
+<li class="chapter" data-level="1.2" data-path="inleiding.html"><a href="inleiding.html#voorbeeld-horizon---homeopathy-the-test"><i class="fa fa-check"></i><b>1.2</b> Voorbeeld: Horizon - Homeopathy the test</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="inleiding.html"><a href="inleiding.html#wetenschappelijke-hypothese-fragmenten-1-2-000-600-740-1130"><i class="fa fa-check"></i><b>1.2.1</b> Wetenschappelijke hypothese (fragmenten 1-2: 0’00’‘-6’00’‘&amp; 7’40’‘-11’30’’)</a></li>
+<li class="chapter" data-level="1.2.2" data-path="inleiding.html"><a href="inleiding.html#onderzoek-dient-reproduceerbaar-te-zijn.-wat-ging-er-fout-fragment-1450-1856"><i class="fa fa-check"></i><b>1.2.2</b> Onderzoek dient reproduceerbaar te zijn. Wat ging er fout? (Fragment: 14’50”-18’56”)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="inleiding.html"><a href="inleiding.html#the-ultimate-test---proefopzet-fragment-3100-3930"><i class="fa fa-check"></i><b>1.2.3</b> The ultimate test - proefopzet (Fragment 31’00-39’30’’)</a></li>
+<li class="chapter" data-level="1.2.4" data-path="inleiding.html"><a href="inleiding.html#the-ultimate-test---data-analyse-fragment-3930-4300"><i class="fa fa-check"></i><b>1.2.4</b> The ultimate test - data analyse (Fragment 39’30-43’00’’)</a></li>
+<li class="chapter" data-level="1.2.5" data-path="inleiding.html"><a href="inleiding.html#mogelijke-fouten"><i class="fa fa-check"></i><b>1.2.5</b> Mogelijke fouten</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html"><i class="fa fa-check"></i><b>2</b> Belangrijke concepten &amp; conventies</a><ul>
+<li class="chapter" data-level="2.1" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#variabelen"><i class="fa fa-check"></i><b>2.1</b> Variabelen</a></li>
+<li class="chapter" data-level="2.2" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#subsec:pop"><i class="fa fa-check"></i><b>2.2</b> Populatie</a></li>
+<li class="chapter" data-level="2.3" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#toevalsveranderlijken-of-toevallige-veranderlijken"><i class="fa fa-check"></i><b>2.3</b> Toevalsveranderlijken (of toevallige veranderlijken)</a></li>
+<li class="chapter" data-level="2.4" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#beschrijven-van-de-populatie"><i class="fa fa-check"></i><b>2.4</b> Beschrijven van de populatie</a></li>
+<li class="chapter" data-level="2.5" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#steekproef"><i class="fa fa-check"></i><b>2.5</b> Steekproef</a></li>
+<li class="chapter" data-level="2.6" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#schatten-van-de-verdeling-in-de-populatie"><i class="fa fa-check"></i><b>2.6</b> Schatten van de verdeling in de populatie</a></li>
+<li class="chapter" data-level="2.7" data-path="belangrijke-concepten-conventies.html"><a href="belangrijke-concepten-conventies.html#statistieken"><i class="fa fa-check"></i><b>2.7</b> Statistieken</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-design.html"><a href="chap-design.html"><i class="fa fa-check"></i><b>3</b> Studiedesign</a><ul>
+<li class="chapter" data-level="3.1" data-path="chap-design.html"><a href="chap-design.html#inleiding-1"><i class="fa fa-check"></i><b>3.1</b> Inleiding</a></li>
+<li class="chapter" data-level="3.2" data-path="chap-design.html"><a href="chap-design.html#sec:steekproefdesigns"><i class="fa fa-check"></i><b>3.2</b> Steekproefdesigns</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="chap-design.html"><a href="chap-design.html#replicatie"><i class="fa fa-check"></i><b>3.2.1</b> Replicatie</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="chap-design.html"><a href="chap-design.html#experimentele-studies"><i class="fa fa-check"></i><b>3.3</b> Experimentele studies</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="chap-design.html"><a href="chap-design.html#de-salk-vaccin-veldstudie"><i class="fa fa-check"></i><b>3.3.1</b> De Salk Vaccin Veldstudie</a></li>
+<li class="chapter" data-level="3.3.2" data-path="chap-design.html"><a href="chap-design.html#gerandomiseerd-gecontroleerde-studies"><i class="fa fa-check"></i><b>3.3.2</b> Gerandomiseerd gecontroleerde studies</a></li>
+<li class="chapter" data-level="3.3.3" data-path="chap-design.html"><a href="chap-design.html#parallelle-designs"><i class="fa fa-check"></i><b>3.3.3</b> Parallelle designs</a></li>
+<li class="chapter" data-level="3.3.4" data-path="chap-design.html"><a href="chap-design.html#cross-over-designs"><i class="fa fa-check"></i><b>3.3.4</b> Cross-over designs</a></li>
+<li class="chapter" data-level="3.3.5" data-path="chap-design.html"><a href="chap-design.html#factoriele-designs"><i class="fa fa-check"></i><b>3.3.5</b> Factoriële designs</a></li>
+<li class="chapter" data-level="3.3.6" data-path="chap-design.html"><a href="chap-design.html#quasi-experimentele-designs"><i class="fa fa-check"></i><b>3.3.6</b> Quasi-experimentele designs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="chap-design.html"><a href="chap-design.html#sec:observational"><i class="fa fa-check"></i><b>3.4</b> Observationele studies</a></li>
+<li class="chapter" data-level="3.5" data-path="chap-design.html"><a href="chap-design.html#subsec:design:prosp"><i class="fa fa-check"></i><b>3.5</b> Prospectieve studies</a></li>
+<li class="chapter" data-level="3.6" data-path="chap-design.html"><a href="chap-design.html#subsec:design:retro"><i class="fa fa-check"></i><b>3.6</b> Retrospectieve studies</a></li>
+<li class="chapter" data-level="3.7" data-path="chap-design.html"><a href="chap-design.html#niet-gecontroleerde-studies"><i class="fa fa-check"></i><b>3.7</b> Niet-gecontroleerde studies</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="chap-design.html"><a href="chap-design.html#subsec:prepost"><i class="fa fa-check"></i><b>3.7.1</b> Pre-test/Post-test studies</a></li>
+<li class="chapter" data-level="3.7.2" data-path="chap-design.html"><a href="chap-design.html#cross-sectionele-surveys"><i class="fa fa-check"></i><b>3.7.2</b> Cross-sectionele surveys</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-describe.html"><a href="chap-describe.html"><i class="fa fa-check"></i><b>4</b> Data exploratie en beschrijvende statistiek</a><ul>
+<li class="chapter" data-level="4.1" data-path="chap-describe.html"><a href="chap-describe.html#inleiding-2"><i class="fa fa-check"></i><b>4.1</b> Inleiding</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-describe.html"><a href="chap-describe.html#sec:univar"><i class="fa fa-check"></i><b>4.2</b> Univariate beschrijving van de variabelen</a></li>
+<li class="chapter" data-level="4.3" data-path="chap-describe.html"><a href="chap-describe.html#sec:summarize"><i class="fa fa-check"></i><b>4.3</b> Samenvattingsmaten voor continue variabelen</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="chap-describe.html"><a href="chap-describe.html#maten-voor-de-centrale-ligging"><i class="fa fa-check"></i><b>4.3.1</b> Maten voor de centrale ligging</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:spreiding"><i class="fa fa-check"></i><b>4.3.2</b> Spreidingsmaten</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="chap-describe.html"><a href="chap-describe.html#sec:normal"><i class="fa fa-check"></i><b>4.4</b> De Normale benadering van gegevens</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="chap-describe.html"><a href="chap-describe.html#subsec:normalcalc"><i class="fa fa-check"></i><b>4.4.1</b> Bepalen van oppervlaktes onder de Normale curve</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chap-describe.html"><a href="chap-describe.html#sec:qq"><i class="fa fa-check"></i><b>4.4.2</b> QQ-plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="chap-describe.html"><a href="chap-describe.html#sec:explCatVar"><i class="fa fa-check"></i><b>4.5</b> Samenvattingsmaten voor categorische variabelen</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="chap-describe.html"><a href="chap-describe.html#prospectieve-studies-en-lukrake-steekproeven"><i class="fa fa-check"></i><b>4.5.1</b> Prospectieve studies en lukrake steekproeven</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:retrospect"><i class="fa fa-check"></i><b>4.5.2</b> Retrospectieve studies</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-describe.html"><a href="chap-describe.html#rates-versus-risicos"><i class="fa fa-check"></i><b>4.5.3</b> Rates versus risico’s</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="chap-describe.html"><a href="chap-describe.html#associaties-tussen-twee-variabelen"><i class="fa fa-check"></i><b>4.6</b> Associaties tussen twee variabelen</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="chap-describe.html"><a href="chap-describe.html#subsec:kruistabel"><i class="fa fa-check"></i><b>4.6.1</b> Associatie tussen twee kwalitatieve variabelen</a></li>
+<li class="chapter" data-level="4.6.2" data-path="chap-describe.html"><a href="chap-describe.html#subsec:asskwalcont"><i class="fa fa-check"></i><b>4.6.2</b> Associatie tussen één kwalitatieve en één continue variabele</a></li>
+<li class="chapter" data-level="4.6.3" data-path="chap-describe.html"><a href="chap-describe.html#sec:correlatie"><i class="fa fa-check"></i><b>4.6.3</b> Associatie tussen twee continue variabelen</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="chap-describe.html"><a href="chap-describe.html#sec:missing"><i class="fa fa-check"></i><b>4.7</b> Onvolledige gegevens</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-besluit.html"><a href="chap-besluit.html"><i class="fa fa-check"></i><b>5</b> Statistische besluitvorming</a><ul>
+<li class="chapter" data-level="5.1" data-path="chap-besluit.html"><a href="chap-besluit.html#inleiding-3"><i class="fa fa-check"></i><b>5.1</b> Inleiding</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-besluit.html"><a href="chap-besluit.html#captopril-voorbeeld"><i class="fa fa-check"></i><b>5.2</b> Captopril voorbeeld</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="chap-besluit.html"><a href="chap-besluit.html#proefopzet"><i class="fa fa-check"></i><b>5.2.1</b> Proefopzet</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-besluit.html"><a href="chap-besluit.html#data-exploratie-beschrijvende-statistiek"><i class="fa fa-check"></i><b>5.2.2</b> Data Exploratie &amp; Beschrijvende Statistiek</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chap-besluit.html"><a href="chap-besluit.html#schatten"><i class="fa fa-check"></i><b>5.2.3</b> Schatten</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="chap-besluit.html"><a href="chap-besluit.html#puntschatters-het-steekproefgemiddelde"><i class="fa fa-check"></i><b>5.3</b> Puntschatters: het steekproefgemiddelde</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="chap-besluit.html"><a href="chap-besluit.html#het-steekproefgemiddelde-is-onvertekend"><i class="fa fa-check"></i><b>5.3.1</b> Het steekproefgemiddelde is onvertekend</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap-besluit.html"><a href="chap-besluit.html#imprecisiestandard-error"><i class="fa fa-check"></i><b>5.3.2</b> Imprecisie/standard error</a></li>
+<li class="chapter" data-level="5.3.3" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:verdelingXbar"><i class="fa fa-check"></i><b>5.3.3</b> Verdeling van het steekproefgemiddelde</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="chap-besluit.html"><a href="chap-besluit.html#intervalschatters"><i class="fa fa-check"></i><b>5.4</b> Intervalschatters</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:bigek"><i class="fa fa-check"></i><b>5.4.1</b> Gekende variantie op de metingen</a></li>
+<li class="chapter" data-level="5.4.2" data-path="chap-besluit.html"><a href="chap-besluit.html#sec:tBI"><i class="fa fa-check"></i><b>5.4.2</b> Ongekende variantie op de metingen</a></li>
+<li class="chapter" data-level="5.4.3" data-path="chap-besluit.html"><a href="chap-besluit.html#subsec:interpretBI"><i class="fa fa-check"></i><b>5.4.3</b> Interpretatie van betrouwbaarheidsintervallen</a></li>
+<li class="chapter" data-level="5.4.4" data-path="chap-besluit.html"><a href="chap-besluit.html#wat-rapporteren"><i class="fa fa-check"></i><b>5.4.4</b> Wat rapporteren?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="chap-besluit.html"><a href="chap-besluit.html#principe-van-hypothesetoetsen-via-one-sample-t-test"><i class="fa fa-check"></i><b>5.5</b> Principe van Hypothesetoetsen (via one sample t-test)</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-besluit.html"><a href="chap-besluit.html#hypotheses"><i class="fa fa-check"></i><b>5.5.1</b> Hypotheses</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-besluit.html"><a href="chap-besluit.html#test-statistiek"><i class="fa fa-check"></i><b>5.5.2</b> Test-statistiek</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-besluit.html"><a href="chap-besluit.html#de-p-waarde"><i class="fa fa-check"></i><b>5.5.3</b> De p-waarde</a></li>
+<li class="chapter" data-level="5.5.4" data-path="chap-besluit.html"><a href="chap-besluit.html#kritieke-waarde"><i class="fa fa-check"></i><b>5.5.4</b> Kritieke waarde</a></li>
+<li class="chapter" data-level="5.5.5" data-path="chap-besluit.html"><a href="chap-besluit.html#beslissingsfouten"><i class="fa fa-check"></i><b>5.5.5</b> Beslissingsfouten</a></li>
+<li class="chapter" data-level="5.5.6" data-path="chap-besluit.html"><a href="chap-besluit.html#conclusies-captopril-voorbeeld."><i class="fa fa-check"></i><b>5.5.6</b> Conclusies Captopril voorbeeld.</a></li>
+<li class="chapter" data-level="5.5.7" data-path="chap-besluit.html"><a href="chap-besluit.html#eenzijdig-of-tweezijdig-toetsen"><i class="fa fa-check"></i><b>5.5.7</b> Eenzijdig of tweezijdig toetsen?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-besluit.html"><a href="chap-besluit.html#two-sample-t-test"><i class="fa fa-check"></i><b>5.6</b> Two-sample t-test</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="chap-besluit.html"><a href="chap-besluit.html#oksel-voorbeeld"><i class="fa fa-check"></i><b>5.6.1</b> Oksel-voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="chap-besluit.html"><a href="chap-besluit.html#aannames"><i class="fa fa-check"></i><b>5.7</b> Aannames</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="chap-besluit.html"><a href="chap-besluit.html#nagaan-van-de-veronderstelling-van-normaliteit"><i class="fa fa-check"></i><b>5.7.1</b> Nagaan van de veronderstelling van Normaliteit</a></li>
+<li class="chapter" data-level="5.7.2" data-path="chap-besluit.html"><a href="chap-besluit.html#nagaan-van-homoscedasticiteit"><i class="fa fa-check"></i><b>5.7.2</b> Nagaan van homoscedasticiteit</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="chap-besluit.html"><a href="chap-besluit.html#wat-rapporteren-1"><i class="fa fa-check"></i><b>5.8</b> Wat rapporteren?</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="chap-besluit.html"><a href="chap-besluit.html#reden-1-relatie-toetsen-en-betrouwbaarheidsintervallen"><i class="fa fa-check"></i><b>5.8.1</b> Reden 1: Relatie toetsen en betrouwbaarheidsintervallen</a></li>
+<li class="chapter" data-level="5.8.2" data-path="chap-besluit.html"><a href="chap-besluit.html#reden-2-statistische-significantie-versus-wetenschappelijke-relevantie"><i class="fa fa-check"></i><b>5.8.2</b> Reden 2: Statistische significantie versus wetenschappelijke relevantie</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="chap-besluit.html"><a href="chap-besluit.html#equivalentie-intervallen"><i class="fa fa-check"></i><b>5.9</b> Equivalentie-intervallen</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-linReg.html"><a href="chap-linReg.html"><i class="fa fa-check"></i><b>6</b> Enkelvoudige lineaire regressie</a><ul>
+<li class="chapter" data-level="6.1" data-path="chap-linReg.html"><a href="chap-linReg.html#inleiding-4"><i class="fa fa-check"></i><b>6.1</b> Inleiding</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="chap-linReg.html"><a href="chap-linReg.html#borstkanker-dataset"><i class="fa fa-check"></i><b>6.1.1</b> Borstkanker dataset</a></li>
+<li class="chapter" data-level="6.1.2" data-path="chap-linReg.html"><a href="chap-linReg.html#data-exploratie"><i class="fa fa-check"></i><b>6.1.2</b> Data exploratie</a></li>
+<li class="chapter" data-level="6.1.3" data-path="chap-linReg.html"><a href="chap-linReg.html#model"><i class="fa fa-check"></i><b>6.1.3</b> Model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="chap-linReg.html"><a href="chap-linReg.html#lineaire-regressie"><i class="fa fa-check"></i><b>6.2</b> Lineaire regressie</a></li>
+<li class="chapter" data-level="6.3" data-path="chap-linReg.html"><a href="chap-linReg.html#parameterschatting"><i class="fa fa-check"></i><b>6.3</b> Parameterschatting</a></li>
+<li class="chapter" data-level="6.4" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linBesluit"><i class="fa fa-check"></i><b>6.4</b> Statistische besluitvorming</a></li>
+<li class="chapter" data-level="6.5" data-path="chap-linReg.html"><a href="chap-linReg.html#nagaan-van-modelveronderstellingen"><i class="fa fa-check"></i><b>6.5</b> Nagaan van modelveronderstellingen</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="chap-linReg.html"><a href="chap-linReg.html#lineariteit"><i class="fa fa-check"></i><b>6.5.1</b> Lineariteit</a></li>
+<li class="chapter" data-level="6.5.2" data-path="chap-linReg.html"><a href="chap-linReg.html#veronderstelling-van-homoscedasticiteit-gelijkheid-van-variantie"><i class="fa fa-check"></i><b>6.5.2</b> Veronderstelling van homoscedasticiteit (gelijkheid van variantie)</a></li>
+<li class="chapter" data-level="6.5.3" data-path="chap-linReg.html"><a href="chap-linReg.html#veronderstelling-van-normaliteit"><i class="fa fa-check"></i><b>6.5.3</b> Veronderstelling van normaliteit</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="chap-linReg.html"><a href="chap-linReg.html#afwijkingen-van-modelveronderstellingen"><i class="fa fa-check"></i><b>6.6</b> Afwijkingen van Modelveronderstellingen</a></li>
+<li class="chapter" data-level="6.7" data-path="chap-linReg.html"><a href="chap-linReg.html#besluitvorming-over-gemiddelde-uitkomst"><i class="fa fa-check"></i><b>6.7</b> Besluitvorming over gemiddelde uitkomst</a></li>
+<li class="chapter" data-level="6.8" data-path="chap-linReg.html"><a href="chap-linReg.html#predictie-intervallen"><i class="fa fa-check"></i><b>6.8</b> Predictie-intervallen</a></li>
+<li class="chapter" data-level="6.9" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linAnova"><i class="fa fa-check"></i><b>6.9</b> Kwadratensommen en Anova-tabel</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="chap-linReg.html"><a href="chap-linReg.html#determinatie-coefficient"><i class="fa fa-check"></i><b>6.9.1</b> Determinatie-coëfficiënt</a></li>
+<li class="chapter" data-level="6.9.2" data-path="chap-linReg.html"><a href="chap-linReg.html#f-testen-in-het-enkelvoudig-lineair-regressiemodel"><i class="fa fa-check"></i><b>6.9.2</b> F-Testen in het enkelvoudig lineair regressiemodel</a></li>
+<li class="chapter" data-level="6.9.3" data-path="chap-linReg.html"><a href="chap-linReg.html#anova-tabel"><i class="fa fa-check"></i><b>6.9.3</b> Anova Tabel</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="chap-linReg.html"><a href="chap-linReg.html#sec:linDummy"><i class="fa fa-check"></i><b>6.10</b> Dummy variabelen</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-anova.html"><a href="chap-anova.html"><i class="fa fa-check"></i><b>7</b> Variantie analyse</a><ul>
+<li class="chapter" data-level="7.1" data-path="chap-anova.html"><a href="chap-anova.html#inleiding-5"><i class="fa fa-check"></i><b>7.1</b> Inleiding</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="chap-anova.html"><a href="chap-anova.html#prostacycline-voorbeeld"><i class="fa fa-check"></i><b>7.1.1</b> Prostacycline voorbeeld</a></li>
+<li class="chapter" data-level="7.1.2" data-path="chap-anova.html"><a href="chap-anova.html#model-1"><i class="fa fa-check"></i><b>7.1.2</b> Model</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="chap-anova.html"><a href="chap-anova.html#variantie-analyse"><i class="fa fa-check"></i><b>7.2</b> Variantie-analyse</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="chap-anova.html"><a href="chap-anova.html#model-2"><i class="fa fa-check"></i><b>7.2.1</b> Model</a></li>
+<li class="chapter" data-level="7.2.2" data-path="chap-anova.html"><a href="chap-anova.html#kwadratensommen-en-anova"><i class="fa fa-check"></i><b>7.2.2</b> Kwadratensommen en Anova</a></li>
+<li class="chapter" data-level="7.2.3" data-path="chap-anova.html"><a href="chap-anova.html#anova-test"><i class="fa fa-check"></i><b>7.2.3</b> Anova-test</a></li>
+<li class="chapter" data-level="7.2.4" data-path="chap-anova.html"><a href="chap-anova.html#anova-tabel-1"><i class="fa fa-check"></i><b>7.2.4</b> Anova Tabel</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="chap-anova.html"><a href="chap-anova.html#post-hoc-analyse-meervoudig-vergelijken-van-gemiddelden"><i class="fa fa-check"></i><b>7.3</b> Post hoc analyse: Meervoudig Vergelijken van Gemiddelden</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="chap-anova.html"><a href="chap-anova.html#naieve-methode"><i class="fa fa-check"></i><b>7.3.1</b> Naïeve methode</a></li>
+<li class="chapter" data-level="7.3.2" data-path="chap-anova.html"><a href="chap-anova.html#family-wise-error-rate"><i class="fa fa-check"></i><b>7.3.2</b> Family-wise error rate</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="chap-anova.html"><a href="chap-anova.html#conclusies-prostacycline-voorbeeld"><i class="fa fa-check"></i><b>7.4</b> Conclusies: Prostacycline Voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html"><i class="fa fa-check"></i><b>8</b> Niet-parametrische statistiek</a><ul>
+<li class="chapter" data-level="8.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#inleiding-6"><i class="fa fa-check"></i><b>8.1</b> Inleiding</a></li>
+<li class="chapter" data-level="8.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#vergelijken-van-twee-groepen"><i class="fa fa-check"></i><b>8.2</b> Vergelijken van twee groepen</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#cholestorol-voorbeeld"><i class="fa fa-check"></i><b>8.2.1</b> Cholestorol voorbeeld</a></li>
+<li class="chapter" data-level="8.2.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#permutatietesten"><i class="fa fa-check"></i><b>8.2.2</b> Permutatietesten</a></li>
+<li class="chapter" data-level="8.2.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#rank-testen"><i class="fa fa-check"></i><b>8.2.3</b> Rank Testen</a></li>
+<li class="chapter" data-level="8.2.4" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#wilcoxon-mann-whitney-test"><i class="fa fa-check"></i><b>8.2.4</b> Wilcoxon-Mann-Whitney Test</a></li>
+<li class="chapter" data-level="8.2.5" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#conclusie-cholestorol-voorbeeld"><i class="fa fa-check"></i><b>8.2.5</b> Conclusie Cholestorol Voorbeeld</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#vergelijken-van-g-behandelingen"><i class="fa fa-check"></i><b>8.3</b> Vergelijken van <span class="math inline">\(g\)</span> Behandelingen</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#dmh-voorbeeld"><i class="fa fa-check"></i><b>8.3.1</b> DMH Voorbeeld</a></li>
+<li class="chapter" data-level="8.3.2" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#permutatietest"><i class="fa fa-check"></i><b>8.3.2</b> Permutatietest</a></li>
+<li class="chapter" data-level="8.3.3" data-path="niet-parametrische-statistiek.html"><a href="niet-parametrische-statistiek.html#kruskal-wallis-rank-test"><i class="fa fa-check"></i><b>8.3.3</b> Kruskal-Wallis Rank Test</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chap-categorisch.html"><a href="chap-categorisch.html"><i class="fa fa-check"></i><b>9</b> Categorische data analyse</a><ul>
+<li class="chapter" data-level="9.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#inleiding-7"><i class="fa fa-check"></i><b>9.1</b> Inleiding</a></li>
+<li class="chapter" data-level="9.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#toetsen-voor-een-proportie"><i class="fa fa-check"></i><b>9.2</b> Toetsen voor een proportie</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#subsec:binom"><i class="fa fa-check"></i><b>9.2.1</b> Binomiale test</a></li>
+<li class="chapter" data-level="9.2.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#betrouwbaarheidsinterval-op-een-proportie"><i class="fa fa-check"></i><b>9.2.2</b> Betrouwbaarheidsinterval op een proportie</a></li>
+<li class="chapter" data-level="9.2.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#conclusie"><i class="fa fa-check"></i><b>9.2.3</b> Conclusie</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#toets-voor-associatie-tussen-2-kwalitatieve-variabelen"><i class="fa fa-check"></i><b>9.3</b> Toets voor associatie tussen 2 kwalitatieve variabelen</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#gepaarde-gegevens"><i class="fa fa-check"></i><b>9.3.1</b> Gepaarde gegevens</a></li>
+<li class="chapter" data-level="9.3.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#subsec:catOnPaired"><i class="fa fa-check"></i><b>9.3.2</b> Ongepaarde gegevens</a></li>
+<li class="chapter" data-level="9.3.3" data-path="chap-categorisch.html"><a href="chap-categorisch.html#de-pearson-chi-kwadraat-test-voor-ongepaarde-gegevens"><i class="fa fa-check"></i><b>9.3.3</b> De Pearson Chi-kwadraat test voor ongepaarde gegevens</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="chap-categorisch.html"><a href="chap-categorisch.html#logistische-regressie"><i class="fa fa-check"></i><b>9.4</b> Logistische regressie</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="chap-categorisch.html"><a href="chap-categorisch.html#categorische-predictor"><i class="fa fa-check"></i><b>9.4.1</b> Categorische predictor</a></li>
+<li class="chapter" data-level="9.4.2" data-path="chap-categorisch.html"><a href="chap-categorisch.html#continue-predictor"><i class="fa fa-check"></i><b>9.4.2</b> Continue predictor</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chap-glm.html"><a href="chap-glm.html"><i class="fa fa-check"></i><b>10</b> Algemeen lineair model</a><ul>
+<li class="chapter" data-level="10.1" data-path="chap-glm.html"><a href="chap-glm.html#inleiding-8"><i class="fa fa-check"></i><b>10.1</b> Inleiding</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="chap-glm.html"><a href="chap-glm.html#sec:prostate"><i class="fa fa-check"></i><b>10.1.1</b> Prostaatkanker dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="chap-glm.html"><a href="chap-glm.html#het-additieve-meervoudig-lineaire-regressie-model"><i class="fa fa-check"></i><b>10.2</b> Het additieve meervoudig lineaire regressie model</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="chap-glm.html"><a href="chap-glm.html#statistisch-model"><i class="fa fa-check"></i><b>10.2.1</b> Statistisch model</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="chap-glm.html"><a href="chap-glm.html#besluitvorming-in-regressiemodellen"><i class="fa fa-check"></i><b>10.3</b> Besluitvorming in regressiemodellen</a></li>
+<li class="chapter" data-level="10.4" data-path="chap-glm.html"><a href="chap-glm.html#nagaan-van-modelveronderstellingen-1"><i class="fa fa-check"></i><b>10.4</b> Nagaan van modelveronderstellingen</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="chap-glm.html"><a href="chap-glm.html#lineariteit-1"><i class="fa fa-check"></i><b>10.4.1</b> Lineariteit</a></li>
+<li class="chapter" data-level="10.4.2" data-path="chap-glm.html"><a href="chap-glm.html#homoscedasticiteit"><i class="fa fa-check"></i><b>10.4.2</b> Homoscedasticiteit</a></li>
+<li class="chapter" data-level="10.4.3" data-path="chap-glm.html"><a href="chap-glm.html#normaliteit"><i class="fa fa-check"></i><b>10.4.3</b> Normaliteit</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="chap-glm.html"><a href="chap-glm.html#het-niet-additieve-meervoudig-lineair-regressiemodel"><i class="fa fa-check"></i><b>10.5</b> Het niet-additieve meervoudig lineair regressiemodel</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="chap-glm.html"><a href="chap-glm.html#sec:intCont"><i class="fa fa-check"></i><b>10.5.1</b> Interactie tussen twee continue variabelen</a></li>
+<li class="chapter" data-level="10.5.2" data-path="chap-glm.html"><a href="chap-glm.html#interactie-tussen-continue-variabele-en-factor-variabele"><i class="fa fa-check"></i><b>10.5.2</b> Interactie tussen continue variabele en factor variabele</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="chap-glm.html"><a href="chap-glm.html#anova-tabel-2"><i class="fa fa-check"></i><b>10.6</b> ANOVA Tabel</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="chap-glm.html"><a href="chap-glm.html#sstot-ssr-en-sse"><i class="fa fa-check"></i><b>10.6.1</b> SSTot, SSR en SSE</a></li>
+<li class="chapter" data-level="10.6.2" data-path="chap-glm.html"><a href="chap-glm.html#extra-kwadratensommen"><i class="fa fa-check"></i><b>10.6.2</b> Extra Kwadratensommen</a></li>
+<li class="chapter" data-level="10.6.3" data-path="chap-glm.html"><a href="chap-glm.html#type-i-kwadratensommen"><i class="fa fa-check"></i><b>10.6.3</b> Type I Kwadratensommen</a></li>
+<li class="chapter" data-level="10.6.4" data-path="chap-glm.html"><a href="chap-glm.html#type-iii-kwadratensommen"><i class="fa fa-check"></i><b>10.6.4</b> Type III Kwadratensommen</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="chap-glm.html"><a href="chap-glm.html#regressiediagnostieken"><i class="fa fa-check"></i><b>10.7</b> Regressiediagnostieken</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="chap-glm.html"><a href="chap-glm.html#multicollineariteit"><i class="fa fa-check"></i><b>10.7.1</b> Multicollineariteit</a></li>
+<li class="chapter" data-level="10.7.2" data-path="chap-glm.html"><a href="chap-glm.html#invloedrijke-observaties"><i class="fa fa-check"></i><b>10.7.2</b> Invloedrijke observaties</a></li>
+<li class="chapter" data-level="10.7.3" data-path="chap-glm.html"><a href="chap-glm.html#cooks-distance"><i class="fa fa-check"></i><b>10.7.3</b> Cook’s distance</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chap-modsel.html"><a href="chap-modsel.html"><i class="fa fa-check"></i><b>11</b> Modelselectie</a><ul>
+<li class="chapter" data-level="11.1" data-path="chap-modsel.html"><a href="chap-modsel.html#inleiding-9"><i class="fa fa-check"></i><b>11.1</b> Inleiding</a></li>
+<li class="chapter" data-level="11.2" data-path="chap-modsel.html"><a href="chap-modsel.html#modelselectie-op-basis-van-hypothesetesten"><i class="fa fa-check"></i><b>11.2</b> Modelselectie op basis van hypothesetesten</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="chap-modsel.html"><a href="chap-modsel.html#voorwaartse-modelselectie"><i class="fa fa-check"></i><b>11.2.1</b> Voorwaartse modelselectie</a></li>
+<li class="chapter" data-level="11.2.2" data-path="chap-modsel.html"><a href="chap-modsel.html#achterwaartse-modelselectie"><i class="fa fa-check"></i><b>11.2.2</b> Achterwaartse modelselectie</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="chap-modsel.html"><a href="chap-modsel.html#stapsgewijze-modelselectie"><i class="fa fa-check"></i><b>11.3</b> Stapsgewijze modelselectie</a></li>
+<li class="chapter" data-level="11.4" data-path="chap-modsel.html"><a href="chap-modsel.html#opmerkingen"><i class="fa fa-check"></i><b>11.4</b> Opmerkingen</a></li>
+<li class="chapter" data-level="11.5" data-path="chap-modsel.html"><a href="chap-modsel.html#modelselectie-voor-predictie"><i class="fa fa-check"></i><b>11.5</b> Modelselectie voor predictie</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="chap-modsel.html"><a href="chap-modsel.html#inleiding-10"><i class="fa fa-check"></i><b>11.5.1</b> Inleiding</a></li>
+<li class="chapter" data-level="11.5.2" data-path="chap-modsel.html"><a href="chap-modsel.html#selectie-criterium"><i class="fa fa-check"></i><b>11.5.2</b> Selectie-criterium</a></li>
+<li class="chapter" data-level="11.5.3" data-path="chap-modsel.html"><a href="chap-modsel.html#alternatieve-criteria"><i class="fa fa-check"></i><b>11.5.3</b> Alternatieve criteria</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2018-2019</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap:modsel" class="section level1">
+<h1><span class="header-section-number">Hoofdstuk 11</span> Modelselectie</h1>
+<div id="inleiding-9" class="section level2">
+<h2><span class="header-section-number">11.1</span> Inleiding</h2>
+<p>In de prostaatkanker dataset (Sectie <a href="chap-glm.html#sec:prostate">10.1.1</a>) zijn veel predictoren aanwezig. Automatische selectieprcedures kunnen behulpzaam zijn als het doel van het regressiemodel erin bestaat om (1) de uitkomst op basis van de predictoren te voorspellen; of (2) associaties tussen de uitkomst en predictoren te beschrijven. Net zoals in vele andere aspecten van de statistiek, zullen we een geobserveerde dataset (steekproef) gebruiken om tot een resultaat te komen (hier: een model) dat ruimer toepasbaar is dan enkel op de geobserveerde data. Het geselecteerde model moet toepasbaar zijn op de ruimere populatie waaruit de steekproefdata bekomen is en waarop de onderzoeksvraag van toepassing is.</p>
+<p>Modelselectie kan dan omschreven worden als een methode voor het selecteren van een model dat best geschikt is voor het beantwoorden van de onderzoeksvraag. In dit hoofdstuk beperken we ons tot meervoudige lineaire regressiemodellen waarin sommige van de <span class="math inline">\(p-1\)</span> effecttermen mogelijks interactietermen voorstellen. Het totaal aantal mogelijke modellen is dan (zonder hiërarchie-restrictie) <span class="math inline">\(2^{p-1}\)</span> (ieder van de <span class="math inline">\(p-1\)</span> termen kan opgenomen worden in het model, of niet).</p>
+<p>We onderscheiden de volgende algemene procedures:</p>
+<ol style="list-style-type: decimal">
+<li><p>Alle mogelijke modellen worden geëvalueerd. Deze methode zal enkel haalbaar blijken als het aantal kandidaat modellen niet te groot is.</p></li>
+<li><p>Niet alle modellen worden geëvalueerd (stapsgewijze procedures): De methode wordt geïnitialiseerd met een model. D.m.v. een regel en een evaluatiecriterium wordt het pad doorheen de modelruimte bepaald.</p></li>
+</ol>
+<p>Merk op dat we hiërarchisch moeten modelleren als we interactietermen toelaten. Een interactieterm mag nooit in het model voorkomen zonder de lagere orde termen.</p>
+</div>
+<div id="modelselectie-op-basis-van-hypothesetesten" class="section level2">
+<h2><span class="header-section-number">11.2</span> Modelselectie op basis van hypothesetesten</h2>
+<p>Stel, we willen een model selecteren voor lpsa waarbij lcavol, lweight en svi als predicoren worden toegelaten, alsook alle paarsgewijze interactietermen. We zullen drie verschillende strategiën beschouwen voorwaartse modelselectie, achterwaartse modelselecties en stapsgewijze modelselectie waarbij er in elke stap geëvalueerd wordt of een term in het model kan worden opgenomen en of er een andere term kan worden verwijderd.</p>
+<div id="voorwaartse-modelselectie" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> Voorwaartse modelselectie</h3>
+<p>De procedure kan als volgt beschreven worden:</p>
+<ol style="list-style-type: decimal">
+<li>Start met het minimale model <span class="math inline">\(m_1\)</span> met enkel het intercept</li>
+<li>Test voor alle modellen met slechts 1 predictor (er zijn dus <span class="math inline">\(p-1\)</span> dergelijke modellen) of de toegevoegde regressor significant verschillend is van 0 op het <span class="math inline">\(\alpha_{\text{IN}}\)</span> significantieniveau.</li>
+<li>Indien geen enkele van de <span class="math inline">\(p\)</span>-waarden kleiner is dan <span class="math inline">\(\alpha_{\text{IN}}\)</span>, stop de procedure. Het finale model is het minimale model <span class="math inline">\(m_1\)</span>, <span class="math display">\[
+   Y_i = \beta_0 + \epsilon_i 
+ \]</span> met <span class="math inline">\(\epsilon_i \text{ i.i.d. } N(0,\sigma^2)\)</span>.</li>
+<li>Indien er minstens 1 <span class="math inline">\(p\)</span>-waarde kleiner is dan <span class="math inline">\(\alpha_{\text{IN}}\)</span>, selecteer het model dat overeenkomt met de kleinste <span class="math inline">\(p\)</span>-waarde. Dit model wordt <span class="math inline">\(m_2\)</span> genoemd.</li>
+<li>Stel <span class="math inline">\(k=2\)</span>.</li>
+<li>Definieer de verzameling van modellen met 1 predictor toegevoegd aan <span class="math inline">\(m_{k}\)</span>. Test dat de parameter van de toegevoegde regressor significant verschillend is van 0 op het <span class="math inline">\(\alpha_{\text{IN}}\)</span> significantieniveau.</li>
+<li>Indien geen enkel van de <span class="math inline">\(p\)</span>-waarden kleiner is dan <span class="math inline">\(\alpha_{\text{IN}}\)</span>, stop de procedure. Het finale model is <span class="math display">\[
+   Y_i = \beta_0 + \sum_{j \in m_k} \beta_j x_{ij} + \epsilon_i 
+ \]</span> met <span class="math inline">\(\epsilon_i \text{ i.i.d. } N(0,\sigma^2)\)</span>.</li>
+<li>Indien er minstens één <span class="math inline">\(p\)</span>-waarde kleiner is dan <span class="math inline">\(\alpha_{\text{IN}}\)</span>, selecteer het model dat overeenkomt met de kleinste <span class="math inline">\(p\)</span>-waarde. Dit model wordt <span class="math inline">\(m_{k+1}\)</span> genoemd.</li>
+<li>Verhoog <span class="math inline">\(k\)</span> met 1 (i.e. <span class="math inline">\(k\leftarrow k+1\)</span>) en ga naar stap 6.</li>
+</ol>
+<p>Voorbeeld voor lpsa. We laten interactietermen toe, maar de modelbouw moet zich houden aan de hiërarchie van hoofd- en interactietermen. We stellen <span class="math inline">\(\alpha_{\text{IN}}=5\%\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(lpsa <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">data=</span>prostate)
+<span class="kw">add1</span>(m1,<span class="dt">scope=</span><span class="op">~</span>lweight<span class="op">+</span>lcavol<span class="op">+</span>svi<span class="op">+</span>lweight<span class="op">:</span>lcavol<span class="op">+</span>lweight<span class="op">:</span>svi <span class="op">+</span>lcavol<span class="op">:</span>svi,<span class="dt">test=</span><span class="st">&quot;F&quot;</span>)</code></pre></div>
+<pre><code>## Single term additions
+## 
+## Model:
+## lpsa ~ 1
+##         Df Sum of Sq     RSS     AIC F value    Pr(&gt;F)    
+## &lt;none&gt;               127.918  28.838                      
+## lweight  1    16.041 111.877  17.841  13.621  0.000373 ***
+## lcavol   1    69.003  58.915 -44.366 111.267 &lt; 2.2e-16 ***
+## svi      1    41.011  86.907  -6.658  44.830 1.499e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m2 &lt;-<span class="st"> </span><span class="kw">update</span>(m1,<span class="op">~</span>. <span class="op">+</span><span class="st"> </span>lcavol)
+<span class="kw">add1</span>(m2,<span class="dt">scope=</span><span class="op">~</span>lweight<span class="op">+</span>lcavol<span class="op">+</span>svi<span class="op">+</span>lweight<span class="op">:</span>lcavol<span class="op">+</span>lweight<span class="op">:</span>svi <span class="op">+</span>lcavol<span class="op">:</span>svi,<span class="dt">test=</span><span class="st">&quot;F&quot;</span>)</code></pre></div>
+<pre><code>## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol
+##         Df Sum of Sq    RSS     AIC F value   Pr(&gt;F)   
+## &lt;none&gt;               58.915 -44.366                    
+## lweight  1    5.9484 52.966 -52.690 10.5567 0.001606 **
+## svi      1    5.2375 53.677 -51.397  9.1719 0.003172 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m3 &lt;-<span class="st"> </span><span class="kw">update</span>(m2,<span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span>lweight)
+<span class="kw">add1</span>(m3,<span class="dt">scope=</span><span class="op">~</span>lweight<span class="op">+</span>lcavol<span class="op">+</span>svi<span class="op">+</span>lweight<span class="op">:</span>lcavol<span class="op">+</span>lweight<span class="op">:</span>svi <span class="op">+</span>lcavol<span class="op">:</span>svi,<span class="dt">test=</span><span class="st">&quot;F&quot;</span>)</code></pre></div>
+<pre><code>## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol + lweight
+##                Df Sum of Sq    RSS     AIC F value   Pr(&gt;F)   
+## &lt;none&gt;                      52.966 -52.690                    
+## svi             1    5.1814 47.785 -60.676  10.084 0.002029 **
+## lweight:lcavol  1    0.1222 52.844 -50.914   0.215 0.643962   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m4 &lt;-<span class="st"> </span><span class="kw">update</span>(m3,<span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span>svi)
+<span class="kw">add1</span>(m4,<span class="dt">scope=</span><span class="op">~</span>lweight<span class="op">+</span>lcavol<span class="op">+</span>svi<span class="op">+</span>lweight<span class="op">:</span>lcavol<span class="op">+</span>lweight<span class="op">:</span>svi <span class="op">+</span>lcavol<span class="op">:</span>svi,<span class="dt">test=</span><span class="st">&quot;F&quot;</span>)</code></pre></div>
+<pre><code>## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol + lweight + svi
+##                Df Sum of Sq    RSS     AIC F value Pr(&gt;F)
+## &lt;none&gt;                      47.785 -60.676               
+## lweight:lcavol  1   0.36606 47.419 -59.422  0.7102 0.4016
+## lweight:svi     1   1.16445 46.621 -61.069  2.2979 0.1330
+## lcavol:svi      1   0.02433 47.761 -58.725  0.0469 0.8291</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m4)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = lpsa ~ lcavol + lweight + svi, data = prostate)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.72966 -0.45767  0.02814  0.46404  1.57012 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -0.26807    0.54350  -0.493  0.62301    
+## lcavol       0.55164    0.07467   7.388  6.3e-11 ***
+## lweight      0.50854    0.15017   3.386  0.00104 ** 
+## sviinvasion  0.66616    0.20978   3.176  0.00203 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.7168 on 93 degrees of freedom
+## Multiple R-squared:  0.6264, Adjusted R-squared:  0.6144 
+## F-statistic: 51.99 on 3 and 93 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Het geselecteerde model is <span class="math display">\[
+  Y_i  = \beta_0 + \beta_v X_{iv} + \beta_w X_{iw} + \beta_s X_{is} + \epsilon_i
+\]</span> met <span class="math inline">\(\epsilon_i \text{ i.i.d. } N(0,\sigma^2)\)</span>.</p>
+</div>
+<div id="achterwaartse-modelselectie" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> Achterwaartse modelselectie</h3>
+<p>Achterwaartse modelselectie is een procedure die ook gekend staat als achterwaartse eliminatie (Engels: <em>backward elimination</em>).</p>
+<p>De procedure start van het maximale model en gaat na welke predictoren uit het model kunnen worden verwijderd.</p>
+<ol style="list-style-type: decimal">
+<li>Start met het maximale model <span class="math inline">\(m_1\)</span> met alle <span class="math inline">\(p-1\)</span> regressoren</li>
+<li>Bouw alle modellen waar 1 predictor wordt weggelaten en ga via een F-test na of het verwijderen van de predictoren significant is op het <span class="math inline">\(\alpha_{\text{OUT}}\)</span> significantieniveau. Merk op dat deze test in model <span class="math inline">\(m_1\)</span> moet uitgevoerd worden.</li>
+<li>Indien geen enkele van de <span class="math inline">\(p\)</span>-waarden groter is dan <span class="math inline">\(\alpha_{\text{OUT}}\)</span>, stop de procedure. Het finale model is het maximale model <span class="math inline">\(m_1\)</span>.</li>
+<li>Indien er minstens één <span class="math inline">\(p\)</span>-waarde groter dan <span class="math inline">\(\alpha_{\text{OUT}}\)</span> is, selecteer het model dat overeenkomt met de grootste <span class="math inline">\(p\)</span>-waarde. Dit model wordt <span class="math inline">\(m_2\)</span> genoemd.</li>
+<li>Stel <span class="math inline">\(k=2\)</span></li>
+<li>Bouw alle modellen waar 1 predictor wordt weggelaten uit <span class="math inline">\(m_k\)</span> en ga via een F-test na of het verwijderen van de predictoren significant is op het <span class="math inline">\(\alpha_{\text{OUT}}\)</span> significantieniveau. Merk op dat deze test in model <span class="math inline">\(m_k\)</span> moet uitgevoerd worden.</li>
+<li>Indien geen enkel van de <span class="math inline">\(p\)</span>-waarden groter is dan <span class="math inline">\(\alpha_{\text{OUT}}\)</span>, stop de procedure. Het finale model is <span class="math inline">\(m_k\)</span></li>
+<li>Indien er minstens één <span class="math inline">\(p\)</span>-waarde groter is dan <span class="math inline">\(\alpha_{\text{OUT}}\)</span>, selecteer het model dat overeenkomt met de grootste <span class="math inline">\(p\)</span>-waarde. Dit model wordt <span class="math inline">\(m_{k+1}\)</span> genoemd.</li>
+<li>Verhoog <span class="math inline">\(k\)</span> met één (i.e. <span class="math inline">\(k\leftarrow k+1\)</span>) en ga naar stap 6.</li>
+</ol>
+<p>We passen de achterwaartse modelselectie toe op het prostaatkanker voorbeeld. We zoeken naar een model met enkel de belangrijke termen (i.e. significante termen) die geassocieerd zijn met lpsa. We laten interactietermen toe, maar de modelbouw moet zich houden aan de hiërarchie van hoofd- en interactietermen. We stellen <span class="math inline">\(\alpha_{\text{OUT}}=5\%\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alphaOut &lt;-<span class="st"> </span><span class="fl">0.05</span>
+m&lt;-<span class="st"> </span><span class="kw">lm</span>(lpsa<span class="op">~</span>lweight<span class="op">+</span>lcavol<span class="op">+</span>svi<span class="op">+</span>lweight<span class="op">:</span>lcavol<span class="op">+</span>lweight<span class="op">:</span>svi <span class="op">+</span>lcavol<span class="op">:</span>svi,prostate)
+dropHlp&lt;-<span class="kw">drop1</span>(m,<span class="dt">test=</span><span class="st">&quot;F&quot;</span>)
+dropHlp</code></pre></div>
+<pre><code>## Single term deletions
+## 
+## Model:
+## lpsa ~ lweight + lcavol + svi + lweight:lcavol + lweight:svi + 
+##     lcavol:svi
+##                Df Sum of Sq    RSS     AIC F value Pr(&gt;F)
+## &lt;none&gt;                      46.478 -57.365               
+## lweight:lcavol  1   0.00012 46.479 -59.365  0.0002 0.9878
+## lweight:svi     1   0.87404 47.353 -57.558  1.6925 0.1966
+## lcavol:svi      1   0.14093 46.619 -59.071  0.2729 0.6027</code></pre>
+<p>Merk op dat eerst enkel de interactietermen worden getest. De hoofdeffecten mogen niet uit het model worden weggelaten zolang er interactie termen in het model zijn opgenomen waarin deze hoofdeffecten voorkomen.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">while</span> (<span class="kw">sum</span>(dropHlp[,<span class="dv">6</span>]<span class="op">&gt;=</span>alphaOut,<span class="dt">na.rm=</span><span class="ot">TRUE</span>))
+{
+dropVarName&lt;-<span class="kw">rownames</span>(dropHlp)[<span class="kw">which.max</span>(dropHlp[,<span class="dv">6</span>])]
+m &lt;-<span class="st"> </span><span class="kw">update</span>(m,<span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="st">&quot;~.-&quot;</span>,dropVarName)))
+dropHlp&lt;-<span class="kw">drop1</span>(m,<span class="dt">test=</span><span class="st">&quot;F&quot;</span>)
+<span class="kw">print</span>(dropHlp)
+}</code></pre></div>
+<pre><code>## Single term deletions
+## 
+## Model:
+## lpsa ~ lweight + lcavol + svi + lweight:svi + lcavol:svi
+##             Df Sum of Sq    RSS     AIC F value Pr(&gt;F)
+## &lt;none&gt;                   46.479 -59.365               
+## lweight:svi  1    1.2820 47.761 -58.725  2.5100 0.1166
+## lcavol:svi   1    0.1419 46.621 -61.069  0.2778 0.5994
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lweight + lcavol + svi + lweight:svi
+##             Df Sum of Sq    RSS     AIC F value    Pr(&gt;F)    
+## &lt;none&gt;                   46.621 -61.069                      
+## lcavol       1   28.1995 74.820 -17.184 55.6484 4.711e-11 ***
+## lweight:svi  1    1.1644 47.785 -60.676  2.2979     0.133    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lweight + lcavol + svi
+##         Df Sum of Sq    RSS     AIC F value    Pr(&gt;F)    
+## &lt;none&gt;               47.785 -60.676                      
+## lweight  1    5.8923 53.677 -51.397  11.468  0.001039 ** 
+## lcavol   1   28.0446 75.830 -17.884  54.581 6.304e-11 ***
+## svi      1    5.1814 52.966 -52.690  10.084  0.002029 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Merk op dat opnieuw hetzelfde model wordt gekozen. Dat is in het algemeen niet het geval. Vaak heeft achterwaartse modelselectie de eigenschap om te resulteren in een meer complex model dan voorwaartse selectie.</p>
+</div>
+</div>
+<div id="stapsgewijze-modelselectie" class="section level2">
+<h2><span class="header-section-number">11.3</span> Stapsgewijze modelselectie</h2>
+<p>Deze methode is een combinatie van voorwaartse en achterwaartse modelselectie. Het kan starten van het maximale of het minimale model. We implementeren de methode, startende van het minimale model. In elke stap zal eerst worden gekeken of een predictor kan worden toegevoegd, vervolgens zal worden nagegaan of een predictor kan worden verwijderd van het model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alphaIn &lt;-<span class="st"> </span>alphaOut &lt;-<span class="st"> </span><span class="fl">0.05</span>
+m &lt;-<span class="st"> </span><span class="kw">lm</span>(lpsa <span class="op">~</span><span class="st"> </span><span class="dv">1</span> ,prostate)
+notConverged &lt;-<span class="st"> </span><span class="ot">TRUE</span>
+<span class="cf">while</span> (notConverged)
+{
+addHlp &lt;-<span class="st"> </span><span class="kw">add1</span>(m,<span class="dt">scope=</span> <span class="op">~</span>lweight<span class="op">+</span>lcavol<span class="op">+</span>svi<span class="op">+</span>lweight<span class="op">:</span>lcavol<span class="op">+</span>lweight<span class="op">:</span>svi <span class="op">+</span>lcavol<span class="op">:</span>svi,<span class="dt">test=</span><span class="st">&quot;F&quot;</span>)
+<span class="kw">print</span>(addHlp)
+addVarName&lt;-<span class="kw">rownames</span>(addHlp)[<span class="kw">which.min</span>(addHlp[,<span class="dv">6</span>])]
+<span class="cf">if</span> ((<span class="kw">sum</span>(addHlp[,<span class="dv">6</span>] <span class="op">&lt;</span><span class="st"> </span>alphaIn,<span class="dt">na.rm=</span><span class="ot">TRUE</span>))<span class="op">&gt;</span><span class="dv">0</span>) m &lt;-<span class="st"> </span><span class="kw">update</span>(m,<span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="st">&quot;~.+&quot;</span>,addVarName)))
+dropHlp&lt;-<span class="kw">drop1</span>(m,<span class="dt">test=</span><span class="st">&quot;F&quot;</span>)
+<span class="kw">print</span>(dropHlp)
+<span class="cf">if</span> ((<span class="kw">sum</span>(dropHlp[,<span class="dv">6</span>]<span class="op">&gt;=</span>alphaOut,<span class="dt">na.rm=</span><span class="ot">TRUE</span>))<span class="op">&gt;</span><span class="dv">0</span>) m &lt;-<span class="st"> </span><span class="kw">update</span>(m,<span class="kw">as.formula</span>(<span class="kw">paste</span>(<span class="st">&quot;~.-&quot;</span>,dropVarName)))
+<span class="cf">if</span> ((<span class="kw">sum</span>(addHlp[,<span class="dv">6</span>] <span class="op">&lt;</span><span class="st"> </span>alphaIn,<span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="kw">sum</span>(dropHlp[,<span class="dv">6</span>]<span class="op">&gt;=</span>alphaOut,<span class="dt">na.rm=</span><span class="ot">TRUE</span>))<span class="op">&gt;</span><span class="dv">0</span>) notConverged &lt;-<span class="st"> </span><span class="ot">TRUE</span> <span class="cf">else</span> notConverged &lt;-<span class="st"> </span><span class="ot">FALSE</span>
+}</code></pre></div>
+<pre><code>## Single term additions
+## 
+## Model:
+## lpsa ~ 1
+##         Df Sum of Sq     RSS     AIC F value    Pr(&gt;F)    
+## &lt;none&gt;               127.918  28.838                      
+## lweight  1    16.041 111.877  17.841  13.621  0.000373 ***
+## lcavol   1    69.003  58.915 -44.366 111.267 &lt; 2.2e-16 ***
+## svi      1    41.011  86.907  -6.658  44.830 1.499e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lcavol
+##        Df Sum of Sq     RSS     AIC F value    Pr(&gt;F)    
+## &lt;none&gt;               58.915 -44.366                      
+## lcavol  1    69.003 127.918  28.838  111.27 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol
+##         Df Sum of Sq    RSS     AIC F value   Pr(&gt;F)   
+## &lt;none&gt;               58.915 -44.366                    
+## lweight  1    5.9484 52.966 -52.690 10.5567 0.001606 **
+## svi      1    5.2375 53.677 -51.397  9.1719 0.003172 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lcavol + lweight
+##         Df Sum of Sq     RSS     AIC F value    Pr(&gt;F)    
+## &lt;none&gt;                52.966 -52.690                      
+## lcavol   1    58.910 111.877  17.841 104.549 &lt; 2.2e-16 ***
+## lweight  1     5.948  58.915 -44.366  10.557  0.001606 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol + lweight
+##                Df Sum of Sq    RSS     AIC F value   Pr(&gt;F)   
+## &lt;none&gt;                      52.966 -52.690                    
+## svi             1    5.1814 47.785 -60.676  10.084 0.002029 **
+## lweight:lcavol  1    0.1222 52.844 -50.914   0.215 0.643962   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lcavol + lweight + svi
+##         Df Sum of Sq    RSS     AIC F value    Pr(&gt;F)    
+## &lt;none&gt;               47.785 -60.676                      
+## lcavol   1   28.0446 75.830 -17.884  54.581 6.304e-11 ***
+## lweight  1    5.8923 53.677 -51.397  11.468  0.001039 ** 
+## svi      1    5.1814 52.966 -52.690  10.084  0.002029 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Single term additions
+## 
+## Model:
+## lpsa ~ lcavol + lweight + svi
+##                Df Sum of Sq    RSS     AIC F value Pr(&gt;F)
+## &lt;none&gt;                      47.785 -60.676               
+## lweight:lcavol  1   0.36606 47.419 -59.422  0.7102 0.4016
+## lweight:svi     1   1.16445 46.621 -61.069  2.2979 0.1330
+## lcavol:svi      1   0.02433 47.761 -58.725  0.0469 0.8291
+## Single term deletions
+## 
+## Model:
+## lpsa ~ lcavol + lweight + svi
+##         Df Sum of Sq    RSS     AIC F value    Pr(&gt;F)    
+## &lt;none&gt;               47.785 -60.676                      
+## lcavol   1   28.0446 75.830 -17.884  54.581 6.304e-11 ***
+## lweight  1    5.8923 53.677 -51.397  11.468  0.001039 ** 
+## svi      1    5.1814 52.966 -52.690  10.084  0.002029 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Merk op dat er voor dit voorbeeld nooit een predictor uit het model werd verwijderd eens die werd opgenomen in het model. Dat is in het algemeen niet het geval.</p>
+</div>
+<div id="opmerkingen" class="section level2">
+<h2><span class="header-section-number">11.4</span> Opmerkingen</h2>
+<p>Eerst een opmerking over de toepassing van de drie modelselectiemethoden op het prostaat voorbeeld. De drie methoden resulteerden in hetzelfde finale geselecteerde model (met enkel hoofdeffecten van lcavol, lweight en svi). In het algemeen leiden de drie methoden niet noodzakelijk tot eenzelfde finale model.</p>
+<p>De <span class="math inline">\(p\)</span>-waarden in het geselecteerde model mogen niet geïnterpreteerd worden. Dit is minder eenvoudig om in te zien. We hebben immers meerdere hypothese testen uitgevoerd om tot dit model te komen. Bovendien zorgt de modelselectie ervoor dat enkel “significante” termen in het finale model staan; de selectieprocedure is dus een doelbewuste aanrijkingsprocedure. Herinner je dat de definitie van de <span class="math inline">\(p\)</span>-waarde de kans onder <span class="math inline">\(H_0\)</span> is dat de teststatistiek “door zuiver toeval” minstens zo extreem is dan deze die waargenomen werd. Door de aanrijking via de modelselectieprocedure, is het niet langer “zuiver toeval” dat de teststatistiek groter is dan de geobserveerde.</p>
+<p>Er is geen theoretische basis voor de selectieprocedure. Intuïtief lijkt de procedure zinvol omdat we gewend zijn om beslissingen te nemen aan de hand van hypothesetesten, maar hypothesetesten zijn eigenlijk enkel geldig wanneer ze doelgericht toegepast worden om een vooraf (i.e. voor het observeren van de data) duidelijk omschreven onderzoeksvraag te beantwoorden. Bij modelselectie wordt het pad doorheen de modellenruimte bepaald door de geobserveerde data, waardoor de <span class="math inline">\(p\)</span>-waarden hun betekenis verliezen, i.e. de hypotheses worden niet vooraf door de onderzoekers geformuleerd, maar ze worden door de data bepaald.</p>
+<p>De analyse van lpsa in het vorige hoofdstuk zou ook als modelselectie kunnen worden bekeken: we startten met het model met de hoofdeffecten en met interactietermen. Vervolgens werd getest of de interactieterm nul was. Indien de interactieterm niet significant was, dan werd deze verwijderd en werden de hoofdeffecten getest. Dit lijkt op een achterwaartse modelselectie, maar in dat voorbeeld moeten we de procedure interpreteren als een klassieke hypothesetest (voor interactie) waarvan de nulhypothese in de onderzoeksvraag verscholen lag en dus niet door de data gesuggereerd werd.</p>
+</div>
+<div id="modelselectie-voor-predictie" class="section level2">
+<h2><span class="header-section-number">11.5</span> Modelselectie voor predictie</h2>
+<div id="inleiding-10" class="section level3">
+<h3><span class="header-section-number">11.5.1</span> Inleiding</h3>
+<p>In het vroege stadium van de ontwikkeling van een nieuw geneesmiddel (Engels: <em>early drug development</em>) kijkt men tegenwoordig ook naar het effect van de werkzame stof (<em>compound</em>) op genexpressie. Dit kan een dieper inzicht geven in de werking van het geneesmiddel, of kan toxiciteit van de compound in een vroeg stadium detecteren (toxicogenomics). De gewenste activiteit van een compound wordt in vitro bepaald aan de hand van bio-assays (BA). De uitkomst is bv. een maat voor de bindingscapaciteiten van de compound aan de geviseerde receptor op de celwand (IC<span class="math inline">\(_{50}\)</span>). Deze receptor wordt de target genoemd.</p>
+<p>In deze vroege fase van de ontwikkeling van een geneesmiddel worden typisch 20 tot 50 gelijkaardige compounds uitvoerig getest. Op basis van de in vitro resultaten nemen de chemici beslissingen over hoe de molecules moeten aangepast worden om tot een (hopelijk) betere compound te komen (i.e. een hogere on-target activiteit en minder toxiciteit).</p>
+<p>De kleine variaties in moleculaire structuur geven aanleiding tot variaties in BA en genexpressies.</p>
+<p>De doelstelling van de studie is het opstellen van een model dat toelaat de bioactiviteit (BA) te voorspellen aan de hand van genexpressies in een levercellijn.</p>
+<p>In het volgend voorbeeld, wordt het effect van 35 compounds getest op de genexpressie van levercellen. De levercellen werden gedurende 24 uur blootgesteld aan de compound, waarna genexpressie gemeten werd m.b.v. microarrays. De on-target bioactiviteit van ieder van de 35 compounds wordt via een in-vitro bioassay bekomen (IC<span class="math inline">\(_{50}\)</span>).</p>
+<p>We beperken ons hier tot 10 genen (geselecteerd door het onderzoeksteam op basis van a-priori kennis van de pathways betrokken bij de ontwikkeling van de ziekte). Figuur <a href="chap-modsel.html#fig:MCXScatter">11.1</a> toont de scatter plot matrix.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mcx&lt;-<span class="kw">read.table</span>(<span class="st">&quot;dataset/mcx.txt&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>)
+<span class="kw">head</span>(mcx)</code></pre></div>
+<pre><code>##     BA    HOXB5    PNISR     ATRX LOC100505650   PLK1S1  DNAJC12    ZFHX4
+## 1 5.70 9.864744 9.421823 8.557665     11.08555 8.892243 8.198292 8.846125
+## 2 5.87 9.847176 9.301424 8.550591     11.18236 9.196701 8.343191 8.873578
+## 3 5.70 9.859438 9.360302 8.536606     11.03822 8.903690 8.231318 8.859549
+## 4 5.54 9.862448 9.283498 8.535854     10.98804 9.136609 8.292451 8.857473
+## 5 5.32 9.836761 9.309442 8.543522     10.94489 8.855404 8.197822 8.826820
+## 6 5.73 9.848315 9.318502 8.545635     11.01789 8.919469 8.272741 8.838364
+##      BSDC1    FTSJ1    YPEL1
+## 1 8.848922 10.38470 8.265589
+## 2 9.022556 10.23077 8.426856
+## 3 8.888275 10.37585 8.244617
+## 4 8.985628 10.35854 8.257426
+## 5 8.832436 10.37179 8.250075
+## 6 8.864538 10.38892 8.280436</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mcx)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:MCXScatter"></span>
+<img src="Statistiek_2018_2019_files/figure-html/MCXScatter-1.png" alt="Scatterplot matrix voor de observaties in de bioactiviteit dataset." width="100%" />
+<p class="caption">
+Figuur 11.1: Scatterplot matrix voor de observaties in de bioactiviteit dataset.
+</p>
+</div>
+<p>Figuur <a href="chap-modsel.html#fig:MCXScatter">11.1</a> suggereert dat de BA uitkomst sterk gecorreleerd is met alle genexpressies, maar de figuur toont tevens dat vele genexpressies ook onderling sterk gecorreleerd zijn. Het zal dus waarschijnlijk niet nodig zijn om alle genen simultaan in het model op te nemen. Niettegenstaande de hypothesetest-gebaseerde methoden toepasbaar lijken, argumenteren we hier dat die methoden niet geschikt zijn in de huidige context.</p>
+<p>De doelstelling is om een zo optimaal mogelijk model te selecteren dat gebruikt kan worden voor predictie van de uitkomst. Niettegenstaande de predictie voor een lineair regressiemodel gegeven wordt door <span class="math inline">\(\hat{Y}=\beta_0+\sum_{j=1}^{p-1}\beta_jX_j\)</span>, weten we dat de <span class="math inline">\(\beta\)</span>-parameters een interpretatie hebben met betrekking tot de gemiddelde uitkomst <span class="math inline">\(\text{E}[Y\mid (X_1,\ldots,X_{p-1})]=\beta_0+\sum_{j=1}^{p-1}\beta_jX_j\)</span>. Hypothesetesten voor <span class="math inline">\(H_0:\beta_j=0\)</span> gaan dus na of predictor <span class="math inline">\(X_j\)</span> (conditioneel op de andere regressoren in het model) gerelateerd is tot de gemiddelde uitkomst. Het al dan niet verwerpen van <span class="math inline">\(H_0\)</span> heeft niet enkel te maken met de werkelijke waarde van <span class="math inline">\(\beta_j\)</span>, maar ook met de kracht van de hypothesetest en dus ook met de steekproefgrootte <span class="math inline">\(n\)</span>. Hypothesetesten maken een afweging van de evidentie in de data tegen/voor de gestelde hypotheses die betrekking hebben op de gemiddelde uitkomst. Voor een goed predictiemodel is het minder belangrijk dat het model de werkelijkheid weerspiegelt met betrekking tot het verband tussen de gemiddelde uitkomst en de regressoren; het is enkel belangrijk dat het model goede predicties geeft voor individuele uitkomsten. Om deze reden wordt modelselectie voor predictiemodellen uitgevoerd door gebruik te maken van specifieke modelselectiecriteria die de kwaliteit van het predictieve karakter van een model kwantificeert.</p>
+</div>
+<div id="selectie-criterium" class="section level3">
+<h3><span class="header-section-number">11.5.2</span> Selectie-criterium</h3>
+<p>Het is aanlokkelijk om <span class="math inline">\(R^2\)</span> te gebruiken als een criterium voor hoe goed het model in staat is om predicties te maken, gezien het aangeeft hoeveel procent van de variabiliteit in de data verklaard kan worden door het model. <span class="math inline">\(R^2\)</span> is echter geen goed criterium. Hoe complexer het model (hoe meer predictoren er worden opgenomen) hoe hoger <span class="math inline">\(R^2\)</span> wordt. <span class="math inline">\(R^2 = 1-SSE/SSTot = SSR/SSTot\)</span> en SSE (SSR) neemt immers steeds af(toe) als een extra predictor in het model wordt opgenomen terwijl SSTot constant blijft. Het gebruik van <span class="math inline">\(R^2\)</span> zal dus aanleiding geven tot overfitting. We zullen immers steeds het meest complexe model selecteren. Hierdoor zal het model niet meer goed veralgemenen naar nieuwe data toe: het model wordt als het ware te goed getuned naar de dataset die is gebruikt om het model te trainen waardoor het niet meer bruikbaar is om predicties te doen.</p>
+<p>Het Akaike Information Criterium (AIC) is een criterium dat een compromis maakt tussen de kwaliteit van de fit en de complexiteit van het model. <span class="math display">\[AIC = -2 \text{ln } L(\hat \beta_0, \ldots, \hat \beta_{p-1}, \hat \sigma^2) + 2 (p+1),\]</span></p>
+<p>waarbij de eerste term het natuurlijke logaritme is van likelihood, die voor een steekproef van <span class="math inline">\(n\)</span> i.i.d. normaal verdeelde observaties met dichtheidsfunctie <span class="math inline">\(f(Y_i \vert x_{i1} \ldots x_{ip-1}, \beta_0,\ldots, \beta_{p-1} ,\sigma^2)\)</span> en conditioneel gemiddelde <span class="math inline">\(E[Y_i \vert x_{i1} \ldots x_{ip-1}]=\beta_0 + \sum_{j=1}^{p-1} \beta_j x_{j}\)</span> gedefinieerd is als: <span class="math display">\[
+L(\beta_0, \ldots, \beta_{p-1}, \sigma^2) = \prod\limits_{i=1}^n f(y_i \ldots x_{ip-1}, \beta_0,\ldots, \beta_{p-1} ,\sigma^2)  
+\]</span></p>
+<p>De likelihood geeft dus weer hoe waarschijnlijk het is om de data te observeren onder het normale regressiemodel. Gezien we de parameters niet kennen zullen we ze vervangen door de geschatte modelparameters. We kunnen voor het Normale lineaire regressie model aantonen dat <span class="math inline">\(-2 \text{ln } L(\hat \beta_0, \ldots, \hat \beta_{p-1}, \hat \sigma^2)\)</span> evenredig is met SSE. Hoe slechter de fit is, hoe hoger het AIC criterium.</p>
+<p>De tweede term straft de kwaliteit van de fit als het ware af voor complexiteit. Merk op dat <span class="math inline">\(p+1\)</span> het aantal modelparameters is die we schatten met het normale regressie model: <span class="math inline">\(p\)</span> parameters van het lineaire model + de parameter <span class="math inline">\(\sigma^2\)</span>. Het AIC criterium zal dus ook toenemen i.f.v. de complexiteit van het model (aantal parameters). Hierdoor wordt een afweging gemaakt tussen de kwaliteit van de model fit (term 1) en de complexiteit van het model (term 2).</p>
+<p>Merk op dat de data analist het werkelijk model niet kent. Hij/zij zal dus verschillende kandidaat modellen met elkaar vergelijken. Vervolgens wordt het model geselecteerd waaronder het zo waarschijnlijk mogelijk is om de geobserveerde data te trekken in een steekproef (eerste term minimaal, SSE zo laag mogelijk), maar zonder dat de modelcomplexiteit daarbij te hoog wordt (tweede term). De analist zal dus het modelselecteren met een zo klein mogelijke AIC.</p>
+<p>Opnieuw kan men gebruik maken van voorwaarts, achterwaartse of stapsgewijze modelselectie. Dat kan eenvoudig in R worden geïmplementeerd a.d.h.v. de ‘step’ functie.</p>
+<p>We passen de strategie nu toe op het bioactiviteitsvoorbeeld. We zullen opnieuw voorwaartse, achterwaartse en stapsgewijze modelselectie uitvoeren.</p>
+<p>Bij voorwaartse modelselectie starten we van een model zonder predictoren:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(BA<span class="op">~</span><span class="dv">1</span>,mcx)
+m1</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = BA ~ 1, data = mcx)
+## 
+## Coefficients:
+## (Intercept)  
+##        5.55</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mfull &lt;-<span class="st"> </span><span class="kw">lm</span>(BA<span class="op">~</span>.,mcx)
+mfull</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = BA ~ ., data = mcx)
+## 
+## Coefficients:
+##  (Intercept)         HOXB5         PNISR          ATRX  LOC100505650  
+##      -9.5823        1.1665        2.6174       -2.0386        0.3095  
+##       PLK1S1       DNAJC12         ZFHX4         BSDC1         FTSJ1  
+##       0.4614        0.4616       -0.7015       -0.2761       -1.6318  
+##        YPEL1  
+##       1.3044</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mForward &lt;-<span class="st"> </span><span class="kw">step</span>(m1,<span class="dt">scope=</span><span class="kw">formula</span>(mfull),<span class="dt">direction=</span><span class="st">&quot;forward&quot;</span>)</code></pre></div>
+<pre><code>## Start:  AIC=-19.33
+## BA ~ 1
+## 
+##                Df Sum of Sq     RSS     AIC
+## + LOC100505650  1    14.668  4.3588 -68.910
+## + PNISR         1    14.376  4.6505 -66.643
+## + ATRX          1    14.104  4.9231 -64.650
+## + ZFHX4         1    13.869  5.1574 -63.022
+## + PLK1S1        1    13.860  5.1671 -62.956
+## + FTSJ1         1    13.781  5.2459 -62.426
+## + BSDC1         1    13.703  5.3234 -61.913
+## + DNAJC12       1    13.412  5.6141 -60.052
+## + HOXB5         1    13.400  5.6263 -59.976
+## + YPEL1         1    13.049  5.9774 -57.858
+## &lt;none&gt;                      19.0266 -19.333
+## 
+## Step:  AIC=-68.91
+## BA ~ LOC100505650
+## 
+##           Df Sum of Sq    RSS     AIC
+## + YPEL1    1   1.20478 3.1540 -78.233
+## + DNAJC12  1   0.91062 3.4482 -75.112
+## + PLK1S1   1   0.81030 3.5485 -74.109
+## + FTSJ1    1   0.78960 3.5692 -73.905
+## + BSDC1    1   0.75759 3.6012 -73.592
+## + HOXB5    1   0.69933 3.6595 -73.031
+## + ZFHX4    1   0.69895 3.6599 -73.027
+## + ATRX     1   0.63276 3.7261 -72.400
+## + PNISR    1   0.36333 3.9955 -69.956
+## &lt;none&gt;                 4.3588 -68.910
+## 
+## Step:  AIC=-78.23
+## BA ~ LOC100505650 + YPEL1
+## 
+##           Df Sum of Sq    RSS     AIC
+## &lt;none&gt;                 3.1540 -78.233
+## + PNISR    1  0.133032 3.0210 -77.741
+## + HOXB5    1  0.116332 3.0377 -77.548
+## + FTSJ1    1  0.063065 3.0910 -76.940
+## + ATRX     1  0.048977 3.1051 -76.781
+## + DNAJC12  1  0.044347 3.1097 -76.729
+## + ZFHX4    1  0.029234 3.1248 -76.559
+## + BSDC1    1  0.029032 3.1250 -76.557
+## + PLK1S1   1  0.025778 3.1283 -76.520</code></pre>
+<p>Nu achterwaartse modelselectie:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mBackward &lt;-<span class="st"> </span><span class="kw">step</span>(mfull,<span class="dt">direction=</span><span class="st">&quot;backward&quot;</span>)</code></pre></div>
+<pre><code>## Start:  AIC=-67.34
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + DNAJC12 + 
+##     ZFHX4 + BSDC1 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - BSDC1         1  0.003369 2.7288 -69.302
+## - DNAJC12       1  0.005688 2.7312 -69.272
+## - LOC100505650  1  0.014735 2.7402 -69.156
+## - PLK1S1        1  0.025044 2.7505 -69.025
+## - ZFHX4         1  0.030840 2.7563 -68.951
+## - HOXB5         1  0.039762 2.7652 -68.838
+## - ATRX          1  0.063271 2.7887 -68.542
+## - YPEL1         1  0.139909 2.8654 -67.593
+## - FTSJ1         1  0.157697 2.8832 -67.376
+## &lt;none&gt;                      2.7255 -67.345
+## - PNISR         1  0.211967 2.9374 -66.723
+## 
+## Step:  AIC=-69.3
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + DNAJC12 + 
+##     ZFHX4 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - DNAJC12       1  0.006916 2.7357 -71.213
+## - LOC100505650  1  0.014255 2.7431 -71.119
+## - PLK1S1        1  0.025052 2.7539 -70.982
+## - ZFHX4         1  0.028026 2.7569 -70.944
+## - HOXB5         1  0.036934 2.7658 -70.831
+## - ATRX          1  0.087988 2.8168 -70.191
+## - YPEL1         1  0.136972 2.8658 -69.587
+## - FTSJ1         1  0.155963 2.8848 -69.356
+## &lt;none&gt;                      2.7288 -69.302
+## - PNISR         1  0.228042 2.9569 -68.492
+## 
+## Step:  AIC=-71.21
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + ZFHX4 + FTSJ1 + 
+##     YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - LOC100505650  1  0.014893 2.7506 -73.023
+## - ZFHX4         1  0.025561 2.7613 -72.887
+## - PLK1S1        1  0.031313 2.7671 -72.815
+## - HOXB5         1  0.044757 2.7805 -72.645
+## - ATRX          1  0.081205 2.8170 -72.189
+## &lt;none&gt;                      2.7357 -71.213
+## - YPEL1         1  0.171775 2.9075 -71.082
+## - FTSJ1         1  0.183246 2.9190 -70.944
+## - PNISR         1  0.221272 2.9570 -70.491
+## 
+## Step:  AIC=-73.02
+## BA ~ HOXB5 + PNISR + ATRX + PLK1S1 + ZFHX4 + FTSJ1 + YPEL1
+## 
+##          Df Sum of Sq    RSS     AIC
+## - ZFHX4   1   0.02825 2.7789 -74.665
+## - HOXB5   1   0.04052 2.7912 -74.511
+## - PLK1S1  1   0.05611 2.8068 -74.316
+## - ATRX    1   0.13350 2.8841 -73.364
+## - YPEL1   1   0.15739 2.9080 -73.075
+## &lt;none&gt;                2.7506 -73.023
+## - FTSJ1   1   0.31935 3.0700 -71.178
+## - PNISR   1   0.90015 3.6508 -65.114
+## 
+## Step:  AIC=-74.67
+## BA ~ HOXB5 + PNISR + ATRX + PLK1S1 + FTSJ1 + YPEL1
+## 
+##          Df Sum of Sq    RSS     AIC
+## - HOXB5   1   0.02391 2.8028 -76.365
+## - PLK1S1  1   0.03749 2.8164 -76.196
+## - YPEL1   1   0.14939 2.9283 -74.832
+## &lt;none&gt;                2.7789 -74.665
+## - ATRX    1   0.19488 2.9738 -74.293
+## - FTSJ1   1   0.29613 3.0750 -73.121
+## - PNISR   1   0.89851 3.6774 -66.860
+## 
+## Step:  AIC=-76.37
+## BA ~ PNISR + ATRX + PLK1S1 + FTSJ1 + YPEL1
+## 
+##          Df Sum of Sq    RSS     AIC
+## - PLK1S1  1   0.05400 2.8568 -77.698
+## - YPEL1   1   0.15995 2.9628 -76.423
+## &lt;none&gt;                2.8028 -76.365
+## - ATRX    1   0.17201 2.9748 -76.281
+## - FTSJ1   1   0.28291 3.0857 -75.000
+## - PNISR   1   1.01508 3.8179 -67.548
+## 
+## Step:  AIC=-77.7
+## BA ~ PNISR + ATRX + FTSJ1 + YPEL1
+## 
+##         Df Sum of Sq    RSS     AIC
+## - ATRX   1   0.11974 2.9766 -78.260
+## &lt;none&gt;               2.8568 -77.698
+## - YPEL1  1   0.26844 3.1252 -76.554
+## - FTSJ1  1   0.50227 3.3591 -74.029
+## - PNISR  1   0.96156 3.8184 -69.543
+## 
+## Step:  AIC=-78.26
+## BA ~ PNISR + FTSJ1 + YPEL1
+## 
+##         Df Sum of Sq    RSS     AIC
+## &lt;none&gt;               2.9766 -78.260
+## - YPEL1  1   0.18969 3.1662 -78.098
+## - FTSJ1  1   0.39421 3.3708 -75.907
+## - PNISR  1   1.59191 4.5685 -65.266</code></pre>
+<p>We kunnen ook stapsgewijze modelselectie doen startende vanaf het meest eenvoudige model:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mForStep &lt;-<span class="st"> </span><span class="kw">step</span>(m1,<span class="dt">scope=</span><span class="kw">list</span>(<span class="dt">lower=</span><span class="kw">formula</span>(m1),<span class="dt">upper=</span><span class="kw">formula</span>(mfull)), <span class="dt">direction=</span><span class="st">&quot;both&quot;</span>)</code></pre></div>
+<pre><code>## Start:  AIC=-19.33
+## BA ~ 1
+## 
+##                Df Sum of Sq     RSS     AIC
+## + LOC100505650  1    14.668  4.3588 -68.910
+## + PNISR         1    14.376  4.6505 -66.643
+## + ATRX          1    14.104  4.9231 -64.650
+## + ZFHX4         1    13.869  5.1574 -63.022
+## + PLK1S1        1    13.860  5.1671 -62.956
+## + FTSJ1         1    13.781  5.2459 -62.426
+## + BSDC1         1    13.703  5.3234 -61.913
+## + DNAJC12       1    13.412  5.6141 -60.052
+## + HOXB5         1    13.400  5.6263 -59.976
+## + YPEL1         1    13.049  5.9774 -57.858
+## &lt;none&gt;                      19.0266 -19.333
+## 
+## Step:  AIC=-68.91
+## BA ~ LOC100505650
+## 
+##                Df Sum of Sq     RSS     AIC
+## + YPEL1         1    1.2048  3.1540 -78.233
+## + DNAJC12       1    0.9106  3.4482 -75.112
+## + PLK1S1        1    0.8103  3.5485 -74.109
+## + FTSJ1         1    0.7896  3.5692 -73.905
+## + BSDC1         1    0.7576  3.6012 -73.592
+## + HOXB5         1    0.6993  3.6595 -73.031
+## + ZFHX4         1    0.6990  3.6599 -73.027
+## + ATRX          1    0.6328  3.7261 -72.400
+## + PNISR         1    0.3633  3.9955 -69.956
+## &lt;none&gt;                       4.3588 -68.910
+## - LOC100505650  1   14.6678 19.0266 -19.333
+## 
+## Step:  AIC=-78.23
+## BA ~ LOC100505650 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## &lt;none&gt;                      3.1540 -78.233
+## + PNISR         1   0.13303 3.0210 -77.741
+## + HOXB5         1   0.11633 3.0377 -77.548
+## + FTSJ1         1   0.06306 3.0910 -76.940
+## + ATRX          1   0.04898 3.1051 -76.781
+## + DNAJC12       1   0.04435 3.1097 -76.729
+## + ZFHX4         1   0.02923 3.1248 -76.559
+## + BSDC1         1   0.02903 3.1250 -76.557
+## + PLK1S1        1   0.02578 3.1283 -76.520
+## - YPEL1         1   1.20478 4.3588 -68.910
+## - LOC100505650  1   2.82334 5.9774 -57.858</code></pre>
+<p>Nu stapsgewijze modelselectie startende vanaf het meest complexe model:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mBackStep &lt;-<span class="st"> </span><span class="kw">step</span>(mfull,<span class="dt">scope=</span><span class="kw">list</span>(<span class="dt">lower=</span><span class="kw">formula</span>(m1),<span class="dt">upper=</span><span class="kw">formula</span>(mfull)), <span class="dt">direction=</span><span class="st">&quot;both&quot;</span>)</code></pre></div>
+<pre><code>## Start:  AIC=-67.34
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + DNAJC12 + 
+##     ZFHX4 + BSDC1 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - BSDC1         1  0.003369 2.7288 -69.302
+## - DNAJC12       1  0.005688 2.7312 -69.272
+## - LOC100505650  1  0.014735 2.7402 -69.156
+## - PLK1S1        1  0.025044 2.7505 -69.025
+## - ZFHX4         1  0.030840 2.7563 -68.951
+## - HOXB5         1  0.039762 2.7652 -68.838
+## - ATRX          1  0.063271 2.7887 -68.542
+## - YPEL1         1  0.139909 2.8654 -67.593
+## - FTSJ1         1  0.157697 2.8832 -67.376
+## &lt;none&gt;                      2.7255 -67.345
+## - PNISR         1  0.211967 2.9374 -66.723
+## 
+## Step:  AIC=-69.3
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + DNAJC12 + 
+##     ZFHX4 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - DNAJC12       1  0.006916 2.7357 -71.213
+## - LOC100505650  1  0.014255 2.7431 -71.119
+## - PLK1S1        1  0.025052 2.7539 -70.982
+## - ZFHX4         1  0.028026 2.7569 -70.944
+## - HOXB5         1  0.036934 2.7658 -70.831
+## - ATRX          1  0.087988 2.8168 -70.191
+## - YPEL1         1  0.136972 2.8658 -69.587
+## - FTSJ1         1  0.155963 2.8848 -69.356
+## &lt;none&gt;                      2.7288 -69.302
+## - PNISR         1  0.228042 2.9569 -68.492
+## + BSDC1         1  0.003369 2.7255 -67.345
+## 
+## Step:  AIC=-71.21
+## BA ~ HOXB5 + PNISR + ATRX + LOC100505650 + PLK1S1 + ZFHX4 + FTSJ1 + 
+##     YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - LOC100505650  1  0.014893 2.7506 -73.023
+## - ZFHX4         1  0.025561 2.7613 -72.887
+## - PLK1S1        1  0.031313 2.7671 -72.815
+## - HOXB5         1  0.044757 2.7805 -72.645
+## - ATRX          1  0.081205 2.8170 -72.189
+## &lt;none&gt;                      2.7357 -71.213
+## - YPEL1         1  0.171775 2.9075 -71.082
+## - FTSJ1         1  0.183246 2.9190 -70.944
+## - PNISR         1  0.221272 2.9570 -70.491
+## + DNAJC12       1  0.006916 2.7288 -69.302
+## + BSDC1         1  0.004597 2.7312 -69.272
+## 
+## Step:  AIC=-73.02
+## BA ~ HOXB5 + PNISR + ATRX + PLK1S1 + ZFHX4 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - ZFHX4         1   0.02825 2.7789 -74.665
+## - HOXB5         1   0.04052 2.7912 -74.511
+## - PLK1S1        1   0.05611 2.8068 -74.316
+## - ATRX          1   0.13350 2.8841 -73.364
+## - YPEL1         1   0.15739 2.9080 -73.075
+## &lt;none&gt;                      2.7506 -73.023
+## + LOC100505650  1   0.01489 2.7358 -71.213
+## - FTSJ1         1   0.31935 3.0700 -71.178
+## + DNAJC12       1   0.00755 2.7431 -71.119
+## + BSDC1         1   0.00409 2.7466 -71.075
+## - PNISR         1   0.90015 3.6508 -65.114
+## 
+## Step:  AIC=-74.67
+## BA ~ HOXB5 + PNISR + ATRX + PLK1S1 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - HOXB5         1   0.02391 2.8028 -76.365
+## - PLK1S1        1   0.03749 2.8164 -76.196
+## - YPEL1         1   0.14939 2.9283 -74.832
+## &lt;none&gt;                      2.7789 -74.665
+## - ATRX          1   0.19488 2.9738 -74.293
+## - FTSJ1         1   0.29613 3.0750 -73.121
+## + ZFHX4         1   0.02825 2.7506 -73.023
+## + LOC100505650  1   0.01759 2.7613 -72.887
+## + DNAJC12       1   0.00489 2.7740 -72.727
+## + BSDC1         1   0.00072 2.7782 -72.674
+## - PNISR         1   0.89851 3.6774 -66.860
+## 
+## Step:  AIC=-76.37
+## BA ~ PNISR + ATRX + PLK1S1 + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - PLK1S1        1   0.05400 2.8568 -77.698
+## - YPEL1         1   0.15995 2.9628 -76.423
+## &lt;none&gt;                      2.8028 -76.365
+## - ATRX          1   0.17201 2.9748 -76.281
+## - FTSJ1         1   0.28291 3.0857 -75.000
+## + HOXB5         1   0.02391 2.7789 -74.665
+## + LOC100505650  1   0.01287 2.7899 -74.526
+## + ZFHX4         1   0.01165 2.7912 -74.511
+## + DNAJC12       1   0.01066 2.7921 -74.499
+## + BSDC1         1   0.00070 2.8021 -74.374
+## - PNISR         1   1.01508 3.8179 -67.548
+## 
+## Step:  AIC=-77.7
+## BA ~ PNISR + ATRX + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## - ATRX          1   0.11974 2.9766 -78.260
+## &lt;none&gt;                      2.8568 -77.698
+## - YPEL1         1   0.26844 3.1252 -76.554
+## + PLK1S1        1   0.05400 2.8028 -76.365
+## + HOXB5         1   0.04042 2.8164 -76.196
+## + LOC100505650  1   0.03471 2.8221 -76.125
+## + BSDC1         1   0.03081 2.8260 -76.077
+## + DNAJC12       1   0.02797 2.8288 -76.042
+## + ZFHX4         1   0.00022 2.8566 -75.700
+## - FTSJ1         1   0.50227 3.3591 -74.029
+## - PNISR         1   0.96156 3.8184 -69.543
+## 
+## Step:  AIC=-78.26
+## BA ~ PNISR + FTSJ1 + YPEL1
+## 
+##                Df Sum of Sq    RSS     AIC
+## &lt;none&gt;                      2.9766 -78.260
+## - YPEL1         1   0.18969 3.1662 -78.098
+## + ATRX          1   0.11974 2.8568 -77.698
+## + LOC100505650  1   0.08940 2.8871 -77.328
+## + ZFHX4         1   0.04005 2.9365 -76.735
+## + BSDC1         1   0.00413 2.9724 -76.309
+## + HOXB5         1   0.00203 2.9745 -76.284
+## + PLK1S1        1   0.00173 2.9748 -76.281
+## + DNAJC12       1   0.00061 2.9759 -76.268
+## - FTSJ1         1   0.39421 3.3708 -75.907
+## - PNISR         1   1.59191 4.5685 -65.266</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mForward </code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = BA ~ LOC100505650 + YPEL1, data = mcx)
+## 
+## Coefficients:
+##  (Intercept)  LOC100505650         YPEL1  
+##      -32.240         1.671         2.337</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mBackward</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = BA ~ PNISR + FTSJ1 + YPEL1, data = mcx)
+## 
+## Coefficients:
+## (Intercept)        PNISR        FTSJ1        YPEL1  
+##      -6.538        2.165       -1.784        1.240</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mForStep</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = BA ~ LOC100505650 + YPEL1, data = mcx)
+## 
+## Coefficients:
+##  (Intercept)  LOC100505650         YPEL1  
+##      -32.240         1.671         2.337</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mBackStep</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = BA ~ PNISR + FTSJ1 + YPEL1, data = mcx)
+## 
+## Coefficients:
+## (Intercept)        PNISR        FTSJ1        YPEL1  
+##      -6.538        2.165       -1.784        1.240</code></pre>
+</div>
+<div id="alternatieve-criteria" class="section level3">
+<h3><span class="header-section-number">11.5.3</span> Alternatieve criteria</h3>
+<p>Recent zijn er binnen de machine learning diverse alternatieve technieken voor modelbouw ontwikkeld die hoofdzakelijk steunen op crossvalidatie, d.i. een techniek waarbij men telkens het regressiemodel schat op basis van een subset van de observaties en haar performantie evalueert door na te gaan hoe goed ze de resterende observaties voorspelt. Deze methoden zijn nog beter geschikt voor het bouwen van predictiemodellen. Ze evalueren het model immers op data die het model nog niet heeft gezien tijdens de training (fitting) fase.</p>
+
+<div id="refs" class="references">
+<div>
+<p>Davenas, E., F. Beauvais, J. Amara, M. Oberbaum, B. Robinzon, A. Miadonnai, A. Tedeschi, et al. 1988. “Human Basophil Degranulation Triggered by Very Dilute Antiserum Against Ige.” <em>Nature</em> 333 (6176): 816–18. <a href="http://dx.doi.org/10.1038/333816a0" class="uri">http://dx.doi.org/10.1038/333816a0</a>.</p>
+</div>
+<div>
+<p>Jacques, S., B. Ghesquière, P. De Bock, H. Demol, K. Wahni, P. Willems, J. Messens, F. Van Breusegem, and K. Gevaert. 2015. “Protein Methionine Sulfoxide Dynamics in Arabidopsis Thaliana Under Oxidative Stress.” <em>Molecular and Cellular Proteomics</em> 14 (5): 1217–29.</p>
+</div>
+<div>
+<p>Rogovin, Konstantin A., Anastasiya M. Khrushchova, Olga N. Shekarova, Nina A. Vasilieva, and Nina Yu Vasilieva. 2017. “Females Choose Gentle, but Not Healthy or Macho Males in Campbell Dwarf Hamsters (Phodopus Campbelli Thomas 1905).” <em>Current Zoology</em> 63 (5): 545–54. doi:<a href="https://doi.org/10.1093/cz/zow090">10.1093/cz/zow090</a>.</p>
+</div>
+<div>
+<p>Sotiriou, Christos, Pratyaksha Wirapati, Sherene Loi, Adrian Harris, Steve Fox, Johanna Smeds, Hans Nordgren, et al. 2006. “Gene Expression Profiling in Breast Cancer: Understanding the Molecular Basis of Histologic Grade to Improve Prognosis.” <em>Journal of the National Cancer Institute</em> 98 (4). Functional Genomics; Translational Research Unit, Universite Libre de Bruxelles, Brussels, Belgium. christos.sotiriou@bordet.be: 262–72. doi:<a href="https://doi.org/10.1093/jnci/djj052">10.1093/jnci/djj052</a>.</p>
+</div>
+<div>
+<p>Valdés-López, O., S. Khan, R. Schmitz, S. Cui, J. Qiu, T. Joshi, D. Xu, B. Diers, J. Ecker, and G. Stacey. 2014. “Genotypic Variation of Gene Expression During the Soybean Innate Immunity Response.” <em>Plant Genetic Resources</em> 12 (S1): S27–S30.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-glm.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/11-ModelSelectie.Rmd",
+"text": "Edit"
+},
+"download": ["Statistiek_2018_2019.pdf", "Statistiek_2018_2019.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
