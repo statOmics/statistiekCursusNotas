@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cursus Statistiek 2018-2019</title>
-  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Hoofdstuk 9 Categorische data analyse | Cursus Statistiek 2019-2020</title>
+  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cursus Statistiek 2018-2019" />
+  <meta property="og:title" content="Hoofdstuk 9 Categorische data analyse | Cursus Statistiek 2019-2020" />
   <meta property="og:type" content="book" />
   
   
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="statOmics/statistiek2deBach" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cursus Statistiek 2018-2019" />
+  <meta name="twitter:title" content="Hoofdstuk 9 Categorische data analyse | Cursus Statistiek 2019-2020" />
   
   <meta name="twitter:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
   
 
-<meta name="author" content="Lieven Clement">
+<meta name="author" content="Lieven Clement" />
 
 
-<meta name="date" content="2018-11-15">
+<meta name="date" content="2019-09-17" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="niet-parametrische-statistiek.html">
 <link rel="next" href="chap-glm.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -101,7 +101,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Cursus Statistiek 2018-2019</a></li>
+<li><a href="./">Cursus Statistiek 2019-2020</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Woord vooraf</a></li>
@@ -337,7 +337,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2018-2019</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2019-2020</a>
           </h1>
         </div>
 
@@ -368,7 +368,7 @@ probs=<span class="kw">c</span>(<span class="fl">0.25</span>,.<span class="dv">5
 <span class="kw">axis</span>(<span class="dv">1</span>,<span class="dt">at=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))
 }</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:bernoulli"></span>
-<img src="Statistiek_2018_2019_files/figure-html/bernoulli-1.png" alt="Bernoulli verdelingen." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/bernoulli-1.png" alt="Bernoulli verdelingen." width="100%" />
 <p class="caption">
 Figuur 9.1: Bernoulli verdelingen.
 </p>
@@ -438,7 +438,7 @@ probs=<span class="kw">c</span>(<span class="fl">0.25</span>,.<span class="dv">5
 }
 <span class="kw">plot</span>(<span class="dv">2925</span><span class="op">:</span><span class="dv">3225</span>,<span class="kw">dbinom</span>(<span class="dv">2925</span><span class="op">:</span><span class="dv">3225</span>,<span class="dt">prob=</span>.<span class="dv">5</span>,<span class="dt">size=</span>n),<span class="dt">type=</span><span class="st">&quot;h&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;X&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Kans (Dichtheid)&quot;</span>,<span class="dt">main=</span> <span class="kw">as.expression</span>(<span class="kw">substitute</span>(pi <span class="op">==</span><span class="st"> </span>val,<span class="kw">list</span>(<span class="dt">val=</span><span class="kw">paste0</span>(<span class="st">&quot;0.5, nobs=&quot;</span>,n)))))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:binoms"></span>
-<img src="Statistiek_2018_2019_files/figure-html/binoms-1.png" alt="Binomiale verdelingen." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/binoms-1.png" alt="Binomiale verdelingen." width="100%" />
 <p class="caption">
 Figuur 9.2: Binomiale verdelingen.
 </p>
@@ -490,7 +490,7 @@ Dit geeft aan dat het heel onwaarschijnlijk is om een dergelijk groot aantal jon
 <span class="kw">arrows</span>(s0<span class="op">+</span><span class="fl">1500.5</span>,<span class="op">-</span>.<span class="dv">0009</span>,sUp,<span class="op">-</span>.<span class="dv">0009</span>,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">20</span>,<span class="dt">length=</span>.<span class="dv">1</span>)
 <span class="kw">arrows</span>(s0<span class="op">-</span><span class="fl">1500.5</span>,<span class="op">-</span>.<span class="dv">0009</span>,sDown,<span class="op">-</span>.<span class="dv">0009</span>,<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">20</span>,<span class="dt">length=</span>.<span class="dv">1</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:pitests"></span>
-<img src="Statistiek_2018_2019_files/figure-html/pitests-1.png" alt="Binomiale verdeling van het aantal jongens S onder $H_0: \pi=0.5 (n=6155)$." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/pitests-1.png" alt="Binomiale verdeling van het aantal jongens S onder $H_0: \pi=0.5 (n=6155)$." width="100%" />
 <p class="caption">
 Figuur 9.3: Binomiale verdeling van het aantal jongens S onder <span class="math inline">\(H_0: \pi=0.5 (n=6155)\)</span>.
 </p>
@@ -570,7 +570,7 @@ BI</code></pre></div>
 <p><span class="citation">Rogovin et al. (<a href="#ref-Rogovin2017">2017</a>)</span> onderzochten de partnerkeuze van seksueel mature vrouwelijke <em>Campbelli</em> dwerghamster. Hiervoor bekeken ze verschillende karakteristieken van de mannetjes, waaronder seksgerelateerde morfologische kenmerken (lichaamsmassa, externe testikel diameter), testosteron niveau, immunocompetentie kenmerken (de concentratie aan T-cel en B-cel immuuncellen in het bloed), maar ook gedragskenmerken zoals agressiviteit en seksuele dominantie van het mannetje.</p>
 <p>De experimentele set-up betreft een rechthoekige doos van plexiglas met drie compartimenten, waarin het vrouwtje zich in het middenste gedeelte bevindt (zie Figuur <a href="chap-categorisch.html#fig:hamsterKooi">9.4</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:hamsterKooi"></span>
-<img src="Statistiek_2018_2019_files/figure-html/hamsterKooi-1.png" alt="Experimentele opstelling voor het bepalen van de partnerkeuze bij dwerghamsters" width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/hamsterKooi-1.png" alt="Experimentele opstelling voor het bepalen van de partnerkeuze bij dwerghamsters" width="100%" />
 <p class="caption">
 Figuur 9.4: Experimentele opstelling voor het bepalen van de partnerkeuze bij dwerghamsters
 </p>
@@ -946,7 +946,7 @@ dfs=<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span
     <span class="kw">lines</span>(grid,<span class="kw">dchisq</span>(grid,dfs[i]),<span class="dt">col=</span>i,<span class="dt">lwd=</span><span class="dv">2</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="dt">lty=</span><span class="dv">1</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">legend=</span><span class="kw">sapply</span>(dfs, <span class="cf">function</span>(d) <span class="kw">as.expression</span>(<span class="kw">substitute</span>(chi[df<span class="op">==</span>val]<span class="op">^</span><span class="dv">2</span>,<span class="kw">list</span>(<span class="dt">val=</span>d)))))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:chidist"></span>
-<img src="Statistiek_2018_2019_files/figure-html/chidist-1.png" alt="Dichtheidsfuncties voor enkele Chi-kwadraat verdelingen" width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/chidist-1.png" alt="Dichtheidsfuncties voor enkele Chi-kwadraat verdelingen" width="100%" />
 <p class="caption">
 Figuur 9.5: Dichtheidsfuncties voor enkele Chi-kwadraat verdelingen
 </p>
@@ -1115,26 +1115,26 @@ posthocBI</code></pre></div>
 ## 
 ## Fit: glm(formula = cancer ~ variant, family = binomial, data = brca)
 ## 
-## Quantile = 2.3256
+## Quantile = 2.3265
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                        Estimate lwr      upr     
-## pro/leu - pro/pro == 0  0.13802 -0.13112  0.40716
-## leu/leu - pro/pro == 0  0.21197 -0.22790  0.65184
-## leu/leu - pro/leu == 0  0.07395 -0.36609  0.51399</code></pre>
+## pro/leu - pro/pro == 0  0.13802 -0.13123  0.40727
+## leu/leu - pro/pro == 0  0.21197 -0.22809  0.65203
+## leu/leu - pro/leu == 0  0.07395 -0.36627  0.51417</code></pre>
 <p>Door middel van de <code>confint</code> functie worden BI’s verkregen op de log-odds ratios die gecorrigeerd zijn voor multiple testing. Deze kunnen als volgt worden teruggetransformeerd naar odds ratios:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">OR=<span class="kw">exp</span>(posthocBI<span class="op">$</span>confint)
 OR</code></pre></div>
 <pre><code>##                   Estimate       lwr      upr
-## pro/leu - pro/pro 1.148000 0.8771158 1.502543
-## leu/leu - pro/pro 1.236111 0.7962014 1.919075
-## leu/leu - pro/leu 1.076752 0.6934417 1.671942
+## pro/leu - pro/pro 1.148000 0.8770178 1.502711
+## leu/leu - pro/pro 1.236111 0.7960560 1.919426
+## leu/leu - pro/leu 1.076752 0.6933150 1.672248
 ## attr(,&quot;conf.level&quot;)
 ## [1] 0.95
 ## attr(,&quot;calpha&quot;)
-## [1] 2.325567</code></pre>
+## [1] 2.326533</code></pre>
 <p>De odds ratios die worden bekomen met het logistisch regressiemodel zijn exact gelijk aan de odds ratios die we zouden bekomen op basis van Tabel <a href="chap-categorisch.html#tab:leu3">9.2</a>: vb. <span class="math inline">\(\text{OR}_\text{Leu/Leu-Pro/Pro}=89\times 266/(56\times 342)=\)</span> 1.236.</p>
 <p>Merk op dat de statistische besluitvorming bij logistische modellen beroep doet op asymptotische theorie. Ze is dus enkel correct voor grote steekproeven.</p>
 </div>
@@ -1203,7 +1203,7 @@ tabKevers=<span class="kw">table</span>(kevers)
 <span class="kw">text</span>(<span class="kw">as.double</span>(<span class="kw">rownames</span>(tabKevers)),<span class="dv">0</span>,<span class="dt">labels=</span>tabKevers[,<span class="dv">1</span>])
 <span class="kw">text</span>(<span class="kw">as.double</span>(<span class="kw">rownames</span>(tabKevers)),<span class="dv">1</span>,<span class="dt">labels=</span>tabKevers[,<span class="dv">2</span>])</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:keversFit"></span>
-<img src="Statistiek_2018_2019_files/figure-html/keversFit-1.png" alt="Fit van het logistische regressiemodel voor de kevers data. Het aantal kevers die dood/levend was per dosis is weergegeven met een cijfer." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/keversFit-1.png" alt="Fit van het logistische regressiemodel voor de kevers data. Het aantal kevers die dood/levend was per dosis is weergegeven met een cijfer." width="100%" />
 <p class="caption">
 Figuur 9.6: Fit van het logistische regressiemodel voor de kevers data. Het aantal kevers die dood/levend was per dosis is weergegeven met een cijfer.
 </p>
@@ -1254,7 +1254,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1267,7 +1267,11 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/09-CategorischeDataAnalyse.Rmd",
 "text": "Edit"
 },
-"download": ["Statistiek_2018_2019.pdf", "Statistiek_2018_2019.epub"],
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Statistiek_2019_2020.pdf", "Statistiek_2019_2020.epub"],
 "toc": {
 "collapse": "subsection"
 }
@@ -1281,7 +1285,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

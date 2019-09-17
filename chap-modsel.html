@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cursus Statistiek 2018-2019</title>
-  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Hoofdstuk 11 Modelselectie | Cursus Statistiek 2019-2020</title>
+  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cursus Statistiek 2018-2019" />
+  <meta property="og:title" content="Hoofdstuk 11 Modelselectie | Cursus Statistiek 2019-2020" />
   <meta property="og:type" content="book" />
   
   
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="statOmics/statistiek2deBach" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cursus Statistiek 2018-2019" />
+  <meta name="twitter:title" content="Hoofdstuk 11 Modelselectie | Cursus Statistiek 2019-2020" />
   
   <meta name="twitter:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
   
 
-<meta name="author" content="Lieven Clement">
+<meta name="author" content="Lieven Clement" />
 
 
-<meta name="date" content="2018-11-15">
+<meta name="date" content="2019-09-17" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="chap-glm.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -101,7 +101,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Cursus Statistiek 2018-2019</a></li>
+<li><a href="./">Cursus Statistiek 2019-2020</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Woord vooraf</a></li>
@@ -337,7 +337,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2018-2019</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2019-2020</a>
           </h1>
         </div>
 
@@ -349,7 +349,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Hoofdstuk 11</span> Modelselectie</h1>
 <div id="inleiding-9" class="section level2">
 <h2><span class="header-section-number">11.1</span> Inleiding</h2>
-<p>In de prostaatkanker dataset (Sectie <a href="chap-glm.html#sec:prostate">10.1.1</a>) zijn veel predictoren aanwezig. Automatische selectieprcedures kunnen behulpzaam zijn als het doel van het regressiemodel erin bestaat om (1) de uitkomst op basis van de predictoren te voorspellen; of (2) associaties tussen de uitkomst en predictoren te beschrijven. Net zoals in vele andere aspecten van de statistiek, zullen we een geobserveerde dataset (steekproef) gebruiken om tot een resultaat te komen (hier: een model) dat ruimer toepasbaar is dan enkel op de geobserveerde data. Het geselecteerde model moet toepasbaar zijn op de ruimere populatie waaruit de steekproefdata bekomen is en waarop de onderzoeksvraag van toepassing is.</p>
+<p>In de prostaatkanker dataset (Sectie <a href="chap-glm.html#sec:prostate">10.1.1</a>) zijn veel predictoren aanwezig. Automatische selectieprocedures kunnen behulpzaam zijn als het doel van het regressiemodel erin bestaat om (1) de uitkomst op basis van de predictoren te voorspellen; of (2) associaties tussen de uitkomst en predictoren te beschrijven. Net zoals in vele andere aspecten van de statistiek, zullen we een geobserveerde dataset (steekproef) gebruiken om tot een resultaat te komen (hier: een model) dat ruimer toepasbaar is dan enkel op de geobserveerde data. Het geselecteerde model moet toepasbaar zijn op de ruimere populatie waaruit de steekproefdata bekomen is en waarop de onderzoeksvraag van toepassing is.</p>
 <p>Modelselectie kan dan omschreven worden als een methode voor het selecteren van een model dat best geschikt is voor het beantwoorden van de onderzoeksvraag. In dit hoofdstuk beperken we ons tot meervoudige lineaire regressiemodellen waarin sommige van de <span class="math inline">\(p-1\)</span> effecttermen mogelijks interactietermen voorstellen. Het totaal aantal mogelijke modellen is dan (zonder hiërarchie-restrictie) <span class="math inline">\(2^{p-1}\)</span> (ieder van de <span class="math inline">\(p-1\)</span> termen kan opgenomen worden in het model, of niet).</p>
 <p>We onderscheiden de volgende algemene procedures:</p>
 <ol style="list-style-type: decimal">
@@ -658,7 +658,7 @@ dropHlp&lt;-<span class="kw">drop1</span>(m,<span class="dt">test=</span><span c
 ## 6 8.864538 10.38892 8.280436</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mcx)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:MCXScatter"></span>
-<img src="Statistiek_2018_2019_files/figure-html/MCXScatter-1.png" alt="Scatterplot matrix voor de observaties in de bioactiviteit dataset." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/MCXScatter-1.png" alt="Scatterplot matrix voor de observaties in de bioactiviteit dataset." width="100%" />
 <p class="caption">
 Figuur 11.1: Scatterplot matrix voor de observaties in de bioactiviteit dataset.
 </p>
@@ -1178,7 +1178,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1191,7 +1191,11 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/11-ModelSelectie.Rmd",
 "text": "Edit"
 },
-"download": ["Statistiek_2018_2019.pdf", "Statistiek_2018_2019.epub"],
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Statistiek_2019_2020.pdf", "Statistiek_2019_2020.epub"],
 "toc": {
 "collapse": "subsection"
 }
@@ -1205,7 +1209,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

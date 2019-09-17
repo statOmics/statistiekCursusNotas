@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cursus Statistiek 2018-2019</title>
-  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Hoofdstuk 10 Algemeen lineair model | Cursus Statistiek 2019-2020</title>
+  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cursus Statistiek 2018-2019" />
+  <meta property="og:title" content="Hoofdstuk 10 Algemeen lineair model | Cursus Statistiek 2019-2020" />
   <meta property="og:type" content="book" />
   
   
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="statOmics/statistiek2deBach" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cursus Statistiek 2018-2019" />
+  <meta name="twitter:title" content="Hoofdstuk 10 Algemeen lineair model | Cursus Statistiek 2019-2020" />
   
   <meta name="twitter:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
   
 
-<meta name="author" content="Lieven Clement">
+<meta name="author" content="Lieven Clement" />
 
 
-<meta name="date" content="2018-11-15">
+<meta name="date" content="2019-09-17" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="chap-categorisch.html">
 <link rel="next" href="chap-modsel.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -101,7 +101,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Cursus Statistiek 2018-2019</a></li>
+<li><a href="./">Cursus Statistiek 2019-2020</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Woord vooraf</a></li>
@@ -337,7 +337,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2018-2019</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2019-2020</a>
           </h1>
         </div>
 
@@ -377,7 +377,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 6  0.7654678</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(prostate)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:lpsaAll"></span>
-<img src="Statistiek_2018_2019_files/figure-html/lpsaAll-1.png" alt="Scatterplot matrix voor de observaties in de prostaat kanker dataset." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/lpsaAll-1.png" alt="Scatterplot matrix voor de observaties in de prostaat kanker dataset." width="100%" />
 <p class="caption">
 Figuur 10.1: Scatterplot matrix voor de observaties in de prostaat kanker dataset.
 </p>
@@ -458,7 +458,7 @@ E(Y|X_1=x_1,...,X_j=x_j+\delta,...,X_{p-1}=x_{p-1}) - E(Y|X_1=x_1,...,X_j=x_j,..
 <p>De parameter voor svi kunnen we als volgt interpreteren: de prostaat antigeen concentratie ligt gemiddeld een factor exp(0.666)=1.95 hoger voor patiënten met invasie van de zaadblaasjes dan voor patiënten zonder invasie van de zaadblaasjes na correctie voor het prostaat gewicht en het tumorvolume. De introductie van de factor svi in het additieve model zorgt ervoor dat we twee regressievlakken bekomen die evenwijdig zijn maar een verschillend intercept hebben (zie Figuur <a href="chap-glm.html#fig:prosAdditiveFit">10.2</a>).</p>
 <p>De <span class="math inline">\(R^2\)</span>-waarde in bovenstaande analyse bedraagt 62.6% en geeft aan 62.6% in de variabiliteit van het log-PSA verklaard kan worden d.m.v. het tumorvolume, het prostaat gewicht en de status van de zaadblaasjes.</p>
 <div class="figure" style="text-align: center"><span id="fig:prosAdditiveFit"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prosAdditiveFit-1.png" alt="Fit van het additieve model met termen lcavol, lweight en svi. De figuur geeft duidelijk weer dat de gemiddelde lpsa toeneemt i.f.v. het log-tumorvolume, het log-prostaatgewicht en de invasie van de zaadblaasjes. Merk op dat de fit resulteert in twee parallele vlakken, een regressievlak voor patiënten zonder (blauw) en met invasie van de zaadblaasjes (oranje)." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/prosAdditiveFit-1.png" alt="Fit van het additieve model met termen lcavol, lweight en svi. De figuur geeft duidelijk weer dat de gemiddelde lpsa toeneemt i.f.v. het log-tumorvolume, het log-prostaatgewicht en de invasie van de zaadblaasjes. Merk op dat de fit resulteert in twee parallele vlakken, een regressievlak voor patiënten zonder (blauw) en met invasie van de zaadblaasjes (oranje)." width="100%" />
 <p class="caption">
 Figuur 10.2: Fit van het additieve model met termen lcavol, lweight en svi. De figuur geeft duidelijk weer dat de gemiddelde lpsa toeneemt i.f.v. het log-tumorvolume, het log-prostaatgewicht en de invasie van de zaadblaasjes. Merk op dat de fit resulteert in twee parallele vlakken, een regressievlak voor patiënten zonder (blauw) en met invasie van de zaadblaasjes (oranje).
 </p>
@@ -538,7 +538,7 @@ Figuur 10.2: Fit van het additieve model met termen lcavol, lweight en svi. De f
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">plot</span>(lmVWS)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:prosLinDiag1"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prosLinDiag1-1.png" alt="Diagnostische plots voor het nagaan van de veronderstellingen van het lineair regressiemodel waarbij lpsa gemodelleerd wordt a.d.h.v. de predictoren lcavol, lweight en svi." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/prosLinDiag1-1.png" alt="Diagnostische plots voor het nagaan van de veronderstellingen van het lineair regressiemodel waarbij lpsa gemodelleerd wordt a.d.h.v. de predictoren lcavol, lweight en svi." width="100%" />
 <p class="caption">
 Figuur 10.3: Diagnostische plots voor het nagaan van de veronderstellingen van het lineair regressiemodel waarbij lpsa gemodelleerd wordt a.d.h.v. de predictoren lcavol, lweight en svi.
 </p>
@@ -604,7 +604,7 @@ E(Y|X_v=x_v+1,X_w=x_w,X_s=x_s) − E(X_v=x_v,X_w=x_w,X_s=x_s) \\
 <p>De output van het model geeft een schatting van -0.125 voor de interactie <span class="math inline">\(\beta_{vw}\)</span> tussen het log-tumorvolume en het log-prostaatgewicht. Dat betekent dat de gemiddelde toename in lpsa tussen patiënten met een verschil in het log-tumorvolume maar met eenzelfde prostaatgewicht afhankelijk zal zijn van het prostaatgewicht. In het bijzonder suggereert de output dat patiënten die 1% verschillen in het tumorvolume maar hetzelfde log prostaat gewicht hebben gemiddeld (<span class="math inline">\(1.004-0.125 \times x_w\)</span>)% verschillen in prostaat antigeen concentratie (interpretatie volgt uit log transformatie van de response en tumorvolume). Patiënten die 1% verschillen in tumorvolume en die een log-prostaatgewicht hebben van 3 zullen gemiddeld 0.631% in prostaat antigeen concentratie verschillen. Terwijl patiënten die 1% verschillen in tumorvolume en die een log-prostaatgewicht hebben van 4 gemiddeld een verschil van 0.506% in prostaat antigeen concentratie hebben. De associatie van het log-tumorvolume en de log prostaat antigeen concentratie neemt dus af met toenemend prostaatgewicht.</p>
 <p>Grafische interpretatie wordt weergegeven in Figuur <a href="chap-glm.html#fig:prosIntFit1">10.4</a>. Hier worden het additieve model en het model met de lcavol:lweight interactie vergeleken. De fit toont duidelijk aan dat de associate tussen lpsa en lcavol gelijk is ongeacht de grootte van het prostaatgewicht voor het additieve model (parallele lijnen in het regressieoppervlak). Voor het model met interactie is dat niet het geval, de associate (helling) neemt af met toenemend prostaatgewicht. We zien een analoog effect wanneer we focussen op de associatie tussen lpsa en lweight. De lpsa <span class="math inline">\(\leftrightarrow\)</span> lweight associatie neemt af met toenemend log-tumorvolume.</p>
 <div class="figure" style="text-align: center"><span id="fig:prosIntFit1"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prosIntFit1-1.png" alt="Fit van het additieve model met de termen lcavol, lweight, svi (links) en het model met interactie lcavol, lweight, svi en lcavol:lweight (rechts). Merk op dat we enkel het regressieoppervlak weergeven voor patiënten zouder invasie van de zaadblaasjes. Dat voor patiënten met invasie van de zaadblaasjes is parallel met het getoonde oppervlak, maar ligt iets hoger. De rechtse figuur toont duidelijk dat de interactie ervoor zorgt dat de associatie tussen de response en het tumorvolume afhankelijk is van de hoogte van het prostaatgewicht en vice versa, dat zorgt voor een torsie in het regressievlak." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/prosIntFit1-1.png" alt="Fit van het additieve model met de termen lcavol, lweight, svi (links) en het model met interactie lcavol, lweight, svi en lcavol:lweight (rechts). Merk op dat we enkel het regressieoppervlak weergeven voor patiënten zouder invasie van de zaadblaasjes. Dat voor patiënten met invasie van de zaadblaasjes is parallel met het getoonde oppervlak, maar ligt iets hoger. De rechtse figuur toont duidelijk dat de interactie ervoor zorgt dat de associatie tussen de response en het tumorvolume afhankelijk is van de hoogte van het prostaatgewicht en vice versa, dat zorgt voor een torsie in het regressievlak." width="100%" />
 <p class="caption">
 Figuur 10.4: Fit van het additieve model met de termen lcavol, lweight, svi (links) en het model met interactie lcavol, lweight, svi en lcavol:lweight (rechts). Merk op dat we enkel het regressieoppervlak weergeven voor patiënten zouder invasie van de zaadblaasjes. Dat voor patiënten met invasie van de zaadblaasjes is parallel met het getoonde oppervlak, maar ligt iets hoger. De rechtse figuur toont duidelijk dat de interactie ervoor zorgt dat de associatie tussen de response en het tumorvolume afhankelijk is van de hoogte van het prostaatgewicht en vice versa, dat zorgt voor een torsie in het regressievlak.
 </p>
@@ -647,7 +647,7 @@ Figuur 10.4: Fit van het additieve model met de termen lcavol, lweight, svi (lin
 </ol>
 <p>Grafisch wordt het model weergegeven in Figuur <a href="chap-glm.html#fig:prosIntFit2">10.5</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:prosIntFit2"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prosIntFit2-1.png" alt="Fit van het additieve model met de termen lcavol, lweight, svi (links) en het model met interacties lcavol, lweight, svi . lcavol:svi, lweight:svi (rechts). De rechtse figuur toont duidelijk dat de interactie er nu voor zorgt dat de associaties tussen de response &lt;-&gt; het log-tumorvolume en de response &lt;-&gt; het log-gewicht afhankelijk is van de status van de zaadblaasjes. De interacties zorgen voor andere hellingen bij patiënten met (rood) en zonder invasie (blauw) van de zaadblaasjes. Voor het additieve model (links) zien we enkel een verschuiving van het regressievlak, maar parallelle hellingen. Het hoofdeffect voor een factor variabele zorgt m.a.w. voor een ander intercept." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/prosIntFit2-1.png" alt="Fit van het additieve model met de termen lcavol, lweight, svi (links) en het model met interacties lcavol, lweight, svi . lcavol:svi, lweight:svi (rechts). De rechtse figuur toont duidelijk dat de interactie er nu voor zorgt dat de associaties tussen de response &lt;-&gt; het log-tumorvolume en de response &lt;-&gt; het log-gewicht afhankelijk is van de status van de zaadblaasjes. De interacties zorgen voor andere hellingen bij patiënten met (rood) en zonder invasie (blauw) van de zaadblaasjes. Voor het additieve model (links) zien we enkel een verschuiving van het regressievlak, maar parallelle hellingen. Het hoofdeffect voor een factor variabele zorgt m.a.w. voor een ander intercept." width="100%" />
 <p class="caption">
 Figuur 10.5: Fit van het additieve model met de termen lcavol, lweight, svi (links) en het model met interacties lcavol, lweight, svi . lcavol:svi, lweight:svi (rechts). De rechtse figuur toont duidelijk dat de interactie er nu voor zorgt dat de associaties tussen de response &lt;-&gt; het log-tumorvolume en de response &lt;-&gt; het log-gewicht afhankelijk is van de status van de zaadblaasjes. De interacties zorgen voor andere hellingen bij patiënten met (rood) en zonder invasie (blauw) van de zaadblaasjes. Voor het additieve model (links) zien we enkel een verschuiving van het regressievlak, maar parallelle hellingen. Het hoofdeffect voor een factor variabele zorgt m.a.w. voor een ander intercept.
 </p>
@@ -804,7 +804,7 @@ Y_i = \beta_0 + \sum_{j=1}^{s} \beta_j x_{ij} + \epsilon_i
 <p><strong>Voorbeeld vetpercentage</strong></p>
 <p>Het percentage lichaamsvet van een persoon bepalen is een moeilijke en dure meting. Om die reden werden in het verleden verschillende studies opgezet met als doel het patroon te ontrafelen tussen werkelijk percentage lichaamsvet en verschillende, makkelijker te meten surrogaten. In een studie heeft men voor 20 gezonde vrouwen tussen 25 en 34 jaar het percentage lichaamsvet <span class="math inline">\(Y\)</span>, de dikte van de huidplooi rond de triceps <span class="math inline">\(X_1\)</span>, de dij-omtrek <span class="math inline">\(X_2\)</span> en de middenarmomtrek <span class="math inline">\(X_3\)</span> gemeten. Indien we een nauwkeurig regressiemodel kunnen opstellen op basis van de gegevens, dan zal ons dat toelaten om in de toekomst met behulp van dat model voorspellingen te maken voor het percentage lichaamsvet in gezonde vrouwen tussen 25 en 34 jaar, op basis van de huidplooi rond de triceps, de dij-omtrek en de middenarmomtrek.</p>
 <div class="figure" style="text-align: center"><span id="fig:vetScatter"></span>
-<img src="Statistiek_2018_2019_files/figure-html/vetScatter-1.png" alt="Scatterplot matrix van de dataset bodyfat." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/vetScatter-1.png" alt="Scatterplot matrix van de dataset bodyfat." width="100%" />
 <p class="caption">
 Figuur 10.6: Scatterplot matrix van de dataset bodyfat.
 </p>
@@ -888,7 +888,7 @@ y3 &lt;-<span class="st"> </span><span class="kw">c</span>(y,<span class="dv">11
 <span class="kw">abline</span>(<span class="kw">lm</span>(y3<span class="op">~</span>x3),<span class="dt">col=</span><span class="dv">4</span>,<span class="dt">lty=</span><span class="dv">4</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dt">lty=</span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dt">legend=</span><span class="kw">paste</span>(<span class="st">&quot;lm&quot;</span>,<span class="kw">c</span>(<span class="st">&quot;&quot;</span>,<span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>))),<span class="dt">text.col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:influential"></span>
-<img src="Statistiek_2018_2019_files/figure-html/influential-1.png" alt="Impact van outliers op de regressie. Regressie zonder outliers (zwart), regressie met outlier 1 (groen), regressie met outlier 2 (rood), regressie met outlier 3 (blauw)." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/influential-1.png" alt="Impact van outliers op de regressie. Regressie zonder outliers (zwart), regressie met outlier 1 (groen), regressie met outlier 2 (rood), regressie met outlier 3 (blauw)." width="100%" />
 <p class="caption">
 Figuur 10.7: Impact van outliers op de regressie. Regressie zonder outliers (zwart), regressie met outlier 1 (groen), regressie met outlier 2 (rood), regressie met outlier 3 (blauw).
 </p>
@@ -910,7 +910,7 @@ Figuur 10.7: Impact van outliers op de regressie. Regressie zonder outliers (zwa
 <span class="kw">plot</span>(<span class="kw">cooks.distance</span>(lmVWS_IntVW),<span class="dt">type=</span><span class="st">&quot;h&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">main=</span><span class="st">&quot;Model with lcavol:lweight interaction&quot;</span>)
 <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">qf</span>(<span class="fl">0.5</span>,<span class="kw">length</span>(lmVWS_IntVW<span class="op">$</span>coef),<span class="kw">nrow</span>(prostate)<span class="op">-</span><span class="kw">length</span>(lmVWS_IntVW<span class="op">$</span>coef)),<span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:prosCooksAdditiveInt"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prosCooksAdditiveInt-1.png" alt="Evaluatie van de invloed van individuele observaties op het additieve model (links) en het model met de lcavol:lweight interactie (rechts)." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/prosCooksAdditiveInt-1.png" alt="Evaluatie van de invloed van individuele observaties op het additieve model (links) en het model met de lcavol:lweight interactie (rechts)." width="100%" />
 <p class="caption">
 Figuur 10.8: Evaluatie van de invloed van individuele observaties op het additieve model (links) en het model met de lcavol:lweight interactie (rechts).
 </p>
@@ -920,7 +920,7 @@ Figuur 10.8: Evaluatie van de invloed van individuele observaties op het additie
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">dfbetasPlots</span>(lmVWS)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:prosDfBetasAdditive"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prosDfBetasAdditive-1.png" alt="DFBETAS voor additieve model in prostaatkanker." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/prosDfBetasAdditive-1.png" alt="DFBETAS voor additieve model in prostaatkanker." width="100%" />
 <p class="caption">
 Figuur 10.9: DFBETAS voor additieve model in prostaatkanker.
 </p>
@@ -928,7 +928,7 @@ Figuur 10.9: DFBETAS voor additieve model in prostaatkanker.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">dfbetasPlots</span>(lmVWS_IntVW)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:prosDfBetasInt"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prosDfBetasInt-1.png" alt="DFBETAS voor model met lcavol:lweight interactie." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/prosDfBetasInt-1.png" alt="DFBETAS voor model met lcavol:lweight interactie." width="100%" />
 <p class="caption">
 Figuur 10.10: DFBETAS voor model met lcavol:lweight interactie.
 </p>
@@ -939,7 +939,7 @@ Figuur 10.10: DFBETAS voor model met lcavol:lweight interactie.
 <pre><code>## [1] 449.25</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(<span class="kw">exp</span>(prostate<span class="op">$</span>lweight),<span class="dt">ylab=</span><span class="st">&quot;Prostaatgewicht (g)&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:prosInfl"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prosInfl-1.png" alt="Boxplot met outlier voor prostaatgewicht." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/prosInfl-1.png" alt="Boxplot met outlier voor prostaatgewicht." width="100%" />
 <p class="caption">
 Figuur 10.11: Boxplot met outlier voor prostaatgewicht.
 </p>
@@ -976,7 +976,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -989,7 +989,11 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/10-GeneralLinearModel.Rmd",
 "text": "Edit"
 },
-"download": ["Statistiek_2018_2019.pdf", "Statistiek_2018_2019.epub"],
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Statistiek_2019_2020.pdf", "Statistiek_2019_2020.epub"],
 "toc": {
 "collapse": "subsection"
 }
@@ -1003,7 +1007,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

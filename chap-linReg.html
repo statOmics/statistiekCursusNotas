@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cursus Statistiek 2018-2019</title>
-  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Hoofdstuk 6 Enkelvoudige lineaire regressie | Cursus Statistiek 2019-2020</title>
+  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cursus Statistiek 2018-2019" />
+  <meta property="og:title" content="Hoofdstuk 6 Enkelvoudige lineaire regressie | Cursus Statistiek 2019-2020" />
   <meta property="og:type" content="book" />
   
   
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="statOmics/statistiek2deBach" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cursus Statistiek 2018-2019" />
+  <meta name="twitter:title" content="Hoofdstuk 6 Enkelvoudige lineaire regressie | Cursus Statistiek 2019-2020" />
   
   <meta name="twitter:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
   
 
-<meta name="author" content="Lieven Clement">
+<meta name="author" content="Lieven Clement" />
 
 
-<meta name="date" content="2018-11-15">
+<meta name="date" content="2019-09-17" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="chap-besluit.html">
 <link rel="next" href="chap-anova.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -101,7 +101,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Cursus Statistiek 2018-2019</a></li>
+<li><a href="./">Cursus Statistiek 2019-2020</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Woord vooraf</a></li>
@@ -337,7 +337,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2018-2019</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2019-2020</a>
           </h1>
         </div>
 
@@ -360,7 +360,239 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co"># lijn van het bestand de namen van de variabelen bevat</span>
 borstkanker &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;dataset/borstkanker.txt&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>) 
 knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(borstkanker),<span class="dt">caption=</span><span class="st">&quot;Overzicht van de variabelen in de borstkanker dataset.&quot;</span>,<span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</code></pre></div>
-
+<table>
+<caption>
+<span id="tab:brcaMicroLin">Tabel 6.1: </span>Overzicht van de variabelen in de borstkanker dataset.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+sample_name
+</th>
+<th style="text-align:left;">
+filename
+</th>
+<th style="text-align:left;">
+treatment
+</th>
+<th style="text-align:right;">
+er
+</th>
+<th style="text-align:right;">
+grade
+</th>
+<th style="text-align:right;">
+node
+</th>
+<th style="text-align:right;">
+size
+</th>
+<th style="text-align:right;">
+age
+</th>
+<th style="text-align:right;">
+ESR1
+</th>
+<th style="text-align:right;">
+S100A8
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+OXFT_209
+</td>
+<td style="text-align:left;">
+gsm65344.cel.gz
+</td>
+<td style="text-align:left;">
+tamoxifen
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+1939.1990
+</td>
+<td style="text-align:right;">
+207.19682
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OXFT_1769
+</td>
+<td style="text-align:left;">
+gsm65345.cel.gz
+</td>
+<td style="text-align:left;">
+tamoxifen
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3.5
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+2751.9521
+</td>
+<td style="text-align:right;">
+36.98611
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OXFT_2093
+</td>
+<td style="text-align:left;">
+gsm65347.cel.gz
+</td>
+<td style="text-align:left;">
+tamoxifen
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+379.1951
+</td>
+<td style="text-align:right;">
+2364.18306
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OXFT_1770
+</td>
+<td style="text-align:left;">
+gsm65348.cel.gz
+</td>
+<td style="text-align:left;">
+tamoxifen
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1.7
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+2531.7473
+</td>
+<td style="text-align:right;">
+23.61504
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OXFT_1342
+</td>
+<td style="text-align:left;">
+gsm65350.cel.gz
+</td>
+<td style="text-align:left;">
+tamoxifen
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2.5
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+141.0508
+</td>
+<td style="text-align:right;">
+3218.74109
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+OXFT_2338
+</td>
+<td style="text-align:left;">
+gsm65352.cel.gz
+</td>
+<td style="text-align:left;">
+tamoxifen
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1.4
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+1495.4213
+</td>
+<td style="text-align:right;">
+107.56868
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="data-exploratie" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> Data exploratie</h3>
@@ -368,7 +600,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <p>In dit hoofdstuk zullen we om didactische redenen eerst werken met de expressiemetingen op de originele schaal. De expressie van het S100A8 gen wordt weergegeven in Figuur <a href="chap-linReg.html#fig:s100a8Boxplot">6.1</a>. Op de originele schaal zien we drie heel grote outliers. Omwille van didactische redenen worden deze eerst verwijderd uit de dataset. In principe mogen outliers enkel worden verwijderd uit een studie als daar een goede reden voor is. We kunnen op basis van de informatie over de studie echter niet argumenteren waarom de outliers niet representatief zijn, zoals bijvoorbeeld wel het geval zou zijn wanneer zich meetfouten of problemen voordeden m.b.t. deze observaties in de studie. Later in het hoofdstuk zullen we zien hoe we op een correcte wijze alle data kunnen modelleren.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(borstkanker<span class="op">$</span>S100A8,<span class="dt">ylab=</span><span class="st">&quot;S100A8 expressie&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:s100a8Boxplot"></span>
-<img src="Statistiek_2018_2019_files/figure-html/s100a8Boxplot-1.png" alt="Expressie van het S100A8 gen." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/s100a8Boxplot-1.png" alt="Expressie van het S100A8 gen." width="100%" />
 <p class="caption">
 Figuur 6.1: Expressie van het S100A8 gen.
 </p>
@@ -376,7 +608,7 @@ Figuur 6.1: Expressie van het S100A8 gen.
 <p>Om meerdere variabelen in de borstkanker dataset te bestuderen, kunnen we gebruik maken van de grafische scatterplot matrix voorstelling (zie Figuur <a href="chap-linReg.html#fig:brcaGenAl">6.2</a>). Hierbij wordt een matrix met paarsgewijze dotplots voor alle variabelen geproduceerd.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">subset</span>(borstkanker,S100A8<span class="op">&lt;</span><span class="dv">2000</span>)[,<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)])</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaGenAl"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaGenAl-1.png" alt="Scatterplot matrix voor de observaties in de borstkanker dataset na verwijdering van outliers in de S100A8 expressie (merk op dat we deze outliers in principe niet mochten verwijderen uit de dataset)." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaGenAl-1.png" alt="Scatterplot matrix voor de observaties in de borstkanker dataset na verwijdering van outliers in de S100A8 expressie (merk op dat we deze outliers in principe niet mochten verwijderen uit de dataset)." width="100%" />
 <p class="caption">
 Figuur 6.2: Scatterplot matrix voor de observaties in de borstkanker dataset na verwijdering van outliers in de S100A8 expressie (merk op dat we deze outliers in principe niet mochten verwijderen uit de dataset).
 </p>
@@ -385,7 +617,7 @@ Figuur 6.2: Scatterplot matrix voor de observaties in de borstkanker dataset na 
 <p>In dit hoofdstuk zullen we ons in het bijzonder focussen op de relatie tussen de ESR1 en de S100A8 gen expressie. Een individuele scatterplot met smoother (zie Figuur <a href="chap-linReg.html#fig:brcaSmooth">6.3</a>) geeft de associatie tussen beide genen nog beter weer. Smoothers kunnen trends visualiseren tussen variabelen zonder vooraf veronderstellingen te doen over de vorm van het verband en zijn daarom heel erg nuttig bij data exploratie. We zien dat de genexpressie van S100A8 gemiddeld gezien daalt voor patiënten met een hogere expressie van ESR1.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(<span class="kw">subset</span>(borstkanker,S100A8<span class="op">&lt;</span><span class="dv">2000</span>), <span class="kw">scatter.smooth</span>(ESR1,S100A8))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaSmooth"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaSmooth-1.png" alt="Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met smoother die het verband tussen beide genen samenvat (na verwijdering van outliers in de S100A8 expressie, merk op dat we deze outliers in principe niet mochten verwijderen uit de dataset)." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaSmooth-1.png" alt="Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met smoother die het verband tussen beide genen samenvat (na verwijdering van outliers in de S100A8 expressie, merk op dat we deze outliers in principe niet mochten verwijderen uit de dataset)." width="100%" />
 <p class="caption">
 Figuur 6.3: Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met smoother die het verband tussen beide genen samenvat (na verwijdering van outliers in de S100A8 expressie, merk op dat we deze outliers in principe niet mochten verwijderen uit de dataset).
 </p>
@@ -407,7 +639,7 @@ Figuur 6.3: Scatterplot voor S100A8 expressie in functie van de ESR1 expressie m
 <span class="co">#abline functie voegt een lijn toe aan een plot</span>
 <span class="kw">abline</span>(<span class="kw">lm</span>(S100A8<span class="op">~</span>ESR1,<span class="dt">data=</span><span class="kw">subset</span>(borstkanker,S100A8<span class="op">&lt;</span><span class="dv">2000</span>)))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLin1"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLin1-1.png" alt="Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met lineair model dat het verband tussen beide genen samenvat (na verwijdering van outliers in de S100A8 expressie, merk op dat we deze outliers in principe niet mochten verwijderen uit de dataset zoals we verder in dit hoofdstuk zullen zien)." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLin1-1.png" alt="Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met lineair model dat het verband tussen beide genen samenvat (na verwijdering van outliers in de S100A8 expressie, merk op dat we deze outliers in principe niet mochten verwijderen uit de dataset zoals we verder in dit hoofdstuk zullen zien)." width="100%" />
 <p class="caption">
 Figuur 6.4: Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met lineair model dat het verband tussen beide genen samenvat (na verwijdering van outliers in de S100A8 expressie, merk op dat we deze outliers in principe niet mochten verwijderen uit de dataset zoals we verder in dit hoofdstuk zullen zien).
 </p>
@@ -440,7 +672,7 @@ lm1 &lt;-<span class="st"> </span><span class="kw">lm</span>(S100A8<span class="
  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(borstkankerSubset<span class="op">$</span>S100A8)) <span class="kw">lines</span>(<span class="kw">rep</span>(borstkankerSubset<span class="op">$</span>ESR1[i],<span class="dv">2</span>),<span class="kw">c</span>(lm1<span class="op">$</span>fitted[i],borstkankerSubset<span class="op">$</span>S100A8[i]),<span class="dt">lty=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">1</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">pch=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">26</span>,<span class="dv">2</span>,<span class="dv">26</span>),<span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;observatie&quot;</span>,<span class="st">&quot;residu&quot;</span>,<span class="st">&quot;predictie&quot;</span>,<span class="st">&quot;regressielijn&quot;</span>))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLinRes"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLinRes-1.png" alt="Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met lineair model en residuen." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLinRes-1.png" alt="Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met lineair model en residuen." width="100%" />
 <p class="caption">
 Figuur 6.5: Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met lineair model en residuen.
 </p>
@@ -552,7 +784,7 @@ In Figuur <a href="chap-linReg.html#fig:brcaLin1">6.4</a> zien we systematische 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">plot</span>(lm1)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLinDiag1"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLinDiag1-1.png" alt="Diagnostische plots voor het nagaan van de veronderstellingen van het lineair regressiemodel waarbij de S100A8 expressie wordt gemodelleerd i.f.v de ESR1 expressie (na verwijdering van 3 outliers)." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLinDiag1-1.png" alt="Diagnostische plots voor het nagaan van de veronderstellingen van het lineair regressiemodel waarbij de S100A8 expressie wordt gemodelleerd i.f.v de ESR1 expressie (na verwijdering van 3 outliers)." width="100%" />
 <p class="caption">
 Figuur 6.6: Diagnostische plots voor het nagaan van de veronderstellingen van het lineair regressiemodel waarbij de S100A8 expressie wordt gemodelleerd i.f.v de ESR1 expressie (na verwijdering van 3 outliers).
 </p>
@@ -585,7 +817,7 @@ lm2 &lt;-<span class="st"> </span><span class="kw">lm</span>(log2S100A8<span cla
 <span class="kw">abline</span>(lm2)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="dt">lty=</span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;Lineair model&quot;</span>,<span class="st">&quot;Smoother&quot;</span>))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLogLin"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLogLin-1.png" alt="Scatterplot voor log2-S100A8 expressie in functie van de log2-ESR1 expressie met smoother en lineair model die het verband tussen beide genen samenvatten (outliers worden niet langer verwijderd uit de dataset)." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLogLin-1.png" alt="Scatterplot voor log2-S100A8 expressie in functie van de log2-ESR1 expressie met smoother en lineair model die het verband tussen beide genen samenvatten (outliers worden niet langer verwijderd uit de dataset)." width="100%" />
 <p class="caption">
 Figuur 6.7: Scatterplot voor log2-S100A8 expressie in functie van de log2-ESR1 expressie met smoother en lineair model die het verband tussen beide genen samenvatten (outliers worden niet langer verwijderd uit de dataset).
 </p>
@@ -594,7 +826,7 @@ Figuur 6.7: Scatterplot voor log2-S100A8 expressie in functie van de log2-ESR1 e
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">plot</span>(lm2)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLogLin2"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLogLin2-1.png" alt="Diagnostische plots voor het lineair model voor log2-S100A8 expressie in functie van de log2-ESR1." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLogLin2-1.png" alt="Diagnostische plots voor het lineair model voor log2-S100A8 expressie in functie van de log2-ESR1." width="100%" />
 <p class="caption">
 Figuur 6.8: Diagnostische plots voor het lineair model voor log2-S100A8 expressie in functie van de log2-ESR1.
 </p>
@@ -673,7 +905,7 @@ g &lt;-<span class="st"> </span><span class="kw">predict</span>(lm2,<span class=
 <span class="kw">lines</span>(grid,g[,<span class="dv">3</span>],<span class="dt">lty=</span><span class="dv">2</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="dt">lty=</span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;Lineair model&quot;</span>,<span class="st">&quot;95% puntgewijze BI&quot;</span>))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLogLinPred1"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLogLinPred1-1.png" alt="Scatterplot voor log2-S100A8 expressie in functie van de log2-ESR1 expressie met model schattingen en 95$\%$ betrouwbaarheidsintervallen." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLogLinPred1-1.png" alt="Scatterplot voor log2-S100A8 expressie in functie van de log2-ESR1 expressie met model schattingen en 95$\%$ betrouwbaarheidsintervallen." width="100%" />
 <p class="caption">
 Figuur 6.9: Scatterplot voor log2-S100A8 expressie in functie van de log2-ESR1 expressie met model schattingen en 95<span class="math inline">\(\%\)</span> betrouwbaarheidsintervallen.
 </p>
@@ -694,7 +926,7 @@ gOrig &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">^<
 <span class="kw">lines</span>(<span class="dv">2</span><span class="op">^</span>grid,gOrig[,<span class="dv">3</span>],<span class="dt">lty=</span><span class="dv">2</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="dt">lty=</span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span>,<span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;Geometrisch gemiddelde&quot;</span>,<span class="st">&quot;95% puntgewijze BI&quot;</span>),<span class="dt">cex=</span>.<span class="dv">5</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLogLinPred2"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLogLinPred2-1.png" alt="Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met model schattingen (geometrische gemiddeldes) een 95$\%$ betrouwbaarheidsintervallen (links: originele schaal, rechts: originele schaal met logaritmische assen)." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLogLinPred2-1.png" alt="Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met model schattingen (geometrische gemiddeldes) een 95$\%$ betrouwbaarheidsintervallen (links: originele schaal, rechts: originele schaal met logaritmische assen)." width="100%" />
 <p class="caption">
 Figuur 6.10: Scatterplot voor S100A8 expressie in functie van de ESR1 expressie met model schattingen (geometrische gemiddeldes) een 95<span class="math inline">\(\%\)</span> betrouwbaarheidsintervallen (links: originele schaal, rechts: originele schaal met logaritmische assen).
 </p>
@@ -734,7 +966,7 @@ p &lt;-<span class="st"> </span><span class="kw">predict</span>(lm2,<span class=
 <span class="kw">lines</span>(grid,p[,<span class="dv">3</span>],<span class="dt">lty=</span><span class="dv">3</span>,<span class="dt">col=</span><span class="dv">2</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="dt">lty=</span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;Lineair model&quot;</span>,<span class="st">&quot;95% puntsgewijze BI&quot;</span>,<span class="st">&quot;95% puntsgewijs PI&quot;</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLogLinPred3"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLogLinPred3-1.png" alt="Scatterplot voor log2-S100A8 expressie in functie van de log2-ESR1 expressie met model voorspellingen en 95$\%$ betrouwbaarheidsintervallen en 95$\%$ predictie-intervallen." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLogLinPred3-1.png" alt="Scatterplot voor log2-S100A8 expressie in functie van de log2-ESR1 expressie met model voorspellingen en 95$\%$ betrouwbaarheidsintervallen en 95$\%$ predictie-intervallen." width="100%" />
 <p class="caption">
 Figuur 6.11: Scatterplot voor log2-S100A8 expressie in functie van de log2-ESR1 expressie met model voorspellingen en 95<span class="math inline">\(\%\)</span> betrouwbaarheidsintervallen en 95<span class="math inline">\(\%\)</span> predictie-intervallen.
 </p>
@@ -763,7 +995,7 @@ predInt &lt;-<span class="st"> </span><span class="kw">predict</span>(lmBpNorm,<
 <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(borstkanker<span class="op">$</span>log2S100A8))
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(borstkanker<span class="op">$</span>log2S100A8)) <span class="kw">lines</span>(<span class="kw">rep</span>(borstkanker<span class="op">$</span>log2ESR1[i],<span class="dv">2</span>),<span class="kw">c</span>(<span class="kw">mean</span>(borstkanker<span class="op">$</span>log2S100A8),borstkanker<span class="op">$</span>log2S100A8[i]),<span class="dt">lty=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">4</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLogSSTot"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLogSSTot-1.png" alt="Interpretatie van de totale kwadratensom (SSTot): de som van de kwadratische afwijkingen rond het steekproefgemiddelde." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLogSSTot-1.png" alt="Interpretatie van de totale kwadratensom (SSTot): de som van de kwadratische afwijkingen rond het steekproefgemiddelde." width="100%" />
 <p class="caption">
 Figuur 6.12: Interpretatie van de totale kwadratensom (SSTot): de som van de kwadratische afwijkingen rond het steekproefgemiddelde.
 </p>
@@ -778,7 +1010,7 @@ Figuur 6.12: Interpretatie van de totale kwadratensom (SSTot): de som van de kwa
 <span class="kw">points</span>(borstkanker<span class="op">$</span>log2ESR1,lm2<span class="op">$</span>fitted,<span class="dt">pch=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">2</span>)
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(borstkanker<span class="op">$</span>log2S100A8)) <span class="kw">lines</span>(<span class="kw">rep</span>(borstkanker<span class="op">$</span>log2ESR1[i],<span class="dv">2</span>),<span class="kw">c</span>(<span class="kw">mean</span>(borstkanker<span class="op">$</span>log2S100A8),lm2<span class="op">$</span>fitted[i]),<span class="dt">lty=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLogSSR"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLogSSR-1.png" alt="Interpretatie van de kwadratensom van de regressie (SSR): de som van de kwadratische afwijkingen tussen de geschatte regressierechte en het steekproefgemiddelde van de uitkomsten." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLogSSR-1.png" alt="Interpretatie van de kwadratensom van de regressie (SSR): de som van de kwadratische afwijkingen tussen de geschatte regressierechte en het steekproefgemiddelde van de uitkomsten." width="100%" />
 <p class="caption">
 Figuur 6.13: Interpretatie van de kwadratensom van de regressie (SSR): de som van de kwadratische afwijkingen tussen de geschatte regressierechte en het steekproefgemiddelde van de uitkomsten.
 </p>
@@ -790,7 +1022,7 @@ Figuur 6.13: Interpretatie van de kwadratensom van de regressie (SSR): de som va
 <span class="kw">points</span>(borstkanker<span class="op">$</span>log2ESR1,lm2<span class="op">$</span>fitted,<span class="dt">pch=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="dv">2</span>)
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(borstkanker<span class="op">$</span>log2S100A8)) <span class="kw">lines</span>(<span class="kw">rep</span>(borstkanker<span class="op">$</span>log2ESR1[i],<span class="dv">2</span>),<span class="kw">c</span>(borstkanker<span class="op">$</span>log2S100A8[i],lm2<span class="op">$</span>fitted[i]),<span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLogSSE"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLogSSE-1.png" alt="Interpretatie van de kwadratensom van de error (SSE): de som van de kwadratische afwijkingen tussen uitkomsten en de predicties op de geschatte regressierechte." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLogSSE-1.png" alt="Interpretatie van de kwadratensom van de error (SSE): de som van de kwadratische afwijkingen tussen uitkomsten en de predicties op de geschatte regressierechte." width="100%" />
 <p class="caption">
 Figuur 6.14: Interpretatie van de kwadratensom van de error (SSE): de som van de kwadratische afwijkingen tussen uitkomsten en de predicties op de geschatte regressierechte.
 </p>
@@ -956,7 +1188,7 @@ lm3 &lt;-<span class="st"> </span><span class="kw">lm</span>(age<span class="op"
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))
 <span class="kw">plot</span>(lm3)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLymf"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLymf-1.png" alt="Diagnostische plot voor het model waarbij leeftijd wordt gemodelleerd a.d.h.v. een dummy variabele voor factor lymfe knoop status." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLymf-1.png" alt="Diagnostische plot voor het model waarbij leeftijd wordt gemodelleerd a.d.h.v. een dummy variabele voor factor lymfe knoop status." width="100%" />
 <p class="caption">
 Figuur 6.15: Diagnostische plot voor het model waarbij leeftijd wordt gemodelleerd a.d.h.v. een dummy variabele voor factor lymfe knoop status.
 </p>
@@ -968,7 +1200,7 @@ Figuur 6.15: Diagnostische plot voor het model waarbij leeftijd wordt gemodellee
 Merk echter ook op dat er een verschil is in het aantal observaties in beide groepen. Wanneer we een boxplot maken, zoals we ook deden in het hoofdstuk <a href="chap-besluit.html#chap:besluit">5</a> om gelijkheid van variantie na te gaan bij het uitvoeren van een t-test, zien we dat het verschil in interkwartiel afstand (IRQ, boxgrootes) niet zo groot is (Figuur <a href="chap-linReg.html#fig:boxNode">6.16</a>). Als we data simuleren die <span class="math inline">\(iid\)</span> normaal verdeeld zijn en deze at random opslitsen in twee groepen die gelijk zijn in grootte als die voor de lymfeknoop status (19 vs 13 patiënten) zien we dat een dergelijk verschil in IQR gerust kan voorkomen door toeval (Figuur <a href="chap-linReg.html#fig:boxSim">6.17</a>). We kunnen dus besluiten dat aan alle aannames is voldaan voor de statistische besluitvorming en dat we de R-output van het statistisch model voor de response age i.f.v de dummy variabele voor de node-status mogen gebruiken om conclusies te formuleren over de associatie tussen leeftijd en node status (zie hoger).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(age<span class="op">~</span>node,borstkanker)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:boxNode"></span>
-<img src="Statistiek_2018_2019_files/figure-html/boxNode-1.png" alt="boxplot van de leeftijd vs lymfeknoop status in de borstkanker dataset." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/boxNode-1.png" alt="boxplot van de leeftijd vs lymfeknoop status in de borstkanker dataset." width="100%" />
 <p class="caption">
 Figuur 6.16: boxplot van de leeftijd vs lymfeknoop status in de borstkanker dataset.
 </p>
@@ -977,7 +1209,7 @@ Figuur 6.16: boxplot van de leeftijd vs lymfeknoop status in de borstkanker data
 <span class="kw">set.seed</span>(<span class="dv">354</span>)
 <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>) <span class="kw">plot</span>(<span class="kw">rnorm</span>(<span class="dv">32</span>)<span class="op">~</span>node,borstkanker,<span class="dt">ylab=</span><span class="st">&quot;iid N(0,1)&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:boxSim"></span>
-<img src="Statistiek_2018_2019_files/figure-html/boxSim-1.png" alt="Simulatie van normaal verdeelde gegevens met gelijk gemiddelde en variantie. Zoals in de borstkanker dataset zijn er 19 observaties in ene groep en 13 observaties in de andere groep. We zien dat er door puur toeval een behoorlijk verschil kan optreden in de IQR tussen beide groepen in de steekproef." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/boxSim-1.png" alt="Simulatie van normaal verdeelde gegevens met gelijk gemiddelde en variantie. Zoals in de borstkanker dataset zijn er 19 observaties in ene groep en 13 observaties in de andere groep. We zien dat er door puur toeval een behoorlijk verschil kan optreden in de IQR tussen beide groepen in de steekproef." width="100%" />
 <p class="caption">
 Figuur 6.17: Simulatie van normaal verdeelde gegevens met gelijk gemiddelde en variantie. Zoals in de borstkanker dataset zijn er 19 observaties in ene groep en 13 observaties in de andere groep. We zien dat er door puur toeval een behoorlijk verschil kan optreden in de IQR tussen beide groepen in de steekproef.
 </p>
@@ -1031,7 +1263,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1044,7 +1276,11 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/06-LineareRegressie.Rmd",
 "text": "Edit"
 },
-"download": ["Statistiek_2018_2019.pdf", "Statistiek_2018_2019.epub"],
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Statistiek_2019_2020.pdf", "Statistiek_2019_2020.epub"],
 "toc": {
 "collapse": "subsection"
 }
@@ -1058,7 +1294,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cursus Statistiek 2018-2019</title>
-  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Hoofdstuk 4 Data exploratie en beschrijvende statistiek | Cursus Statistiek 2019-2020</title>
+  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cursus Statistiek 2018-2019" />
+  <meta property="og:title" content="Hoofdstuk 4 Data exploratie en beschrijvende statistiek | Cursus Statistiek 2019-2020" />
   <meta property="og:type" content="book" />
   
   
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="statOmics/statistiek2deBach" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cursus Statistiek 2018-2019" />
+  <meta name="twitter:title" content="Hoofdstuk 4 Data exploratie en beschrijvende statistiek | Cursus Statistiek 2019-2020" />
   
   <meta name="twitter:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
   
 
-<meta name="author" content="Lieven Clement">
+<meta name="author" content="Lieven Clement" />
 
 
-<meta name="date" content="2018-11-15">
+<meta name="date" content="2019-09-17" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="chap-design.html">
 <link rel="next" href="chap-besluit.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -101,7 +101,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Cursus Statistiek 2018-2019</a></li>
+<li><a href="./">Cursus Statistiek 2019-2020</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Woord vooraf</a></li>
@@ -337,7 +337,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2018-2019</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2019-2020</a>
           </h1>
         </div>
 
@@ -358,7 +358,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ol>
 <p>Als het vertrekpunt duidelijk is en alle variabelen goed beschreven zijn, kan men starten met een betekenisvolle exploratie van de gerealiseerde observaties.</p>
 <div class="figure" style="text-align: center"><span id="fig:pop2Samp2PopDataExpl"></span>
-<img src="Statistiek_2018_2019_files/figure-html/pop2Samp2PopDataExpl-1.png" alt="Verschillende stappen in een studie. In dit hoofdstuk ligt de focus op de data-exploratie en beschrijvende statistiek" width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/pop2Samp2PopDataExpl-1.png" alt="Verschillende stappen in een studie. In dit hoofdstuk ligt de focus op de data-exploratie en beschrijvende statistiek" width="100%" />
 <p class="caption">
 Figuur 4.1: Verschillende stappen in een studie. In dit hoofdstuk ligt de focus op de data-exploratie en beschrijvende statistiek
 </p>
@@ -366,10 +366,10 @@ Figuur 4.1: Verschillende stappen in een studie. In dit hoofdstuk ligt de focus 
 <p>Dit hoofdstuk zullen werken rond een centrale dataset: de NHANES studie.</p>
 
 <div class="example">
-<span id="exm:nhanesEx" class="example"><strong>Voorbeeld 2.1  (NHANES studie)  </strong></span>
+<span id="exm:nhanesEx" class="example"><strong>Voorbeeld 4.1  (NHANES studie)  </strong></span>
 </div>
 
-<p>De National Health and Nutrition Examination Survey (NHANES) wordt sinds 1960 op regelmatige basis of genomen. In dit voorbeeld maken we gebruik van de gegevens die werden verzameld tussen 2009-2012 bij 10000 Amerikanen en die werden opgenomen in het R-pakket NHANES. Er werd een groot aantal fysische, demografische, nutritionele, levelsstijl en gezondheidskarakteristieken gecollecteerd in deze studie (zie Tabel <a href="belangrijke-concepten-conventies.html#tab:nhanes">2.1</a>). Merk op dat ontbrekende waarnemingen hier gecodeerd worden a.d.h.b. de code <code>NA</code> (Not Available / Missing Value)</p>
+<p>De National Health and Nutrition Examination Survey (NHANES) wordt sinds 1960 op regelmatige basis of genomen. In dit voorbeeld maken we gebruik van de gegevens die werden verzameld tussen 2009-2012 bij 10000 Amerikanen en die werden opgenomen in het R-pakket NHANES. Er werd een groot aantal fysische, demografische, nutritionele, levelsstijl en gezondheidskarakteristieken gecollecteerd in deze studie (zie Tabel <a href="chap-describe.html#tab:nhanesDatExpl">4.1</a>). Merk op dat ontbrekende waarnemingen hier gecodeerd worden a.d.h.b. de code <code>NA</code> (Not Available / Missing Value)</p>
 <p><code>**Einde voorbeeld**</code></p>
 <table>
 <caption>
@@ -629,7 +629,7 @@ No
 <div id="sec:univar" class="section level2">
 <h2><span class="header-section-number">4.2</span> Univariate beschrijving van de variabelen</h2>
 <p>In de regel begint men met een <em>univariate</em> inspectie: elke variabele wordt apart onderzocht. Het is absoluut aan te raden om hierbij eerst alle ruwe gegevens te bekijken door middel van grafieken (zie verder) alvorens naar samenvattingsmaten (zoals het gemiddelde) over te stappen. Dit laat toe om een idee te krijgen hoe de geobserveerde waarden van een veranderlijke verdeeld zijn in de studiegroep (bvb. welke verdeling de bloeddrukmetingen in de studie hebben) en of er eventuele <em>uitschieters</em> (d.i. extreme metingen of <em>outliers</em>) zijn. Met outliers worden observaties aangegeven die ten opzichte van de geobserveerde verdeling van de waarden in de data set, extreem zijn, buitenbeentjes.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#De data van de NHANES studie bevindt zich </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#De data van de NHANES studie bevindt zich</span>
 <span class="co">#in het R package NHANES</span>
 <span class="kw">library</span>(NHANES) <span class="co">#laad NHANES package</span>
 
@@ -637,10 +637,10 @@ No
 <span class="co">#De rijen bevatten informatie over elk subject</span>
 <span class="co">#De kolommen de variabelen die werden geregistreerd</span>
 <span class="co">#vb variabele Gender, BMI, ...</span>
-<span class="co">#Een variabele (kolom) kan uit de dataframe </span>
+<span class="co">#Een variabele (kolom) kan uit de dataframe</span>
 <span class="co">#worden gehaald door gebruik van het $ teken</span>
 <span class="co">#en de naam van de variabele</span>
-<span class="co"># We slaan de frequentietabel voor variable Gender </span>
+<span class="co"># We slaan de frequentietabel voor variable Gender</span>
 <span class="co"># op in object &#39;tab&#39;</span>
 
 tab &lt;-<span class="st"> </span><span class="kw">table</span>(NHANES<span class="op">$</span>Gender)
@@ -650,16 +650,16 @@ tab</code></pre></div>
 ##   5020   4980</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(tab) <span class="co">#teken staaf diagram</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fretabs"></span>
-<img src="Statistiek_2018_2019_files/figure-html/fretabs-1.png" alt="Staafdiagram van het aantal mannen en vrouwen in de NHANES studie." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/fretabs-1.png" alt="Staafdiagram van het aantal mannen en vrouwen in de NHANES studie." width="100%" />
 <p class="caption">
 Figuur 4.2: Staafdiagram van het aantal mannen en vrouwen in de NHANES studie.
 </p>
 </div>
-<p>Er zijn weinig methoden voorhanden om <em>nominale</em> variabelen te beschrijven. In Voorbeeld <a href="belangrijke-concepten-conventies.html#exm:nhanesEx">2.1</a> is de variable <em>Gender</em> kwalitatief nominaal. Alles is gezegd over de verdeling van het geslacht als we weergeven hoeveel vrouwen en mannen zijn opgenomen in de studie. Meer nog, als het totale aantal personen in de data set eenmaal vast ligt, dan zijn de uitkomsten verder volledig gekarakteriseerd door, bijvoorbeeld, alleen het percentage vrouwen en mannen weergeen. In het softwarepakket R kan men een beeld van de gegevens krijgen door ze in een <em>frequentietabel</em> weer te geven of a.d.h.v. een grafiek zoals een <em>staafdiagram</em>. Beiden worden gegenereerd in de R-code voor Figuur <a href="chap-describe.html#fig:fretabs">4.2</a>. We stellen vast dat 5020 van de 10000 subjecten, ofwel 50.2% vrouwen in de studie zijn opgenomen.</p>
+<p>Er zijn weinig methoden voorhanden om <em>nominale</em> variabelen te beschrijven. In Voorbeeld <a href="chap-describe.html#exm:nhanesEx">4.1</a> is de variable <em>Gender</em> kwalitatief nominaal. Alles is gezegd over de verdeling van het geslacht als we weergeven hoeveel vrouwen en mannen zijn opgenomen in de studie. Meer nog, als het totale aantal personen in de data set eenmaal vast ligt, dan zijn de uitkomsten verder volledig gekarakteriseerd door, bijvoorbeeld, alleen het percentage vrouwen en mannen weergeen. In het softwarepakket R kan men een beeld van de gegevens krijgen door ze in een <em>frequentietabel</em> weer te geven of a.d.h.v. een grafiek zoals een <em>staafdiagram</em>. Beiden worden gegenereerd in de R-code voor Figuur <a href="chap-describe.html#fig:fretabs">4.2</a>. We stellen vast dat 5020 van de 10000 subjecten, ofwel 50.2% vrouwen in de studie zijn opgenomen.</p>
 <p>Een staafdiagram geeft op de X-as de mogelijke uitkomsten van de variabele aan (bvb. geslacht). Daarbovenop komt een staaf met hoogte evenredig aan het totaal aantal keer dat die waarde voorkomt in de dataset. In het bijzonder kan men kiezen tussen de <em>absolute frequentie</em> (5020 voor het aantal vrouwen, 4980 voor het aantal mannen) of de <em>relatieve frequentie</em> ( 50.2% vrouwen, 49.8% mannen). De staven staan los van elkaar met een breedte die constant is, maar verder willekeurig. Als de steekproef representatief is voor de populatie, dan krijgen we hier misschien een eerste impressie dat er iets meer vrouwen zijn in de populatie.</p>
 <p>De variabele met de naam <em>BMI_WHO</em> in de dataset is kwalitatief ordinaal en heeft 4 geordende categorieën die grensen voor ondergewicht, normaal gewicht, licht-overgewicht, obesitas. Voor dergelijke ordinale variabelen worden de mogelijke uitkomsten best in volgorde gesorteerd en in een frequentietabel of staafdiagram weergegeven. Naast de (relatieve) frequentie is het nu ook zinvol om de <em>cumulatieve (relatieve) frequentie</em> aan te geven. Deze laatste drukt uit welk percentage van de gegevens in de gegeven klasse of een lagere klasse valt. In Figuur <a href="chap-describe.html#fig:freqmilt">4.3</a> vind je het staafdiagram voor het BMI. In de R-code voor de figuur vind je tevens de bijhorende frequentietabel.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># sla freq. tabel op in object &#39;tabBmi&#39;</span>
-tabBmi &lt;-<span class="st"> </span><span class="kw">table</span>(NHANES<span class="op">$</span>BMI_WHO) 
+tabBmi &lt;-<span class="st"> </span><span class="kw">table</span>(NHANES<span class="op">$</span>BMI_WHO)
 tabBmi</code></pre></div>
 <pre><code>## 
 ##    12.0_18.5 18.5_to_24.9 25.0_to_29.9    30.0_plus 
@@ -667,7 +667,7 @@ tabBmi</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#teken staaf diagram</span>
 <span class="kw">barplot</span>(tabBmi)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:freqmilt"></span>
-<img src="Statistiek_2018_2019_files/figure-html/freqmilt-1.png" alt="Staafdiagram van het aantal personen in de NHANES studie die behoort tot elke BMI klasse." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/freqmilt-1.png" alt="Staafdiagram van het aantal personen in de NHANES studie die behoort tot elke BMI klasse." width="100%" />
 <p class="caption">
 Figuur 4.3: Staafdiagram van het aantal personen in de NHANES studie die behoort tot elke BMI klasse.
 </p>
@@ -695,9 +695,9 @@ Figuur 4.3: Staafdiagram van het aantal personen in de NHANES studie die behoort
 <p>Hier wordt van alle uitkomsten het eerste cijfer of de eerste paar cijfers op een verticale lijn in volgorde uitgezet in de vorm van een boomstam. Daaraan worden horizontaal de bladeren gehecht, met name de laatste cijfers van de geobserveerde uitkomsten. De output geeft bijvoorbeeld aan dat er 3 personen zijn waarvan het afgeronde BMI 55 bedraagt, 2 personen met een afgerond BMI van 56, …. Gezien de studie zo groot is, is het tak-en-blad diagram niet erg praktisch voor dit voorbeeld.</p>
 <p>In een tak-en-blad diagram krijgt men alle individuele uitkomsten nagenoeg exact te zien, terwijl de vorm die het diagram aanneemt reeds een idee van de verdeling geeft zoals in een histogram (zie verder). Een vuistregel om de vorm van de verdeling het best te zien is het aantal takken ongeveer gelijk te maken aan <span class="math inline">\(1 + \sqrt{n}\)</span>, waarbij <span class="math inline">\(n\)</span> het aantal observaties voorstelt. Dit aantal kan uiteraard aangepast worden aan de omstandigheden. Een populair alternatief voor het tak en blad diagram is de <em>eenvoudige frequentietabel</em>. Deze kan men bekomen door de continue variabele (bvb. BMI) om te zetten in een kwalitatieve ordinale variabele, waarvoor vervolgens een frequentietabel wordt weergegeven. Merk op dat dit voor het BMI eerst is gebeurd (Figuur <a href="chap-describe.html#fig:freqmilt">4.3</a>).</p>
 <p>Het grafisch equivalent van dergelijke frequentietabel noemt een <em>histogram</em>, hetgeen men in R bekomt via</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(NHANES<span class="op">$</span>BMI,<span class="dt">main=</span><span class="st">&quot;&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;BMI&quot;</span>) <span class="co">#main is hoofdtitel </span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(NHANES<span class="op">$</span>BMI,<span class="dt">main=</span><span class="st">&quot;&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;BMI&quot;</span>) <span class="co">#main is hoofdtitel</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:histo"></span>
-<img src="Statistiek_2018_2019_files/figure-html/histo-1.png" alt="Histogram van het BMI in de NHANES studie." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/histo-1.png" alt="Histogram van het BMI in de NHANES studie." width="100%" />
 <p class="caption">
 Figuur 4.4: Histogram van het BMI in de NHANES studie.
 </p>
@@ -707,13 +707,13 @@ Figuur 4.4: Histogram van het BMI in de NHANES studie.
 <p>De keuze van het aantal klassen is van belang bij een histogram. Als er te weinig klassen zijn, dan gaat veel informatie verloren. Als er teveel zijn, dan wordt het algemene patroon verdoezeld door een grote hoeveelheid overbodige details. Gewoonlijk kiest men tussen 5 en 15 intervallen, maar de specifieke keuze hangt af van het beeld van het histogram dat men te zien krijgt.</p>
 <p>Indien een voldoende aantal gegevens beschikbaar is, dan kan men een gladdere indruk van de verdeling van de gegevens bekomen door een zogenaamde <em>kernel density schatter</em> te bepalen. Zo’n schatter is een positieve functie die genormaliseerd is in die zin dat de oppervlakte onder de functie 1 is. Ze kan zo geïnterpreteerd worden dat de oppervlakte onder de functie tussen 2 punten <span class="math inline">\(a\)</span> en <span class="math inline">\(b\)</span> op de X-as, de kans voorstelt dat een lukrake meting in het interval <span class="math inline">\([a,b]\)</span> gevonden wordt. Figuur <a href="chap-describe.html#fig:freqpoly">4.5</a> toont een histogram (links) en kernel density schatter (rechts) van de het BMI.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># deel grafische scherm op in 1 rij en 2 kolommen</span>
-<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) 
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
 <span class="co"># teken een histogram</span>
-<span class="kw">hist</span>(NHANES<span class="op">$</span>BMI,<span class="dt">main=</span><span class="st">&quot;&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;BMI&quot;</span>) 
+<span class="kw">hist</span>(NHANES<span class="op">$</span>BMI,<span class="dt">main=</span><span class="st">&quot;&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;BMI&quot;</span>)
 <span class="co"># teken een kernel density schatter</span>
-<span class="kw">plot</span>(<span class="kw">density</span>(NHANES<span class="op">$</span>BMI,<span class="dt">na.rm=</span><span class="ot">TRUE</span>),<span class="dt">main=</span><span class="st">&quot;&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;BMI&quot;</span>) </code></pre></div>
+<span class="kw">plot</span>(<span class="kw">density</span>(NHANES<span class="op">$</span>BMI,<span class="dt">na.rm=</span><span class="ot">TRUE</span>),<span class="dt">main=</span><span class="st">&quot;&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;BMI&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:freqpoly"></span>
-<img src="Statistiek_2018_2019_files/figure-html/freqpoly-1.png" alt="Histogram en kernel density schatter van BMI in de NHANES studie." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/freqpoly-1.png" alt="Histogram en kernel density schatter van BMI in de NHANES studie." width="100%" />
 <p class="caption">
 Figuur 4.5: Histogram en kernel density schatter van BMI in de NHANES studie.
 </p>
@@ -743,7 +743,7 @@ boxYs&lt;-<span class="kw">c</span>(<span class="kw">range</span>(BMI[BMI<span c
 <span class="kw">text</span>(<span class="fl">1.3</span>,boxYs,<span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;wisker&quot;</span>,<span class="st">&quot;wisker&quot;</span>,<span class="st">&quot;x25&quot;</span>,<span class="st">&quot;mediaan&quot;</span>,<span class="st">&quot;x75&quot;</span>,<span class="st">&quot;outliers&quot;</span>),<span class="dt">pos=</span><span class="dv">4</span>,<span class="dt">cex=</span><span class="fl">1.3</span>)
 <span class="kw">lines</span>(<span class="kw">c</span>(<span class="fl">1.1</span>,<span class="fl">1.3</span>,<span class="fl">1.3</span>,<span class="fl">1.1</span>),<span class="kw">c</span>(rangeCl[<span class="dv">2</span>],rangeCl[<span class="dv">2</span>]<span class="op">+</span>(<span class="kw">max</span>(BMI)<span class="op">-</span>rangeCl[<span class="dv">2</span>])<span class="op">/</span><span class="dv">2</span>,rangeCl[<span class="dv">2</span>]<span class="op">+</span>(<span class="kw">max</span>(BMI)<span class="op">-</span>rangeCl[<span class="dv">2</span>])<span class="op">/</span><span class="dv">2</span>,<span class="kw">max</span>(BMI)),<span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:boxBMI"></span>
-<img src="Statistiek_2018_2019_files/figure-html/boxBMI-1.png" alt="Boxplot van BMI in de NHANES studie." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/boxBMI-1.png" alt="Boxplot van BMI in de NHANES studie." width="100%" />
 <p class="caption">
 Figuur 4.6: Boxplot van BMI in de NHANES studie.
 </p>
@@ -765,7 +765,7 @@ Figuur 4.6: Boxplot van BMI in de NHANES studie.
 </div>
 
 <p>Een groot voordeel van het gemiddelde als een maat voor de centrale locatie van de observaties is dat het alle data-waarden efficiënt gebruikt vanuit statistisch perspectief. Dit wil zeggen dat ze (onder bepaalde statistische modellen) het maximum aan informatie uit de gegevens haalt en om die reden relatief gezien zeer stabiel blijft wanneer ze herberekend wordt op basis van een nieuwe, even grote steekproef die onder identieke omstandigheden werd bekomen. Bovendien beschrijft het gemiddelde ook verschillende belangrijke modellen voor de verdeling van de gegevens, zoals de Normale verdeling (zie Sectie <a href="chap-describe.html#sec:normal">4.4</a>). Een groot nadeel van het gemiddelde is dat het zeer gevoelig is aan de aanwezigheid van outliers in de dataset. Om die reden is het vooral een interessante maat van locatie wanneer de verdeling van de observaties (zoals weergegeven door bijvoorbeeld een histogram) min of meer symmetrisch is.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(NHANES<span class="op">$</span>BMI,<span class="dt">na.rm=</span><span class="ot">TRUE</span>) </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(NHANES<span class="op">$</span>BMI,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</code></pre></div>
 <pre><code>## [1] 26.66014</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#opnieuw is de na.rm statement hier nodig</span>
 <span class="co">#omdat ontbrekende waarden voorkomen.</span></code></pre></div>
@@ -828,7 +828,7 @@ Als de gegevens <span class="math inline">\(x_i\)</span> enkel de waarden 0 of 1
 <div class="definition">
 <span id="def:unnamed-chunk-43" class="definition"><strong>Definitie 4.6  (geometrisch gemiddelde)  </strong></span>Het <strong>geometrische gemiddelde</strong> van een reeks waarnemingen <span class="math inline">\(x_i, i=1, 2, \dots, n\)</span> ontstaat door er de natuurlijke logaritme van te berekenen, het gemiddelde hiervan te nemen en dit vervolgens terug te transformeren naar de originele schaal door er de exponentiële functie van te nemen:
 <span class="math display">\[\begin{equation*}
-\exp\left\{\frac{1}{n} \sum_{i=1}^n \log(x_i)\right\} 
+\exp\left\{\frac{1}{n} \sum_{i=1}^n \log(x_i)\right\}
 \end{equation*}\]</span>
 <p><strong>Einde definitie</strong></p>
 </div>
@@ -837,7 +837,7 @@ Als de gegevens <span class="math inline">\(x_i\)</span> enkel de waarden 0 of 1
 <span class="kw">hist</span>(NHANES<span class="op">$</span>BMI, <span class="dt">main=</span><span class="st">&quot;histogram van BMI&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;BMI&quot;</span>)
 <span class="kw">hist</span>(<span class="kw">log</span>(NHANES<span class="op">$</span>BMI), <span class="dt">main=</span><span class="st">&quot;histogram van log(BMI)&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;log(BMI)&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:histLogBMI"></span>
-<img src="Statistiek_2018_2019_files/figure-html/histLogBMI-1.png" alt="Boxplot van BMI en log(BMI) in de NHANES studie." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/histLogBMI-1.png" alt="Boxplot van BMI en log(BMI) in de NHANES studie." width="100%" />
 <p class="caption">
 Figuur 4.7: Boxplot van BMI en log(BMI) in de NHANES studie.
 </p>
@@ -849,7 +849,7 @@ Figuur 4.7: Boxplot van BMI en log(BMI) in de NHANES studie.
 </ol>
 
 <div class="example">
-<span id="exm:unnamed-chunk-44" class="example"><strong>Voorbeeld 4.1  (BMI)  </strong></span>
+<span id="exm:unnamed-chunk-44" class="example"><strong>Voorbeeld 4.2  (BMI)  </strong></span>
 </div>
 <p> Het gemiddelde en mediane BMI bedraagt 26.66 en 25.98 , respectievelijk. Het gemiddelde is hier groter dan de mediaan omdat de BMI scheef verdeeld is naar rechts (zie Figuur <a href="chap-describe.html#fig:histLogBMI">4.7</a>). De verdeling wordt meer symmetrisch na log-transformatie. Het gemiddelde en mediane log-BMI liggen ook dichter bij elkaar en bedragen respectievelijk 3.25 en 3.26. De geometrisch gemiddelde BMI-concentratie bekomen we door de exponentiële functie te evalueren in 3.25, hetgeen ons 25.69 oplevert. Merk op dat dit inderdaad beter met de mediaan overeenstemt dan het rekenkundig gemiddelde.</p>
 <p><code>**Einde voorbeeld**</code></p>
@@ -883,9 +883,9 @@ s_x= \sqrt{s_x^2} .
 <p><strong>Eigenschap</strong></p>
 <p>Als alle uitkomsten <span class="math inline">\(x_i\)</span> met een willekeurige constante <span class="math inline">\(a\)</span> worden vermenigvuldigd, dan wordt hun variantie vermenigvuldigd met <span class="math inline">\(a^2\)</span> en hun standaarddeviatie met <span class="math inline">\(|a|\)</span> (de absolute waarde van <span class="math inline">\(a\)</span>). Als bij alle uitkomsten <span class="math inline">\(a\)</span> wordt opgeteld, wijzigen hun variantie en standaarddeviatie niet.</p>
 <p><strong>Einde eigenschap</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Het gebruik van functie sd() levert de standarddeviatie </span>
-<span class="co"># van de variabele BMI in de NHANES dataset. </span>
-<span class="co"># Het na.rm=TRUE argument wordt gebruikt omdat er </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Het gebruik van functie sd() levert de standarddeviatie</span>
+<span class="co"># van de variabele BMI in de NHANES dataset.</span>
+<span class="co"># Het na.rm=TRUE argument wordt gebruikt omdat er</span>
 <span class="co"># ontbrekende waarnemingen voorkomen.</span>
 <span class="kw">sd</span>(NHANES<span class="op">$</span>BMI,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</code></pre></div>
 <pre><code>## [1] 7.376579</code></pre>
@@ -911,7 +911,7 @@ VC_x = \frac{s_x}{\bar{x}} 100\%.
 <h2><span class="header-section-number">4.4</span> De Normale benadering van gegevens</h2>
 <p>Bij biologische en chemische data is het vaak zo dat het histogram van een continue meting bij verschillende subjecten de karakteristieke vorm heeft van de Normale verdeling, die geïllustreerd wordt in Figuur <a href="chap-describe.html#fig:continu">4.8</a> (linksboven). Dat is bijvoorbeeld zo als men een histogram maakt van het logaritme van de totale cholestorol. Rond 1870 opperde de wereldberoemde Belg Adolphe Quetelet (die tevens de eerste student was die een doctoraat behaalde aan de Universiteit Gent) de idee om deze curve als `ideaal histogram’ te gebruiken voor de voorstelling en vergelijking van gegevens. Dit zal handig blijken om meer inzicht te krijgen in de gegevens op basis van een minimum aantal samenvattingsvatten, zoals het gemiddelde en de standaarddeviatie die vaak in wetenschappelijke rapporten vermeld staan.</p>
 <div class="figure" style="text-align: center"><span id="fig:continu"></span>
-<img src="Statistiek_2018_2019_files/figure-html/continu-1.png" alt="De Normale dichtheidsfunctie (boven, links), de Normale distributiefunctie (boven, rechts), de Uniforme dichtheidsfunctie (onder, links) en de Uniforme distributiefunctie (onder, rechts)." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/continu-1.png" alt="De Normale dichtheidsfunctie (boven, links), de Normale distributiefunctie (boven, rechts), de Uniforme dichtheidsfunctie (onder, links) en de Uniforme distributiefunctie (onder, rechts)." width="100%" />
 <p class="caption">
 Figuur 4.8: De Normale dichtheidsfunctie (boven, links), de Normale distributiefunctie (boven, rechts), de Uniforme dichtheidsfunctie (onder, links) en de Uniforme distributiefunctie (onder, rechts).
 </p>
@@ -1003,7 +1003,7 @@ en geschat worden op basis van een lukrake steekproef als
 
 
 <div class="example">
-<span id="exm:unnamed-chunk-52" class="example"><strong>Voorbeeld 4.2  (Referentie-intervallen)  </strong></span>
+<span id="exm:unnamed-chunk-52" class="example"><strong>Voorbeeld 4.3  (Referentie-intervallen)  </strong></span>
 </div>
 <p> In het Hoofdstuk <a href="chap-besluit.html#chap:besluit">5</a> statistische besluitvorming handelt de centrale dataset rond een studie naar het effect van het toedienen van een bloeddrukverlagend middel captopril. Alvorens de studie aan te vangen dient men eerst een grenswaarde voor normale bloeddrukwaarden op te stellen om subjecten met normale bloeddrukken van patiënten met hypertensie te kunnen onderscheiden. We zullen hiervoor gebruik maken van een subset van de NHANES studie. In Figuur <a href="chap-describe.html#fig:sysBp">4.9</a> links wordt een histogram gegeven van alle bloeddruk waarden voor subjecten tussen de 40 en 65 jaar. Rechts wordt het histogram weergegeven voor gezonde subjecten tussen de 40 en 65 jaar, waarbij gezonde personen werden geselecteerd op basis van hun BMI klasse, rokers, status algemene gezondheidsstatus, slaapproblemen, of ze aan diabetes lijden en ze in het verleden hard drugs gebruikten.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#verwijderen van alle subjecten met ontbrekende waarnemingen</span>
@@ -1012,15 +1012,15 @@ NHANES2<span class="op">$</span>bpSys=<span class="kw">rowMeans</span>(NHANES2[,
 <span class="co">#subset van de personen tussen 40 en 65 jaar</span>
 nhanesSub=<span class="kw">subset</span>(NHANES2, Age<span class="op">&lt;=</span><span class="dv">65</span><span class="op">&amp;</span>Age<span class="op">&gt;=</span><span class="dv">40</span> <span class="op">&amp;!</span><span class="kw">duplicated</span>(ID) )
 <span class="co">#De == operator resulteert in een bolean (FALSE of TRUE)</span>
-<span class="co"># de &amp; operater is een logische AND </span>
+<span class="co"># de &amp; operater is een logische AND</span>
 
-<span class="co">#subset van gezonde personen </span>
+<span class="co">#subset van gezonde personen</span>
 nhanesSubHealthy=<span class="kw">subset</span>(nhanesSub,Smoke100n<span class="op">==</span><span class="st">&quot;Non-Smoker&quot;</span><span class="op">&amp;</span>Diabetes<span class="op">==</span><span class="st">&quot;No&quot;</span><span class="op">&amp;</span><span class="kw">as.double</span>(BMI_WHO)<span class="op">%in%</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)<span class="op">&amp;</span>HardDrugs<span class="op">==</span><span class="st">&quot;No&quot;</span><span class="op">&amp;</span>HealthGen<span class="op">!=</span><span class="st">&quot;Poor&quot;</span><span class="op">&amp;</span>SleepTrouble<span class="op">==</span><span class="st">&quot;No&quot;</span>)
 <span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))
 <span class="kw">hist</span>(nhanesSub<span class="op">$</span>bpSys,<span class="dt">xlab=</span><span class="st">&quot;Systolische bloeddruk (mm Hg)&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Personen tussen 40-65 jaar&quot;</span>)
 <span class="kw">hist</span>(nhanesSubHealthy<span class="op">$</span>bpSys,<span class="dt">xlab=</span><span class="st">&quot;Systolische bloeddruk (mm Hg)&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Gezonde personen tussen 40-65 jaar&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:sysBp"></span>
-<img src="Statistiek_2018_2019_files/figure-html/sysBp-1.png" alt="Systolische bloeddruk bij personen tussen de 40 en 65 jaar oud." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/sysBp-1.png" alt="Systolische bloeddruk bij personen tussen de 40 en 65 jaar oud." width="100%" />
 <p class="caption">
 Figuur 4.9: Systolische bloeddruk bij personen tussen de 40 en 65 jaar oud.
 </p>
@@ -1037,7 +1037,7 @@ Figuur 4.9: Systolische bloeddruk bij personen tussen de 40 en 65 jaar oud.
 <p><em>QQ-plots</em> of <em>kwantielgrafieken</em> (in het Engels: <em>quantile-quantile plots</em>) zijn grafieken die toelaten te verifiëren of een reeks observaties lukrake trekkingen zijn uit een Normale verdeling. Met andere woorden, ze laten toe om na te gaan of een reeks observaties al dan niet de onderstelling tegenspreken dat ze realisaties zijn van een reeks Normaal verdeelde gegevens. Het principe achter deze grafieken is vrij eenvoudig. Verschillende percentielen die men heeft berekend voor de gegeven reeks observaties worden uitgezet t.o.v. de overeenkomstige percentielen die men verwacht op basis van de Normale curve. Als de onderstelling correct is dat de gegevens Normaal verdeeld zijn, dan komen beide percentielen telkens vrij goed met elkaar overeen en verwacht men bijgevolg een reeks puntjes min of meer op een rechte te zien (zoals in Figuur <a href="chap-describe.html#fig:qq">4.10</a>, rechtsboven). Systematische afwijkingen van een rechte wijzen op systematische afwijkingen van Normaliteit. Lukrake afwijkingen van een rechte kunnen het gevolg zijn van toevallige biologische variatie en zijn daarom niet indicatief voor afwijkingen van Normaliteit. We gebruiken hiervoor de functie <code>qqPlot</code> uit het package <code>car</code>. De qqPlot functie geeft op de figuur ook banden weer waarbinnen punten uit de normaal verdeling met een kans van 95% kunnen worden verwacht.</p>
 <pre><code>## [1]  60 235</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:qq"></span>
-<img src="Statistiek_2018_2019_files/figure-html/qq-1.png" alt="Histogrammen (links) en bijhorende kwantielgrafieken (rechts) voor een aantal verdelingen." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/qq-1.png" alt="Histogrammen (links) en bijhorende kwantielgrafieken (rechts) voor een aantal verdelingen." width="100%" />
 <p class="caption">
 Figuur 4.10: Histogrammen (links) en bijhorende kwantielgrafieken (rechts) voor een aantal verdelingen.
 </p>
@@ -1049,13 +1049,13 @@ Het grote voordeel van een QQ-plot (in vergelijking met een histogram) om afwijk
 <p>Hetzelfde principe als voor Normaal verdeelde observaties kan ook herhaald worden voor andere theoretische verdelingen, die we later in deze cursus zullen ontmoeten. Bijvoorbeeld kan men analoge kwantielgrafieken opstellen voor de Poissonverdeling (verdeling voor tellingen) om na te gaan of een reeks observaties lukrake trekkingen vormen uit zo’n Poissonverdeling.</p>
 
 <div class="example">
-<span id="exm:unnamed-chunk-54" class="example"><strong>Voorbeeld 4.3  (NHANES vervolg)  </strong></span>
+<span id="exm:unnamed-chunk-54" class="example"><strong>Voorbeeld 4.4  (NHANES vervolg)  </strong></span>
 </div>
 
 <pre><code>## [1] 260 238</code></pre>
 <pre><code>## [1] 255  56</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:qqBp"></span>
-<img src="Statistiek_2018_2019_files/figure-html/qqBp-1.png" alt="Kernel density schatters (boven) een QQ-plots (onder) voor de systolische bloeddruk en directe HDL cholestorol bij de subset van gezonde personen tussen de 40 en 65 jaar." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/qqBp-1.png" alt="Kernel density schatters (boven) een QQ-plots (onder) voor de systolische bloeddruk en directe HDL cholestorol bij de subset van gezonde personen tussen de 40 en 65 jaar." width="100%" />
 <p class="caption">
 Figuur 4.11: Kernel density schatters (boven) een QQ-plots (onder) voor de systolische bloeddruk en directe HDL cholestorol bij de subset van gezonde personen tussen de 40 en 65 jaar.
 </p>
@@ -1074,7 +1074,7 @@ Op basis van het gemiddelde van 119.5mmHg en de standaarddeviatie van 14.1 mmHg 
 <h3><span class="header-section-number">4.5.1</span> Prospectieve studies en lukrake steekproeven</h3>
 
 <div class="example">
-<span id="exm:unnamed-chunk-55" class="example"><strong>Voorbeeld 4.4  (Houtluizen)  </strong></span>
+<span id="exm:unnamed-chunk-55" class="example"><strong>Voorbeeld 4.5  (Houtluizen)  </strong></span>
 </div>
 
 <p>Een bioloog verzamelt `s nachts bladerafval op een lukrake plaats van 1 m<span class="math inline">\(^2\)</span> in 2 wouden, waarvan 1 met klei- en 1 met kalkgrond. Op elke plaats telt hij het aantal houtluizen van de species Armadilidium of Oniscus, met als doel na te gaan of de ene soort vaker voorkomt op kleigrond dan op kalkgrond<a href="#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a>. Tabel <a href="chap-describe.html#tab:cox">4.2</a> toont de bekomen gegevens. Hier stelt <span class="math inline">\(a\)</span> (<span class="math inline">\(c\)</span>) het aantal houtluizen van de soort Armadilidium (Oniscus) voor op kleigrond, en <span class="math inline">\(b\)</span> (<span class="math inline">\(d\)</span>) het aantal houtluizen van de soort Armadilidium (Oniscus) op kalkgrond.</p>
@@ -1376,7 +1376,7 @@ male
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(NHANES[<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,], <span class="kw">aes</span>(<span class="dt">x =</span> Gender, <span class="dt">y =</span> <span class="kw">log</span>(DirectChol))) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_dotplot</span>(<span class="dt">binaxis =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">stackdir =</span> <span class="st">&quot;center&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:dotCholGender"></span>
-<img src="Statistiek_2018_2019_files/figure-html/dotCholGender-1.png" alt="Dotplot van log-getransformeerde directe HDL cholestorol concentratie in functie van Gender voor de eerste 100 subjecten van de NHANES studie." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/dotCholGender-1.png" alt="Dotplot van log-getransformeerde directe HDL cholestorol concentratie in functie van Gender voor de eerste 100 subjecten van de NHANES studie." width="100%" />
 <p class="caption">
 Figuur 4.12: Dotplot van log-getransformeerde directe HDL cholestorol concentratie in functie van Gender voor de eerste 100 subjecten van de NHANES studie.
 </p>
@@ -1385,7 +1385,7 @@ Figuur 4.12: Dotplot van log-getransformeerde directe HDL cholestorol concentrat
 <p>Als het aantal observaties groot is, kan een dot-plot vervangen worden door <em>boxplots</em>. Deze is meer compact dan een histogram en laat om die reden gemakkelijker vergelijkingen tussen verschillende groepen toe. Twee dergelijke boxplots worden getoond in Figuur <a href="chap-describe.html#fig:boxplotCholGender">4.13</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(<span class="kw">log</span>(DirectChol)<span class="op">~</span>Gender,<span class="dt">data=</span>NHANES,<span class="dt">ylab=</span><span class="st">&quot;log(Direct Cholestorol)&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:boxplotCholGender"></span>
-<img src="Statistiek_2018_2019_files/figure-html/boxplotCholGender-1.png" alt="Dotplot van log-getransformeerde directe HDL cholestorol concentratie in functie van Gender voor alle subjecten van de NHANES studie." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/boxplotCholGender-1.png" alt="Dotplot van log-getransformeerde directe HDL cholestorol concentratie in functie van Gender voor alle subjecten van de NHANES studie." width="100%" />
 <p class="caption">
 Figuur 4.13: Dotplot van log-getransformeerde directe HDL cholestorol concentratie in functie van Gender voor alle subjecten van de NHANES studie.
 </p>
@@ -1402,7 +1402,7 @@ Figuur 4.13: Dotplot van log-getransformeerde directe HDL cholestorol concentrat
 ## 5  5  167  112  147  101
 ## 6  6  176  101  145   85</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:captoDot"></span>
-<img src="Statistiek_2018_2019_files/figure-html/captoDot-1.png" alt="Dotplot van de systolische bloeddruk in de captopril studie voor en na het toedienen van het bloeddruk verlagend middel captopril." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/captoDot-1.png" alt="Dotplot van de systolische bloeddruk in de captopril studie voor en na het toedienen van het bloeddruk verlagend middel captopril." width="100%" />
 <p class="caption">
 Figuur 4.14: Dotplot van de systolische bloeddruk in de captopril studie voor en na het toedienen van het bloeddruk verlagend middel captopril.
 </p>
@@ -1414,7 +1414,7 @@ Figuur 4.14: Dotplot van de systolische bloeddruk in de captopril studie voor en
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">borstkanker=<span class="kw">read.table</span>(<span class="st">&quot;dataset/borstkanker.txt&quot;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>)
 <span class="kw">with</span>(borstkanker, <span class="kw">scatter.smooth</span>(<span class="kw">log2</span>(ESR1),<span class="kw">log2</span>(S100A8),<span class="dt">lpars=</span><span class="kw">list</span>(<span class="dt">lty=</span><span class="dv">2</span>)))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaLogFit"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaLogFit-1.png" alt="Expressie van het S100A8 gen in functie van de ESR1 gen-expressie." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaLogFit-1.png" alt="Expressie van het S100A8 gen in functie van de ESR1 gen-expressie." width="100%" />
 <p class="caption">
 Figuur 4.15: Expressie van het S100A8 gen in functie van de ESR1 gen-expressie.
 </p>
@@ -1439,7 +1439,7 @@ Figuur 4.15: Expressie van het S100A8 gen in functie van de ESR1 gen-expressie.
 <span class="cf">for</span> ( i <span class="cf">in</span> <span class="kw">c</span>(.<span class="dv">3</span>,.<span class="dv">7</span>,.<span class="dv">99</span>,<span class="op">-</span>.<span class="dv">3</span>,<span class="op">-</span>.<span class="dv">5</span>,<span class="op">-</span>.<span class="dv">9</span>))
   <span class="kw">plot</span>(<span class="kw">rmvnorm</span>(<span class="dv">100</span>,<span class="dt">sigma=</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,i,i,<span class="dv">1</span>),<span class="dt">ncol=</span><span class="dv">2</span>)),<span class="dt">xlab=</span><span class="st">&quot;x&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;y&quot;</span>,<span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;correlatie&quot;</span>,i))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:regr1"></span>
-<img src="Statistiek_2018_2019_files/figure-html/regr1-1.png" alt="Gesimuleerde gegevens met verschillende correlatie." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/regr1-1.png" alt="Gesimuleerde gegevens met verschillende correlatie." width="100%" />
 <p class="caption">
 Figuur 4.16: Gesimuleerde gegevens met verschillende correlatie.
 </p>
@@ -1454,9 +1454,9 @@ Figuur 4.16: Gesimuleerde gegevens met verschillende correlatie.
 </ul>
 <p><strong>Einde eigenschap</strong></p>
 <p>Op basis van deze eigenschap kunnen we bijvoorbeeld besluiten dat de correlatie tussen de expressie van het S100A8 en ESR1 gen niet gewijzigd wordt wanneer we een log10 transformatie hadden gebruikt ipv een log2 tranformatie. Door de eigenschappen van logaritmes weten we immers dat <span class="math inline">\(\log_{2}(x)=\log_{10}(x)/\log_{10}(2)\)</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">100</span>) 
-<span class="co">#Een seed wordt gebruikt om ervoor te zorgen </span>
-<span class="co">#dat dezelfde resultaten opnieuw kunnen worden </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">100</span>)
+<span class="co">#Een seed wordt gebruikt om ervoor te zorgen</span>
+<span class="co">#dat dezelfde resultaten opnieuw kunnen worden</span>
 <span class="co">#bekomen wanneer men at random data genereerd</span>
 <span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co">#twee plots naast elkaar</span>
 <span class="co">#simuleer</span>
@@ -1468,7 +1468,7 @@ normal &lt;-<span class="st"> </span><span class="kw">rmvnorm</span>(<span class
 <span class="co">#plot</span>
 <span class="kw">plot</span>(normal,<span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;Correlatie&quot;</span>,<span class="kw">round</span>(<span class="kw">cor</span>(normal)[<span class="dv">1</span>,<span class="dv">2</span>],<span class="dv">2</span>)),<span class="dt">xlab=</span><span class="st">&quot;x&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;y&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:regr3"></span>
-<img src="Statistiek_2018_2019_files/figure-html/regr3-1.png" alt="Links: scheef verdeelde observaties; Rechts: Normaal verdeelde observaties." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/regr3-1.png" alt="Links: scheef verdeelde observaties; Rechts: Normaal verdeelde observaties." width="100%" />
 <p class="caption">
 Figuur 4.17: Links: scheef verdeelde observaties; Rechts: Normaal verdeelde observaties.
 </p>
@@ -1490,7 +1490,7 @@ simHlp[<span class="dv">1</span><span class="op">:</span><span class="dv">18</sp
 simHlp[<span class="dv">19</span><span class="op">:</span><span class="dv">20</span>,]=<span class="kw">cbind</span>(<span class="kw">max</span>(simHlp[,<span class="dv">1</span>])<span class="op">*</span><span class="kw">c</span>(<span class="fl">1.1</span>,<span class="fl">1.3</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="fl">2.8</span>))
 <span class="kw">plot</span>(simHlp,<span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;Correlation&quot;</span>,<span class="kw">round</span>(<span class="kw">cor</span>(simHlp)[<span class="dv">1</span>,<span class="dv">2</span>],<span class="dv">2</span>)),<span class="dt">xlab=</span><span class="st">&quot;x&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;y&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:regr2"></span>
-<img src="Statistiek_2018_2019_files/figure-html/regr2-1.png" alt="Links: gesimuleerde gegevens met kwadratische associatie; Rechts: gesimuleerde gegevens met een werkelijke correlatie van 0.9 en 2 outliers." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/regr2-1.png" alt="Links: gesimuleerde gegevens met kwadratische associatie; Rechts: gesimuleerde gegevens met een werkelijke correlatie van 0.9 en 2 outliers." width="100%" />
 <p class="caption">
 Figuur 4.18: Links: gesimuleerde gegevens met kwadratische associatie; Rechts: gesimuleerde gegevens met een werkelijke correlatie van 0.9 en 2 outliers.
 </p>
@@ -1515,7 +1515,7 @@ Figuur 4.18: Links: gesimuleerde gegevens met kwadratische associatie; Rechts: g
 <span class="kw">with</span>(borstkanker, <span class="kw">scatter.smooth</span>(ESR1,S100A8,<span class="dt">span=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;Correlatie&quot;</span>,<span class="kw">c</span>(<span class="st">&quot;Pearson&quot;</span>,<span class="st">&quot;Spearman&quot;</span>),<span class="kw">round</span>(<span class="kw">c</span>(<span class="kw">cor</span>(ESR1,S100A8),<span class="kw">cor</span>(ESR1,S100A8,<span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)),<span class="dv">2</span>))))
 <span class="kw">with</span>(borstkanker, <span class="kw">scatter.smooth</span>(ESR1,S100A8,<span class="dt">span=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">500</span>),<span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;Correlatie&quot;</span>,<span class="kw">c</span>(<span class="st">&quot;Pearson&quot;</span>,<span class="st">&quot;Spearman&quot;</span>),<span class="kw">round</span>(<span class="kw">c</span>(<span class="kw">cor</span>(ESR1,S100A8),<span class="kw">cor</span>(ESR1,S100A8,<span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)),<span class="dv">2</span>))))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:brcaOrigFit"></span>
-<img src="Statistiek_2018_2019_files/figure-html/brcaOrigFit-1.png" alt="Expressie van het S100A8 gen in functie van de ESR1 gen-expressie op de log2 en originele schaal." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/brcaOrigFit-1.png" alt="Expressie van het S100A8 gen in functie van de ESR1 gen-expressie op de log2 en originele schaal." width="100%" />
 <p class="caption">
 Figuur 4.19: Expressie van het S100A8 gen in functie van de ESR1 gen-expressie op de log2 en originele schaal.
 </p>
@@ -1526,7 +1526,7 @@ Figuur 4.19: Expressie van het S100A8 gen in functie van de ESR1 gen-expressie o
 </ol>
 
 <div class="example">
-<span id="exm:unnamed-chunk-61" class="example"><strong>Voorbeeld 4.5  (Associatie versus causatie)  </strong></span>
+<span id="exm:unnamed-chunk-61" class="example"><strong>Voorbeeld 4.6  (Associatie versus causatie)  </strong></span>
 </div>
 
 <p>Wanneer men de incidentie van sterfte ten gevolge van borstkanker uitzet t.o.v. van de vetinname per capita per dag voor een grote steekproef van landen over de ganse wereld, dan stelt men vast dat er sterke positieve correlatie is. Deze correlatie wordt vaak gebruikt om aan te geven dat vetinname leidt tot borstkanker (analoog voor darmkanker). Het bewijs hiervoor is echter zeer zwak. Immers, landen met een grote vetinname hebben ook een hoge inname van suiker. Een grafiek van de incidentie van sterfte ten gevolge van borstkanker t.o.v. van de suikerinname per capita per dag toont een vrijwel even sterke correlatie, hoewel nagenoeg niemand beweert dat suiker borstkanker veroorzaakt. Bovendien zijn vet en suiker op wereldschaal relatief dure producten. Landen met hoge vetinname zijn bijgevolg voornamelijk industrielanden die in heel wat meer verschillen van de andere landen dan alleen hun vetinname… Recente studies (Holmes et al., 1999) hebben intussen sterke indicaties geleverd dat hoog vetverbruik vermoedelijk niet tot borstkanker leidt.</p>
@@ -1536,7 +1536,7 @@ Figuur 4.19: Expressie van het S100A8 gen in functie van de ESR1 gen-expressie o
 </ol>
 
 <div class="example">
-<span id="exm:unnamed-chunk-62" class="example"><strong>Voorbeeld 4.6  (Ecological fallacy)  </strong></span>
+<span id="exm:unnamed-chunk-62" class="example"><strong>Voorbeeld 4.7  (Ecological fallacy)  </strong></span>
 </div>
 
 <p>Voor de 48 staten in de V.S. werden telkens 2 getallen berekend: het percentage van de mensen die in een ander land geboren zijn en het percentage geletterden. De correlatie ertussen bedraagt 0.53 (Robinson, 1950). Dit is een <em>ecologische correlatie</em> omdat de eenheid van de analyse de groep residenten uit een zelfde staat is, en niet de individuele residenten zelf. Deze ecologische correlatie suggereert dat mensen van vreemde afkomst doorgaans beter geschoold zijn (in Amerikaans Engels) dan de oorspronkelijke inwoners. Wanneer men echter de correlatie berekent op basis van de gegevens voor alle individuele residenten, bekomt men -0.11. De ecologische analyse is hier duidelijk misleidend: het teken van de correlatie is er positief omdat mensen van vreemde origine de neiging hebben om te gaan wonen in staten waar de oorspronkelijke bevolking relatief goed geschoold is.</p>
@@ -1594,7 +1594,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1607,7 +1607,11 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/04-DataExploratie.Rmd",
 "text": "Edit"
 },
-"download": ["Statistiek_2018_2019.pdf", "Statistiek_2018_2019.epub"],
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Statistiek_2019_2020.pdf", "Statistiek_2019_2020.epub"],
 "toc": {
 "collapse": "subsection"
 }
@@ -1621,7 +1625,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

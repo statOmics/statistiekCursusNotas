@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cursus Statistiek 2018-2019</title>
-  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Hoofdstuk 7 Variantie analyse | Cursus Statistiek 2019-2020</title>
+  <meta name="description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cursus Statistiek 2018-2019" />
+  <meta property="og:title" content="Hoofdstuk 7 Variantie analyse | Cursus Statistiek 2019-2020" />
   <meta property="og:type" content="book" />
   
   
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="statOmics/statistiek2deBach" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cursus Statistiek 2018-2019" />
+  <meta name="twitter:title" content="Hoofdstuk 7 Variantie analyse | Cursus Statistiek 2019-2020" />
   
   <meta name="twitter:description" content="Basiscursus Statistiek voor de 2de Bachelor of Science in de Biologie, - in de Biochemie &amp; de Biotechnologie, - in de Biomedische Wetenschappen, en - in de Chemie" />
   
 
-<meta name="author" content="Lieven Clement">
+<meta name="author" content="Lieven Clement" />
 
 
-<meta name="date" content="2018-11-15">
+<meta name="date" content="2019-09-17" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="chap-linReg.html">
 <link rel="next" href="niet-parametrische-statistiek.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -101,7 +101,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Cursus Statistiek 2018-2019</a></li>
+<li><a href="./">Cursus Statistiek 2019-2020</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Woord vooraf</a></li>
@@ -337,7 +337,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2018-2019</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Cursus Statistiek 2019-2020</a>
           </h1>
         </div>
 
@@ -379,7 +379,7 @@ prostacyclin<span class="op">$</span>dose &lt;-<span class="st"> </span><span cl
 <span class="co">#3 QQ plot via for loop, we lopen over de niveaus voor de prostacycline dosis</span>
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">levels</span>(prostacyclin<span class="op">$</span>dose)) <span class="kw">with</span>(<span class="kw">subset</span>(prostacyclin,dose<span class="op">==</span>i),{<span class="kw">qqnorm</span>(prostac,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(prostacyclin<span class="op">$</span>prostac)),<span class="dt">main=</span><span class="kw">paste</span>(<span class="st">&quot;Dosis&quot;</span>,i));<span class="kw">qqline</span>(prostac)})</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:prostBox"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prostBox-1.png" alt="Data-exploratie van het prostacycline niveau bij 36 ratten die behandeld werden met drie verschillende arachidonzuurconcentraties (12 ratten per behandeling). Links boven: boxplots van prostacycline niveau in functie van de dosis, QQ-plot van prostacycline voor lage, matige en hoge dosisgroep worden respectievelijk rechtsboven, linksonder en rechtsonder weergegeven" width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/prostBox-1.png" alt="Data-exploratie van het prostacycline niveau bij 36 ratten die behandeld werden met drie verschillende arachidonzuurconcentraties (12 ratten per behandeling). Links boven: boxplots van prostacycline niveau in functie van de dosis, QQ-plot van prostacycline voor lage, matige en hoge dosisgroep worden respectievelijk rechtsboven, linksonder en rechtsonder weergegeven" width="100%" />
 <p class="caption">
 Figuur 7.1: Data-exploratie van het prostacycline niveau bij 36 ratten die behandeld werden met drie verschillende arachidonzuurconcentraties (12 ratten per behandeling). Links boven: boxplots van prostacycline niveau in functie van de dosis, QQ-plot van prostacycline voor lage, matige en hoge dosisgroep worden respectievelijk rechtsboven, linksonder en rechtsonder weergegeven
 </p>
@@ -499,7 +499,7 @@ cols=dose
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) <span class="kw">lines</span>(<span class="kw">c</span>(i<span class="op">-</span>.<span class="dv">2</span>,i<span class="op">+</span>.<span class="dv">2</span>),<span class="kw">rep</span>(<span class="kw">predict</span>(model1,<span class="kw">data.frame</span>(<span class="dt">dose=</span><span class="kw">levels</span>(dose)[i])),<span class="dv">2</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;bisque&quot;</span>,<span class="st">&quot;coral&quot;</span>,<span class="st">&quot;darkcyan&quot;</span>)[i],<span class="dt">lwd=</span><span class="dv">3</span>)
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">36</span>) <span class="kw">lines</span>(<span class="kw">rep</span>(jitIk[i],<span class="dv">2</span>),<span class="kw">c</span>(<span class="kw">mean</span>(prostac),model1<span class="op">$</span>fitted[i]),<span class="dt">col=</span><span class="dv">2</span>,<span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:prostacSST"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prostacSST-1.png" alt="Interpretatie van de kwadratensom van de behandeling (SST): de som van de kwadratische afwijkingen tussen de groepsgemiddelden ($\bar Y_j$) en het steekproefgemiddelde van de uitkomsten ($\bar Y$)" width="672" />
+<img src="Statistiek_2019_2020_files/figure-html/prostacSST-1.png" alt="Interpretatie van de kwadratensom van de behandeling (SST): de som van de kwadratische afwijkingen tussen de groepsgemiddelden ($\bar Y_j$) en het steekproefgemiddelde van de uitkomsten ($\bar Y$)" width="672" />
 <p class="caption">
 Figuur 7.2: Interpretatie van de kwadratensom van de behandeling (SST): de som van de kwadratische afwijkingen tussen de groepsgemiddelden (<span class="math inline">\(\bar Y_j\)</span>) en het steekproefgemiddelde van de uitkomsten (<span class="math inline">\(\bar Y\)</span>)
 </p>
@@ -529,7 +529,7 @@ Figuur 7.2: Interpretatie van de kwadratensom van de behandeling (SST): de som v
 <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(prostac),<span class="dt">lty=</span><span class="dv">1</span>)
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">36</span>) <span class="kw">lines</span>(<span class="kw">rep</span>(jitIk[i],<span class="dv">2</span>),<span class="kw">c</span>(prostac[i],model1<span class="op">$</span>fitted[i]),<span class="dt">col=</span><span class="dv">1</span>,<span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure"><span id="fig:prostacSSTotSSE"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prostacSSTotSSE-1.png" alt="Interpretatie van de totale kwadratensom (SSTot, som van de kwadratische afwijkingen tussen de uitkomsten $Y_{i}$ en het steekproefgemiddelde van de uitkomsten $\bar Y$, links) en van residuele kwadratensom (SSE, som van de kwadratische afwijkingen tussen de uitkomsten $Y_{i}$ en de groepsgemiddelden $\bar Y_j$, rechts)" width="672" />
+<img src="Statistiek_2019_2020_files/figure-html/prostacSSTotSSE-1.png" alt="Interpretatie van de totale kwadratensom (SSTot, som van de kwadratische afwijkingen tussen de uitkomsten $Y_{i}$ en het steekproefgemiddelde van de uitkomsten $\bar Y$, links) en van residuele kwadratensom (SSE, som van de kwadratische afwijkingen tussen de uitkomsten $Y_{i}$ en de groepsgemiddelden $\bar Y_j$, rechts)" width="672" />
 <p class="caption">
 Figuur 7.3: Interpretatie van de totale kwadratensom (SSTot, som van de kwadratische afwijkingen tussen de uitkomsten <span class="math inline">\(Y_{i}\)</span> en het steekproefgemiddelde van de uitkomsten <span class="math inline">\(\bar Y\)</span>, links) en van residuele kwadratensom (SSE, som van de kwadratische afwijkingen tussen de uitkomsten <span class="math inline">\(Y_{i}\)</span> en de groepsgemiddelden <span class="math inline">\(\bar Y_j\)</span>, rechts)
 </p>
@@ -605,7 +605,7 @@ accept=<span class="kw">c</span>(grid[<span class="kw">which</span>(grid<span cl
 <span class="kw">text</span>(<span class="fl">15.5</span>,.<span class="dv">97</span>,<span class="dt">labels=</span><span class="kw">paste0</span>(<span class="st">&quot;p-value</span><span class="ch">\n</span><span class="st">&quot;</span>,<span class="kw">format</span>(<span class="kw">anova</span>(model1)[<span class="dv">1</span>,<span class="dv">5</span>],<span class="dt">digits=</span><span class="dv">2</span>)),<span class="dt">col=</span><span class="st">&quot;darkorange&quot;</span>)
 <span class="kw">arrows</span>(<span class="dt">x0=</span><span class="fl">17.5</span>,<span class="dt">x1=</span>fval,<span class="dt">y0=</span>.<span class="dv">9</span>,<span class="dt">y1=</span>.<span class="dv">9</span>,<span class="dt">col=</span><span class="st">&quot;darkorange&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:prostacF"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prostacF-1.png" alt="Een F-verdeling met 2 vrijheidsgraden in de teller en 33 in de noemer. Het aanvaardingsgebied wordt weergegeven in blauw, de kritische waarde en de verwerpingsregio bij het $\alpha=5\%$ niveau in rood, en, de geobserveerde f-waarde  en de p-waarde worden in oranje." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/prostacF-1.png" alt="Een F-verdeling met 2 vrijheidsgraden in de teller en 33 in de noemer. Het aanvaardingsgebied wordt weergegeven in blauw, de kritische waarde en de verwerpingsregio bij het $\alpha=5\%$ niveau in rood, en, de geobserveerde f-waarde  en de p-waarde worden in oranje." width="100%" />
 <p class="caption">
 Figuur 7.4: Een F-verdeling met 2 vrijheidsgraden in de teller en 33 in de noemer. Het aanvaardingsgebied wordt weergegeven in blauw, de kritische waarde en de verwerpingsregio bij het <span class="math inline">\(\alpha=5\%\)</span> niveau in rood, en, de geobserveerde f-waarde en de p-waarde worden in oranje.
 </p>
@@ -618,7 +618,7 @@ Figuur 7.4: Een F-verdeling met 2 vrijheidsgraden in de teller en 33 in de noeme
 <span class="kw">lines</span>(grid,<span class="kw">df</span>(grid,<span class="dv">50</span>,<span class="dv">50</span>),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">col=</span><span class="dv">5</span>,<span class="dt">lwd=</span><span class="dv">2</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>,<span class="dt">lty=</span><span class="dv">1</span>,<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>),<span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;F(1,5)&quot;</span>,<span class="st">&quot;F(5,5)&quot;</span>,<span class="st">&quot;F(10,30)&quot;</span>,<span class="st">&quot;F(20,30)&quot;</span>,<span class="st">&quot;F(50,50)&quot;</span>),<span class="dt">lwd=</span><span class="dv">2</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:ftheo"></span>
-<img src="Statistiek_2018_2019_files/figure-html/ftheo-1.png" alt="Meerdere F-verdelingen met een verschillend aantal vrijheidsgraden in de teller en de noemer." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/ftheo-1.png" alt="Meerdere F-verdelingen met een verschillend aantal vrijheidsgraden in de teller en de noemer." width="100%" />
 <p class="caption">
 Figuur 7.5: Meerdere F-verdelingen met een verschillend aantal vrijheidsgraden in de teller en de noemer.
 </p>
@@ -831,7 +831,7 @@ De details van de methode vallen buiten het bestek van deze cursus. Via de imple
 <p>Merk op dat de Tukey methode smallere BIs en kleinere aangepaste p-waarden teruggeeft dan Bonferroni en dus minder conservatief is. De betrouwbaarheidsintervallen kunnen ook grafisch worden weergegeven wat handig is als er veel vergelijkingen worden uitgevoerd (zie Figuur <a href="chap-anova.html#fig:prostacTukey">7.6</a>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">confint</span>(model1.mcp))</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:prostacTukey"></span>
-<img src="Statistiek_2018_2019_files/figure-html/prostacTukey-1.png" alt="$95\%$ experimentsgewijze betrouwbaarheidsintervallen voor de paarsgewijze verschillen in gemiddeld prostacycline niveau tussen alle arachidonzuur dosisgroepen. De BIs zijn gecorrigeerd voor multipliciteit via de Tukey methode." width="100%" />
+<img src="Statistiek_2019_2020_files/figure-html/prostacTukey-1.png" alt="$95\%$ experimentsgewijze betrouwbaarheidsintervallen voor de paarsgewijze verschillen in gemiddeld prostacycline niveau tussen alle arachidonzuur dosisgroepen. De BIs zijn gecorrigeerd voor multipliciteit via de Tukey methode." width="100%" />
 <p class="caption">
 Figuur 7.6: <span class="math inline">\(95\%\)</span> experimentsgewijze betrouwbaarheidsintervallen voor de paarsgewijze verschillen in gemiddeld prostacycline niveau tussen alle arachidonzuur dosisgroepen. De BIs zijn gecorrigeerd voor multipliciteit via de Tukey methode.
 </p>
@@ -959,7 +959,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -972,7 +972,11 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/07-VariantieAnalyse.Rmd",
 "text": "Edit"
 },
-"download": ["Statistiek_2018_2019.pdf", "Statistiek_2018_2019.epub"],
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Statistiek_2019_2020.pdf", "Statistiek_2019_2020.epub"],
 "toc": {
 "collapse": "subsection"
 }
@@ -986,7 +990,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;
